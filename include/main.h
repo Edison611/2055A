@@ -24,6 +24,7 @@
  * E_CONTROLLER_MASTER is pedantically correct within the PROS styleguide, but
  * not convenient for most student programmers.
  */
+#include <algorithm>
 #define PROS_USE_SIMPLE_NAMES
 
 /**
@@ -72,10 +73,12 @@ void opcontrol(void);
 #endif
 
 #ifdef __cplusplus
-/**
- * You can add C++-only headers here
- */
-//#include <iostream>
+
+#include <iostream>
+#include "globals.hpp"
+#include "drive.hpp"
+#include "subsystems.hpp"
+#include "opcontrol.hpp"
 #endif
 
 #endif  // _PROS_MAIN_H_

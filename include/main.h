@@ -79,6 +79,7 @@ void opcontrol(void);
 #include "drive.hpp"
 #include "subsystems.hpp"
 #include "opcontrol.hpp"
+#include "auton.hpp"
 #endif
 
 #endif  // _PROS_MAIN_H_

@@ -77,7 +77,7 @@ bin/subsystems.cpp.o: src/subsystems.cpp include/main.h include/api.h \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h include/pros/link.hpp include/pros/link.h \
  include/globals.hpp include/drive.hpp include/subsystems.hpp \
- include/opcontrol.hpp
+ include/opcontrol.hpp include/auton.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -235,3 +235,4 @@ include/globals.hpp:
 include/drive.hpp:
 include/subsystems.hpp:
 include/opcontrol.hpp:
+include/auton.hpp:

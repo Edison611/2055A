@@ -77,7 +77,12 @@ bin/globals.cpp.o: src/globals.cpp include/main.h include/api.h \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h include/pros/link.hpp include/pros/link.h \
  include/globals.hpp include/drive.hpp include/subsystems.hpp \
- include/opcontrol.hpp include/pros/misc.hpp include/pros/vision.hpp
+ include/opcontrol.hpp include/auton.hpp include/pros/adi.hpp \
+ include/pros/misc.hpp include/pros/motors.hpp include/pros/vision.hpp \
+ include/lemlib/api.hpp include/lemlib/util.hpp include/lemlib/pid.hpp \
+ include/lemlib/pose.hpp include/lemlib/chassis/trackingWheel.hpp \
+ include/pros/rotation.hpp include/lemlib/chassis/chassis.hpp \
+ include/pros/imu.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -235,5 +240,16 @@ include/globals.hpp:
 include/drive.hpp:
 include/subsystems.hpp:
 include/opcontrol.hpp:
+include/auton.hpp:
+include/pros/adi.hpp:
 include/pros/misc.hpp:
+include/pros/motors.hpp:
 include/pros/vision.hpp:
+include/lemlib/api.hpp:
+include/lemlib/util.hpp:
+include/lemlib/pid.hpp:
+include/lemlib/pose.hpp:
+include/lemlib/chassis/trackingWheel.hpp:
+include/pros/rotation.hpp:
+include/lemlib/chassis/chassis.hpp:
+include/pros/imu.hpp:

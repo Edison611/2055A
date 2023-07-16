@@ -3,6 +3,7 @@
 #include "pros/imu.hpp"
 #include "pros/misc.hpp"
 #include "pros/motors.hpp"
+#include "pros/optical.hpp"
 #include "pros/vision.hpp"
 
 /**
@@ -25,9 +26,13 @@ extern pros::Motor intake2;
 extern pros::Motor catapult;
 
 extern pros::Vision vision_sensor;
-extern pros::ADIDigitalIn limit_switch;
+extern pros::ADIDigitalIn cata_limit_switch;
 extern pros::IMU inertial_sensor;
+extern pros::Optical color_sensor;
+extern pros::ADIDigitalIn intake_limit_switch;
 
+
+extern pros::ADIDigitalOut cata_ratchet;
 extern pros::ADIDigitalOut wings;
 extern pros::ADIDigitalOut grabber;
 

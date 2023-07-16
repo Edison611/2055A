@@ -11,6 +11,11 @@ void my_opcontrol() {
 		setCatapultMotors();
 		op_wings();
 		SetGrabber();
+		SetCataRatchet();
+
+		macroLoad();
+		SetMatchLoad();
+		
 		pros::delay(20);
 	}
 }

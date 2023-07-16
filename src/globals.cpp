@@ -6,18 +6,24 @@
 #include "pros/misc.hpp"
 #include "pros/motors.h"
 #include "pros/motors.hpp"
+#include "pros/optical.hpp"
 #include "pros/vision.hpp"
 #include "lemlib/api.hpp"
 #include <cstddef>
 
-
+// ------------------------------------------------------------------------------------------------------
 /**
  * Globals cpp file to store all the pros variables
  * This is where you change the ports, direction of motors, and encoder values
 */
+// ------------------------------------------------------------------------------------------------------
 
+
+// ------------------------------------------------------------------------------------------------------
 // Define the port numbers here: 
-
+// - Use numbers if it is in a port
+// - Use letters if it is a triport
+// ------------------------------------------------------------------------------------------------------
 int MOTOR_LB = 9;
 int MOTOR_LM = 7;
 int MOTOR_LF = 8;
@@ -31,13 +37,18 @@ int MOTOR_INTAKE2 = 11;
 int MOTOR_CATAPULT = 10;
 
 int VISION_SENSOR_PORT = 23;
-char LIMIT_SWITCH_PORT = 'A';
+char CATA_LIMIT_SWITCH_PORT = 'A';
 int INERTIAL_SENSOR_PORT = 24;
+int COLOR_SENSOR_PORT = 12;
+char INTAKE_LIMIT_SWITCH_PORT = 'E';
 
-char WING_PORT = 'B';
-char GRABBER_PORT = 'C';
+char CATA_RATCHET_PORT = 'B';
+char WING_PORT = 'C';
+char GRABBER_PORT = 'D';
 
+// ------------------------------------------------------------------------------------------------------
 // Drivetrain 
+// ------------------------------------------------------------------------------------------------------
 pros::Motor driveLB(MOTOR_LB, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor driveLM(MOTOR_LM, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor driveLF(MOTOR_LF, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_COUNTS);
@@ -49,25 +60,38 @@ pros::Motor driveRF(MOTOR_RF, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENC
 pros::MotorGroup leftMotors({driveLB, driveLM, driveLF});
 pros::MotorGroup rightMotors({driveRB, driveRM, driveRF});
 
+// ------------------------------------------------------------------------------------------------------
 // Subsystems
+// ------------------------------------------------------------------------------------------------------
 pros::Motor intake1(MOTOR_INTAKE1, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor intake2(MOTOR_INTAKE2, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor catapult(MOTOR_CATAPULT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
 
+// ------------------------------------------------------------------------------------------------------
 // Sensors
+// ------------------------------------------------------------------------------------------------------
 pros::Vision vision_sensor(VISION_SENSOR_PORT);
-pros::ADIDigitalIn limit_switch(LIMIT_SWITCH_PORT);
+pros::ADIDigitalIn cata_limit_switch(CATA_LIMIT_SWITCH_PORT);
 pros::IMU inertial_sensor(INERTIAL_SENSOR_PORT);
+pros::Optical color_sensor(COLOR_SENSOR_PORT);
+pros::ADIDigitalIn intake_limit_switch(INTAKE_LIMIT_SWITCH_PORT);
 
+// ------------------------------------------------------------------------------------------------------
 // Pneumatics
+// ------------------------------------------------------------------------------------------------------
+pros::ADIDigitalOut cata_ratchet(CATA_RATCHET_PORT);
 pros::ADIDigitalOut wings(WING_PORT);
 pros::ADIDigitalOut grabber(GRABBER_PORT);
 
+// ------------------------------------------------------------------------------------------------------
 // CONTROLLER
+// ------------------------------------------------------------------------------------------------------
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 
+// ------------------------------------------------------------------------------------------------------
 // LEMLIB (For position tracking)
+// ------------------------------------------------------------------------------------------------------
 
 /**
  * @brief Define the parameters of your drivetrain here:
@@ -114,3 +138,4 @@ lemlib::OdomSensors_t sensors {
 };
 
 lemlib::Chassis chassis(drivetrain, lateralController, angularController, sensors);
+// ------------------------------------------------------------------------------------------------------

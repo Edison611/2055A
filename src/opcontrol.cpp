@@ -5,6 +5,8 @@ void my_opcontrol() {
 		setDriveMotors();
         setIntakeMotors();
 		setCatapultMotors();
+		op_wings();
+		SetGrabber();
 		pros::delay(20);
 	}
 }

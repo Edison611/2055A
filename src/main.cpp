@@ -21,6 +21,7 @@ void initialize() {
 	pros::lcd::initialize();
 
     pros::Task holding(cata_hold);
+    pros::Task pos_track(screen);
 
     pros::delay(10);
 }
@@ -73,6 +74,6 @@ void autonomous() {
  */
 void opcontrol() {
 
-    // my_opcontrol();
-    skills();
+    my_opcontrol();
+    // skills();
 }

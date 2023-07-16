@@ -76,8 +76,12 @@ bin/auton.cpp.o: src/auton.cpp include/main.h include/api.h \
  include/pros/rotation.hpp include/pros/rotation.h include/pros/rtos.hpp \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h include/pros/link.hpp include/pros/link.h \
- include/globals.hpp include/drive.hpp include/subsystems.hpp \
- include/opcontrol.hpp include/auton.hpp include/pros/llemu.hpp
+ include/globals.hpp include/lemlib/chassis/chassis.hpp \
+ include/pros/motors.hpp include/pros/imu.hpp \
+ include/lemlib/chassis/trackingWheel.hpp include/pros/adi.hpp \
+ include/pros/rotation.hpp include/lemlib/pose.hpp include/drive.hpp \
+ include/subsystems.hpp include/opcontrol.hpp include/auton.hpp \
+ include/tracking.hpp include/pros/llemu.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -232,8 +236,16 @@ include/pros/vision.h:
 include/pros/link.hpp:
 include/pros/link.h:
 include/globals.hpp:
+include/lemlib/chassis/chassis.hpp:
+include/pros/motors.hpp:
+include/pros/imu.hpp:
+include/lemlib/chassis/trackingWheel.hpp:
+include/pros/adi.hpp:
+include/pros/rotation.hpp:
+include/lemlib/pose.hpp:
 include/drive.hpp:
 include/subsystems.hpp:
 include/opcontrol.hpp:
 include/auton.hpp:
+include/tracking.hpp:
 include/pros/llemu.hpp:

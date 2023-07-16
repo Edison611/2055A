@@ -1,4 +1,4 @@
-bin/main.cpp.o: src/main.cpp include/main.h include/api.h \
+bin/tracking.cpp.o: src/tracking.cpp include/main.h include/api.h \
  include/pros/adi.h include/pros/colors.h include/pros/distance.h \
  include/pros/error.h include/pros/ext_adi.h include/pros/adi.h \
  include/pros/adi.h include/pros/gps.h include/pros/imu.h \
@@ -81,8 +81,7 @@ bin/main.cpp.o: src/main.cpp include/main.h include/api.h \
  include/lemlib/chassis/trackingWheel.hpp include/pros/adi.hpp \
  include/pros/rotation.hpp include/lemlib/pose.hpp include/drive.hpp \
  include/subsystems.hpp include/opcontrol.hpp include/auton.hpp \
- include/tracking.hpp include/lemlib/api.hpp include/lemlib/util.hpp \
- include/lemlib/pid.hpp include/pros/llemu.hpp include/pros/misc.hpp
+ include/tracking.hpp include/pros/llemu.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -249,8 +248,4 @@ include/subsystems.hpp:
 include/opcontrol.hpp:
 include/auton.hpp:
 include/tracking.hpp:
-include/lemlib/api.hpp:
-include/lemlib/util.hpp:
-include/lemlib/pid.hpp:
 include/pros/llemu.hpp:
-include/pros/misc.hpp:

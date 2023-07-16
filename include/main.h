@@ -74,12 +74,12 @@ void opcontrol(void);
 
 #ifdef __cplusplus
 
-#include <iostream>
 #include "globals.hpp"
 #include "drive.hpp"
 #include "subsystems.hpp"
 #include "opcontrol.hpp"
 #include "auton.hpp"
+#include "tracking.hpp"
 #endif
 
 #endif  // _PROS_MAIN_H_

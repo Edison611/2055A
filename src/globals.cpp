@@ -1,5 +1,7 @@
 #include "main.h"
 #include "pros/adi.hpp"
+#include "pros/gps.h"
+#include "pros/imu.hpp"
 #include "pros/misc.h"
 #include "pros/misc.hpp"
 #include "pros/motors.h"
@@ -11,20 +13,24 @@
 
 // Define the port numbers here: 
 
-int MOTOR_LB = 3;
-int MOTOR_LM = 20;
-int MOTOR_LF = 6;
+int MOTOR_LB = 9;
+int MOTOR_LM = 7;
+int MOTOR_LF = 8;
 
-int MOTOR_RB = 2;
+int MOTOR_RB = 3;
 int MOTOR_RM = 4;
-int MOTOR_RF = 9;
+int MOTOR_RF = 6;
 
-int MOTOR_INTAKE = 5;
+int MOTOR_INTAKE1 = 1;
+int MOTOR_INTAKE2 = 11;
 int MOTOR_CATAPULT = 10;
 
-int VISION_SENSOR_PORT = 1;
+int VISION_SENSOR_PORT = 23;
 char LIMIT_SWITCH_PORT = 'A';
+int INERTIAL_SENSOR_PORT = 24;
 
+char WING_PORT = 'B';
+char GRABBER_PORT = 'C';
 
 // Drivetrain 
 pros::Motor driveLB(MOTOR_LB, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
@@ -38,6 +44,24 @@ pros::Motor driveRF(MOTOR_RF, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENC
 pros::MotorGroup leftMotors({driveLB, driveLM, driveLF});
 pros::MotorGroup rightMotors({driveRB, driveRM, driveRF});
 
+// Subsystems
+pros::Motor intake1(MOTOR_INTAKE1, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor intake2(MOTOR_INTAKE2, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor catapult(MOTOR_CATAPULT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+
+// Sensors
+pros::Vision vision_sensor(VISION_SENSOR_PORT);
+pros::ADIDigitalIn limit_switch(LIMIT_SWITCH_PORT);
+pros::IMU inertial_sensor(INERTIAL_SENSOR_PORT);
+
+// Pneumatics
+pros::ADIDigitalOut wings(WING_PORT);
+pros::ADIDigitalOut grabber(GRABBER_PORT);
+
+// CONTROLLER
+pros::Controller controller(pros::E_CONTROLLER_MASTER);
+
+// LEMLIB (For position tracking)
 lemlib::Drivetrain_t drivetrain {
     &leftMotors, // left drivetrain motors
     &rightMotors, // right drivetrain motors
@@ -68,26 +92,14 @@ lemlib::ChassisController_t angularController {
     500, // largeErrorTimeout
     3 // slew rate
 };
-
+    
 
 lemlib::OdomSensors_t sensors {
     nullptr, // vertical tracking wheel 1
     nullptr, // vertical tracking wheel 2
     nullptr, // horizontal tracking wheel 1
-    nullptr, // we don't have a second tracking wheel, so we set it to nullptr
-    nullptr // inertial sensor
+    nullptr, // horizontal tracking wheel 2
+    &inertial_sensor // inertial sensor
 };
 
 lemlib::Chassis chassis(drivetrain, lateralController, angularController, sensors);
-
-
-
-// Subsystems
-pros::Motor intake(MOTOR_INTAKE, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor catapult(MOTOR_CATAPULT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-
-// Sensors
-pros::Vision vision_sensor(VISION_SENSOR_PORT);
-pros::ADIDigitalIn limit_switch(LIMIT_SWITCH_PORT);
-
-pros::Controller controller(pros::E_CONTROLLER_MASTER);

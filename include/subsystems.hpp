@@ -7,3 +7,11 @@ void setIntakeMotors();
 void setCatapult(int power);
 void setCatapultMotors();
 void cata_hold();
+
+// Grabber
+void SetGrabber();
+
+// Wings
+void ActivateWings(bool dir);
+
+void op_wings();

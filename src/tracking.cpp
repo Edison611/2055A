@@ -2,6 +2,10 @@
 #include "pros/llemu.hpp"
 #include <string>
 
+/**
+ * @brief Screen task to print the position of the robot using Lemlib
+ * 
+ */
 void screen() {
     // loop forever
     while (true) {

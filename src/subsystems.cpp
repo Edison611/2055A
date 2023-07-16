@@ -1,6 +1,8 @@
 #include "main.h"
 #include "pros/misc.h"
 
+// Define all the subsystems in this file
+
 // INTAKE
 void setIntake(int intaker_power) {
     intake1.move(intaker_power);
@@ -14,7 +16,6 @@ void setIntakeMotors() {
 
 
 // CATAPULT
-
 void setCatapult(int power) {
     catapult.move(power);
 } 
@@ -67,12 +68,15 @@ void cata_hold() {
 
 bool currentGrabber = false;
 
+/**
+ * @brief Controls the grabber of the bot, drops if it was up, pulls it up if it is dropped on button press.
+ */
 void SetGrabber() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2) || currentGrabber == false) {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2) && currentGrabber == false) {
         currentGrabber = true;
         grabber.set_value(true);
     }   
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2) || currentGrabber == true) {
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2) && currentGrabber == true) {
         currentGrabber = false;
         grabber.set_value(false);
     }
@@ -86,12 +90,15 @@ void ActivateWings(bool dir) {
 
 bool currentWings = false;
 
+/**
+ * @brief Controls the wings of the bot, opens if it was closed, closes if it is open on button press.
+ */
 void op_wings() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X) || currentWings == false) {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X) && currentWings == false) {
         currentWings = true;
         wings.set_value(true);
     }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X) || currentWings == true) {
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X) && currentWings == true) {
         currentWings = false;
         wings.set_value(false);
     }

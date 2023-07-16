@@ -11,6 +11,11 @@
 #include <cstddef>
 
 
+/**
+ * Globals cpp file to store all the pros variables
+ * This is where you change the ports, direction of motors, and encoder values
+*/
+
 // Define the port numbers here: 
 
 int MOTOR_LB = 9;
@@ -61,7 +66,12 @@ pros::ADIDigitalOut grabber(GRABBER_PORT);
 // CONTROLLER
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
+
 // LEMLIB (For position tracking)
+
+/**
+ * @brief Define the parameters of your drivetrain here:
+ */
 lemlib::Drivetrain_t drivetrain {
     &leftMotors, // left drivetrain motors
     &rightMotors, // right drivetrain motors
@@ -69,7 +79,6 @@ lemlib::Drivetrain_t drivetrain {
     3.25, // wheel diameter
     400 // wheel rpm
 };
-
 
 // forward/backward PID
 lemlib::ChassisController_t lateralController {
@@ -93,7 +102,9 @@ lemlib::ChassisController_t angularController {
     3 // slew rate
 };
     
-
+/**
+ * @brief Define the sensors used for the robot here:
+ */
 lemlib::OdomSensors_t sensors {
     nullptr, // vertical tracking wheel 1
     nullptr, // vertical tracking wheel 2

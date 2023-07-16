@@ -1,5 +1,9 @@
 #include "main.h"
 
+/**
+ * @brief Code to call during the driving period
+ * 
+ */
 void my_opcontrol() {
 	while (true) {
 		setDriveMotors();

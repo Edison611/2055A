@@ -8,6 +8,8 @@
 int netPos[2] = {100, 100};
 
 
+// HELPER FUNCTIONS
+
 void GoToOrigin() {
     chassis.moveTo(0, 0, 2000);
 }
@@ -15,6 +17,7 @@ void GoToOrigin() {
 void driveToNet(int pos[]) {
     chassis.turnTo(pos[0], pos[1], 1000);
 }
+
 
 bool GoToTriball(pros::vision_object_s_t triball) {
     int center = 158;
@@ -43,6 +46,10 @@ bool GoToTriball(pros::vision_object_s_t triball) {
 
 }
 
+/**
+ * @brief Skills code
+ * 
+ */
 void skills() {
     // Defining Triball Signatures
     pros::vision_signature_s_t TRIBALL_SIG = pros::Vision::signature_from_utility(2, -6223, -4453, -5338, -6399, -4153, -5276, 3.000, 0);
@@ -81,5 +88,16 @@ void skills() {
 
 }
 
+// AUTONOMOUS CODES
+
 void solo_auton() {
+
+}
+
+void offense_auton() {
+
+}
+
+void defense_auton() {
+
 }

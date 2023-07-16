@@ -10,6 +10,12 @@
 
 // DRIVER CONTROL FUNCTIONS
 
+/**
+ * @brief Sets motor power to drivebase
+ * 
+ * @param left The power to give the left side
+ * @param right The power to give the right side
+ */
 void setDrive(double left, double right) {
     driveLB.move(left);
     driveLF.move(left);
@@ -20,9 +26,11 @@ void setDrive(double left, double right) {
     driveRF.move(right);
 }
 
-
+/**
+ * @brief Set the Drive Motors object to control the robot using the controller
+ * 
+ */
 void setDriveMotors() {
-
     const int deadband = 5;
     int x = abs(controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X));
     int y = abs(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y));

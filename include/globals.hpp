@@ -5,6 +5,9 @@
 #include "pros/motors.hpp"
 #include "pros/vision.hpp"
 
+/**
+ * Globals header file to store all the pros variables
+ */
 
 extern pros::Motor driveLB;
 extern pros::Motor driveLM;

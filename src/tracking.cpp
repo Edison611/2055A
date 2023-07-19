@@ -58,8 +58,19 @@ void SetMatchLoad() {
 
 // Intake
 
+bool detected = false;
 void intakeLimit() {
-    if (intake_limit_switch.get_value() == 1) {
-        setIntake(0);
+    while (true) {
+        bool x = ball_detection();
+        if (x == true && detected == false) {
+            setIntake(0);
+            detected = true;
+        }
     }
 }
+
+// void intakeLimit() {
+//     if (intake_limit_switch.get_value() == 1) {
+//         setIntake(0);
+//     }
+// }

@@ -102,8 +102,8 @@ void solo_auton() {
 
 void offense_auton() {
     pros::Task hold_triball(intakeLimit);
-    setIntake(127);
-    pros::delay(3000);
+    setIntake(40);
+    pros::delay(5000);
     setIntake(-127);
     pros::delay(1000);
     setIntake(0);

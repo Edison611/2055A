@@ -20,6 +20,8 @@
 void initialize() {
 	pros::lcd::initialize();
 
+    chassis.calibrate();
+
     pros::Task holding(cata_hold);
     pros::Task pos_track(screen);
 

@@ -102,13 +102,25 @@ void solo_auton() {
 
 void offense_auton() {
     pros::Task hold_triball(intakeLimit);
-    setIntake(40);
-    pros::delay(5000);
-    setIntake(-127);
+    // setIntake(50);
+    // pros::delay(5000);
+    // setIntake(-127);
+    // pros::delay(1000);
+    // setIntake(0);
+
+    chassis.setPose(-24, -24, 90);
+    pros::delay(100);
+    setIntake(25); 
+    pros::delay(100);
+    chassis.moveTo(-10, -24, 2000);
     pros::delay(1000);
-    setIntake(0);
+    chassis.turnTo(-10, -50, 2000);
+    pros::delay(200);
+    setIntake(-127);
+    chassis.moveTo(-10, -35, 2000);
 
     hold_triball.suspend();
+
 }
 
 void defense_auton() {

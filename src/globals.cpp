@@ -38,7 +38,7 @@ int MOTOR_CATAPULT = 10;
 
 int VISION_SENSOR_PORT = 23;
 char CATA_LIMIT_SWITCH_PORT = 'A';
-int INERTIAL_SENSOR_PORT = 24;
+int INERTIAL_SENSOR_PORT = 13;
 int COLOR_SENSOR_PORT = 12;
 char INTAKE_LIMIT_SWITCH_PORT = 'E';
 
@@ -51,10 +51,10 @@ char GRABBER_PORT = 'D';
 // ------------------------------------------------------------------------------------------------------
 pros::Motor driveLB(MOTOR_LB, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor driveLM(MOTOR_LM, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor driveLF(MOTOR_LF, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_COUNTS);
+pros::Motor driveLF(MOTOR_LF, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
 
 pros::Motor driveRB(MOTOR_RB, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor driveRM(MOTOR_RM, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_COUNTS);
+pros::Motor driveRM(MOTOR_RM, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor driveRF(MOTOR_RF, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 pros::MotorGroup leftMotors({driveLB, driveLM, driveLF});
@@ -99,9 +99,9 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 lemlib::Drivetrain_t drivetrain {
     &leftMotors, // left drivetrain motors
     &rightMotors, // right drivetrain motors
-    12, // track width
-    3.25, // wheel diameter
-    400 // wheel rpm
+    11.25, // track width
+    4.00, // wheel diameter
+    300 // wheel rpm
 };
 
 // forward/backward PID

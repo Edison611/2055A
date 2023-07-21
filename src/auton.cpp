@@ -22,6 +22,11 @@ void driveToNet(int pos[]) {
     chassis.turnTo(pos[0], pos[1], 1000);
 }
 
+void vector(double x, double y, int turnTimout, int driveTimeout) {
+    chassis.turnTo(x, y, turnTimout);
+    chassis.moveTo(x, y, driveTimeout);
+}
+
 
 bool GoToTriball(pros::vision_object_s_t triball) {
     int center = 158;
@@ -98,6 +103,21 @@ void skills() {
 
 void solo_auton() {
 
+    chassis.setPose(33, 56, 0);
+    
+    cata_ratchet.set_value(true);
+    pros::delay(100);
+    cata_ratchet.set_value(false);
+    
+
+    pros::delay(100);
+    chassis.moveTo(33, 12, 2000, true);
+    pros::delay(100);
+    chassis.turnTo(0, 12, 2000, true);
+    pros::delay(100);
+    chassis.moveTo(0, 10, 2000, true);
+    pros::delay(100);
+    shoot();
 }
 
 void offense_auton() {
@@ -108,16 +128,16 @@ void offense_auton() {
     // pros::delay(1000);
     // setIntake(0);
 
-    chassis.setPose(-24, -24, 90);
-    pros::delay(100);
-    setIntake(25); 
-    pros::delay(100);
-    chassis.moveTo(-10, -24, 2000);
-    pros::delay(1000);
-    chassis.turnTo(-10, -50, 2000);
-    pros::delay(200);
-    setIntake(-127);
-    chassis.moveTo(-10, -35, 2000);
+    // chassis.setPose(-24, -24, 90);
+    // pros::delay(100);
+    // setIntake(25); 
+    // pros::delay(100);
+    // chassis.moveTo(-10, -24, 2000);
+    // pros::delay(1000);
+    // chassis.turnTo(-10, -50, 2000);
+    // pros::delay(200);
+    // setIntake(-127);
+    // chassis.moveTo(-10, -35, 2000);
 
     hold_triball.suspend();
 

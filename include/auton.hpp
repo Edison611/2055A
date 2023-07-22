@@ -1,3 +1,5 @@
+void vector(double x, double y, int turnTimeout, int driveTimeout);
+
 void skills();
 
 void solo_auton();

@@ -24,6 +24,7 @@ void setCatapult(int power) {
 } 
 
 bool hold = false;
+bool cata_shoot = false;
 
 void setCatapultMotors() {
     if (cata_limit_switch.get_value() == 1) {
@@ -40,11 +41,7 @@ void setCatapultMotors() {
 }
 
 void shoot() {
-    hold = false;
-    // Shoot Catapult
-    setCatapult(127);
-    pros::delay(350);
-    setCatapult(127);
+    cata_shoot = true;
 }
 
 /**
@@ -70,6 +67,25 @@ void cata_hold() {
 	}
     
 }
+
+void auton_hold() {
+
+    while (true) {
+        if (cata_limit_switch.get_value() == 1) {
+            hold = true;
+            }
+        }
+
+    if (cata_shoot == true) {
+        cata_shoot = false;
+        setCatapult(127);
+        pros::delay(200);
+            
+    }
+
+        pros::delay(10);
+
+    } 
 
 bool currentCataRatchet = false;
 

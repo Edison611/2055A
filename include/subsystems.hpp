@@ -8,6 +8,8 @@ void setCatapult(int power);
 void setCatapultMotors();
 void shoot();
 void cata_hold();
+extern bool cata_shoot;
+void auton_hold();
 void SetCataRatchet();
 
 // Grabber

@@ -102,42 +102,44 @@ void skills() {
 // ------------------------------------------------------------------------------------------------------
 
 void solo_auton() {
-
-    chassis.setPose(33, 56, 0);
+    pros::Task hold_auton(auton_hold);
     
-    cata_ratchet.set_value(true);
+    grabber.set_value(true);
     pros::delay(100);
-    cata_ratchet.set_value(false);
-    
+    grabber.set_value(false);
+    pros::delay(100);
 
+    chassis.setPose(56, -33, 90);
     pros::delay(100);
-    chassis.moveTo(33, 12, 2000, true);
-    pros::delay(100);
-    chassis.turnTo(0, 12, 2000, true);
-    pros::delay(100);
-    chassis.moveTo(0, 10, 2000, true);
-    pros::delay(100);
+    chassis.moveTo(27, -33, 2000, 50, true);
+    pros::delay(200);
+    chassis.turnTo(27, 0, 1000, true);
+    pros::delay(200);
+    chassis.moveTo(27, 14, 2000, 50, true);
+    pros::delay(200);
     shoot();
+    pros::delay(200);
+    hold_auton.suspend();
 }
 
 void offense_auton() {
     pros::Task hold_triball(intakeLimit);
-    // setIntake(50);
-    // pros::delay(5000);
-    // setIntake(-127);
-    // pros::delay(1000);
-    // setIntake(0);
+    setIntake(50);
+    pros::delay(5000);
+    setIntake(-127);
+    pros::delay(1000);
+    setIntake(0);
 
-    // chassis.setPose(-24, -24, 90);
-    // pros::delay(100);
-    // setIntake(25); 
-    // pros::delay(100);
-    // chassis.moveTo(-10, -24, 2000);
-    // pros::delay(1000);
-    // chassis.turnTo(-10, -50, 2000);
-    // pros::delay(200);
-    // setIntake(-127);
-    // chassis.moveTo(-10, -35, 2000);
+    chassis.setPose(-24, -24, 90);
+    pros::delay(100);
+    setIntake(25); 
+    pros::delay(100);
+    chassis.moveTo(-10, -24, 2000);
+    pros::delay(1000);
+    chassis.turnTo(-10, -50, 2000);
+    pros::delay(200);
+    setIntake(-127);
+    chassis.moveTo(-10, -35, 2000);
 
     hold_triball.suspend();
 

@@ -74,14 +74,15 @@ void auton_hold() {
     while (true) {
 
         while (cata_shoot == true) {
+            hold = false;
+            cata_shoot = false;
             setCatapult(127);
             pros::delay(300);
-            cata_shoot = false;
         }
 
         if (cata_limit_switch.get_value() == 1) {
             cata_shoot = false;
-            hold = false;
+            hold = true;
         }
     }
 

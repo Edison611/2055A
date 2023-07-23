@@ -34,6 +34,10 @@ bool ball_detection() {
     }
 }
 
+bool cata_ball_detection() {
+    
+}
+
 bool loadMacro = false;
 
 void macroLoad() {

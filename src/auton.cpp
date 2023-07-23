@@ -119,6 +119,9 @@ void skills() {
 
 void test_auton() {
     // Write the test code in here
+    pros::Task hold_auton(auton_hold);
+    shoot();
+    // hold_auton.suspend();
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -169,11 +172,12 @@ void solo_auton() {
     vector(60, -5, 1000, 2000);
 
     // Suspends task (We need to make sure that it gets suspended before driver)
-    hold_auton.suspend();
+    // hold_auton.suspend();
 }
 
 /**
  * @brief offensive autonomous
+ * 
  * 1. Drive to net and outtake our triball into the net
  * 2. Grab the middle triball and score it
  * 3. Grab the triball in the middle away from the net and score it

@@ -12,6 +12,7 @@ void my_opcontrol() {
 		op_wings();
 		SetGrabber();
 		SetCataRatchet();
+		CataRatchet();
 
 		macroLoad();
 		// SetMatchLoad();

@@ -126,6 +126,16 @@ void SetCataRatchet() {
     }
 }
 
+void CataRatchet() {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+        setCatapult(-40);
+        cata_ratchet.set_value(true);
+        pros::delay(300);
+        setCatapult(0);
+        cata_ratchet.set_value(false);
+    }
+}
+
 
 // ------------------------------------------------------------------------------------------------------
 // GRABBER

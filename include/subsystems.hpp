@@ -11,6 +11,7 @@ void cata_hold();
 extern bool cata_shoot;
 void auton_hold();
 void SetCataRatchet();
+void CataRatchet();
 
 // Grabber
 void SetGrabber();

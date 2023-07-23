@@ -119,9 +119,7 @@ void skills() {
 
 void test_auton() {
     // Write the test code in here
-    pros::Task hold_auton(auton_hold);
     shoot();
-    // hold_auton.suspend();
 }
 
 // ------------------------------------------------------------------------------------------------------

@@ -25,6 +25,8 @@ void initialize() {
     pros::Task holding(cata_hold);
     pros::Task pos_track(screen);
     pros::Task print_task(print_info);
+    // pros::Task hold_auton(auton_hold);
+    pros::Task MatchLoads(SetMatchLoad);
     
 
     pros::delay(10);
@@ -61,7 +63,8 @@ void competition_initialize() {}
  */
 void autonomous() {
     // offense_auton();
-    solo_auton();
+    // solo_auton();
+    test_auton();
 
 }
 

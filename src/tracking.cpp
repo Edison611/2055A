@@ -24,8 +24,8 @@ void screen() {
 bool ball_detection() {
     double hue = color_sensor.get_hue();
     pros::c::optical_rgb_s_t rgb = color_sensor.get_rgb();
-    pros::lcd::set_text(2, "R: " + std::to_string(int(rgb.red)) + ", G: " + std::to_string(int(rgb.green)) + ", B: " + std::to_string(int(rgb.blue)));
-    pros::lcd::set_text(3, "Hue: " + std::to_string(hue));
+    // pros::lcd::set_text(2, "R: " + std::to_string(int(rgb.red)) + ", G: " + std::to_string(int(rgb.green)) + ", B: " + std::to_string(int(rgb.blue)));
+    // pros::lcd::set_text(3, "Hue: " + std::to_string(hue));
     if (rgb.red < 50 && rgb.green < 50 && rgb.blue < 50) {
         return true;
     }
@@ -35,7 +35,18 @@ bool ball_detection() {
 }
 
 bool cata_ball_detection() {
-    
+    // int val = line_sensor1.get_value();
+    int size = distance_sensor.get_object_size();
+    // pros::lcd::set_text(2, "Value: " + std::to_string(val));
+    pros::lcd::set_text(3, "Size: " + std::to_string(size));
+    pros::lcd::set_text(1, "TEST");
+    pros::delay(100);
+    if (size < 10) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 bool loadMacro = false;
@@ -53,13 +64,17 @@ void macroLoad() {
 }
 
 void SetMatchLoad() {
-    if (loadMacro == true) {
-        bool launch = ball_detection();
-        if (launch == true) {
-            pros::delay(1000);
-            shoot();
-            pros::delay(300);
+    while (true) {
+        if (loadMacro == true) {
+            bool launch = cata_ball_detection();
+            if (launch == true) {
+                pros::lcd::set_text(2, "LAUNCH");
+                pros::delay(1000);
+                shoot();
+                pros::delay(300);
+            }
         }
+        pros::delay(20);
     }
 }
 
@@ -80,6 +95,8 @@ void intakeLimit() {
 void print_info() {
     while (true) {
         // Controller printing
+        controller.clear();
+        pros::lcd::set_text(1, "Switch: " + std::to_string(cata_limit_switch.get_value()));
         if (loadMacro == true) {
             controller.set_text(1, 1, "Match Load: ON");
         }
@@ -87,7 +104,7 @@ void print_info() {
             controller.set_text(1, 1, "Match Load: OFF");
         }
 
-        pros::delay(100);
+        pros::delay(200);
     }
 }
 

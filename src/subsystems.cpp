@@ -54,6 +54,19 @@ void cata_hold() {
     double factor = 1.25; // Tune this value
 
 	while (true) {
+
+        // while (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1) == 1 || cata_shoot == true) {
+        //     hold = false;
+        //     cata_shoot = false;
+        //     setCatapult(127);
+        //     pros::delay(400);
+        // }
+
+        // if (cata_limit_switch.get_value() == 1) {
+
+        //     cata_shoot = false;
+        //     hold = true;
+        // }
        
 		if (hold) {
 			int absPos = catapult.get_position();
@@ -73,17 +86,7 @@ void auton_hold() {
 
     while (true) {
 
-        while (cata_shoot == true) {
-            hold = false;
-            cata_shoot = false;
-            setCatapult(127);
-            pros::delay(300);
-        }
-
-        if (cata_limit_switch.get_value() == 1) {
-            cata_shoot = false;
-            hold = true;
-        }
+        pros::delay(10);
     }
 
     
@@ -115,12 +118,14 @@ void SetCataRatchet() {
             currentCataRatchet = true;
             cata_ratchet.set_value(true);
         }
+
         else if (currentCataRatchet == true) {
             currentCataRatchet = false;
             cata_ratchet.set_value(false);
         }
     }
 }
+
 
 // ------------------------------------------------------------------------------------------------------
 // GRABBER

@@ -25,6 +25,7 @@ void initialize() {
     pros::Task holding(cata_hold);
     pros::Task pos_track(screen);
     pros::Task print_task(print_info);
+    
 
     pros::delay(10);
 }
@@ -61,6 +62,7 @@ void competition_initialize() {}
 void autonomous() {
     // offense_auton();
     solo_auton();
+
 }
 
 /**
@@ -78,7 +80,7 @@ void autonomous() {
  */
 void opcontrol() {
     controller.clear();
-    pros::delay(100);
+    pros::delay(200);
 
     my_opcontrol();
     // skills();

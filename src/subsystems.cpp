@@ -1,5 +1,6 @@
 #include "main.h"
 #include "pros/misc.h"
+#include "pros/rtos.hpp"
 
 // Define all the subsystems in this file
 
@@ -71,21 +72,36 @@ void cata_hold() {
 void auton_hold() {
 
     while (true) {
-        if (cata_limit_switch.get_value() == 1) {
-            hold = true;
-            }
+
+        while (cata_shoot == true) {
+            setCatapult(127);
+            pros::delay(300);
+            cata_shoot = false;
         }
 
-    if (cata_shoot == true) {
-        cata_shoot = false;
-        setCatapult(127);
-        pros::delay(200);
-            
+        if (cata_limit_switch.get_value() == 1) {
+            cata_shoot = false;
+            hold = false;
+        }
     }
 
-        pros::delay(10);
+    
 
-    } 
+    // while (true) {
+    //     if (cata_limit_switch.get_value() == 1) {
+    //         hold = true;
+    //         }
+    //     }
+
+    // if (cata_shoot == true) {
+    //     cata_shoot = false;
+    //     setCatapult(127);
+    //     pros::delay(200);
+            
+    // }
+
+    //     pros::delay(10);
+}
 
 bool currentCataRatchet = false;
 

@@ -59,6 +59,7 @@ void SetMatchLoad() {
 // Intake
 
 bool detected = false;
+
 void intakeLimit() {
     while (true) {
         bool x = ball_detection();

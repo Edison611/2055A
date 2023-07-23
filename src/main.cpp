@@ -25,7 +25,7 @@ void initialize() {
     pros::Task holding(cata_hold);
     pros::Task pos_track(screen);
 
-    pros::delay(2000);
+    pros::delay(10);
 }
 
 /**

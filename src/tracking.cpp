@@ -3,6 +3,7 @@
 #include "pros/misc.h"
 #include "pros/optical.h"
 #include "pros/rtos.h"
+#include "pros/rtos.hpp"
 #include <string>
 
 /**
@@ -51,7 +52,9 @@ void SetMatchLoad() {
     if (loadMacro == true) {
         bool launch = ball_detection();
         if (launch == true) {
+            pros::delay(1000);
             shoot();
+            pros::delay(300);
         }
     }
 }
@@ -67,6 +70,20 @@ void intakeLimit() {
             setIntake(0);
             detected = true;
         }
+    }
+}
+
+void print_info() {
+    while (true) {
+        // Controller printing
+        if (loadMacro == true) {
+            controller.set_text(1, 1, "Match Load: ON");
+        }
+        else {
+            controller.set_text(1, 1, "Match Load: OFF");
+        }
+
+        pros::delay(100);
     }
 }
 

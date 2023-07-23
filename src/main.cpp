@@ -24,6 +24,7 @@ void initialize() {
 
     pros::Task holding(cata_hold);
     pros::Task pos_track(screen);
+    pros::Task print_task(print_info);
 
     pros::delay(10);
 }
@@ -76,6 +77,8 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+    controller.clear();
+    pros::delay(100);
 
     my_opcontrol();
     // skills();

@@ -82,8 +82,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    controller.clear();
-    pros::delay(200);
 
     my_opcontrol();
     // skills();

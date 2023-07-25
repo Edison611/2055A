@@ -1,6 +1,8 @@
 #include "main.h"
+#include "pros/llemu.hpp"
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
+#include <string>
 
 // Define all the subsystems in this file
 
@@ -55,29 +57,45 @@ void cata_hold() {
 
 	while (true) {
 
-        // while (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1) == 1 || cata_shoot == true) {
-        //     hold = false;
-        //     cata_shoot = false;
-        //     setCatapult(127);
-        //     pros::delay(400);
-        // }
+        while (hold) { // Could change to just button value
+            int absPos = catapult.get_position();
+            int power = (absPos - catapult.get_position())*factor;
+            pros::lcd::set_text(2, "Power: " + std::to_string(power));
+            setCatapult(power);
+            pros::delay(10);
 
-        // if (cata_limit_switch.get_value() == 1) {
-
-        //     cata_shoot = false;
-        //     hold = true;
-        // }
-       
-		if (hold) {
-			int absPos = catapult.get_position();
-        
-            while (hold) {
-                int power = (absPos - catapult.get_position())*factor;
-                setCatapult(power);
-                pros::delay(10);
+            if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1) == 1 || cata_shoot == true) {
+                hold = false;
+                cata_shoot = true;
+                break;
+                // hold = false;
+                // cata_shoot = false;
+                // setCatapult(127);
+                // pros::delay(300);
             }
         }
-        pros::delay(10);
+
+        if (cata_shoot == true) {
+            cata_shoot = false;
+            setCatapult(127);
+            pros::delay(300);
+        }
+
+        if (cata_limit_switch.get_value() == 1) {
+            cata_shoot = false;
+            hold = true;
+        }
+       
+		// if (hold) {
+		// 	int absPos = catapult.get_position();
+        
+        //     // while (hold) {
+        //         int power = (absPos - catapult.get_position())*factor;
+        //         setCatapult(power);
+        //         pros::delay(10);
+        //     // }
+        // }
+        // pros::delay(10);
 	}
     
 }
@@ -125,7 +143,10 @@ void SetCataRatchet() {
         }
     }
 }
-
+/**
+ * @brief Spins catapult other way in case of jam
+ * 
+ */
 void CataRatchet() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
         setCatapult(-40);

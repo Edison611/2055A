@@ -68,7 +68,6 @@ void SetMatchLoad() {
         if (loadMacro == true) {
             bool launch = cata_ball_detection();
             if (launch == true) {
-                pros::lcd::set_text(2, "LAUNCH");
                 pros::delay(1000);
                 shoot();
                 pros::delay(300);
@@ -96,6 +95,8 @@ void print_info() {
     while (true) {
         // Controller printing
         controller.clear();
+        pros::delay(200);
+        
         pros::lcd::set_text(1, "Switch: " + std::to_string(cata_limit_switch.get_value()));
         if (loadMacro == true) {
             controller.set_text(1, 1, "Match Load: ON");
@@ -103,8 +104,6 @@ void print_info() {
         else {
             controller.set_text(1, 1, "Match Load: OFF");
         }
-
-        pros::delay(200);
     }
 }
 

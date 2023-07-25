@@ -78,42 +78,48 @@ bool GoToTriball(pros::vision_object_s_t triball) {
 /**
  * @brief Skills code (currently testing)
  * 
+ * 1. Shoot Match Loads for the first 30 seconds
  */
 void skills() {
+
+    loadMacro = true;
+    pros::delay(30000);
+    loadMacro = false;
+
     // Defining Triball Signatures
-    pros::vision_signature_s_t TRIBALL_SIG = pros::Vision::signature_from_utility(2, -6223, -4453, -5338, -6399, -4153, -5276, 3.000, 0);
-    vision_sensor.set_signature(1, &TRIBALL_SIG); 
+    // pros::vision_signature_s_t TRIBALL_SIG = pros::Vision::signature_from_utility(2, -6223, -4453, -5338, -6399, -4153, -5276, 3.000, 0);
+    // vision_sensor.set_signature(1, &TRIBALL_SIG); 
 
 
-    int center = 158;
-    chassis.calibrate();
+    // int center = 158;
+    // chassis.calibrate();
 
-    while (true) {
-        vision_sensor.clear_led();
-        pros::vision_object_s_t rtn = vision_sensor.get_by_sig(0, 1);   
+    // while (true) {
+    //     vision_sensor.clear_led();
+    //     pros::vision_object_s_t rtn = vision_sensor.get_by_sig(0, 1);   
 
-        // Vision sensor values
-        int count = vision_sensor.get_object_count();
-        int x = rtn.x_middle_coord;
-        int y = rtn.y_middle_coord;
-        // double angle = rtn.angle;
+    //     // Vision sensor values
+    //     int count = vision_sensor.get_object_count();
+    //     int x = rtn.x_middle_coord;
+    //     int y = rtn.y_middle_coord;
+    //     // double angle = rtn.angle;
         
-        pros::lcd::set_text(1, "Count: " + std::to_string(count));
-        pros::lcd::set_text(2, "Triball X, Y: " + std::to_string(x) + ", " + std::to_string(y));
-        // pros::lcd::set_text(3, "Triball angle: " + std::to_string(angle));
-        pros::lcd::set_text(4, "Triball width: " + std::to_string(rtn.width));
+    //     pros::lcd::set_text(1, "Count: " + std::to_string(count));
+    //     pros::lcd::set_text(2, "Triball X, Y: " + std::to_string(x) + ", " + std::to_string(y));
+    //     // pros::lcd::set_text(3, "Triball angle: " + std::to_string(angle));
+    //     pros::lcd::set_text(4, "Triball width: " + std::to_string(rtn.width));
 
-        if (count >= 1) {
-            bool grabbed = GoToTriball(rtn);
-            if (grabbed == true) {
+    //     if (count >= 1) {
+    //         bool grabbed = GoToTriball(rtn);
+    //         if (grabbed == true) {
 
-            }
-        }
+    //         }
+    //     }
 
         
 
-        pros::delay(20);
-    }
+    //     pros::delay(20);
+    // }
 
 }
 

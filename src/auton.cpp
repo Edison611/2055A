@@ -141,39 +141,61 @@ void test_auton() {
  * 4. Touch our pole
  */
 void solo_auton() {
-    pros::Task hold_auton(auton_hold);
+    // pros::Task hold_auton(auton_hold);
     
     // Releases back wedge
-    grabber.set_value(true);
-    pros::delay(100);
-    grabber.set_value(false);
-    pros::delay(100);
+    // grabber.set_value(true);
+    // pros::delay(100);
+    // grabber.set_value(false);
+    // pros::delay(100);
 
     // Drives to net and shoots alliance triball
     chassis.setPose(56, -33, 90);
-    pros::delay(100);
-    chassis.moveTo(27, -33, 2000, 50, true);
+    chassis.moveTo(27, -33, 2000, 90, true);
+    chassis.turnTo(26, 0, 800, true);
+    chassis.moveTo(26, -13, 1500, 75, true);
+    setDrive(-15, 30);
     pros::delay(200);
-    chassis.turnTo(27, 0, 1000, true);
-    pros::delay(200);
-    chassis.moveTo(27, 14, 2000, 50, true);
+    setDrive(0, 0);
     pros::delay(200);
     shoot();
     pros::delay(200);
 
     // Drives to corner and takes triball out
-    chassis.moveTo(48, -48, 3000);
-    chassis.turnTo(72, -72, 1000, true);
-    chassis.moveTo(51, -51, 1000, 50, true);
-    pros::delay(100);
+    
+    chassis.moveTo(30, -24, 3000, 70);
+    chassis.turnTo(81, -70, 1000, true);
+    chassis.moveTo(62, -50, 3000, 70, true);
+    // pros::delay(1000);
 
     grabber.set_value(true);
     pros::delay(500);
-    chassis.moveTo(48, -48, 1000);
+    chassis.turnTo(30, -65, 1000);
+    // chassis.moveTo(51, -55, 1500, 80);
+    grabber.set_value(false);
 
     // Touch the pole for AWP
-    chassis.moveTo(60, -36, 1000);
-    vector(60, -5, 1000, 2000);
+
+    // Goes to lower pole
+    chassis.moveTo(64, -32, 2000, 70, true);
+    chassis.turnTo(63, 0, 1000, true);
+    chassis.moveTo(63, -17, 2000, 70, true);
+    grabber.set_value(true);
+
+
+    // Goes to center and touch pole (OLD)
+    // chassis.turnTo(40, -20, 1000);
+    // chassis.moveTo(40, -20, 2000, 70);
+    // chassis.turnTo(53, 0, 1000, true);
+    // chassis.moveTo(45, -15, 1000, 70, true);
+    // chassis.turnTo(55, 0, 1000, true);
+    // grabber.set_value(true);
+    // setDrive(25, -25);
+    // pros::delay(250);
+    // setDrive(0, 0);
+    // setDrive(-15, -15);
+    // pros::delay(250);
+    // setDrive(0, 0);
 
     // Suspends task (We need to make sure that it gets suspended before driver)
     // hold_auton.suspend();

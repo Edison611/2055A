@@ -22,6 +22,8 @@ void initialize() {
 
     chassis.calibrate();
 
+    catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
+
     pros::Task holding(cata_hold);
     pros::Task pos_track(screen);
     pros::Task print_task(print_info);
@@ -63,8 +65,8 @@ void competition_initialize() {}
  */
 void autonomous() {
     // offense_auton();
-    // solo_auton();
-    test_auton();
+    solo_auton();
+    // test_auton();
 
 }
 

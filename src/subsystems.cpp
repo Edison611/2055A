@@ -53,16 +53,20 @@ void shoot() {
  */
 void cata_hold() {
 
-    double factor = 1.25; // Tune this value
+    double factor = 9.25; // Tune this value
+    int x = 0;
 
 	while (true) {
 
-        while (hold) { // Could change to just button value
-            int absPos = catapult.get_position();
-            int power = (absPos - catapult.get_position())*factor;
-            pros::lcd::set_text(2, "Power: " + std::to_string(power));
-            setCatapult(power);
-            pros::delay(10);
+        while (cata_limit_switch.get_value() == 1) { // Could change to just button value
+            
+            catapult.move_velocity(0);
+            // int x = x + 1;
+            // int absPos = catapult.get_position();
+            // int power = (absPos - catapult.get_position())*factor;
+            // pros::lcd::set_text(2, "Hold");
+            // setCatapult(power);
+            // pros::delay(10);
 
             if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1) == 1 || cata_shoot == true) {
                 hold = false;
@@ -76,15 +80,23 @@ void cata_hold() {
         }
 
         if (cata_shoot == true) {
+            pros::lcd::set_text(2, "Shoot");
             cata_shoot = false;
-            setCatapult(127);
-            pros::delay(300);
+            catapult.move_velocity(200);
+            pros::delay(350);
         }
 
-        if (cata_limit_switch.get_value() == 1) {
-            cata_shoot = false;
-            hold = true;
-        }
+        // if (cata_limit_switch.get_value() == 1) {
+        //     cata_shoot = false;
+        //     hold = true;
+        // }
+
+        // catapult.move_velocity(200);
+
+        pros::lcd::set_text(2, "None");
+        pros::delay(20);
+
+        // setCatapult(127);
        
 		// if (hold) {
 		// 	int absPos = catapult.get_position();

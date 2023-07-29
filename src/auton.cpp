@@ -212,15 +212,27 @@ void solo_auton() {
  */
 void offense_auton() {
     pros::Task hold_triball(intakeLimit);
-    detected = true; // Since there is already a triball inside
+    // detected = true; // Since there is already a triball inside
 
     // SET POSITION
-    chassis.setPose(-56, -33, 90);
+    chassis.setPose(-56, -45, -45);
 
     // Score first triball
-    chassis.moveTo(-27, -33, 1500);
-    driveToNet(); // Currently testing
-    detected = false;
+    chassis.moveTo(-45, -56, 500);
+    chassis.turnTo(50, -55, 750, true);
+    setDrive(-100, -100);
+    pros::delay(400);
+    setDrive(0, 0);
+    chassis.moveTo(-53, -50, 500);
+    chassis.turnTo(-15, -22, 750);
+    setIntake(40);
+    chassis.moveTo(-15, -28, 5000, 60);
+    chassis.turnTo(-15, -60, 720);
+    setIntake(-127);
+    chassis.moveTo(-15, -60, 500);
+
+    // driveToNet(); // Currently testing
+    // detected = false;
 
     // chassis.turnTo(-27, -72, 1000);
     // pros::delay(100);
@@ -230,9 +242,9 @@ void offense_auton() {
     // setIntake(0);
 
     // Grab second triball and score it
-    setIntake(40);
-    vector(0, -24);
-    driveToNet();
+    // setIntake(40);
+    // vector(0, -24);
+    // driveToNet();
 
 
     hold_triball.suspend();

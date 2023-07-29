@@ -22,6 +22,15 @@ void initialize() {
 
     chassis.calibrate();
 
+
+    driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
+
+    driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveRM.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
+
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     pros::Task holding(cata_hold);
@@ -64,8 +73,8 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-    // offense_auton();
-    solo_auton();
+    offense_auton();
+    // solo_auton();
     // test_auton();
 
 }

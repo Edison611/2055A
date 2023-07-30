@@ -17,12 +17,20 @@ void screen() {
         pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
         pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position
         pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
-        pros::delay(10);
+        pros::delay(50);
     }
 }
 
+/**
+ * @brief Detects whether there is a triball
+ * 
+ * Uses the color sensor and its rgb values
+ *
+ * @return true when the rgb values are less than 50
+ * @return false in all other cases
+ */
 bool ball_detection() {
-    double hue = color_sensor.get_hue();
+    // double hue = color_sensor.get_hue();
     pros::c::optical_rgb_s_t rgb = color_sensor.get_rgb();
     // pros::lcd::set_text(2, "R: " + std::to_string(int(rgb.red)) + ", G: " + std::to_string(int(rgb.green)) + ", B: " + std::to_string(int(rgb.blue)));
     // pros::lcd::set_text(3, "Hue: " + std::to_string(hue));
@@ -34,14 +42,23 @@ bool ball_detection() {
     }
 }
 
+/**
+ * @brief Detects whether there is a triball
+ * 
+ * Uses the distance sensor and its size attribute
+ *
+ * @return true when the size is less than 10
+ * @return false in all other cases
+ */
 bool cata_ball_detection() {
     // int val = line_sensor1.get_value();
     int size = distance_sensor.get_object_size();
+    int dist = distance_sensor.get();
     // pros::lcd::set_text(2, "Value: " + std::to_string(val));
+    pros::lcd::set_text(2, "Distance: " + std::to_string(dist));
     pros::lcd::set_text(3, "Size: " + std::to_string(size));
-    pros::lcd::set_text(1, "TEST");
-    pros::delay(100);
-    if (size < 10) {
+
+    if (dist < 30) {
         return true;
     }
     else {
@@ -49,16 +66,29 @@ bool cata_ball_detection() {
     }
 }
 
+bool ball_detection_line() {
+    int val = line_sensor.get_value();
+    if (val < 4000 && val > 2000) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
 bool loadMacro = false;
 
 void macroLoad() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
         if (loadMacro == false) {
+            cata_ratchet.set_value(true);
             loadMacro = true;
         }
 
         else if (loadMacro == true) {
             loadMacro = false;
+            cata_ratchet.set_value(false);
         }
     }
 }
@@ -68,12 +98,17 @@ void SetMatchLoad() {
         if (loadMacro == true) {
             bool launch = cata_ball_detection();
             if (launch == true) {
-                pros::delay(1000);
+                pros::delay(100);
+                // if (cata_ball_detection() == true) {
+                //     // pros::delay(150);
+                //     shoot();
+                // }
+                // pros::delay(700);
                 shoot();
-                pros::delay(300);
+                
             }
         }
-        pros::delay(20);
+        pros::delay(10);
     }
 }
 
@@ -81,6 +116,11 @@ void SetMatchLoad() {
 
 bool detected = false;
 
+/**
+ * @brief Detects a triball within our intake system
+ * 
+ * Changes a global variable between true and false, while setting the Intake to 0 power if a triball is detected
+ */
 void intakeLimit() {
     while (true) {
         bool x = ball_detection();
@@ -88,24 +128,39 @@ void intakeLimit() {
             setIntake(0);
             detected = true;
         }
+        if (x == false) {
+            detected = false;
+        }
+        // pros::lcd::set_text(1, "Detected: " + std::to_string(detected));
+        pros::delay(20);
     }
 }
 
+/**
+ * @brief Prints information to Brain and Controller
+ * 
+ * Needs a 100ms delay between clearing the controller
+ * Needs a 50ms delay between each print line
+ */
 void print_info() {
     while (true) {
         // Controller printing
         controller.clear();
-        pros::delay(200);
+        pros::delay(100);
         
-        pros::lcd::set_text(1, "Switch: " + std::to_string(cata_limit_switch.get_value()));
+        // pros::lcd::set_text(1, "Switch: " + std::to_string(cata_limit_switch.get_value()));
+        controller.print(2, 0, "Arm: (B), Wings: (X)");
+        pros::delay(50);
+
         if (loadMacro == true) {
-            controller.set_text(1, 1, "Match Load: ON");
+            controller.print(0, 0, "Match Load: ON (A)");
         }
         else {
-            controller.set_text(1, 1, "Match Load: OFF");
+            controller.print(0, 0, "Match Load: OFF (A)");
         }
     }
 }
+
 
 // void intakeLimit() {
 //     if (intake_limit_switch.get_value() == 1) {

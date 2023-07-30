@@ -30,7 +30,7 @@ extern pros::ADIDigitalIn cata_limit_switch;
 extern pros::IMU inertial_sensor;
 extern pros::Optical color_sensor;
 extern pros::ADIDigitalIn intake_limit_switch;
-extern pros::ADIAnalogIn line_sensor1;
+extern pros::ADIAnalogIn line_sensor;
 extern pros::Distance distance_sensor;
 
 

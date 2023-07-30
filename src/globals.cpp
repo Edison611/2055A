@@ -41,7 +41,7 @@ char CATA_LIMIT_SWITCH_PORT = 'A';
 int INERTIAL_SENSOR_PORT = 13;
 int COLOR_SENSOR_PORT = 12;
 // char INTAKE_LIMIT_SWITCH_PORT = 'E';
-char LINE_SENSOR_1_PORT = 'F';
+char LINE_SENSOR_PORT = 'F';
 int DISTANCE_SENSOR_PORT = 15;
 
 char CATA_RATCHET_PORT = 'B';
@@ -77,7 +77,7 @@ pros::ADIDigitalIn cata_limit_switch(CATA_LIMIT_SWITCH_PORT);
 pros::IMU inertial_sensor(INERTIAL_SENSOR_PORT);
 pros::Optical color_sensor(COLOR_SENSOR_PORT);
 // pros::ADIDigitalIn intake_limit_switch(INTAKE_LIMIT_SWITCH_PORT);
-pros::ADIAnalogIn line_sensor1(LINE_SENSOR_1_PORT);
+pros::ADIAnalogIn line_sensor(LINE_SENSOR_PORT);
 pros::Distance distance_sensor(DISTANCE_SENSOR_PORT);
 
 // ------------------------------------------------------------------------------------------------------

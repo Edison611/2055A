@@ -80,7 +80,7 @@ void cata_hold() {
         }
 
         if (cata_shoot == true) {
-            pros::lcd::set_text(2, "Shoot");
+            // pros::lcd::set_text(2, "Shoot");
             cata_shoot = false;
             catapult.move_velocity(200);
             pros::delay(350);
@@ -93,7 +93,7 @@ void cata_hold() {
 
         // catapult.move_velocity(200);
 
-        pros::lcd::set_text(2, "None");
+        // pros::lcd::set_text(2, "None");
         pros::delay(20);
 
         // setCatapult(127);

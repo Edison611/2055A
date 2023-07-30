@@ -18,6 +18,12 @@ void GoToOrigin() {
     chassis.moveTo(0, 0, 2000);
 }
 
+void turnToNet(bool reversed=false, int delay=1000) {
+    lemlib::Pose pose = chassis.getPose();
+    chassis.turnTo(pose.x, -60, delay, reversed);
+    
+}
+
 void driveToNet(int delay = 100) {
     lemlib::Pose pose = chassis.getPose();
     chassis.turnTo(pose.x, netPos[1], 1000);
@@ -82,9 +88,41 @@ bool GoToTriball(pros::vision_object_s_t triball) {
  */
 void skills() {
 
+    chassis.setPose(-52, 54, -30);
+
     loadMacro = true;
     pros::delay(30000);
     loadMacro = false;
+
+    chassis.moveTo(-10, 24, 2000, 50, true);
+    turnToNet();
+
+    // Drive over middle bar
+    setDrive(100, 100);
+    pros::delay(1000);
+    setDrive(0,0);
+    pros::delay(200);
+
+    // Drive back and resest position
+    setDrive(-50, -50);
+    pros::delay(500);
+    setDrive(0, 0);
+    chassis.setPose(-10, -10, 180);
+
+    // Open Wings and Drive the Triballs into the net
+    chassis.moveTo(0, -15, 1000);
+    turnToNet(true);
+    wings.set_value(true);
+    chassis.moveTo(0, -36, 2000);
+
+
+    // chassis.turnTo(0, -5, 1000);
+    // setIntake(127);
+    // chassis.moveTo(-5, -10, 1000, 50);
+
+
+
+    chassis.turnTo(-10, -60, 1000);
 
     // Defining Triball Signatures
     // pros::vision_signature_s_t TRIBALL_SIG = pros::Vision::signature_from_utility(2, -6223, -4453, -5338, -6399, -4153, -5276, 3.000, 0);
@@ -124,8 +162,20 @@ void skills() {
 }
 
 void test_auton() {
+    
     // Write the test code in here
-    shoot();
+    pros::Task hold_triball(intakeLimit);
+    setIntake(40);
+    pros::delay(4000);
+    setIntake(-100);
+    pros::delay(1000);
+    setIntake(0);
+    pros::delay(1000);
+    setIntake(40);
+    pros::delay(3000);
+    setIntake(-100);
+    pros::delay(1000);
+    setIntake(0);
 }
 
 // ------------------------------------------------------------------------------------------------------

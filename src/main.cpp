@@ -73,10 +73,11 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-    offense_auton();
+    // offense_auton();
     // solo_auton();
-    // test_auton();
+    // skills();
 
+    test_auton();
 }
 
 /**

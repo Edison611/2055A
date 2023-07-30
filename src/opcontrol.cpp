@@ -23,6 +23,12 @@ void my_opcontrol() {
 
 		macroLoad();
 		// SetMatchLoad();
+		int size = distance_sensor.get_object_size();
+		// pros::lcd::set_text(2, "Value: " + std::to_string(val));
+		pros::lcd::set_text(3, "Size: " + std::to_string(size));
+		int dist = distance_sensor.get();
+		// pros::lcd::set_text(2, "Value: " + std::to_string(val));
+		pros::lcd::set_text(2, "Distance: " + std::to_string(dist));
 		
 		pros::delay(20);
 	}

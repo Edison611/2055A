@@ -73,11 +73,11 @@ void competition_initialize() {}
  */
 void autonomous() {
 
-    offense_auton();
+    // auton_skills();
+    // offense_auton();
     // solo_auton();
-    // skills();
-
     // test_auton();
+
 }
 
 /**
@@ -94,6 +94,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-
+    driver_skills();
     my_opcontrol();
 }

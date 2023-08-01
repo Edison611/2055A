@@ -2,7 +2,8 @@ void vector(double x, double y, int turnTimeout, int driveTimeout);
 
 void test_auton();
 
-void skills();
+void driver_skills();
+void auton_skills();
 
 void solo_auton();
 void offense_auton();

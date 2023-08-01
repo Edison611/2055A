@@ -140,7 +140,7 @@ void triballVision() {
  * 
  * 1. Shoot Match Loads for the first x seconds represented by (int timeout)
  */
-void skills() {
+void auton_skills() {
     driveLB.set_brake_mode(MOTOR_BRAKE_BRAKE);
     driveLM.set_brake_mode(MOTOR_BRAKE_BRAKE);
     driveLF.set_brake_mode(MOTOR_BRAKE_BRAKE);
@@ -151,7 +151,7 @@ void skills() {
 
     chassis.setPose(-61, 32, 0);
 
-    int shots = 43; // The how many shots to take
+    int shots = 43; // How many shots to take
     int delay = 1000; // The delay between each shot
 
     float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
@@ -216,11 +216,6 @@ void skills() {
 
     // vector(-13, -25, true, 127, 1000, 2000);
 
-
-
-
-    
-
     // // Drive over middle bar
     // setDrive(100, 100);
     // pros::delay(1000);
@@ -244,11 +239,55 @@ void skills() {
     // // setIntake(127);
     // // chassis.moveTo(-5, -10, 1000, 50);
 
-
-
     // chassis.turnTo(-10, -60, 1000);
 
 }
+
+//---------------------------------------
+void driver_skills() {
+    driveLB.set_brake_mode(MOTOR_BRAKE_BRAKE);
+    driveLM.set_brake_mode(MOTOR_BRAKE_BRAKE);
+    driveLF.set_brake_mode(MOTOR_BRAKE_BRAKE);
+
+    driveRB.set_brake_mode(MOTOR_BRAKE_BRAKE);
+    driveRM.set_brake_mode(MOTOR_BRAKE_BRAKE);
+    driveRF.set_brake_mode(MOTOR_BRAKE_BRAKE);
+
+    chassis.setPose(-61, 32, 0);
+
+    int shots = 38; // How many shots to take
+    int delay = 1000; // The delay between each shot
+
+    float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
+    int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
+
+    // Start Code
+    cata_ratchet.set_value(true);
+
+    chassis.moveTo(-61, 41, 1000);
+    chassis.turnTo(-73, 68, 500);
+
+    setDrive(45, 35);
+    pros::delay(100);
+    setDrive(20, 12);
+    grabber.set_value(true);
+    pros::delay(50);
+
+
+    for (int i = 0; i < shots; i++) {
+        shoot();
+        // pros::lcd::set_text(1, "time: " + std::to_string(i));
+        pros::delay(delay);
+    }
+
+    setDrive(0, 0);
+
+    // catapult.move_velocity(200); // Spin the catapult back to the lowered position
+    //Gives control to driver
+    grabber.set_value(false);
+
+}
+//---------------------------------------
 
 void test_auton() {
     
@@ -291,8 +330,8 @@ void solo_auton() {
     chassis.moveTo(27, -33, 2000, 90, true);
     chassis.turnTo(26, 0, 800, true);
     chassis.moveTo(26, -13, 1500, 75, true);
-    setDrive(-15, 30);
-    pros::delay(200);
+    setDrive(-15, 20);
+    pros::delay(150);
     setDrive(0, 0);
     pros::delay(200);
     shoot();
@@ -301,8 +340,8 @@ void solo_auton() {
     // Drives to corner and takes triball out
     
     chassis.moveTo(30, -24, 3000, 70);
-    chassis.turnTo(81, -70, 1000, true);
-    chassis.moveTo(62, -50, 3000, 70, true);
+    chassis.turnTo(79, -70, 1000, true);
+    chassis.moveTo(61, -50, 3000, 70, true);
     // pros::delay(1000);
 
     grabber.set_value(true);
@@ -316,7 +355,7 @@ void solo_auton() {
     // Goes to lower pole
     chassis.moveTo(64, -32, 2000, 70, true);
     chassis.turnTo(63, 0, 1000, true);
-    chassis.moveTo(63, -17, 2000, 70, true);
+    chassis.moveTo(63, -20, 2000, 70, true);
     grabber.set_value(true);
 
 
@@ -360,22 +399,44 @@ void offense_auton() {
     setDrive(-100, -100);
     pros::delay(400);
     setDrive(0, 0);
-    chassis.moveTo(-53, -50, 500);
-    chassis.turnTo(-15, -22, 750);
+
+
+    chassis.moveTo(-60, -35, 500); //Back Up
+
+
+    chassis.turnTo(-15, -22, 600); //First Tri-Ball
     setIntake(50);
-    chassis.moveTo(-17, -28, 5000, 60);
-    chassis.turnTo(-17, -60, 720);
-    setIntake(-127);
-    chassis.moveTo(-17, -60, 500);
-    pros::delay(400);
+    chassis.moveTo(-17, -28, 5000, 90); //First Tri-Ball
 
-    chassis.turnTo(-15, -13, 1000);
-    setIntake(40);
-    chassis.moveTo(-15, -13, 2000, 90);
+    chassis.turnTo(-17, -54, 1000); //Net
+    setIntake(-80);
+    chassis.moveTo(-17, -45, 500, 90); //Net
+    pros::delay(100);
 
-    chassis.turnTo(-17, -60, 720);
-    setIntake(-100);
-    chassis.moveTo(-17, -55, 2000, 90);
+    chassis.turnTo(-16, -13, 1000); //Second Tri-Ball
+    setIntake(50);
+    chassis.moveTo(-16, -16, 2000, 90); //Second Tri-Ball
+    pros::delay(100);
+
+    chassis.turnTo(-17, -54, 1250); //Net
+    wings.set_value(true);
+    setIntake(-35);
+    chassis.moveTo(-17, -38, 1000, 90); //Net
+    wings.set_value(false);
+    pros::delay(100);
+
+    chassis.turnTo(-32, -15, 1000); //Third Tri-Ball
+    setIntake(50);
+    chassis.moveTo(-32, -18, 2000, 90); //Third Tri-Ball
+    pros::delay(100);
+
+    chassis.turnTo(-24, -54, 1000); //Net
+    setIntake(-25);
+    chassis.moveTo(-24, -45, 1000, 100); //Net
+    pros::delay(100);
+
+
+    //chassis.moveTo(-65, -16, 1000, 90, true); //Pole
 
     // driveToNet(); // Currently testing
     // detected = false;
@@ -418,11 +479,12 @@ void offense_auton() {
 void defense_auton() {
     pros::Task hold_intake_task(intakeLimit);
 
-
     chassis.setPose(56, -33, 90);
     chassis.moveTo(27, -33, 2000, 90, true);
     driveToNet(100, false);
 
     hold_intake_task.suspend();
+
+
 
 }

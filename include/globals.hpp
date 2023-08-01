@@ -1,5 +1,6 @@
 #include "lemlib/chassis/chassis.hpp"
 #include "pros/adi.hpp"
+#include "pros/distance.hpp"
 #include "pros/imu.hpp"
 #include "pros/misc.hpp"
 #include "pros/motors.hpp"
@@ -29,7 +30,7 @@ extern pros::Vision vision_sensor;
 extern pros::ADIDigitalIn cata_limit_switch;
 extern pros::IMU inertial_sensor;
 extern pros::Optical color_sensor;
-extern pros::ADIDigitalIn intake_limit_switch;
+// extern pros::ADIDigitalIn intake_limit_switch;
 extern pros::ADIAnalogIn line_sensor;
 extern pros::Distance distance_sensor;
 

@@ -1,3 +1,4 @@
+#include "lemlib/pose.hpp"
 #include "main.h"
 #include "pros/llemu.hpp"
 #include "pros/rtos.hpp"
@@ -18,18 +19,30 @@ void GoToOrigin() {
     chassis.moveTo(0, 0, 2000);
 }
 
-void turnToNet(bool reversed=false, int delay=1000) {
+void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
     lemlib::Pose pose = chassis.getPose();
-    chassis.turnTo(pose.x, -60, delay, reversed);
+    if (red == true) {
+        chassis.turnTo(pose.x, -60, delay, reversed);
+    }
+    else {
+        chassis.turnTo(pose.x, 60, delay, reversed);
+    }
     
 }
 
-void driveToNet(int delay = 100) {
+void driveToNet(int delay = 100, bool red = true) {
+    int y;
+    if (red == true) {
+        y = netPos[1];
+    }
+    else {
+        y = -netPos[1];
+    }
     lemlib::Pose pose = chassis.getPose();
-    chassis.turnTo(pose.x, netPos[1], 1000);
+    chassis.turnTo(pose.x, y, 1000);
     pros::delay(delay);
     setIntake(-127);
-    chassis.moveTo(pose.x, netPos[1]+15, 1500);
+    chassis.moveTo(pose.x, y+15, 1500);
     pros::delay(100);
     setIntake(0);
 }
@@ -42,9 +55,9 @@ void driveToNet(int delay = 100) {
  * @param turnTimout timeout for turning (default to 1 second)
  * @param driveTimeout timeout for driving (default to 1 second)
  */
-void vector(double x, double y, int turnTimout = 1000, int driveTimeout = 1000) {
-    chassis.turnTo(x, y, turnTimout);
-    chassis.moveTo(x, y, driveTimeout);
+void vector(double x, double y, bool reversed=false, int maxSpeed=127, int turnTimout = 1000, int driveTimeout = 1000) {
+    chassis.turnTo(x, y, turnTimout, reversed);
+    chassis.moveTo(x, y, driveTimeout, maxSpeed, reversed);
 }
 
 /**
@@ -82,48 +95,10 @@ bool GoToTriball(pros::vision_object_s_t triball) {
 }
 
 /**
- * @brief Skills code (currently testing)
+ * @brief Theoretically uses vision sensor to turn to where there is a triball and drive there (NOT TESTED)
  * 
- * 1. Shoot Match Loads for the first 30 seconds
  */
-void skills() {
-
-    chassis.setPose(-52, 54, -30);
-
-    loadMacro = true;
-    pros::delay(30000);
-    loadMacro = false;
-
-    chassis.moveTo(-10, 24, 2000, 50, true);
-    turnToNet();
-
-    // Drive over middle bar
-    setDrive(100, 100);
-    pros::delay(1000);
-    setDrive(0,0);
-    pros::delay(200);
-
-    // Drive back and resest position
-    setDrive(-50, -50);
-    pros::delay(500);
-    setDrive(0, 0);
-    chassis.setPose(-10, -10, 180);
-
-    // Open Wings and Drive the Triballs into the net
-    chassis.moveTo(0, -15, 1000);
-    turnToNet(true);
-    wings.set_value(true);
-    chassis.moveTo(0, -36, 2000);
-
-
-    // chassis.turnTo(0, -5, 1000);
-    // setIntake(127);
-    // chassis.moveTo(-5, -10, 1000, 50);
-
-
-
-    chassis.turnTo(-10, -60, 1000);
-
+void triballVision() {
     // Defining Triball Signatures
     // pros::vision_signature_s_t TRIBALL_SIG = pros::Vision::signature_from_utility(2, -6223, -4453, -5338, -6399, -4153, -5276, 3.000, 0);
     // vision_sensor.set_signature(1, &TRIBALL_SIG); 
@@ -158,6 +133,120 @@ void skills() {
 
     //     pros::delay(20);
     // }
+}
+
+/**
+ * @brief Skills code (currently testing)
+ * 
+ * 1. Shoot Match Loads for the first x seconds represented by (int timeout)
+ */
+void skills() {
+    driveLB.set_brake_mode(MOTOR_BRAKE_BRAKE);
+    driveLM.set_brake_mode(MOTOR_BRAKE_BRAKE);
+    driveLF.set_brake_mode(MOTOR_BRAKE_BRAKE);
+
+    driveRB.set_brake_mode(MOTOR_BRAKE_BRAKE);
+    driveRM.set_brake_mode(MOTOR_BRAKE_BRAKE);
+    driveRF.set_brake_mode(MOTOR_BRAKE_BRAKE);
+
+    chassis.setPose(-61, 32, 0);
+
+    int shots = 43; // The how many shots to take
+    int delay = 1000; // The delay between each shot
+
+    float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
+    int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
+
+    // Start Code
+    cata_ratchet.set_value(true);
+
+    chassis.moveTo(-61, 41, 1000);
+    chassis.turnTo(-73, 68, 500);
+
+    setDrive(45, 35);
+    pros::delay(100);
+    setDrive(20, 12);
+    grabber.set_value(true);
+    pros::delay(50);
+
+
+    for (int i=0; i < shots; i++) {
+        shoot();
+        // pros::lcd::set_text(1, "time: " + std::to_string(i));
+        pros::delay(delay);
+    }
+
+    setDrive(0, 0);
+
+    // catapult.move_velocity(200); // Spin the catapult back to the lowered position
+
+    lemlib::Pose pose = chassis.getPose();
+    chassis.setPose(-59, 47.5, pose.theta);
+
+    // Moves bot to other side
+    chassis.turnTo(-65, 0, 1000, true);
+    // grabber.set_value(true);
+    pros::delay(200);
+    chassis.moveTo(-63.5, -6, 2000, 100, true);
+    grabber.set_value(false);
+    chassis.moveTo(-63.5, -7, 2000, 100, true);
+    wings.set_value(true);
+
+    // Drives to the corner and pushes triballs on the side
+    vector(-46, -23, true, 100, 1000, 2000);
+    chassis.turnTo(0, -27, 1000, true);
+    wings.set_value(false);
+    setDrive(-127, -127);
+    pros::delay(600);
+    setDrive(0, 0);
+    
+
+    // chassis.moveTo(-50, -25, 1000);
+
+    // chassis.moveTo(-44, -27, 1000, 80, true);
+
+    // Drive towards the center and activate wings to push it in
+    chassis.moveTo(-53, -15, 1000);
+    vector(-40, 10, false, 100, 1000, 2000);
+    vector(-18, 10, false, 100, 1000, 1000);
+    // wings.set_value(true);
+    chassis.turnTo(-18, -30, 1000, true);
+    wings.set_value(true);
+    chassis.moveTo(-18, -25, 2000, 127, true);
+
+    // vector(-13, -25, true, 127, 1000, 2000);
+
+
+
+
+    
+
+    // // Drive over middle bar
+    // setDrive(100, 100);
+    // pros::delay(1000);
+    // setDrive(0,0);
+    // pros::delay(200);
+
+    // // Drive back and resest position
+    // setDrive(-50, -50);
+    // pros::delay(500);
+    // setDrive(0, 0);
+    // chassis.setPose(-10, -10, 180);
+
+    // // Open Wings and Drive the Triballs into the net
+    // chassis.moveTo(0, -15, 1000);
+    // turnToNet(true);
+    // wings.set_value(true);
+    // chassis.moveTo(0, -36, 2000);
+
+
+    // // chassis.turnTo(0, -5, 1000);
+    // // setIntake(127);
+    // // chassis.moveTo(-5, -10, 1000, 50);
+
+
+
+    // chassis.turnTo(-10, -60, 1000);
 
 }
 
@@ -191,8 +280,6 @@ void test_auton() {
  * 4. Touch our pole
  */
 void solo_auton() {
-    // pros::Task hold_auton(auton_hold);
-    
     // Releases back wedge
     // grabber.set_value(true);
     // pros::delay(100);
@@ -275,11 +362,20 @@ void offense_auton() {
     setDrive(0, 0);
     chassis.moveTo(-53, -50, 500);
     chassis.turnTo(-15, -22, 750);
-    setIntake(40);
-    chassis.moveTo(-15, -28, 5000, 60);
-    chassis.turnTo(-15, -60, 720);
+    setIntake(50);
+    chassis.moveTo(-17, -28, 5000, 60);
+    chassis.turnTo(-17, -60, 720);
     setIntake(-127);
-    chassis.moveTo(-15, -60, 500);
+    chassis.moveTo(-17, -60, 500);
+    pros::delay(400);
+
+    chassis.turnTo(-15, -13, 1000);
+    setIntake(40);
+    chassis.moveTo(-15, -13, 2000, 90);
+
+    chassis.turnTo(-17, -60, 720);
+    setIntake(-100);
+    chassis.moveTo(-17, -55, 2000, 90);
 
     // driveToNet(); // Currently testing
     // detected = false;
@@ -320,5 +416,13 @@ void offense_auton() {
 }
 
 void defense_auton() {
+    pros::Task hold_intake_task(intakeLimit);
+
+
+    chassis.setPose(56, -33, 90);
+    chassis.moveTo(27, -33, 2000, 90, true);
+    driveToNet(100, false);
+
+    hold_intake_task.suspend();
 
 }

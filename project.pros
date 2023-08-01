@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Test",
+    "project_name": "Offense",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -332,9 +332,9 @@
       }
     },
     "upload_options": {
-      "slot": 3,
-      "icon": "X",
-      "description": "Test Code"
+      "slot": 2,
+      "icon": "pizza",
+      "description": "Offense Code"
     }
   }
 }

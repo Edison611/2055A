@@ -22,7 +22,6 @@ void initialize() {
 
     chassis.calibrate();
 
-
     driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
     driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
     driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
@@ -36,11 +35,10 @@ void initialize() {
     pros::Task holding(cata_hold);
     pros::Task pos_track(screen);
     pros::Task print_task(print_info);
-    // pros::Task hold_auton(auton_hold);
     pros::Task MatchLoads(SetMatchLoad);
     
 
-    pros::delay(10);
+    pros::delay(100);
 }
 
 /**
@@ -61,6 +59,7 @@ void disabled() {}
  */
 void competition_initialize() {}
 
+
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -73,11 +72,12 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-    // offense_auton();
+
+    offense_auton();
     // solo_auton();
     // skills();
 
-    test_auton();
+    // test_auton();
 }
 
 /**
@@ -96,5 +96,4 @@ void autonomous() {
 void opcontrol() {
 
     my_opcontrol();
-    // skills();
 }

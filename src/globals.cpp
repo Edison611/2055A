@@ -37,11 +37,11 @@ int MOTOR_INTAKE2 = 11;
 int MOTOR_CATAPULT = 10;
 
 int VISION_SENSOR_PORT = 23;
-char CATA_LIMIT_SWITCH_PORT = 'A';
+char CATA_LIMIT_SWITCH_PORT = 'A'; // RENAME TO BUMPER
 int INERTIAL_SENSOR_PORT = 13;
 int COLOR_SENSOR_PORT = 12;
 // char INTAKE_LIMIT_SWITCH_PORT = 'E';
-char LINE_SENSOR_PORT = 'F';
+// char LINE_SENSOR_PORT = 'F';
 int DISTANCE_SENSOR_PORT = 15;
 
 char CATA_RATCHET_PORT = 'B';
@@ -77,7 +77,7 @@ pros::ADIDigitalIn cata_limit_switch(CATA_LIMIT_SWITCH_PORT);
 pros::IMU inertial_sensor(INERTIAL_SENSOR_PORT);
 pros::Optical color_sensor(COLOR_SENSOR_PORT);
 // pros::ADIDigitalIn intake_limit_switch(INTAKE_LIMIT_SWITCH_PORT);
-pros::ADIAnalogIn line_sensor(LINE_SENSOR_PORT);
+// pros::ADIAnalogIn line_sensor(LINE_SENSOR_PORT);
 pros::Distance distance_sensor(DISTANCE_SENSOR_PORT);
 
 // ------------------------------------------------------------------------------------------------------
@@ -133,7 +133,6 @@ lemlib::ChassisController_t angularController {
 /**
  * @brief Define the sensors used for the robot here:
  */
- 
 lemlib::OdomSensors_t sensors {
     nullptr, // vertical tracking wheel 1
     nullptr, // vertical tracking wheel 2

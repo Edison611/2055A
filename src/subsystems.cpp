@@ -1,10 +1,19 @@
+/**
+ * @file subsystems.cpp
+ * @author 2055A Team
+ * @brief Create all the subsystems features in this file
+ * @version 0.1
+ * @date 2023-07-31
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include "main.h"
 #include "pros/llemu.hpp"
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
 #include <string>
-
-// Define all the subsystems in this file
 
 // ------------------------------------------------------------------------------------------------------
 // INTAKE
@@ -18,6 +27,33 @@ void setIntakeMotors() {
     int intake_power = 127 * (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1) - controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2));
     setIntake(intake_power);    
 }
+
+// WORK IN PROGRESS (HELP NEEDED)
+// ----------------------------------
+// bool currentIntakeHold = false;
+// bool first = true;
+// pros::Task hold_intake_task(intakeLimit);
+
+// /**
+//  * @brief Controls the grabber of the bot, drops if it was up, pulls it up if it is dropped on button press.
+//  */
+// void intakeHold() {
+//     if (first == true) {
+//         hold_intake_task.suspend();
+//         first = false;
+//     }
+//     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
+//         if (currentIntakeHold == false) {
+//             currentIntakeHold = true;
+//             hold_intake_task.resume();
+//         }
+//         else if (currentIntakeHold == true) {
+//             currentIntakeHold = false;
+//             hold_intake_task.suspend();
+
+//         }
+//     }
+// }
 
 // ------------------------------------------------------------------------------------------------------
 // CATAPULT
@@ -93,11 +129,10 @@ void cata_hold() {
 
         // catapult.move_velocity(200);
 
-        // pros::lcd::set_text(2, "None");
         pros::delay(20);
 
-        // setCatapult(127);
-       
+        // OLD HOLD CODE
+        // ------------------------------------------
 		// if (hold) {
 		// 	int absPos = catapult.get_position();
         
@@ -113,14 +148,7 @@ void cata_hold() {
 }
 
 void auton_hold() {
-
-    while (true) {
-
-        pros::delay(10);
-    }
-
     
-
     // while (true) {
     //     if (cata_limit_switch.get_value() == 1) {
     //         hold = true;

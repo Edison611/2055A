@@ -22,9 +22,8 @@ void screen() {
 }
 
 /**
- * @brief Detects whether there is a triball
+ * @brief Detects triball using Color Sensor
  * 
- * Uses the color sensor and its rgb values
  *
  * @return true when the rgb values are less than 50
  * @return false in all other cases
@@ -43,9 +42,8 @@ bool ball_detection() {
 }
 
 /**
- * @brief Detects whether there is a triball
+ * @brief Detects triball using Distance Sensor
  * 
- * Uses the distance sensor and its size attribute
  *
  * @return true when the size is less than 10
  * @return false in all other cases
@@ -66,6 +64,12 @@ bool cata_ball_detection() {
     }
 }
 
+/**
+ * @brief Detects triball using line sensor
+ * 
+ * @return true 
+ * @return false 
+ */
 bool ball_detection_line() {
     int val = line_sensor.get_value();
     if (val < 4000 && val > 2000) {
@@ -76,7 +80,10 @@ bool ball_detection_line() {
     }
 }
 
-
+/**
+ * @brief variable that toggles between true or false
+ * 
+ */
 bool loadMacro = false;
 
 void macroLoad() {
@@ -93,6 +100,10 @@ void macroLoad() {
     }
 }
 
+/**
+ * @brief Triggers the matchload phase where if a triball is detected than it shoots
+ * 
+ */
 void SetMatchLoad() {
     while (true) {
         if (loadMacro == true) {
@@ -100,7 +111,7 @@ void SetMatchLoad() {
             if (launch == true) {
                 pros::delay(100);
                 // if (cata_ball_detection() == true) {
-                //     // pros::delay(150);
+                //     pros::delay(150);
                 //     shoot();
                 // }
                 // pros::delay(700);
@@ -143,14 +154,17 @@ void intakeLimit() {
  * Needs a 50ms delay between each print line
  */
 void print_info() {
+    int time = 0;
     while (true) {
         // Controller printing
         controller.clear();
         pros::delay(100);
+        time += 100;
         
         // pros::lcd::set_text(1, "Switch: " + std::to_string(cata_limit_switch.get_value()));
-        controller.print(2, 0, "Arm: (B), Wings: (X)");
+        controller.print(1, 0, "Arm: (B), Wing: (X)");
         pros::delay(50);
+        time += 50;
 
         if (loadMacro == true) {
             controller.print(0, 0, "Match Load: ON (A)");
@@ -158,12 +172,21 @@ void print_info() {
         else {
             controller.print(0, 0, "Match Load: OFF (A)");
         }
+        pros::delay(50);
+        time += 50;
+
+        // if (currentIntakeHold == true) {
+        //     controller.print(2, 0, "HOLD");
+        // }
+        // else {
+        //     controller.print(2, 0, "PASS");
+        // }
+        pros::delay(50);
+        time += 50;
+
+
+        controller.set_text(2, 10, "T: " + std::to_string(time/1000) + "s");
+        // pros::delay(50);
+        // time += 50;
     }
 }
-
-
-// void intakeLimit() {
-//     if (intake_limit_switch.get_value() == 1) {
-//         setIntake(0);
-//     }
-// }

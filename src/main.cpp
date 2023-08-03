@@ -75,8 +75,10 @@ void autonomous() {
 
     // auton_skills();
     // offense_auton();
+    // offense_AWP();
     // solo_auton();
     // test_auton();
+    defense_auton();
 
 }
 
@@ -94,6 +96,7 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    driver_skills();
+    grabber.set_value(false);
+    // driver_skills();
     my_opcontrol();
 }

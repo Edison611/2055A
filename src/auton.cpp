@@ -151,13 +151,15 @@ void auton_skills() {
 
     chassis.setPose(-61, 32, 0);
 
-    int shots = 40; // How many shots to take
+    int shots = 10; // How many shots to take
     int delay = 1100; // The delay between each shot
 
     float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
     int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
 
     // Start Code
+
+    
     cata_ratchet.set_value(true);
 
     chassis.moveTo(-61, 41, 1000);
@@ -176,10 +178,10 @@ void auton_skills() {
     for (int i = 0; i < shots; i++) {
         shoot();
         // pros::lcd::set_text(1, "time: " + std::to_string(i));
-        if (inertial_sensor.get_rotation() >= x+1) {
+        if (inertial_sensor.get_rotation() >= x) {
             setDrive(5, 15);
         }
-        else if (inertial_sensor.get_rotation() <= x-1) {
+        else if (inertial_sensor.get_rotation() <= x-2) {
             setDrive(15, 5);
         }
         else {
@@ -237,15 +239,15 @@ void auton_skills() {
     chassis.turnTo(-65, 0, 1000, true);
     // grabber.set_value(true);
     pros::delay(200);
-    chassis.moveTo(-63.5, -6, 2000, 100, true);
+    chassis.moveTo(-63.5, -6, 2000, 127, true);
     grabber.set_value(false);
-    chassis.moveTo(-63.5, -7, 2000, 100, true);
-    wings.set_value(true);
+    chassis.moveTo(-63.5, -7, 2000, 127, true);
+    //wings.set_value(true);
 
     // Drives to the corner and pushes triballs on the side
     vector(-46, -23, true, 100, 1000, 2000);
     chassis.turnTo(0, -27, 1000, true);
-    wings.set_value(false);
+    //wings.set_value(false);
     setDrive(-127, -127);
     pros::delay(600);
     setDrive(0, 0);
@@ -305,7 +307,7 @@ void driver_skills() {
 
     chassis.setPose(-61, 32, 0);
 
-    int shots = 43; // How many shots to take
+    int shots = 42; // How many shots to take
     int delay = 1100; // The delay between each shot
 
     float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
@@ -335,10 +337,10 @@ void driver_skills() {
         }
 
         // pros::lcd::set_text(1, "time: " + std::to_string(i));
-        if (inertial_sensor.get_rotation() > x+1) {
+        if (inertial_sensor.get_rotation() >= x) {
             setDrive(5, 15);
         }
-        else if (inertial_sensor.get_rotation() < x-1) {
+        else if (inertial_sensor.get_rotation() <= x-2) {
             setDrive(15, 5);
         }
         else {
@@ -396,23 +398,24 @@ void solo_auton() {
 
     // Drives to net and shoots alliance triball
     chassis.setPose(56, -33, 90);
-    chassis.moveTo(27, -33, 2000, 90, true);
-    chassis.turnTo(26, 0, 800, true);
-    wings.set_value(true);
-    chassis.moveTo(26, -13, 1500, 75, true);
+    chassis.moveTo(40, -30, 2000, 90, true); //Previous: 27
+    chassis.turnTo(30, 0, 800, true); //Previous: 26
+    // wings.set_value(true);
+    chassis.moveTo(30, -13, 1500, 75, true); //Previous: 26
+    chassis.turnTo(27, 0, 800, true);
     setDrive(-15, 20);
     pros::delay(150);
     setDrive(0, 0);
-    pros::delay(200);
-    wings.set_value(false);
+    pros::delay(100);
+    // wings.set_value(false);
     shoot();
-    pros::delay(200);
+    pros::delay(300);
 
     // Drives to corner and takes triball out
     
-    chassis.moveTo(30, -24, 3000, 70);
-    chassis.turnTo(77, -70, 1000, true);
-    chassis.moveTo(59, -50, 3000, 70, true);
+    chassis.moveTo(30, -21, 3000, 70);
+    chassis.turnTo(82, -71, 1000, true);
+    chassis.moveTo(64, -49, 3000, 70, true);
     // pros::delay(1000);
 
     grabber.set_value(true);
@@ -424,9 +427,9 @@ void solo_auton() {
     // Touch the pole for AWP
 
     // Goes to lower pole
-    chassis.moveTo(64, -32, 2000, 70, true);
-    chassis.turnTo(63, 0, 1000, true);
-    chassis.moveTo(63, -18, 2000, 70, true);
+    chassis.moveTo(65.5, -32, 2000, 70, true);
+    chassis.turnTo(65.5, 0, 1000, true);
+    chassis.moveTo(65.5, -18, 2000, 70, true);
     grabber.set_value(true);
 
 
@@ -627,6 +630,46 @@ void defense_auton() {
 
     //hold_intake_task.suspend();
 
+}
+
+
+void defense_MOA() {
+    //pros::Task hold_triball(intakeLimit);
+
+    chassis.setPose(58, -37, -75);
+    wings.set_value(true);
+    pros::delay(100);
+    wings.set_value(false);
+    setIntake(127);
+
+    //Move to Middle Tri-Ball
+    chassis.moveTo(10, -27, 1500, 70); 
+    pros::delay(200);
+    setIntake(0);
+    chassis.moveTo(15, -27, 800, 70);
+
+    //Move to Middle Bar
+    chassis.turnTo(15, 0, 800, true);
+    wings.set_value(true);
+    chassis.moveTo(15, -13, 1500, 75, true);
+    wings.set_value(false);
+    setDrive(-15, 20);
+    pros::delay(100);
+    setDrive(0, 0);
+    pros::delay(100);
+    shoot();
+    pros::delay(350);
+
+    //Move to Corner
+    chassis.moveTo(15, -17, 1000, 70);
+    chassis.turnTo(70, -42, 1000);
+    chassis.moveTo(59, -37, 1000, 70);
+
+    //Move to Pole
+    chassis.turnTo(59, 0, 800, true);
+    chassis.moveTo(59, -17, 1500, 70, true);
+
+    //hold_triball.suspend();
 
 
 }

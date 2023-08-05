@@ -73,12 +73,13 @@ void competition_initialize() {}
  */
 void autonomous() {
 
-    // auton_skills();
+    auton_skills();
     // offense_auton();
     // offense_AWP();
     // solo_auton();
     // test_auton();
-    defense_auton();
+    // defense_auton();
+    // defense_MOA();
 
 }
 

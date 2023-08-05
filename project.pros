@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Defense_Auton",
+    "project_name": "Auton_Skills",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -332,9 +332,9 @@
       }
     },
     "upload_options": {
-      "slot": 6,
-      "icon": "alien",
-      "description": "Defense_Auton"
+      "slot": 3,
+      "icon": "pizza",
+      "description": "Auton_Skills"
     }
   }
 }

@@ -8,7 +8,7 @@
 #include <string>
 
 
-// DRIVER CONTROL FUNCTIONS
+// DRIVER CONTROL FUNCTIONS:
 
 /**
  * @brief Sets motor power to drivebase

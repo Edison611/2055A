@@ -32,10 +32,10 @@ void initialize() {
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    pros::Task holding(cata_hold);
+    // pros::Task holding(cata_hold);
     pros::Task pos_track(screen);
     pros::Task print_task(print_info);
-    pros::Task MatchLoads(SetMatchLoad);
+    // pros::Task MatchLoads(SetMatchLoad);
     
 
     pros::delay(100);
@@ -73,7 +73,9 @@ void competition_initialize() {}
  */
 void autonomous() {
 
-    auton_skills();
+    // chatgpt();
+
+    // auton_skills();
     // offense_auton();
     // offense_AWP();
     // solo_auton();
@@ -97,7 +99,8 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    grabber.set_value(false);
+    chatgpt();
+    // grabber.set_value(false);
     // driver_skills();
-    my_opcontrol();
+    // my_opcontrol();
 }

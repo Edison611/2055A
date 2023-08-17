@@ -81,7 +81,7 @@ bin/opcontrol.cpp.o: src/opcontrol.cpp include/main.h include/api.h \
  include/lemlib/chassis/trackingWheel.hpp include/pros/adi.hpp \
  include/pros/rotation.hpp include/lemlib/pose.hpp include/drive.hpp \
  include/subsystems.hpp include/opcontrol.hpp include/auton.hpp \
- include/tracking.hpp
+ include/tracking.hpp include/pure-pursuit.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -248,3 +248,4 @@ include/subsystems.hpp:
 include/opcontrol.hpp:
 include/auton.hpp:
 include/tracking.hpp:
+include/pure-pursuit.hpp:

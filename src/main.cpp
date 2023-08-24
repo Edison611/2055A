@@ -82,6 +82,7 @@ void autonomous() {
     // test_auton();
     // defense_auton();
     // defense_MOA();
+    testAuton2();
 
 }
 
@@ -99,7 +100,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    chatgpt();
     // grabber.set_value(false);
     // driver_skills();
     // my_opcontrol();

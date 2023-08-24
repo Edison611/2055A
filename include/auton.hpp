@@ -10,3 +10,5 @@ void offense_auton();
 void offense_AWP();
 void defense_auton();
 void defense_MOA();
+
+void testAuton2();

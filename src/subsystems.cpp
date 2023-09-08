@@ -14,46 +14,73 @@
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
 #include <string>
+bool currentDrivePTO = false;
+void DrivePTO() {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+        if (currentDrivePTO == false) {
+            // if (abs(ptoL1.get_actual_velocity()) > 0) 
+            currentDrivePTO = true;
+            drivePTO.set_value(true);
 
-// ------------------------------------------------------------------------------------------------------
-// INTAKE
-// ------------------------------------------------------------------------------------------------------
-void setIntake(int intaker_power) {
-    intake1.move(intaker_power);
-    intake2.move(intaker_power);
+            ptoL1.set_brake_mode(MOTOR_BRAKE_BRAKE);
+            ptoL2.set_brake_mode(MOTOR_BRAKE_BRAKE);
+
+            ptoR1.set_brake_mode(MOTOR_BRAKE_BRAKE);
+            ptoR2.set_brake_mode(MOTOR_BRAKE_BRAKE);
+        }
+        
+        else if (currentDrivePTO == true) {
+            currentDrivePTO = false;
+            drivePTO.set_value(false);
+
+            ptoL1.set_brake_mode(MOTOR_BRAKE_COAST);
+            ptoL2.set_brake_mode(MOTOR_BRAKE_COAST);
+
+            ptoR1.set_brake_mode(MOTOR_BRAKE_COAST);
+            ptoR2.set_brake_mode(MOTOR_BRAKE_COAST);
+        }
+    }
 }
 
-void setIntakeMotors() {
-    int intake_power = 127 * (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1) - controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2));
-    setIntake(intake_power);    
+void setPTO(int L1, int L2, int R1, int R2) {
+    ptoL1.move_velocity(L1);
+    ptoL2.move_velocity(L2);
+    ptoR1.move_velocity(R1);
+    ptoR2.move_velocity(R2);
 }
 
-// WORK IN PROGRESS (HELP NEEDED)
-// ----------------------------------
-// bool currentIntakeHold = false;
-// bool first = true;
-// pros::Task hold_intake_task(intakeLimit);
+void Puncher() {
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+        ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
+        ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-// /**
-//  * @brief Controls the grabber of the bot, drops if it was up, pulls it up if it is dropped on button press.
-//  */
-// void intakeHold() {
-//     if (first == true) {
-//         hold_intake_task.suspend();
-//         first = false;
-//     }
-//     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
-//         if (currentIntakeHold == false) {
-//             currentIntakeHold = true;
-//             hold_intake_task.resume();
-//         }
-//         else if (currentIntakeHold == true) {
-//             currentIntakeHold = false;
-//             hold_intake_task.suspend();
+        ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
+        ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
+        
+        ptoL1.move(-127);
+        ptoL2.move(-127);
+        ptoR1.move(127);
+        ptoR2.move(127);
+    // } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+    //     ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
+    //     ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-//         }
-//     }
-// }
+    //     ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
+    //     ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
+
+    //     ptoL1.move(127);
+    //     ptoL2.move(127);
+    //     ptoR1.move(-127);
+    //     ptoR2.move(-127);
+    }
+    // else {
+    //     ptoL1.move(0);
+    //     ptoL2.move(0);
+    //     ptoR1.move(0);
+    //     ptoR2.move(0);
+    // }
+}
+
 
 // ------------------------------------------------------------------------------------------------------
 // CATAPULT
@@ -63,7 +90,7 @@ void setCatapult(int power) {
 } 
 
 bool hold = false;
-bool cata_shoot = false;
+bool cata_shoot = true;
 
 void setCatapultMotors() {
     if (cata_limit_switch.get_value() == 1) {
@@ -73,9 +100,10 @@ void setCatapultMotors() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1) == 1) {
         hold = false;
         // Shoot Catapult
-        setCatapult(127);
+        setPTO(127, 127, -127, -127);
+        // setCatapult(127);
         pros::delay(350);
-        setCatapult(127);
+        // setCatapult(127);
     }
 }
 
@@ -95,8 +123,8 @@ void cata_hold() {
 	while (true) {
 
         while (cata_limit_switch.get_value() == 1) { // Could change to just button value
-            
-            catapult.move_velocity(0);
+            pros::lcd::set_text(1, "TEST");
+            setPTO(0, 0, 0, 0);
             // int x = x + 1;
             // int absPos = catapult.get_position();
             // int power = (absPos - catapult.get_position())*factor;
@@ -116,9 +144,13 @@ void cata_hold() {
         }
 
         if (cata_shoot == true) {
-            // pros::lcd::set_text(2, "Shoot");
+            pros::lcd::set_text(2, "Shoot");
             cata_shoot = false;
-            catapult.move_velocity(200);
+            // setPTO(-600, -600, -600, -600);
+            ptoL1.move(-127);
+            ptoL2.move(-127);
+            ptoR1.move(-127);
+            ptoR2.move(-127);
             pros::delay(350);
         }
 
@@ -128,7 +160,7 @@ void cata_hold() {
         // }
 
         // catapult.move_velocity(200);
-
+        
         pros::delay(20);
 
         // OLD HOLD CODE
@@ -165,37 +197,16 @@ void auton_hold() {
     //     pros::delay(10);
 }
 
-bool currentCataRatchet = false;
 
 /**
  * @brief Controls the catapult ratchet of the bot based on button presses
  */
-void SetCataRatchet() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)) {
-        if (currentCataRatchet == false) {
-            currentCataRatchet = true;
-            cata_ratchet.set_value(true);
-        }
 
-        else if (currentCataRatchet == true) {
-            currentCataRatchet = false;
-            cata_ratchet.set_value(false);
-        }
-    }
-}
 /**
  * @brief Spins catapult other way in case of jam
  * 
  */
-void CataRatchet() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
-        setCatapult(-40);
-        cata_ratchet.set_value(true);
-        pros::delay(300);
-        setCatapult(0);
-        cata_ratchet.set_value(false);
-    }
-}
+
 
 
 // ------------------------------------------------------------------------------------------------------
@@ -241,6 +252,23 @@ void op_wings() {
         else if (currentWings == true) {
             currentWings = false;
             wings.set_value(false);
+        }
+    }
+}
+
+
+bool currentClaw = false;
+
+void op_claw() {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
+        if (currentClaw == false) {
+            currentClaw = true;
+            claw.set_value(true);
+        }
+        
+        else if (currentClaw == true) {
+            currentClaw = false;
+            claw.set_value(false);
         }
     }
 }

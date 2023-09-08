@@ -1,7 +1,6 @@
 
 // Intake
-void setIntake(int intaker_power);
-void setIntakeMotors();
+
 
 // Catapult
 void setCatapult(int power);
@@ -10,8 +9,9 @@ void shoot();
 void cata_hold();
 extern bool cata_shoot;
 void auton_hold();
-void SetCataRatchet();
-void CataRatchet();
+void DrivePTO();
+void Puncher();
+extern bool currentDrivePTO;
 
 // Grabber
 void SetGrabber();
@@ -20,3 +20,6 @@ void SetGrabber();
 void ActivateWings(bool dir);
 
 void op_wings();
+
+// Claw
+void op_claw();

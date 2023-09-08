@@ -12,12 +12,14 @@
  */
 
 extern pros::Motor driveLB;
-extern pros::Motor driveLM;
 extern pros::Motor driveLF;
+extern pros::Motor ptoL1;
+extern pros::Motor ptoL2;
 
 extern pros::Motor driveRB;
-extern pros::Motor driveRM;
 extern pros::Motor driveRF;
+extern pros::Motor ptoR1;
+extern pros::Motor ptoR2;
 
 extern pros::MotorGroup leftMotors;
 extern pros::MotorGroup rightMotors;
@@ -38,6 +40,8 @@ extern pros::Distance distance_sensor;
 extern pros::ADIDigitalOut cata_ratchet;
 extern pros::ADIDigitalOut wings;
 extern pros::ADIDigitalOut grabber;
+extern pros::ADIDigitalOut drivePTO;
+extern pros::ADIDigitalOut claw;
 
 extern pros::Controller controller;
 

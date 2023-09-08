@@ -23,19 +23,23 @@ void initialize() {
     chassis.calibrate();
 
     driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
     driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveRM.set_brake_mode(MOTOR_BRAKE_HOLD);
     driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
+
+    ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
+        ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
+
+        ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
+        ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     pros::Task holding(cata_hold);
-    pros::Task pos_track(screen);
+    // pros::Task pos_track(screen);
     pros::Task print_task(print_info);
-    pros::Task MatchLoads(SetMatchLoad);
+    // pros::Task MatchLoads(SetMatchLoad);
     
 
     pros::delay(100);
@@ -73,7 +77,7 @@ void competition_initialize() {}
  */
 void autonomous() {
 
-    auton_skills();
+    // auton_skills();
     // offense_auton();
     // offense_AWP();
     // solo_auton();
@@ -97,7 +101,5 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    grabber.set_value(false);
-    // driver_skills();
     my_opcontrol();
 }

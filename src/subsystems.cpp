@@ -146,11 +146,11 @@ void cata_hold() {
         if (cata_shoot == true) {
             pros::lcd::set_text(2, "Shoot");
             cata_shoot = false;
-            // setPTO(-600, -600, -600, -600);
-            ptoL1.move(-127);
-            ptoL2.move(-127);
-            ptoR1.move(-127);
-            ptoR2.move(-127);
+            setPTO(-600, -600, -600, -600);
+            // ptoL1.move(-127);
+            // ptoL2.move(-127);
+            // ptoR1.move(-127);
+            // ptoR2.move(-127);
             pros::delay(350);
         }
 

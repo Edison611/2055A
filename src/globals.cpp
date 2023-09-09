@@ -40,7 +40,7 @@ int MOTOR_CATAPULT = 17;
 
 int VISION_SENSOR_PORT = 23;
 char CATA_LIMIT_SWITCH_PORT = 'H'; // RENAME TO BUMPER
-int INERTIAL_SENSOR_PORT = 13;
+int INERTIAL_SENSOR_PORT = 5;
 int COLOR_SENSOR_PORT = 12;
 // char INTAKE_LIMIT_SWITCH_PORT = 'E';
 // char LINE_SENSOR_PORT = 'F';
@@ -51,6 +51,10 @@ char WING_PORT = 'C';
 char GRABBER_PORT = 'D';
 char DRIVEPTO_PORT = 'A';
 char CLAW_PORT = 'E';
+
+pros::Rotation back_rot(6, false);
+
+lemlib::TrackingWheel back_tracking_wheel(&back_rot, 2.75, -5.75);
 
 // ------------------------------------------------------------------------------------------------------
 // Drivetrain 
@@ -104,7 +108,6 @@ pros::ADIDigitalOut claw(CLAW_PORT);
 // ------------------------------------------------------------------------------------------------------
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
-
 // ------------------------------------------------------------------------------------------------------
 // LEMLIB (For position tracking)
 // ------------------------------------------------------------------------------------------------------
@@ -116,8 +119,8 @@ lemlib::Drivetrain_t drivetrain {
     &leftMotors, // left drivetrain motors
     &rightMotors, // right drivetrain motors
     11.25, // track width
-    4.00, // wheel diameter
-    300 // wheel rpm
+    3.25, // wheel diameter
+    400 // wheel rpm
 };
 
 // forward/backward PID
@@ -148,7 +151,7 @@ lemlib::ChassisController_t angularController {
 lemlib::OdomSensors_t sensors {
     nullptr, // vertical tracking wheel 1
     nullptr, // vertical tracking wheel 2
-    nullptr, // horizontal tracking wheel 1
+    &back_tracking_wheel, // horizontal tracking wheel 1
     nullptr, // horizontal tracking wheel 2
     &inertial_sensor // inertial sensor
 };

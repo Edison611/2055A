@@ -36,9 +36,9 @@ void initialize() {
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    pros::Task holding(cata_hold);
-    // pros::Task pos_track(screen);
-    pros::Task print_task(print_info);
+    // pros::Task holding(cata_hold);
+    pros::Task pos_track(screen);
+    // pros::Task print_task(print_info);
     // pros::Task MatchLoads(SetMatchLoad);
     
 
@@ -101,5 +101,18 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    my_opcontrol();
+    driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
+
+    driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
+    while (true) {
+        lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
+        pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
+        pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position
+        pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
+        pros::delay(20);
+    }
+    //chassis.setPose(20, 20, 0);
+    // my_opcontrol();
 }

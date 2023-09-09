@@ -22,11 +22,11 @@ void initialize() {
 
     chassis.calibrate();
 
-    driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
         ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
@@ -42,7 +42,7 @@ void initialize() {
     // pros::Task MatchLoads(SetMatchLoad);
     
 
-    pros::delay(100);
+    pros::delay(200);
 }
 
 /**
@@ -101,18 +101,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
-    driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
-
-    driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
-    driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
-    while (true) {
-        lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
-        pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
-        pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position
-        pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
-        pros::delay(20);
-    }
     //chassis.setPose(20, 20, 0);
-    // my_opcontrol();
+    my_opcontrol();
 }

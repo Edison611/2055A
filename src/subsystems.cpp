@@ -102,7 +102,7 @@ void setCatapultMotors() {
         // Shoot Catapult
         setPTO(127, 127, -127, -127);
         // setCatapult(127);
-        pros::delay(350);
+        pros::delay(250);
         // setCatapult(127);
     }
 }

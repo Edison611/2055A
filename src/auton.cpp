@@ -207,217 +207,23 @@ void solo_auton() {
  * 5. Touch the pole if needed
  */
 void offense_auton() {
-    pros::Task hold_triball(intakeLimit);
-    // detected = true; // Since there is already a triball inside
-
-    // SET POSITION
-    chassis.setPose(-56, -45, -45);
-
-    // Score first triball
-    chassis.moveTo(-45, -56, 500);
-    chassis.turnTo(50, -55, 750, true);
-    setDrive(-100, -100);
-    pros::delay(400);
-    setDrive(0, 0);
-
-
-    chassis.moveTo(-60, -35, 500); //Back Up
-
-
-    chassis.turnTo(-15, -22, 600); //First Tri-Ball
-    setIntake(55);
-    chassis.moveTo(-15, -28, 5000, 80); //First Tri-Ball
-
-    chassis.turnTo(-17, -54, 1000); //Net
-    setIntake(-80);
-    chassis.moveTo(-17, -45, 500, 90); //Net
-    pros::delay(100);
-
-    chassis.turnTo(-15, -13, 1000); //Second Tri-Ball
-    setIntake(50);
-    chassis.moveTo(-15, -16, 2000, 80); //Second Tri-Ball
-    pros::delay(100);
-
-    chassis.turnTo(-17, -54, 1250); //Net
-    //wings.set_value(true);
-    setIntake(-35);
-    chassis.moveTo(-17, -40, 1000, 90); //Net
-    //wings.set_value(false);
-    pros::delay(100);
-
-    chassis.turnTo(-32, -15, 1000); //Third Tri-Ball
-    setIntake(50);
-    chassis.moveTo(-32, -18, 2000, 90); //Third Tri-Ball
-    pros::delay(100);
-
-    chassis.turnTo(-24, -54, 1000); //Net
-    setIntake(-25);
-    chassis.moveTo(-24, -45, 1000, 100); //Net
-    pros::delay(100);
-
-
-    //chassis.moveTo(-65, -16, 1000, 90, true); //Pole
-
-    // driveToNet(); // Currently testing
-    // detected = false;
-
-    // chassis.turnTo(-27, -72, 1000);
-    // pros::delay(100);
-    // setIntake(-127);
-    // chassis.moveTo(-27, -36, 1000);
-    // pros::delay(100);
-    // setIntake(0);
-
-    // Grab second triball and score it
-    // setIntake(40);
-    // vector(0, -24);
-    // driveToNet();
-
-
-    hold_triball.suspend();
-
-    // OLD CODE
-    // -----------------------------------
-    // setIntake(50);
-    // pros::delay(5000);
-    // setIntake(-127);
-    // pros::delay(1000);
-    // setIntake(0);
-
-    // chassis.setPose(-24, -24, 90);
-    // pros::delay(100);
-    // setIntake(25); 
-    // pros::delay(100);
-    // chassis.moveTo(-10, -24, 2000);
-    // pros::delay(1000);
-    // chassis.turnTo(-10, -50, 2000);
-    // pros::delay(200);
-    // setIntake(-127);
-    // chassis.moveTo(-10, -35, 2000);
+    
 }
 
 //Not Using
 void offense_AWP() {
-    pros::Task hold_triball(intakeLimit);
-    // detected = true; // Since there is already a triball inside
-
-    // SET POSITION
-    chassis.setPose(-56, -45, -45);
-
-    // Score first triball
-    chassis.moveTo(-45, -56, 500);
-    chassis.turnTo(50, -55, 750, true);
-    setDrive(-100, -100);
-    pros::delay(400);
-    setDrive(0, 0);
-
-
-    chassis.moveTo(-60, -35, 500); //Back Up
-
-
-    chassis.turnTo(-15, -22, 600); //First Tri-Ball
-    setIntake(50);
-    chassis.moveTo(-17, -28, 5000, 85); //First Tri-Ball
-
-    chassis.turnTo(-17, -54, 1000); //Net
-    setIntake(-80);
-    chassis.moveTo(-17, -40, 500, 90); //Net
-    pros::delay(100);
-
-    chassis.turnTo(-15, -13, 1000); //Second Tri-Ball
-    setIntake(50);
-    chassis.moveTo(-15, -16, 2000, 80); //Second Tri-Ball
-    pros::delay(100);
-
-    chassis.turnTo(-17, -54, 1250); //Net
-    // wings.set_value(true);
-    setIntake(-35);
-    chassis.moveTo(-17, -38, 1000, 80); //Net
-    // wings.set_value(false);
-
-    chassis.moveTo(-65, -30, 2000, true); //Pole
-    chassis.turnTo(-65, 0, 1000, true); //Pole
-    chassis.moveTo(-65, -18, 2000, 80, true); //Pole
-    grabber.set_value(true);
-    pros::delay(100);
-
-    hold_triball.suspend();
+    
 
 }
 
 void defense_auton() {
-    //pros::Task hold_intake_task(intakeLimit);
-
-    chassis.setPose(56, -33, 90);
-    chassis.moveTo(27, -33, 2000, 90, true);
-    chassis.turnTo(26, 0, 800, true);
-    wings.set_value(true);
-    chassis.moveTo(26, -13, 1500, 75, true);
-    setDrive(-15, 20);
-    pros::delay(150);
-    setDrive(0, 0);
-    pros::delay(200);
-    wings.set_value(false);
-    shoot();
-    pros::delay(350);
-
-    chassis.moveTo(30, -24, 3000, 70);
-    chassis.turnTo(77, -70, 1000);
-    chassis.moveTo(49, -40, 3000, 70);
-
-
-
-    // chassis.turnTo(-5, 0, 1000);
-    // setIntake(127);
-    // chassis.turnTo(-20, 0, 1000, true);
-    // shoot();
-
-
-
-    //hold_intake_task.suspend();
+    
 
 }
 
 
 void defense_MOA() {
-    //pros::Task hold_triball(intakeLimit);
-
-    chassis.setPose(58, -37, -75);
-    wings.set_value(true);
-    pros::delay(100);
-    wings.set_value(false);
-    setIntake(127);
-
-    //Move to Middle Tri-Ball
-    chassis.moveTo(10, -27, 1500, 70); 
-    pros::delay(200);
-    setIntake(0);
-    chassis.moveTo(15, -27, 800, 70);
-
-    //Move to Middle Bar
-    chassis.turnTo(15, 0, 800, true);
-    wings.set_value(true);
-    chassis.moveTo(15, -13, 1500, 75, true);
-    wings.set_value(false);
-    setDrive(-15, 20);
-    pros::delay(100);
-    setDrive(0, 0);
-    pros::delay(100);
-    shoot();
-    pros::delay(350);
-
-    //Move to Corner
-    chassis.moveTo(15, -17, 1000, 70);
-    chassis.turnTo(70, -42, 1000);
-    chassis.moveTo(59, -37, 1000, 70);
-
-    //Move to Pole
-    chassis.turnTo(59, 0, 800, true);
-    chassis.moveTo(59, -17, 1500, 70, true);
-
-    //hold_triball.suspend();
-
-
+   
 }
 
 void testAuton2(){

@@ -81,7 +81,8 @@ bin/pure-pursuit.cpp.o: src/pure-pursuit.cpp include/lemlib/pose.hpp \
  include/lemlib/chassis/trackingWheel.hpp include/pros/adi.hpp \
  include/pros/rotation.hpp include/drive.hpp include/subsystems.hpp \
  include/opcontrol.hpp include/auton.hpp include/tracking.hpp \
- include/pure-pursuit.hpp include/pros/llemu.hpp
+ include/pure-pursuit.hpp include/pros/apix.h include/api.h \
+ include/pros/serial.h include/pros/serial.hpp include/pros/llemu.hpp
 include/lemlib/pose.hpp:
 include/main.h:
 include/api.h:
@@ -249,4 +250,8 @@ include/opcontrol.hpp:
 include/auton.hpp:
 include/tracking.hpp:
 include/pure-pursuit.hpp:
+include/pros/apix.h:
+include/api.h:
+include/pros/serial.h:
+include/pros/serial.hpp:
 include/pros/llemu.hpp:

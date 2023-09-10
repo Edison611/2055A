@@ -81,6 +81,7 @@ void opcontrol(void);
 #include "auton.hpp"
 #include "tracking.hpp"
 #include "pure-pursuit.hpp"
+#include "pros/apix.h"
 #endif
 
 #endif  // _PROS_MAIN_H_

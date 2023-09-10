@@ -103,4 +103,10 @@ void opcontrol() {
     // grabber.set_value(false);
     // driver_skills();
     // my_opcontrol();
+    lv_obj_t * myButton;
+    lv_obj_t * myButtonLabel;
+    lv_obj_t * myLabel;
+
+    lv_style_t myButtonStyleREL; //relesed style
+    lv_style_t myButtonStylePR; //pressed style
 }

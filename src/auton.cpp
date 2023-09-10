@@ -677,5 +677,7 @@ void defense_MOA() {
 void testAuton2(){
     chassis.setPose(60, 17, 180);
     chassis.moveTo(54.5, 30, 10000, 50);
-    chassis.moveTo(40, 30, 10000, 50);
+    chassis.moveTo(40, 38, 10000, 50);
+    chassis.moveTo(21, 15, 10000, 50);
+    // chassis.moveTo()
 }

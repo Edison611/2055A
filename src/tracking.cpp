@@ -17,7 +17,7 @@ void screen() {
         pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
         pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position
         pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
-        pros::delay(50);
+        pros::delay(20);
     }
 }
 
@@ -87,7 +87,7 @@ bool ball_detection_line() {
 bool loadMacro = false;
 
 void macroLoad() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
         if (loadMacro == false) {
             cata_ratchet.set_value(true);
             loadMacro = true;
@@ -132,20 +132,7 @@ bool detected = false;
  * 
  * Changes a global variable between true and false, while setting the Intake to 0 power if a triball is detected
  */
-void intakeLimit() {
-    while (true) {
-        bool x = ball_detection();
-        if (x == true && detected == false) {
-            setIntake(0);
-            detected = true;
-        }
-        if (x == false) {
-            detected = false;
-        }
-        // pros::lcd::set_text(1, "Detected: " + std::to_string(detected));
-        pros::delay(20);
-    }
-}
+
 
 /**
  * @brief Prints information to Brain and Controller

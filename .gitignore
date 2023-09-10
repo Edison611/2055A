@@ -1,0 +1,5 @@
+# Ignore cpp.o files
+*.cpp.o
+/bin
+/.cache
+/.vscode

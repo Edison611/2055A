@@ -17,13 +17,26 @@
  * @param right The power to give the right side
  */
 void setDrive(double left, double right) {
-    driveLB.move(left);
-    driveLF.move(left);
-    driveLM.move(left);
+    if (currentDrivePTO) {
+        driveLB.move(left);
+        driveLF.move(left);
+        ptoL1.move(left);
+        ptoL2.move(left);
+
+        driveRB.move(right);
+        driveRF.move(right);
+        ptoR1.move(right);
+        ptoR2.move(right);
+    }   
+    else {
+        driveLB.move(left);
+        driveLF.move(left);
+        
+        driveRB.move(right);
+        driveRF.move(right);
+    }
     
-    driveRB.move(right);
-    driveRM.move(right);
-    driveRF.move(right);
+    
 }
 
 /**

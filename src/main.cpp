@@ -22,23 +22,27 @@ void initialize() {
 
     chassis.calibrate();
 
-    driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveRM.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
+
+    ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
+        ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
+
+        ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
+        ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     // pros::Task holding(cata_hold);
     pros::Task pos_track(screen);
-    pros::Task print_task(print_info);
+    // pros::Task print_task(print_info);
     // pros::Task MatchLoads(SetMatchLoad);
     
 
-    pros::delay(100);
+    pros::delay(200);
 }
 
 /**
@@ -82,7 +86,7 @@ void autonomous() {
     // test_auton();
     // defense_auton();
     // defense_MOA();
-    testAuton2();
+    // testAuton2();
 
 }
 
@@ -100,7 +104,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    // grabber.set_value(false);
-    // driver_skills();
-    // my_opcontrol();
+    //chassis.setPose(20, 20, 0);
+    my_opcontrol();
 }

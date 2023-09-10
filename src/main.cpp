@@ -77,6 +77,8 @@ void competition_initialize() {}
  */
 void autonomous() {
 
+    // chatgpt();
+
     // auton_skills();
     // offense_auton();
     // offense_AWP();
@@ -84,6 +86,7 @@ void autonomous() {
     // test_auton();
     // defense_auton();
     // defense_MOA();
+    // testAuton2();
 
 }
 

@@ -1,5 +1,10 @@
 # Ignore cpp.o files
 *.cpp.o
+*.o
 /bin
 /.cache
 /.vscode
+/.d
+*.idx
+
+compile_commands.json

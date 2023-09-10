@@ -1,6 +1,7 @@
 void vector(double x, double y, int turnTimeout, int driveTimeout);
 
 void test_auton();
+void odomTest();
 
 void driver_skills();
 void auton_skills();

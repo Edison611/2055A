@@ -1,6 +1,7 @@
 #include "lemlib/pose.hpp"
 #include "main.h"
 #include "pros/llemu.hpp"
+#include "pros/misc.h"
 #include "pros/rtos.hpp"
 #include "pros/vision.h"
 #include <string>
@@ -14,6 +15,15 @@ double netPos[2] = {0, -48};
 // ------------------------------------------------------------------------------------------------------
 // HELPER FUNCTIONS
 // ------------------------------------------------------------------------------------------------------
+
+void allowContinue() {
+    while (true) {
+        if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+            break;
+        }
+        pros::delay(20);
+    }
+}
 
 void GoToOrigin() {
     chassis.moveTo(0, 0, 2000);
@@ -121,6 +131,23 @@ void triballVision() {
 
 void test_auton() {
 
+}
+
+void odomTest() {
+    chassis.setPose(0,0, 0);
+
+    chassis.turnTo(30, 0, 2000);
+    allowContinue();
+    chassis.turnTo(-30, 0, 2000);
+    allowContinue();
+    chassis.turnTo(0, 30, 2000);
+    allowContinue();
+
+    chassis.moveTo(0, 24, 2000);
+    allowContinue();
+    chassis.moveTo(0, 0, 2000);
+    allowContinue();
+    
 }
 
 // ------------------------------------------------------------------------------------------------------

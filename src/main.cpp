@@ -21,6 +21,7 @@ void initialize() {
 	pros::lcd::initialize();
 
     chassis.calibrate();
+    chassis.setPose(0,0,0);
 
     // driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
     // driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
@@ -29,10 +30,10 @@ void initialize() {
     // driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
-        ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
+    ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-        ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
-        ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
+    ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
+    ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
@@ -42,7 +43,7 @@ void initialize() {
     // pros::Task MatchLoads(SetMatchLoad);
     
 
-    pros::delay(200);
+    pros::delay(100);
 }
 
 /**
@@ -77,8 +78,6 @@ void competition_initialize() {}
  */
 void autonomous() {
 
-    // chatgpt();
-
     // auton_skills();
     // offense_auton();
     // offense_AWP();
@@ -104,6 +103,7 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+    odomTest();
     //chassis.setPose(20, 20, 0);
-    my_opcontrol();
+    // my_opcontrol();
 }

@@ -12,8 +12,6 @@
 #include "pros/rtos.h"
 #include "pros/rtos.hpp"
 #include "pros/vision.h"
-#include <fstream>
-#include <ostream>
 #include <string>
 
 

@@ -54,7 +54,7 @@ char CLAW_PORT = 'E';
 
 pros::Rotation back_rot(6, false);
 
-lemlib::TrackingWheel back_tracking_wheel(&back_rot, 2.75, -5.75);
+lemlib::TrackingWheel back_tracking_wheel(&back_rot, 2.75, -6);
 
 // ------------------------------------------------------------------------------------------------------
 // Drivetrain 

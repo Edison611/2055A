@@ -136,6 +136,7 @@ void test_auton() {
 void odomTest() {
     chassis.setPose(0,0, 0);
 
+    allowContinue();
     chassis.turnTo(30, 0, 2000);
     allowContinue();
     chassis.turnTo(-30, 0, 2000);
@@ -237,7 +238,7 @@ void offense_auton() {
     
 }
 
-//Not Using
+//Not Usingdadsd
 void offense_AWP() {
     
 

@@ -46,11 +46,11 @@ int COLOR_SENSOR_PORT = 12;
 // char LINE_SENSOR_PORT = 'F';
 int DISTANCE_SENSOR_PORT = 15;
 
-char CATA_RATCHET_PORT = 'B';
+char CATA_RATCHET_PORT = 'F';
 char WING_PORT = 'C';
-char GRABBER_PORT = 'D';
+// char GRABBER_PORT = 'D';
 char DRIVEPTO_PORT = 'A';
-char CLAW_PORT = 'E';
+char CLAW_PORT = 'B';
 
 pros::Rotation back_rot(6, false);
 
@@ -99,7 +99,7 @@ pros::Distance distance_sensor(DISTANCE_SENSOR_PORT);
 // ------------------------------------------------------------------------------------------------------
 pros::ADIDigitalOut cata_ratchet(CATA_RATCHET_PORT);
 pros::ADIDigitalOut wings(WING_PORT);
-pros::ADIDigitalOut grabber(GRABBER_PORT);
+// pros::ADIDigitalOut grabber(GRABBER_PORT);
 pros::ADIDigitalOut drivePTO(DRIVEPTO_PORT);
 pros::ADIDigitalOut claw(CLAW_PORT);
 

@@ -14,6 +14,8 @@
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
 #include <string>
+
+// ------------------------------------------------------------------------------------------------------
 bool currentDrivePTO = false;
 void DrivePTO() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
@@ -100,7 +102,7 @@ void setCatapultMotors() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1) == 1) {
         hold = false;
         // Shoot Catapult
-        setPTO(127, 127, -127, -127);
+        // setPTO(-600, -600, -600, -600);
         // setCatapult(127);
         pros::delay(250);
         // setCatapult(127);
@@ -210,25 +212,25 @@ void auton_hold() {
 
 
 // ------------------------------------------------------------------------------------------------------
-// GRABBER
+// GRABBER (OLD)
 // ------------------------------------------------------------------------------------------------------
-bool currentGrabber = false;
+// bool currentGrabber = false;
 
-/**
- * @brief Controls the grabber of the bot, drops if it was up, pulls it up if it is dropped on button press.
- */
-void SetGrabber() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
-        if (currentGrabber == false) {
-            currentGrabber = true;
-            grabber.set_value(true);
-        }
-        else if (currentGrabber == true) {
-            currentGrabber = false;
-            grabber.set_value(false);
-        }
-    }
-}
+// /**
+//  * @brief Controls the grabber of the bot, drops if it was up, pulls it up if it is dropped on button press.
+//  */
+// void SetGrabber() {
+//     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
+//         if (currentGrabber == false) {
+//             currentGrabber = true;
+//             grabber.set_value(true);
+//         }
+//         else if (currentGrabber == true) {
+//             currentGrabber = false;
+//             grabber.set_value(false);
+//         }
+//     }
+// }
 
 // ------------------------------------------------------------------------------------------------------
 // WINGS
@@ -258,6 +260,10 @@ void op_wings() {
 
 
 bool currentClaw = false;
+
+/**
+ * @brief Controls the grabber of the bot, drops if it was up, pulls it up if it is dropped on button press.
+ */
 
 void op_claw() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {

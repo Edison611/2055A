@@ -44,26 +44,26 @@ void my_opcontrol() {
 
     driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
     driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
-	chassis.setPose(0, 0 , 0);
+	chassis.setPose(0, 0, 0);
 	// std::ofstream Data;
     // Data.open("/usd/ROBOT/log.txt", std::ios_base::app);
 	// double time = 0;
 	// Data << "Time (s), LB, LF, ptoL1, ptoL2, RB, RF, ptoR1, ptoR2" << std::endl;
 	while (true) {
-		lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
-        pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
-        pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position
-        pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
-        pros::delay(20);
+		// lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
+        // pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
+        // pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position
+        // pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
+        // pros::delay(20);
 		setDriveMotors();
-		op_wings();
+		// op_wings();
 		// SetGrabber();
 
 		// macroLoad();
 		
 		DrivePTO();
-		Puncher();
-		// op_claw();
+		// Puncher();
+		op_claw();
 		// std::string line = getAllPower();
 		// Data << std::to_string(time) + ", " + line << std::endl;
 		// pros::delay(20);

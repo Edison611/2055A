@@ -136,6 +136,13 @@ void test_auton() {
  * 4. Touch our pole
  */
 void solo_auton() {
+
+    chassis.setPose(55, -50, -35);
+    shoot();
+
+
+
+
     // Releases back wedge
     // grabber.set_value(true);
     // pros::delay(100);
@@ -207,7 +214,6 @@ void solo_auton() {
  * 5. Touch the pole if needed
  */
 void offense_auton() {
-    
 }
 
 //Not Using

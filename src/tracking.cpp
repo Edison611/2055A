@@ -1,3 +1,4 @@
+#include "lemlib/pose.hpp"
 #include "main.h"
 #include "pros/llemu.hpp"
 #include "pros/misc.h"
@@ -18,6 +19,45 @@ void screen() {
         pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
         pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position
         pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
+        pros::delay(20);
+    }
+}
+
+/**
+ * @brief Checks if a value is within a range
+ * 
+ * @param value The value to check
+ * @param target The target value
+ * @param tolerance The tolerance of the value
+ * @return true if the value is within the range
+ * @return false if the value is not within the range
+ */
+bool withinRange(double value, double target, double tolerance) {
+    // Calculate the absolute difference between the value and target
+    double diff = std::abs(value - target);
+    
+    // Check if the absolute difference is less than or equal to the tolerance
+    return diff <= tolerance;
+}
+
+/**
+ * @brief Deploys the claw when the robot is in specific position
+ * 
+ */
+void deploy() {
+    while (true) {
+        lemlib::Pose pose = chassis.getPose();
+        if (withinRange(pose.x, -30, 1) && withinRange(pose.y, -9, 1)) {
+            //claw.set_value(true);
+            controller.rumble(".");
+            pros::delay(100);
+        }
+ 
+        if (withinRange(pose.x, -34, 1) && withinRange(pose.y, 43, 1)) {
+            //claw.set_value(true);
+            controller.rumble(".");
+            pros::delay(100);
+        }
         pros::delay(20);
     }
 }

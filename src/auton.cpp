@@ -3,6 +3,7 @@
 #include "pros/llemu.hpp"
 #include "pros/rtos.hpp"
 #include "pros/vision.h"
+#include <cmath>
 #include <string>
 
 // ------------------------------------------------------------------------------------------------------
@@ -30,6 +31,19 @@ void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
     
 }
 
+/**
+ * @brief Turns to the position on the field
+ * 
+ * @param degrees 
+ * @param timeout 
+ */
+void turnTo(double degrees, int timeout=1000) {
+    lemlib::Pose pose = chassis.getPose();
+    double rad = 3.14159265358979323846 / 180;
+    double x_offset = cos(rad) * 20;
+    double y_offset = sin(rad) * 20;
+    chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout);
+}
 
 /**
  * @brief Turns and Drives straight to a specified coordinate
@@ -214,6 +228,15 @@ void solo_auton() {
  * 5. Touch the pole if needed
  */
 void offense_auton() {
+
+}
+
+void offense_auton_elim() {
+    chassis.setPose(-12, 60, -90);
+    turnTo(90);
+    turnTo(-90);
+    // claw.set_value(true);
+
 }
 
 //Not Using
@@ -227,10 +250,6 @@ void defense_auton() {
 
 }
 
-
-void defense_MOA() {
-   
-}
 
 void testAuton2(){
     chassis.setPose(60, 17, 180);

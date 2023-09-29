@@ -80,6 +80,7 @@ void autonomous() {
 
     // auton_skills();
     // offense_auton();
+    offense_auton_elim();
     // offense_AWP();
     // solo_auton();
     // test_auton();

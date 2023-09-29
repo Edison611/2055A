@@ -39,9 +39,9 @@ void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
  */
 void turnTo(double degrees, int timeout=1000) {
     lemlib::Pose pose = chassis.getPose();
-    double rad = 3.14159265358979323846 / 180;
-    double x_offset = cos(rad) * 20;
-    double y_offset = sin(rad) * 20;
+    double rad = degrees * 3.14159265358979323846 / 180;
+    double x_offset = sin(rad) * 20;
+    double y_offset = cos(rad) * 20;
     chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout);
 }
 
@@ -232,21 +232,27 @@ void offense_auton() {
 }
 
 void offense_auton_elim() {
-    chassis.setPose(-12, 60, -90);
-    turnTo(90);
+    chassis.setPose(-12, 60, 90);
+
+    // Grab middle Triball and score both alliance triball and grabbed triball
+    claw.set_value(true);
+    chassis.moveTo(-40, 60, 1200, 90, true); // Move forward a little
+    chassis.moveTo(-62.5, 40, 1400, 90, true); // Move the the net
+    turnTo(0); // Adjust the back of the bot to face the net
+    chassis.moveTo(-62.5, 28, 1000, 110, true); // Push the Red Tri-Ball into the net
+    chassis.moveTo(-62.5, 35, 1200, 110, true); // Back-Up
+    turnTo(180); // Turn the bot around so the front is facing the net
+    chassis.moveTo(-62.5, 28, 1000, 110); // Push the Green Tri-Ball into the net
+    chassis.moveTo(-55, 42.5, 1200, 110); // Back-Up
+    claw.set_value(false);
+    
+    // Go for center 3 triballs
+    chassis.turnTo(-12, 38, 900); // 
+    chassis.moveTo(-12, 9, 2200, 90); // Move towards the Middle Back Tr-Ball
+    claw.set_value(true);
+    pros::delay(400);
     turnTo(-90);
-    // claw.set_value(true);
-
-}
-
-//Not Using
-void offense_AWP() {
-    
-
-}
-
-void defense_auton() {
-    
+    chassis.moveTo(-47, 10, 1500, 110);
 
 }
 

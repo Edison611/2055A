@@ -12,8 +12,6 @@
 #include "pros/rtos.h"
 #include "pros/rtos.hpp"
 #include "pros/vision.h"
-#include <fstream>
-#include <ostream>
 #include <string>
 
 
@@ -36,7 +34,7 @@ void initialize() {
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    pros::Task holding(cata_hold);
+    // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
     // pros::Task print_task(print_info);
     // pros::Task MatchLoads(SetMatchLoad);
@@ -75,12 +73,14 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
+
 void autonomous() {
 
     // chatgpt();
 
     // auton_skills();
     // offense_auton();
+    offense_auton_elim();
     // offense_AWP();
     // solo_auton();
     // test_auton();

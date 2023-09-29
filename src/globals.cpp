@@ -151,7 +151,7 @@ lemlib::ChassisController_t angularController {
 lemlib::OdomSensors_t sensors {
     nullptr, // vertical tracking wheel 1
     nullptr, // vertical tracking wheel 2
-    &back_tracking_wheel, // horizontal tracking wheel 1
+    nullptr, // horizontal tracking wheel 1
     nullptr, // horizontal tracking wheel 2
     &inertial_sensor // inertial sensor
 };

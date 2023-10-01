@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Offense Auton",
+    "project_name": "driveFwdTest",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -333,8 +333,8 @@
     },
     "upload_options": {
       "slot": 4,
-      "icon": "pizza",
-      "description": "Offense Auton Elim Code"
+      "icon": "robot",
+      "description": "Drive Code"
     }
   }
 }

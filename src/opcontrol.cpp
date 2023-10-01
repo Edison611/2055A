@@ -47,33 +47,33 @@ void my_opcontrol() {
     driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
 	//chassis.setPose(0, 0, 0);
 	// chassis.setPose(-15, 59, -90);
-	pros::Task deploy_task(deploy);
+	// pros::Task deploy_task(deploy);
 
-	chassis.follow("path5.txt", 35000, 6);
+	// chassis.follow("path5.txt", 35000, 6);
 
 	// std::ofstream Data;
     // Data.open("/usd/ROBOT/log.txt", std::ios_base::app);
 	// double time = 0;
 	// Data << "Time (s), LB, LF, ptoL1, ptoL2, RB, RF, ptoR1, ptoR2" << std::endl;
-	// while (true) {
-	// 	// lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
-    //     // pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
-    //     // pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position
-    //     // pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
-    //     // pros::delay(20);
-	// 	setDriveMotors();
-	// 	// op_wings();
-	// 	DrivePTO();
-	// 	// Puncher();
-	// 	op_claw();
-	// 	// std::string line = getAllPower();
-	// 	// Data << std::to_string(time) + ", " + line << std::endl;
-	// 	// pros::delay(20);
-	// 	// time = time + 0.02;
-	// 	// if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
-	// 	// 	break;
-	// 	// }
-	// }
+	while (true) {
+		// lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
+        // pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
+        // pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position
+        // pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
+        // pros::delay(20);
+		setDriveMotors();
+		op_wings();
+		//DrivePTO();
+		// Puncher();
+		op_claw();
+		// std::string line = getAllPower();
+		// Data << std::to_string(time) + ", " + line << std::endl;
+		// pros::delay(20);
+		// time = time + 0.02;
+		// if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
+		// 	break;
+		// }
+	}
 	// Data << "END" << std::endl;
     // Data.close();
 }

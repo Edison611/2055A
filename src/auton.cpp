@@ -31,6 +31,13 @@ void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
     
 }
 
+void driveFwd(double inches, int timeout=1000, float maxSpeed = (200.0F)) {
+    lemlib::Pose pose = chassis.getPose();
+    double x_new = inches * sin(pose.theta);
+    double y_new = inches * cos(pose.theta);
+    chassis.moveTo(pose.x + x_new, pose.y + y_new, timeout, maxSpeed);
+}
+
 /**
  * @brief Turns to the position on the field
  * 
@@ -151,71 +158,12 @@ void test_auton() {
  */
 void solo_auton() {
 
-    chassis.setPose(55, -50, -35);
-    shoot();
+    chassis.setPose(-49.25, -59, 61);
+    // shoot();
+    wings.set_value(true);
+    chassis.moveTo(-48.25, -58, 1000);
+    turnTo(-90);
 
-
-
-
-    // Releases back wedge
-    // grabber.set_value(true);
-    // pros::delay(100);
-    // grabber.set_value(false);
-    // pros::delay(100);
-
-    // Drives to net and shoots alliance triball
-    chassis.setPose(56, -33, 90);
-    chassis.moveTo(40, -30, 2000, 90, true); //Previous: 27
-    chassis.turnTo(30, 0, 800, true); //Previous: 26
-    // wings.set_value(true);
-    chassis.moveTo(30, -13, 1500, 75, true); //Previous: 26
-    chassis.turnTo(27, 0, 800, true);
-    setDrive(-15, 20);
-    pros::delay(150);
-    setDrive(0, 0);
-    pros::delay(100);
-    // wings.set_value(false);
-    shoot();
-    pros::delay(300);
-
-    // Drives to corner and takes triball out
-    
-    chassis.moveTo(30, -21, 3000, 70);
-    chassis.turnTo(82, -71, 1000, true);
-    chassis.moveTo(64, -49, 3000, 70, true);
-    // pros::delay(1000);
-
-    grabber.set_value(true);
-    pros::delay(500);
-    chassis.turnTo(30, -65, 1000);
-    // chassis.moveTo(51, -55, 1500, 80);
-    grabber.set_value(false);
-
-    // Touch the pole for AWP
-
-    // Goes to lower pole
-    chassis.moveTo(65.5, -32, 2000, 70, true);
-    chassis.turnTo(65.5, 0, 1000, true);
-    chassis.moveTo(65.5, -18, 2000, 70, true);
-    grabber.set_value(true);
-
-
-    // Goes to center and touch pole (OLD)
-    // chassis.turnTo(40, -20, 1000);
-    // chassis.moveTo(40, -20, 2000, 70);
-    // chassis.turnTo(53, 0, 1000, true);
-    // chassis.moveTo(45, -15, 1000, 70, true);
-    // chassis.turnTo(55, 0, 1000, true);
-    // grabber.set_value(true);
-    // setDrive(25, -25);
-    // pros::delay(250);
-    // setDrive(0, 0);
-    // setDrive(-15, -15);
-    // pros::delay(250);
-    // setDrive(0, 0);
-
-    // Suspends task (We need to make sure that it gets suspended before driver)
-    // hold_auton.suspend();
 }
 
 /**

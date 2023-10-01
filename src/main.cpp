@@ -80,9 +80,9 @@ void autonomous() {
 
     // auton_skills();
     // offense_auton();
-    offense_auton_elim();
+    // offense_auton_elim();
     // offense_AWP();
-    // solo_auton();
+    solo_auton();
     // test_auton();
     // defense_auton();
     // defense_MOA();
@@ -104,5 +104,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+    driveFwd(24, 3000);
     my_opcontrol();
 }

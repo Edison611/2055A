@@ -75,18 +75,16 @@ void competition_initialize() {}
  */
 
 void autonomous() {
-
-    // chatgpt();
+    pros::Task log_task(log_data);
 
     // auton_skills();
     // offense_auton();
-    offense_auton_elim();
+    // offense_auton_elim();
     // offense_AWP();
     // solo_auton();
     // test_auton();
-    // defense_auton();
+    defense_auton_elim();
     // defense_MOA();
-    // testAuton2();
 
 }
 

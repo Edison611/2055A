@@ -134,7 +134,9 @@ void triballVision() {
 }
 
 void test_auton() {
-
+    chassis.setPose(60, 17, 180);
+    chassis.moveTo(54.5, 30, 10000, 50);
+    chassis.moveTo(40, 30, 10000, 50);
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -218,6 +220,45 @@ void solo_auton() {
     // hold_auton.suspend();
 }
 
+void defense_auton() {
+    // Get alliance triball into net
+    chassis.setPose(-48, -56, 135);
+    chassis.moveTo(-60, -33, 1500, 90, true);
+    pros::delay(2000);
+
+    // Go grab the corner triball out of the matchload zone
+    chassis.moveTo(-48, -56, 1500, 90);
+
+    // Move to touch the middle pole
+    chassis.moveTo(-24, -60, 1500, 90);
+    turnTo(90);
+    chassis.moveTo(-10, -60, 1500, 90);
+}
+
+/**
+ * @brief defensive autonomous route
+ * TESTING IN PROGRESS
+ */
+void defense_auton_elim() {
+    chassis.setPose(-36, -55, 0);
+    claw.set_value(true);
+    chassis.moveTo(-36, -9, 2000, 90);
+    turnTo(120);
+    turnTo(-90);    
+    chassis.moveTo(-44, -9, 1000, 80);
+    chassis.moveTo(-25, -15, 2000, 60); 
+    chassis.turnTo(-8, -2, 1000);
+    claw.set_value(false);
+    chassis.moveTo(-10, -5, 1000, 60);
+    claw.set_value(true);
+    // chassis.turnTo(-8, -12, 1000);
+    chassis.turnTo(0, -10, 1000);
+    chassis.moveTo(-2, -10, 1000, 60);
+    
+
+
+}
+
 /**
  * @brief offensive autonomous
  * 
@@ -256,9 +297,3 @@ void offense_auton_elim() {
 
 }
 
-
-void testAuton2(){
-    chassis.setPose(60, 17, 180);
-    chassis.moveTo(54.5, 30, 10000, 50);
-    chassis.moveTo(40, 30, 10000, 50);
-}

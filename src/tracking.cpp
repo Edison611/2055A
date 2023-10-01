@@ -6,7 +6,9 @@
 #include "pros/rtos.h"
 #include "pros/rtos.hpp"
 #include <string>
-
+#include <iostream>
+#include <ostream>
+#include <fstream>
 
 /**
  * @brief Screen task to print the position of the robot using Lemlib
@@ -21,6 +23,32 @@ void screen() {
         pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
         pros::delay(20);
     }
+}
+
+/**
+ * @brief Log data for robots position and heading to txt file
+ * 
+ */
+void log_data() {
+    std::string date = currentDateTime() + ".txt";
+    std::string filepath = "/usd/ROBOT/" + date;
+
+    std::ofstream Data (filepath.c_str());
+    // Data.open("/usd/2055/" + date, std::ios_base::app);
+	double time = 0;
+	Data << "X, Y, θ" << std::endl;
+	while (true) {
+        if (time >= 10000) {
+            break;  
+        }
+        lemlib::Pose pose = chassis.getPose();
+        std::string line = std::to_string(pose.x) + ", " + std::to_string(pose.y) + ", " + std::to_string(pose.theta);
+		Data << line << std::endl;
+		pros::delay(50);
+        time += 50;
+	}
+	Data << "END" << std::endl;
+    Data.close();
 }
 
 /**

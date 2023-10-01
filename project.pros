@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Offense Auton",
+    "project_name": "Defense Auton",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -332,9 +332,9 @@
       }
     },
     "upload_options": {
-      "slot": 4,
-      "icon": "pizza",
-      "description": "Offense Auton Elim Code"
+      "slot": 3,
+      "icon": "X",
+      "description": "My PROS Project"
     }
   }
 }

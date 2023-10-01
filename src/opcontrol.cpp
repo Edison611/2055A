@@ -46,10 +46,8 @@ void my_opcontrol() {
     driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
     driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
 	//chassis.setPose(0, 0, 0);
-	// chassis.setPose(-15, 59, -90);
-	pros::Task deploy_task(deploy);
 
-	chassis.follow("path5.txt", 35000, 6);
+	// chassis.follow("path5.txt", 35000, 6);
 
 	// std::ofstream Data;
     // Data.open("/usd/ROBOT/log.txt", std::ios_base::app);

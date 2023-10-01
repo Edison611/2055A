@@ -1,5 +1,6 @@
 void screen();
 void deploy();
+void log_data();
 
 extern bool loadMacro;
 void macroLoad();

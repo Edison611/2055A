@@ -8,24 +8,25 @@
         "c:\\Users\\yangx\\Downloads\\Programming\\Github Desktop\\2055A\\2055A\\include",
         "c:\\Users\\Admin\\Documents\\Vex\\2055A\\include",
         "c:\\Users\\Admin\\Documents\\Vex\\Leopard2A7\\include",
-        "c:\\Users\\Admin\\Documents\\Vex\\RobotV2\\include"
+        "c:\\Users\\Admin\\Documents\\Vex\\RobotV2\\include",
+        "/Users/rohantuli/Documents/GitHub/2055A/include"
       ],
       "defines": [
         "_DEBUG",
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "/Users/edisony611/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
+      "compilerPath": "/Users/rohantuli/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
       "cStandard": "c17",
       "cppStandard": "c++17",
       "intelliSenseMode": "gcc-arm",
-      "compileCommands": "/Users/edisony611/Documents/VexRobotics/2023-2024/2055A/compile_commands.json",
+      "compileCommands": "/Users/rohantuli/Documents/GitHub/2055A/compile_commands.json",
       "macFrameworkPath": [
         "/System/Library/Frameworks"
       ],
       "browse": {
         "path": [
-          "/Users/edisony611/Documents/VexRobotics/2023-2024/2055A"
+          "/Users/rohantuli/Documents/GitHub/2055A"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

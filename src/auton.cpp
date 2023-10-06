@@ -31,6 +31,13 @@ void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
     
 }
 
+void driveFwd(double inches, int timeout=1000, float maxSpeed = (200.0F)) {
+    lemlib::Pose pose = chassis.getPose();
+    double x_new = inches * sin(pose.theta);
+    double y_new = inches * cos(pose.theta);
+    chassis.moveTo(pose.x + x_new, pose.y + y_new, timeout, maxSpeed);
+}
+
 /**
  * @brief Turns to the position on the field
  * 
@@ -153,8 +160,11 @@ void test_auton() {
  */
 void solo_auton() {
 
-    chassis.setPose(55, -50, -35);
-    shoot();
+    chassis.setPose(-49.25, -59, 61);
+    // shoot();
+    wings.set_value(true);
+    chassis.moveTo(-48.25, -58, 1000);
+    turnTo(-90);
 
     // Drives to corner and takes triball out
     

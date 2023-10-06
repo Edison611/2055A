@@ -102,5 +102,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+    driveFwd(24, 3000);
     my_opcontrol();
 }

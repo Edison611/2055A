@@ -47,7 +47,7 @@ int COLOR_SENSOR_PORT = 12;
 int DISTANCE_SENSOR_PORT = 15;
 
 char CATA_RATCHET_PORT = 'F';
-char WING_PORT = 'C';
+char WING_PORT = 'D';
 // char GRABBER_PORT = 'D';
 char DRIVEPTO_PORT = 'A';
 char CLAW_PORT = 'B';

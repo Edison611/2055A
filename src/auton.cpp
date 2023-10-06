@@ -141,7 +141,9 @@ void triballVision() {
 }
 
 void test_auton() {
-
+    chassis.setPose(60, 17, 180);
+    chassis.moveTo(54.5, 30, 10000, 50);
+    chassis.moveTo(40, 30, 10000, 50);
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -151,9 +153,9 @@ void test_auton() {
 /**
  * @brief solo autononmous for AWP
  *
- * 1. Drive to midline and shoot triball across the field to our net using catapult
- * 2. If there is time, pick up a triball and shoot it across again
- * 3. Go to the corner and take the triball out of the corner
+ * 1. Shoot triball across the field to our net using catapult
+ * 2. If there is time, push middle triballs over the net
+ * 3. Go to the corner and take the triball out of the corner using wings
  * 4. Touch our pole
  */
 void solo_auton() {
@@ -164,6 +166,74 @@ void solo_auton() {
     chassis.moveTo(-48.25, -58, 1000);
     turnTo(-90);
 
+    // Drives to corner and takes triball out
+    
+    // chassis.moveTo(30, -21, 3000, 70);
+    // chassis.turnTo(82, -71, 1000, true);
+    // chassis.moveTo(64, -49, 3000, 70, true);
+
+    // chassis.turnTo(30, -65, 1000);
+
+
+    // Touch the pole for AWP
+
+    // Goes to lower pole
+    // chassis.moveTo(65.5, -32, 2000, 70, true);
+    // chassis.turnTo(65.5, 0, 1000, true);
+    // chassis.moveTo(65.5, -18, 2000, 70, true);
+    // grabber.set_value(true);
+
+
+    // Goes to center and touch pole (OLD)
+    // chassis.turnTo(40, -20, 1000);
+    // chassis.moveTo(40, -20, 2000, 70);
+    // chassis.turnTo(53, 0, 1000, true);
+    // chassis.moveTo(45, -15, 1000, 70, true);
+    // chassis.turnTo(55, 0, 1000, true);
+    // grabber.set_value(true);
+    // setDrive(25, -25);
+    // pros::delay(250);
+    // setDrive(0, 0);
+    // setDrive(-15, -15);
+    // pros::delay(250);
+    // setDrive(0, 0);  
+}
+
+void defense_auton() {
+    // Get alliance triball into net
+    chassis.setPose(-48, -56, 135);
+    chassis.moveTo(-60, -33, 1500, 90, true);
+    pros::delay(2000);
+
+    // Go grab the corner triball out of the matchload zone
+    chassis.moveTo(-48, -56, 1500, 90);
+
+    // Move to touch the middle pole
+    chassis.moveTo(-24, -60, 1500, 90);
+    turnTo(90);
+    chassis.moveTo(-10, -60, 1500, 90);
+}
+
+/**
+ * @brief defensive autonomous route
+ * TESTING IN PROGRESS
+ */
+void defense_auton_elim() {
+    chassis.setPose(-36, -55, 0);
+    claw.set_value(true);
+    chassis.moveTo(-36, -9, 2000, 90);
+    turnTo(120);
+    turnTo(-90);    
+    chassis.moveTo(-44, -9, 1000, 80);
+    chassis.moveTo(-25, -15, 2000, 60); 
+    chassis.turnTo(-8, -2, 1000);
+    claw.set_value(false);
+    chassis.moveTo(-10, -5, 1000, 60);
+    claw.set_value(true);
+    // chassis.turnTo(-8, -12, 1000);
+    chassis.turnTo(0, -10, 1000);
+    chassis.moveTo(-2, -10, 1000, 60);
+    
 }
 
 /**
@@ -185,7 +255,9 @@ void offense_auton_elim() {
     // Grab middle Triball and score both alliance triball and grabbed triball
     claw.set_value(true);
     chassis.moveTo(-40, 60, 1200, 90, true); // Move forward a little
+    wings.set_value(true);
     chassis.moveTo(-62.5, 40, 1400, 90, true); // Move the the net
+    wings.set_value(false);
     turnTo(0); // Adjust the back of the bot to face the net
     chassis.moveTo(-62.5, 28, 1000, 110, true); // Push the Red Tri-Ball into the net
     chassis.moveTo(-62.5, 35, 1200, 110, true); // Back-Up
@@ -204,9 +276,3 @@ void offense_auton_elim() {
 
 }
 
-
-void testAuton2(){
-    chassis.setPose(60, 17, 180);
-    chassis.moveTo(54.5, 30, 10000, 50);
-    chassis.moveTo(40, 30, 10000, 50);
-}

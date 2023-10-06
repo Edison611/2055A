@@ -81,6 +81,7 @@ void opcontrol(void);
 #include "auton.hpp"
 #include "tracking.hpp"
 #include "pure-pursuit.hpp"
+#include "helper.hpp"
 #endif
 
 #endif  // _PROS_MAIN_H_

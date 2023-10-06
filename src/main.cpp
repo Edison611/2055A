@@ -27,10 +27,10 @@ void initialize() {
     // driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
-        ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
+    ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-        ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
-        ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
+    ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
+    ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
@@ -75,8 +75,7 @@ void competition_initialize() {}
  */
 
 void autonomous() {
-
-    // chatgpt();
+    pros::Task log_task(log_data);
 
     // auton_skills();
     // offense_auton();
@@ -84,9 +83,8 @@ void autonomous() {
     // offense_AWP();
     solo_auton();
     // test_auton();
-    // defense_auton();
+    // defense_auton_elim();
     // defense_MOA();
-    // testAuton2();
 
 }
 

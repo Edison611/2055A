@@ -81,7 +81,7 @@ bin/tracking.cpp.o: src/tracking.cpp include/lemlib/pose.hpp \
  include/lemlib/chassis/trackingWheel.hpp include/pros/adi.hpp \
  include/pros/rotation.hpp include/drive.hpp include/subsystems.hpp \
  include/opcontrol.hpp include/auton.hpp include/tracking.hpp \
- include/pure-pursuit.hpp include/pros/llemu.hpp
+ include/pure-pursuit.hpp include/helper.hpp include/pros/llemu.hpp
 include/lemlib/pose.hpp:
 include/main.h:
 include/api.h:
@@ -249,4 +249,5 @@ include/opcontrol.hpp:
 include/auton.hpp:
 include/tracking.hpp:
 include/pure-pursuit.hpp:
+include/helper.hpp:
 include/pros/llemu.hpp:

@@ -27,10 +27,10 @@ void initialize() {
     // driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
-        ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
+    ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-        ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
-        ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
+    ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
+    ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
@@ -81,9 +81,9 @@ void autonomous() {
     // offense_auton();
     // offense_auton_elim();
     // offense_AWP();
-    // solo_auton();
+    solo_auton();
     // test_auton();
-    defense_auton_elim();
+    // defense_auton_elim();
     // defense_MOA();
 
 }

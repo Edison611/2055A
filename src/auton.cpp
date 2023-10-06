@@ -146,9 +146,9 @@ void test_auton() {
 /**
  * @brief solo autononmous for AWP
  *
- * 1. Drive to midline and shoot triball across the field to our net using catapult
- * 2. If there is time, pick up a triball and shoot it across again
- * 3. Go to the corner and take the triball out of the corner
+ * 1. Shoot triball across the field to our net using catapult
+ * 2. If there is time, push middle triballs over the net
+ * 3. Go to the corner and take the triball out of the corner using wings
  * 4. Touch our pole
  */
 void solo_auton() {
@@ -156,50 +156,22 @@ void solo_auton() {
     chassis.setPose(55, -50, -35);
     shoot();
 
-
-
-
-    // Releases back wedge
-    // grabber.set_value(true);
-    // pros::delay(100);
-    // grabber.set_value(false);
-    // pros::delay(100);
-
-    // Drives to net and shoots alliance triball
-    chassis.setPose(56, -33, 90);
-    chassis.moveTo(40, -30, 2000, 90, true); //Previous: 27
-    chassis.turnTo(30, 0, 800, true); //Previous: 26
-    // wings.set_value(true);
-    chassis.moveTo(30, -13, 1500, 75, true); //Previous: 26
-    chassis.turnTo(27, 0, 800, true);
-    setDrive(-15, 20);
-    pros::delay(150);
-    setDrive(0, 0);
-    pros::delay(100);
-    // wings.set_value(false);
-    shoot();
-    pros::delay(300);
-
     // Drives to corner and takes triball out
     
-    chassis.moveTo(30, -21, 3000, 70);
-    chassis.turnTo(82, -71, 1000, true);
-    chassis.moveTo(64, -49, 3000, 70, true);
-    // pros::delay(1000);
+    // chassis.moveTo(30, -21, 3000, 70);
+    // chassis.turnTo(82, -71, 1000, true);
+    // chassis.moveTo(64, -49, 3000, 70, true);
 
-    grabber.set_value(true);
-    pros::delay(500);
-    chassis.turnTo(30, -65, 1000);
-    // chassis.moveTo(51, -55, 1500, 80);
-    grabber.set_value(false);
+    // chassis.turnTo(30, -65, 1000);
+
 
     // Touch the pole for AWP
 
     // Goes to lower pole
-    chassis.moveTo(65.5, -32, 2000, 70, true);
-    chassis.turnTo(65.5, 0, 1000, true);
-    chassis.moveTo(65.5, -18, 2000, 70, true);
-    grabber.set_value(true);
+    // chassis.moveTo(65.5, -32, 2000, 70, true);
+    // chassis.turnTo(65.5, 0, 1000, true);
+    // chassis.moveTo(65.5, -18, 2000, 70, true);
+    // grabber.set_value(true);
 
 
     // Goes to center and touch pole (OLD)
@@ -214,10 +186,7 @@ void solo_auton() {
     // setDrive(0, 0);
     // setDrive(-15, -15);
     // pros::delay(250);
-    // setDrive(0, 0);
-
-    // Suspends task (We need to make sure that it gets suspended before driver)
-    // hold_auton.suspend();
+    // setDrive(0, 0);  
 }
 
 void defense_auton() {
@@ -255,8 +224,6 @@ void defense_auton_elim() {
     chassis.turnTo(0, -10, 1000);
     chassis.moveTo(-2, -10, 1000, 60);
     
-
-
 }
 
 /**
@@ -278,7 +245,9 @@ void offense_auton_elim() {
     // Grab middle Triball and score both alliance triball and grabbed triball
     claw.set_value(true);
     chassis.moveTo(-40, 60, 1200, 90, true); // Move forward a little
+    wings.set_value(true);
     chassis.moveTo(-62.5, 40, 1400, 90, true); // Move the the net
+    wings.set_value(false);
     turnTo(0); // Adjust the back of the bot to face the net
     chassis.moveTo(-62.5, 28, 1000, 110, true); // Push the Red Tri-Ball into the net
     chassis.moveTo(-62.5, 35, 1200, 110, true); // Back-Up

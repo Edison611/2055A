@@ -158,13 +158,13 @@ bool loadMacro = false;
 void macroLoad() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
         if (loadMacro == false) {
-            cata_ratchet.set_value(true);
+            //cata_ratchet.set_value(true);
             loadMacro = true;
         }
 
         else if (loadMacro == true) {
             loadMacro = false;
-            cata_ratchet.set_value(false);
+            //cata_ratchet.set_value(false);
         }
     }
 }
@@ -176,17 +176,14 @@ void macroLoad() {
 void SetMatchLoad() {
     while (true) {
         if (loadMacro == true) {
-            bool launch = cata_ball_detection();
-            if (launch == true) {
-                pros::delay(100);
-                // if (cata_ball_detection() == true) {
-                //     pros::delay(150);
-                //     shoot();
-                // }
-                // pros::delay(700);
-                shoot();
+            shoot();
+            pros::delay(1000);
+            // bool launch = cata_ball_detection();
+            // if (launch == true) {
+            //     pros::delay(100);
+            //     shoot();
                 
-            }
+            // }
         }
         pros::delay(10);
     }
@@ -218,7 +215,7 @@ void print_info() {
         time += 100;
         
         // pros::lcd::set_text(1, "Switch: " + std::to_string(cata_limit_switch.get_value()));
-        controller.print(1, 0, "Arm: (B), Wing: (X)");
+        controller.print(1, 0, "Arm: (R1), Wing: (X)");
         pros::delay(50);
         time += 50;
 

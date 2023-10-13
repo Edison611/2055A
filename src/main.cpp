@@ -34,10 +34,10 @@ void initialize() {
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    // pros::Task holding(cata_hold);
+    pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
-    // pros::Task print_task(print_info);
-    // pros::Task MatchLoads(SetMatchLoad);
+    pros::Task print_task(print_info);
+    pros::Task MatchLoads(SetMatchLoad);
     
 
     pros::delay(200);
@@ -102,6 +102,5 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    driveFwd(24, 3000);
     my_opcontrol();
 }

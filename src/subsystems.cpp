@@ -23,6 +23,7 @@ void DrivePTO() {
             // if (abs(ptoL1.get_actual_velocity()) > 0) 
             currentDrivePTO = true;
             drivePTO.set_value(true);
+            // cata_shoot = true;
 
             ptoL1.set_brake_mode(MOTOR_BRAKE_BRAKE);
             ptoL2.set_brake_mode(MOTOR_BRAKE_BRAKE);
@@ -34,12 +35,15 @@ void DrivePTO() {
         else if (currentDrivePTO == true) {
             currentDrivePTO = false;
             drivePTO.set_value(false);
+            
 
             ptoL1.set_brake_mode(MOTOR_BRAKE_COAST);
             ptoL2.set_brake_mode(MOTOR_BRAKE_COAST);
 
             ptoR1.set_brake_mode(MOTOR_BRAKE_COAST);
             ptoR2.set_brake_mode(MOTOR_BRAKE_COAST);
+            pros::delay(500);
+            cata_shoot = true;
         }
     }
 }

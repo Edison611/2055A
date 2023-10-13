@@ -63,8 +63,9 @@ void my_opcontrol() {
         // pros::delay(20);
 		setDriveMotors();
 		op_wings();
-		//DrivePTO();
+		DrivePTO();
 		// Puncher();
+		macroLoad();
 		op_claw();
 		// std::string line = getAllPower();
 		// Data << std::to_string(time) + ", " + line << std::endl;

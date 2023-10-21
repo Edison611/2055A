@@ -153,7 +153,7 @@ bool ball_detection_line() {
  * @brief variable that toggles between true or false
  * 
  */
-bool loadMacro = false;
+bool loadMacro = true;
 
 void macroLoad() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {

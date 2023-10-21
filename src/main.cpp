@@ -75,13 +75,13 @@ void competition_initialize() {}
  */
 
 void autonomous() {
-    pros::Task log_task(log_data);
-
+    // pros::Task log_task(log_data);
+    driver_skills();
     // auton_skills();
     // offense_auton();
     // offense_auton_elim();
     // offense_AWP();
-    solo_auton();
+    // solo_auton();
     // test_auton();
     // defense_auton_elim();
     // defense_MOA();

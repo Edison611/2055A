@@ -24,13 +24,13 @@
 // - Use numbers if it is in a port
 // - Use letters if it is a triport
 // ------------------------------------------------------------------------------------------------------
-int MOTOR_LB = 10;
-int MOTOR_LF = 9;
-int MOTOR_PTOL1 = 23;
-int MOTOR_PTOL2 = 24;
+int MOTOR_LB = 12;
+int MOTOR_LF = 11;
+int MOTOR_PTOL1 = 2;
+int MOTOR_PTOL2 = 1;
 
-int MOTOR_RB = 1;
-int MOTOR_RF = 2;
+int MOTOR_RB = 3;
+int MOTOR_RF = 13;
 int MOTOR_PTOR1 = 19;
 int MOTOR_PTOR2 = 20;
 

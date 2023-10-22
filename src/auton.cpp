@@ -36,7 +36,7 @@ void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
  * 
  * @param inches 
  * @param timeout 
- * @param maxSpeed 
+ * @param maxSpeed
  */
 void driveFwd(double inches, int timeout=1000, float maxSpeed = (200.0F)) {
     lemlib::Pose pose = chassis.getPose();
@@ -203,7 +203,8 @@ void driver_skills() {
 
 void auton_skills() {
 
-    chassis.setPose(-49.25, -59, 61);
+    // chassis.setPose(-49.25, -59, 61);
+    chassis.setPose(46, 58, -90);
 
     int shots = 40; // How many shots to take
     int delay = 1100; // The delay between each shot
@@ -226,8 +227,13 @@ void auton_skills() {
 
     //     pros::delay(delay);
     // }
+    pros::Task deploy_task(deploy);
+    chassis.follow("curvetest9.txt", 6000, 10.0);
+    wings.set_value(true);
+    chassis.moveTo(-10, 0, 2000);
+    chassis.moveTo(-100, 0, 5000);
 
-    setDrive(0, 0);
+    // setDrive(0, 0);
 }
 
 

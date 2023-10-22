@@ -36,7 +36,7 @@ void initialize() {
 
     // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
-    pros::Task print_task(print_info);
+    // pros::Task print_task(print_info);
     // pros::Task MatchLoads(SetMatchLoad);
     
 
@@ -77,8 +77,8 @@ void competition_initialize() {}
 void autonomous() {
     // pros::Task log_task(log_data);
     //driver_skills();
-    // auton_skills();
-    offense_auton();
+    auton_skills();
+    // offense_auton();
     // offense_auton_elim();
     // offense_AWP();
     // solo_auton();
@@ -102,5 +102,10 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    my_opcontrol();
-}
+   // my_opcontrol();
+   pros::lcd::set_text(1, "Hello");
+   chassis.setPose(46, 58, -90);
+   pros::delay(1000);
+   //chassis.follow("curvetest8.txt", 20000, 10.0);
+   my_opcontrol();
+}   

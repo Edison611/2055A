@@ -75,17 +75,17 @@ bool withinRange(double value, double target, double tolerance) {
 void deploy() {
     while (true) {
         lemlib::Pose pose = chassis.getPose();
-        if (withinRange(pose.x, -30, 1) && withinRange(pose.y, -9, 1)) {
-            //claw.set_value(true);
+        if (withinRange(pose.x, -14, 1) && withinRange(pose.y, 13, 1)) {
+            wings.set_value(true);
             controller.rumble(".");
             pros::delay(100);
         }
  
-        if (withinRange(pose.x, -34, 1) && withinRange(pose.y, 43, 1)) {
-            //claw.set_value(true);
-            controller.rumble(".");
-            pros::delay(100);
-        }
+        // if (withinRange(pose.x, -34, 1) && withinRange(pose.y, 43, 1)) {
+        //     //claw.set_value(true);
+        //     controller.rumble(".");
+        //     pros::delay(100);
+        // }
         pros::delay(20);
     }
 }

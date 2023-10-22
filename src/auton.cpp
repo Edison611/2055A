@@ -203,7 +203,7 @@ void driver_skills() {
 
 void auton_skills() {
 
-    chassis.setPose(-61, 32, 0);
+    chassis.setPose(-49.25, -59, 61);
 
     int shots = 40; // How many shots to take
     int delay = 1100; // The delay between each shot
@@ -211,36 +211,21 @@ void auton_skills() {
     float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
     int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
 
-    // Start Code
+    // for (int i = 0; i < shots; i++) {
+    //     shoot();
+    //     pros::lcd::set_text(1, "time: " + std::to_string(i));
+    //     if (inertial_sensor.get_rotation() >= x) {
+    //         setDrive(5, 15);
+    //     }
+    //     else if (inertial_sensor.get_rotation() <= x-2) {
+    //         setDrive(15, 5);
+    //     }
+    //     else {
+    //         setDrive(15, 10);
+    //     }
 
-    // chassis.moveTo(-61, 41, 1000);
-    // chassis.turnTo(-73, 68, 500);
-
-    // setDrive(45, 35);
-    // pros::delay(100);
-    int x = inertial_sensor.get_rotation();
-    
-    
- 
-    // grabber.set_value(true);
-    pros::delay(50);
-
-
-    for (int i = 0; i < shots; i++) {
-        shoot();
-        // pros::lcd::set_text(1, "time: " + std::to_string(i));
-        // if (inertial_sensor.get_rotation() >= x) {
-        //     setDrive(5, 15);
-        // }
-        // else if (inertial_sensor.get_rotation() <= x-2) {
-        //     setDrive(15, 5);
-        // }
-        // else {
-        //     setDrive(15, 10);
-        // }
-
-        pros::delay(delay);
-    }
+    //     pros::delay(delay);
+    // }
 
     setDrive(0, 0);
 }

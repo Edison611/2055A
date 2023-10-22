@@ -61,7 +61,7 @@ void chatgpt() {
 
     // Index of the current waypoint
     int currentIndex = 0;
-
+    
     // Loop for pure pursuit
     while (currentIndex < path.size()) {
         double targetX, targetY;
@@ -94,9 +94,9 @@ void chatgpt() {
         setDrive(leftPower, rightPower);
 
         // Update robot's position and heading (replace with your own odometry code)
-        robotX += 0.1 * cos(robotHeading);
-        robotY += 0.1 * sin(robotHeading);
-        robotHeading += curvature * 0.1;  // Assuming constant curvature for simplicity
+        // robotX += 0.1 * cos(robotHeading);
+        // robotY += 0.1 * sin(robotHeading);
+        // robotHeading += curvature * 0.1;  // Assuming constant curvature for simplicity
 
         // Check if the robot is close enough to the current waypoint to move to the next
         if (distance(robotX, robotY, path[currentIndex].first, path[currentIndex].second) < 0.5) {

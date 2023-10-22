@@ -74,6 +74,7 @@ void my_opcontrol() {
 		// if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
 		// 	break;
 		// }
+		pros::delay(10);
 	}
 	// Data << "END" << std::endl;
     // Data.close();

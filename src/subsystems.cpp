@@ -25,11 +25,11 @@ void DrivePTO() {
             drivePTO.set_value(true);
             // cata_shoot = true;
 
-            ptoL1.set_brake_mode(MOTOR_BRAKE_BRAKE);
-            ptoL2.set_brake_mode(MOTOR_BRAKE_BRAKE);
+            ptoL1.set_brake_mode(MOTOR_BRAKE_COAST);
+            ptoL2.set_brake_mode(MOTOR_BRAKE_COAST);
 
-            ptoR1.set_brake_mode(MOTOR_BRAKE_BRAKE);
-            ptoR2.set_brake_mode(MOTOR_BRAKE_BRAKE);
+            ptoR1.set_brake_mode(MOTOR_BRAKE_COAST);
+            ptoR2.set_brake_mode(MOTOR_BRAKE_COAST);
         }
         
         else if (currentDrivePTO == true) {

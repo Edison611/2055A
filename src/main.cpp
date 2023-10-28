@@ -34,7 +34,7 @@ void initialize() {
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    // pros::Task holding(cata_hold);
+    pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
     // pros::Task print_task(print_info);
     // pros::Task MatchLoads(SetMatchLoad);

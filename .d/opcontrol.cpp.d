@@ -77,11 +77,12 @@ bin/opcontrol.cpp.o: src/opcontrol.cpp include/main.h include/api.h \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h include/pros/link.hpp include/pros/link.h \
  include/globals.hpp include/lemlib/chassis/chassis.hpp \
- include/pros/motors.hpp include/pros/imu.hpp \
+ include/pros/motors.hpp include/pros/imu.hpp include/lemlib/asset.hpp \
  include/lemlib/chassis/trackingWheel.hpp include/pros/adi.hpp \
- include/pros/rotation.hpp include/lemlib/pose.hpp include/drive.hpp \
- include/subsystems.hpp include/opcontrol.hpp include/auton.hpp \
- include/tracking.hpp include/pure-pursuit.hpp include/helper.hpp
+ include/pros/rotation.hpp include/lemlib/pose.hpp \
+ include/lemlib/logger.hpp include/drive.hpp include/subsystems.hpp \
+ include/opcontrol.hpp include/auton.hpp include/tracking.hpp \
+ include/pure-pursuit.hpp include/helper.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -239,10 +240,12 @@ include/globals.hpp:
 include/lemlib/chassis/chassis.hpp:
 include/pros/motors.hpp:
 include/pros/imu.hpp:
+include/lemlib/asset.hpp:
 include/lemlib/chassis/trackingWheel.hpp:
 include/pros/adi.hpp:
 include/pros/rotation.hpp:
 include/lemlib/pose.hpp:
+include/lemlib/logger.hpp:
 include/drive.hpp:
 include/subsystems.hpp:
 include/opcontrol.hpp:

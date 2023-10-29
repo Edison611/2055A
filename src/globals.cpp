@@ -120,7 +120,8 @@ lemlib::Drivetrain_t drivetrain {
     &rightMotors, // right drivetrain motors
     11.25, // track width
     3.25, // wheel diameter
-    400 // wheel rpm
+    400, // wheel rpm
+    2 // chasePower
 };
 
 // forward/backward PID

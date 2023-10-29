@@ -102,10 +102,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-   // my_opcontrol();
-   pros::lcd::set_text(1, "Hello");
-   chassis.setPose(46, 58, -90);
-   pros::delay(1000);
    //chassis.follow("curvetest8.txt", 20000, 10.0);
    my_opcontrol();
 }   

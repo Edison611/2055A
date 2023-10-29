@@ -1,3 +1,4 @@
+#include "lemlib/asset.hpp"
 #include "lemlib/pose.hpp"
 #include "main.h"
 #include "pros/llemu.hpp"
@@ -17,7 +18,7 @@ double netPos[2] = {0, -48};
 // ------------------------------------------------------------------------------------------------------
 
 void GoToOrigin() {
-    chassis.moveTo(0, 0, 2000);
+     // chassis.moveTo(0, 0, 2000);
 }
 
 void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
@@ -42,7 +43,7 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = (200.0F)) {
     lemlib::Pose pose = chassis.getPose();
     double x_new = inches * sin(pose.theta);
     double y_new = inches * cos(pose.theta);
-    chassis.moveTo(pose.x + x_new, pose.y + y_new, timeout);
+    chassis.moveTo(pose.x + x_new, pose.y + y_new, pose.theta, timeout);
 }
 
 /**
@@ -67,10 +68,10 @@ void turnTo(double degrees, int timeout=1000) {
  * @param turnTimout timeout for turning (default to 1 second)
  * @param driveTimeout timeout for driving (default to 1 second)
  */
-void vector(double x, double y, bool reversed=false, int maxSpeed=127, int turnTimout = 1000, int driveTimeout = 1000) {
-    chassis.turnTo(x, y, turnTimout, reversed);
-    chassis.moveTo(x, y, driveTimeout, maxSpeed, reversed);
-}
+// void vector(double x, double y, bool reversed=false, int maxSpeed=127, int turnTimout = 1000, int driveTimeout = 1000) {
+//     chassis.turnTo(x, y, turnTimout, reversed);
+//     chassis.moveTo(x, y, driveTimeout, maxSpeed, reversed);
+// }
 
 /**
  * @brief Detects whether there is a triball in front of the color sensor
@@ -148,9 +149,9 @@ void triballVision() {
 }
 
 void test_auton() {
-    chassis.setPose(60, 17, 180);
-    chassis.moveTo(54.5, 30, 10000, 50);
-    chassis.moveTo(40, 30, 10000, 50);
+    // chassis.setPose(60, 17, 180);
+    // chassis.moveTo(54.5, 30, 10000, 50);
+    // chassis.moveTo(40, 30, 10000, 50);
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -201,14 +202,19 @@ void driver_skills() {
     controller.rumble("-.");
 }
 
+ASSET(curvetest9_txt);
+
 void auton_skills() {
+
+    chassis.setPose(0, 0, 0);
+    chassis.moveTo(15, 15, 0, 2000);
 
     // chassis.setPose(-49.25, -59, 61);
 
-    chassis.setPose(36, 60, -90);
-    setDrive(-75, -75);
-    pros::delay(2000);
-    setDrive(0, 0);
+    // chassis.setPose(36, 60, -90);
+    // setDrive(-75, -75);
+    // pros::delay(2000);
+    // setDrive(0, 0);
 
     // chassis.setPose(48, 47, 300);
     // chassis.moveTo(41, 58, 3000);
@@ -223,33 +229,39 @@ void auton_skills() {
     float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
     int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
 
-    for (int i = 0; i < shots; i++) {
-        shoot();
-        // pros::lcd::set_text(1, "time: " + std::to_string(i));
-        // if (inertial_sensor.get_rotation() >= x) {
-        //     setDrive(5, 15);
-        // }
-        // else if (inertial_sensor.get_rotation() <= x-2) {
-        //     setDrive(15, 5);
-        // }
-        // else {
-        //     setDrive(15, 10);
-        // }
+    // for (int i = 0; i < shots; i++) {
+    //     shoot();
+    //     // pros::lcd::set_text(1, "time: " + std::to_string(i));
+    //     // if (inertial_sensor.get_rotation() >= x) {
+    //     //     setDrive(5, 15);
+    //     // }
+    //     // else if (inertial_sensor.get_rotation() <= x-2) {
+    //     //     setDrive(15, 5);
+    //     // }
+    //     // else {
+    //     //     setDrive(15, 10);
+    //     // }
 
-        pros::delay(delay);
-    }
-    turnTo(300);
-    chassis.moveTo(41, 62, 2000);
-    turnTo(-90);
+    //     pros::delay(delay);
+    // }
 
-    pros::delay(1000);
-    chassis.setPose(41, 62, -90);
-    pros::delay(1000);
-    //pros::Task deploy_task(deploy);
-    chassis.follow("curvetest9.txt", 6000, 10.0);
-    wings.set_value(true);
-    chassis.moveTo(-16, 0, 2000);
-    chassis.moveTo(-100, 0, 3000);
+    // turnTo(300);
+    // chassis.moveTo(41, 62, 2000);
+    // turnTo(-90);
+
+    // pros::delay(1000);
+    // chassis.setPose(41, 62, -90);
+    // pros::delay(1000);
+
+    // chassis.follow(curvetest9_txt, 6000, 10.0);
+
+    // wings.set_value(true);
+    // chassis.moveTo(-16, 0, -90, 2000);
+    // chassis.moveTo(-100, 0, -90, 3000);
+    // chassis.waitUntilDist(5);
+
+
+
     // chassis.moveTo(-24, -12, 1000, 80);
     // chassis.moveTo(-10, -12, 1000, 80);
     

@@ -47,3 +47,5 @@ extern pros::Controller controller;
 
 extern lemlib::ChassisController_t lateralController;
 extern lemlib::Chassis chassis;
+
+extern pros::Rotation puncher_rot;

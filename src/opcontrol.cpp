@@ -74,6 +74,9 @@ void my_opcontrol() {
 		// if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
 		// 	break;
 		// }
+
+		pros::lcd::set_text(3, "angle:" + std::to_string(puncher_rot.get_angle()));
+		// pros::delay(100);
 		pros::delay(10);
 	}
 	// Data << "END" << std::endl;

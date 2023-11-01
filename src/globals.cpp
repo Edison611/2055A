@@ -24,15 +24,15 @@
 // - Use numbers if it is in a port
 // - Use letters if it is a triport
 // ------------------------------------------------------------------------------------------------------
-int MOTOR_LB = 12;
-int MOTOR_LF = 11;
-int MOTOR_PTOL1 = 2;
-int MOTOR_PTOL2 = 1;
+int MOTOR_LB = 2;
+int MOTOR_LF = 1;
+int MOTOR_PTOL1 = 3;
+int MOTOR_PTOL2 = 4;
 
-int MOTOR_RB = 3;
-int MOTOR_RF = 13;
-int MOTOR_PTOR1 = 19;
-int MOTOR_PTOR2 = 20;
+int MOTOR_RB = 9;
+int MOTOR_RF = 10;
+int MOTOR_PTOR1 = 8;
+int MOTOR_PTOR2 = 7;
 
 int MOTOR_INTAKE1 = 5;
 int MOTOR_INTAKE2 = 16;
@@ -49,12 +49,13 @@ int DISTANCE_SENSOR_PORT = 15;
 char CATA_RATCHET_PORT = 'F';
 char WING_PORT = 'D';
 // char GRABBER_PORT = 'D';
-char DRIVEPTO_PORT = 'A';
-char CLAW_PORT = 'B';
+char DRIVEPTO_PORT = 'B';
+char CLAW_PORT = 'C';
 
-pros::Rotation back_rot(6, false);
+// pros::Rotation back_rot(6, false);
+pros::Rotation puncher_rot(6, false);
 
-lemlib::TrackingWheel back_tracking_wheel(&back_rot, 2.75, -5.75);
+// lemlib::TrackingWheel back_tracking_wheel(&back_rot, 2.75, -5.75);
 
 // ------------------------------------------------------------------------------------------------------
 // Drivetrain 
@@ -119,8 +120,8 @@ lemlib::Drivetrain_t drivetrain {
     &leftMotors, // left drivetrain motors
     &rightMotors, // right drivetrain motors
     11.25, // track width
-    3.25, // wheel diameter
-    400 // wheel rpm
+    4.00, // wheel diameter
+    342.85 // wheel rpm
 };
 
 // forward/backward PID

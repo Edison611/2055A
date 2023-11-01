@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Curve Test",
+    "project_name": "Puncher Test",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -332,7 +332,7 @@
       }
     },
     "upload_options": {
-      "slot": 4,
+      "slot": 2,
       "icon": "X",
       "description": "My PROS Project"
     }

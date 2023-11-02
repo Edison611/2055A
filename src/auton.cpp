@@ -17,7 +17,7 @@ double netPos[2] = {0, -48};
 // ------------------------------------------------------------------------------------------------------
 
 void GoToOrigin() {
-    chassis.moveTo(0, 0, 2000);
+    // chassis.moveTo(0, 0, 2000);
 }
 
 void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
@@ -42,7 +42,7 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = (200.0F)) {
     lemlib::Pose pose = chassis.getPose();
     double x_new = inches * sin(pose.theta);
     double y_new = inches * cos(pose.theta);
-    chassis.moveTo(pose.x + x_new, pose.y + y_new, timeout);
+    // chassis.moveTo(pose.x + x_new, pose.y + y_new, timeout);
 }
 
 /**
@@ -69,8 +69,9 @@ void turnTo(double degrees, int timeout=1000) {
  */
 void vector(double x, double y, bool reversed=false, int maxSpeed=127, int turnTimout = 1000, int driveTimeout = 1000) {
     chassis.turnTo(x, y, turnTimout, reversed);
-    chassis.moveTo(x, y, driveTimeout, maxSpeed, reversed);
+    // chassis.moveTo(x, y, driveTimeout, maxSpeed, reversed);
 }
+
 
 /**
  * @brief Detects whether there is a triball in front of the color sensor
@@ -106,51 +107,37 @@ bool GoToTriball(pros::vision_object_s_t triball) {
 
 }
 
-/**
- * @brief Theoretically uses vision sensor to turn to where there is a triball and drive there (NOT TESTED)
- * 
- */
-void triballVision() {
-    // Defining Triball Signatures
-    // pros::vision_signature_s_t TRIBALL_SIG = pros::Vision::signature_from_utility(2, -6223, -4453, -5338, -6399, -4153, -5276, 3.000, 0);
-    // vision_sensor.set_signature(1, &TRIBALL_SIG); 
 
-
-    // int center = 158;
-    // chassis.calibrate();
-
-    // while (true) {
-    //     vision_sensor.clear_led();
-    //     pros::vision_object_s_t rtn = vision_sensor.get_by_sig(0, 1);   
-
-    //     // Vision sensor values
-    //     int count = vision_sensor.get_object_count();
-    //     int x = rtn.x_middle_coord;
-    //     int y = rtn.y_middle_coord;
-    //     // double angle = rtn.angle;
-        
-    //     pros::lcd::set_text(1, "Count: " + std::to_string(count));
-    //     pros::lcd::set_text(2, "Triball X, Y: " + std::to_string(x) + ", " + std::to_string(y));
-    //     // pros::lcd::set_text(3, "Triball angle: " + std::to_string(angle));
-    //     pros::lcd::set_text(4, "Triball width: " + std::to_string(rtn.width));
-
-    //     if (count >= 1) {
-    //         bool grabbed = GoToTriball(rtn);
-    //         if (grabbed == true) {
-
-    //         }
-    //     }
-
-        
-
-    //     pros::delay(20);
-    // }
-}
+ASSET(path1_txt);
+ASSET(skills1_txt);
 
 void test_auton() {
-    chassis.setPose(60, 17, 180);
-    chassis.moveTo(54.5, 30, 10000, 50);
-    chassis.moveTo(40, 30, 10000, 50);
+    chassis.setPose(0, 0, 0);
+    chassis.moveTo(0, 24, 0, 2500);
+    pros::delay(500);
+    chassis.moveTo(0, -24, 0, 2500);
+    pros::delay(500);
+    turnTo(-180);
+    chassis.moveTo(24, 0, 0, 2500);
+    pros::delay(500);
+    chassis.moveTo(-24, 0, 0, 2500);
+    pros::delay(500);
+    wings.set_value(true);
+    pros::delay(500);
+    wings.set_value(false);    
+
+    // chassis.
+    // chassis.follow(path1_txt, 6000, 10.0);
+    // chassis.setPose(60, 17, 180);
+    // chassis.moveTo(54.5, 30, 10000, 50);
+    // chassis.moveTo(40, 30, 10000, 50);
+}
+
+ASSET(skills1_txt);
+void test_auton2() {
+    chassis.follow(skills1_txt, 6000, 10);
+    chassis.setPose(-55, 40, 180);
+    chassis.moveTo(-60, 30);
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -198,64 +185,74 @@ void driver_skills() {
     }
 
     setDrive(0, 0);
-    controller.rumble("-.");
+    // controller.rumble("-.");
 }
+
+
 
 void auton_skills() {
 
+    // driveLB.set_brake_mode(MOTOR_BRAKE_BRAKE);
+    // driveLF.set_brake_mode(MOTOR_BRAKE_BRAKE);
+    // driveRB.set_brake_mode(MOTOR_BRAKE_BRAKE);
+    // driveRF.set_brake_mode(MOTOR_BRAKE_BRAKE);
+
     // chassis.setPose(-49.25, -59, 61);
 
-    chassis.setPose(36, 60, -90);
-    setDrive(-75, -75);
-    pros::delay(2000);
-    setDrive(0, 0);
-
-    // chassis.setPose(48, 47, 300);
-    // chassis.moveTo(41, 58, 3000);
-    // turnTo(270);
-    // driveFwd(10, 3000);
-    // chassis.setPose(46, 58, -90);
-    // pros::delay(100000);
-
-    int shots = 40; // How many shots to take
-    int delay = 1000; // The delay between each shot
-
-    float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
-    int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
-
-    for (int i = 0; i < shots; i++) {
-        shoot();
-        // pros::lcd::set_text(1, "time: " + std::to_string(i));
-        // if (inertial_sensor.get_rotation() >= x) {
-        //     setDrive(5, 15);
-        // }
-        // else if (inertial_sensor.get_rotation() <= x-2) {
-        //     setDrive(15, 5);
-        // }
-        // else {
-        //     setDrive(15, 10);
-        // }
-
-        pros::delay(delay);
-    }
-    turnTo(300);
-    chassis.moveTo(41, 62, 2000);
-    turnTo(-90);
-
+    // chassis.setPose(36, 60, -90); change this -- facing front, front of robot aligned with
+    chassis.setPose(-57, 44.75, 0); // for blue net side
+    // chassis.setPose(57, -44.75, 180) // for red net side
+    wings.set_value(true); // open wings
     pros::delay(1000);
-    chassis.setPose(41, 62, -90);
-    pros::delay(1000);
-    //pros::Task deploy_task(deploy);
-    chassis.follow("curvetest9.txt", 6000, 10.0);
-    wings.set_value(true);
-    chassis.moveTo(-16, 0, 2000);
-    chassis.moveTo(-100, 0, 3000);
+    wings.set_value(false); // close wings
+    chassis.turnTo(-24, 64, 3000);
+    chassis.moveTo(-33.5, 65, 90, 3000);
+    // setDrive(-75, -75);
+    // pros::delay(2000);
+    // setDrive(0, 0);
+
+    // // chassis.setPose(48, 47, 300);
+    // // chassis.moveTo(41, 58, 3000);
+    // // turnTo(270);
+    // // driveFwd(10, 3000);
+    // // chassis.setPose(46, 58, -90);
+    // // pros::delay(100000);
+
+    // int shots = 40; // How many shots to take
+    // int delay = 1000; // The delay between each shot
+
+    // float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based off # of shots and delay
+    // int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
+
+    // for (int i = 0; i < shots; i++) {
+    //     shoot();
+    //     // pros::lcd::set_text(1, "time: " + std::to_string(i));
+    //     // if (inertial_sensor.get_rotation() >= x) {
+    //     //     setDrive(5, 15);
+    //     // }
+    //     // else if (inertial_sensor.get_rotation() <= x-2) {
+    //     //     setDrive(15, 5);
+    //     // }
+    //     // else {
+    //     //     setDrive(15, 10);
+    //     // }
+
+    //     pros::delay(delay);
+    // }
+    // turnTo(300);
+    // turnTo(-90);
+
+    // pros::delay(1000);
+    // chassis.moveTo(46, 58, -90, 2000);
+    // pros::delay(1000);
+    // //pros::Task deploy_task(deploy);
+    // chassis.follow(curvetest9_txt, 6000, 10.0);
+    // wings.set_value(true);
+    // chassis.moveTo(-16, 0, 2000);
+    // chassis.moveTo(-100, 0, 3000);
     // chassis.moveTo(-24, -12, 1000, 80);
     // chassis.moveTo(-10, -12, 1000, 80);
     
-    
-
-    // setDrive(0, 0);
 }
 
 
@@ -279,9 +276,9 @@ void solo_auton() {
     // chassis.moveTo(-48.25, -58, 1000);
     turnTo(-90);
     wings.set_value(false);
-    chassis.moveTo(-24, -62, 2000, 100, true);
+    // chassis.moveTo(-24, -62, 2000, 100, true);
     // turnTo(-90);
-    chassis.moveTo(-10, -62, 2000, 100, true);
+    // chassis.moveTo(-10, -62, 2000, 100, true);
 
     // Drives to corner and takes triball out
     
@@ -323,7 +320,7 @@ void defense_auton() {
     pros::delay(2000);
 
     // Go grab the corner triball out of the matchload zone
-    chassis.moveTo(-48, -56, 1500, 90);
+    // chassis.moveTo(-48, -56, 1500, 90);
 
     // Move to touch the middle pole
     chassis.moveTo(-24, -60, 1500, 90);
@@ -393,26 +390,26 @@ void offense_auton_elim() {
     chassis.setPose(-12, 60, 90);
 
     // Grab middle Triball and score both alliance triball and grabbed triball
-    claw.set_value(true);
-    chassis.moveTo(-40, 60, 1200, 90, true); // Move forward a little
-    // wings.set_value(true);
-    chassis.moveTo(-62.5, 40, 1400, 90, true); // Move the the net
-    // wings.set_value(false);
-    turnTo(0); // Adjust the back of the bot to face the net
-    chassis.moveTo(-62.5, 28, 1000, 110, true); // Push the Red Tri-Ball into the net
-    chassis.moveTo(-62.5, 35, 1200, 110, true); // Back-Up
-    turnTo(180); // Turn the bot around so the front is facing the net
-    chassis.moveTo(-62.5, 28, 1000, 110); // Push the Green Tri-Ball into the net
-    chassis.moveTo(-55, 42.5, 1200, 110); // Back-Up
-    claw.set_value(false);
+    // claw.set_value(true);
+    // chassis.moveTo(-40, 60, 1200, 90, true); // Move forward a little
+    // // wings.set_value(true);
+    // chassis.moveTo(-62.5, 40, 1400, 90, true); // Move the the net
+    // // wings.set_value(false);
+    // turnTo(0); // Adjust the back of the bot to face the net
+    // chassis.moveTo(-62.5, 28, 1000, 110, true); // Push the Red Tri-Ball into the net
+    // chassis.moveTo(-62.5, 35, 1200, 110, true); // Back-Up
+    // turnTo(180); // Turn the bot around so the front is facing the net
+    // chassis.moveTo(-62.5, 28, 1000, 110); // Push the Green Tri-Ball into the net
+    // chassis.moveTo(-55, 42.5, 1200, 110); // Back-Up
+    // claw.set_value(false);
     
-    // Go for center 3 triballs
-    chassis.turnTo(-12, 38, 900); // 
-    chassis.moveTo(-12, 9, 2200, 90); // Move towards the Middle Back Tr-Ball
-    claw.set_value(true);
-    pros::delay(400);
-    turnTo(-90);
-    chassis.moveTo(-47, 10, 1500, 110);
+    // // Go for center 3 triballs
+    // chassis.turnTo(-12, 38, 900); // 
+    // chassis.moveTo(-12, 9, 2200, 90); // Move towards the Middle Back Tr-Ball
+    // claw.set_value(true);
+    // pros::delay(400);
+    // turnTo(-90);
+    // chassis.moveTo(-47, 10, 1500, 110);
 
 }
 

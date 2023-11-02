@@ -1,11 +1,11 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Puncher Test",
+    "project_name": "LCD_Debug",
     "target": "v5",
     "templates": {
       "LemLib": {
-        "location": "/Users/edisony611/Library/Application Support/PROS/templates/LemLib@0.4.5",
+        "location": "/Users/ayushkothari/Library/Application Support/PROS/templates/LemLib@0.5.0-beta1",
         "metadata": {
           "origin": "local"
         },
@@ -13,19 +13,21 @@
         "py/object": "pros.conductor.templates.local_template.LocalTemplate",
         "supported_kernels": "^3.8.0",
         "system_files": [
-          "include\\lemlib\\api.hpp",
+          "include\\lemlib\\logger.hpp",
+          "include\\lemlib\\chassis\\chassis.hpp",
+          "include\\lemlib\\pid.hpp",
           "firmware\\LemLib.a",
           "include\\lemlib\\chassis\\odom.hpp",
-          "include\\lemlib\\logger.hpp",
           "include\\lemlib\\util.hpp",
+          "include\\lemlib\\pose.hpp",
+          "firmware\\asset.mk",
+          "include\\lemlib\\asset.hpp",
           "include\\lemlib\\chassis\\trackingWheel.hpp",
-          "include\\lemlib\\pid.hpp",
-          "include\\lemlib\\chassis\\chassis.hpp",
-          "include\\lemlib\\pose.hpp"
+          "include\\lemlib\\api.hpp"
         ],
         "target": "v5",
         "user_files": [],
-        "version": "0.4.5"
+        "version": "0.5.0-beta1"
       },
       "kernel": {
         "location": "/Users/edisony611/Library/Application Support/PROS/templates/kernel@3.8.0",
@@ -332,9 +334,9 @@
       }
     },
     "upload_options": {
-      "slot": 2,
-      "icon": "X",
-      "description": "My PROS Project"
+      "description": "Debug",
+      "icon": "alien",
+      "slot": 3
     }
   }
 }

@@ -75,7 +75,7 @@ void my_opcontrol() {
 		// 	break;
 		// }
 
-		pros::lcd::set_text(3, "angle:" + std::to_string(puncher_rot.get_angle()));
+		// pros::lcd::set_text(3, "angle:" + std::to_string(puncher_rot.get_angle()));
 		// pros::delay(100);
 		pros::delay(10);
 	}

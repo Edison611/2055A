@@ -20,10 +20,8 @@ bool currentDrivePTO = false;
 void DrivePTO() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
         if (currentDrivePTO == false) {
-            // if (abs(ptoL1.get_actual_velocity()) > 0) 
             currentDrivePTO = true;
             drivePTO.set_value(true);
-            // cata_shoot = true;
 
             ptoL1.set_brake_mode(MOTOR_BRAKE_COAST);
             ptoL2.set_brake_mode(MOTOR_BRAKE_COAST);

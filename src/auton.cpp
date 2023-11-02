@@ -206,8 +206,8 @@ ASSET(curvetest9_txt);
 
 void auton_skills() {
 
-    chassis.setPose(0, 0, 0);
-    // chassis.moveTo(15, 15, 0, 2000); Com
+    chassis.setPose(0, 0, 90);
+    chassis.moveTo(15, 15, 0, 2000); 
 
     // chassis.setPose(-49.25, -59, 61);
 
@@ -378,14 +378,17 @@ void offense_auton() {
 
     // Grab middle Triball and score both alliance triball and grabbed triball
     claw.set_value(true);
-    // chassis.moveTo(-40, 60, 1200, 90, true); // Move forward a little Com
+    chassis.moveTo(-50, 50, 45, 3000, false, false, 0, 0.6); // Move forward a little 
     wings.set_value(true);
-    // chassis.moveTo(-62.5, 40, 1400, 90, true); // Move the the net Com
-    wings.set_value(false);
-    turnTo(0); // Adjust the back of the bot to face the net
-    // chassis.moveTo(-62.5, 28, 1000, 110, true); // Push the Red Tri-Ball into the net Com
-    // chassis.moveTo(-62.5, 35, 1200, 110, true); // Back-Up Com
-    turnTo(180); // Turn the bot around so the front is facing the net
+    //chassis.moveTo(-63.5, 40, 0, 1800, false, false, 0, 0.6, 110); // Move the the net 
+    //wings.set_value(true);
+    //pros::delay(1000);
+    // turnTo(0); // Adjust the back of the bot to face the net
+    chassis.moveTo(-62.5, 28, -20, 1500, false, false, 0, 0.6); // Push the Red Tri-Ball into the net Com
+    wings.set_value(false); 
+    pros::delay(100);
+    chassis.moveTo(-62.5, 35, -20, 1500, false, true, 0, 0.6); // Back-Up Com
+    //turnTo(180); // Turn the bot around so the front is facing the net
     // chassis.moveTo(-62.5, 28, 1000, 110); // Push the Green Tri-Ball into the net Com
     // chassis.moveTo(-55, 42.5, 1200, 110); // Back-Up Com
     claw.set_value(false);

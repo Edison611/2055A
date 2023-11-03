@@ -1,6 +1,6 @@
 # Installation
 - For team members, clone the repository locally and pull the main branch
-- An alternative is to go to [Releases]((https://github.com/Edison611/2055A/releases)) and install the most up to date version
+- An alternative is to go to [Releases](https://github.com/Edison611/2055A/releases) and install the most up to date version
 
 # Judging
 Below are some of the features that can be mentioned for programming when judging:

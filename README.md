@@ -1,6 +1,6 @@
 # Installation
 - For team members, clone the repository locally and pull the main branch
-- An alternative is to go to [Releases](Releases) and install the most up to date version
+- An alternative is to go to [Releases]((https://github.com/Edison611/2055A/releases)) and install the most up to date version
 
 # Judging
 Below are some of the features that can be mentioned for programming when judging:
@@ -23,5 +23,5 @@ Below are some of the features that can be mentioned for programming when judgin
 - The first step is to find a possible route that is able to perform the tasks required in autonomous
 - Odometry is used to keep track of the position of the robot, so that even if it our robot gets knocked off course in one place, it will be able to correct itself for the later tasks. (It is able to drive to a position on the field or turn to any position through a coordinate system) 
 - Instead of blindly testing where to make our robot drive to, we have a coordinate system where the center of the field is (0,0).
-- We created a [website](https://edison611.github.io/robot-tracker/#/) where we can enter the dimensions of our robot, an (x, y) coordinate and it will draw the robot on the field, so that we can test if our coordinates are reasonable before we testing it physically. This feature can be found here: https://edison611.github.io/robot-tracker/#/tracker
+- We created a [website](https://capybaras-2055.vercel.app/) where we can enter the dimensions of our robot, an (x, y) coordinate and it will draw the robot on the field, so that we can test if our coordinates are reasonable before we testing it physically. This feature can be found here: https://edison611.github.io/robot-tracker/#/tracker
 - After checking all of the coordinates to drive to, we can implement it physically and add all other tasks to do in between each movement such as intaking and shooting.

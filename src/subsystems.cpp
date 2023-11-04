@@ -126,25 +126,9 @@ void cata_hold() {
 
 	while (true) {
 
-        // while (cata_limit_switch.get_value() == 1) { // Could change to just button value
-        //     pros::lcd::set_text(1, "TEST");
-        //     setPTO(0, 0, 0, 0);
-        //     // int x = x + 1;
-        //     // int absPos = catapult.get_position();
-        //     // int power = (absPos - catapult.get_position())*factor;
-        //     // pros::lcd::set_text(2, "Hold");
-        //     // setCatapult(power);
-        //     // pros::delay(10);
-
         while (puncher_rot.get_angle() < 17000) { // Could change to just button value
             pros::lcd::set_text(1, "REACHED");
             setPTO(0, 0, 0, 0);
-        // int x = x + 1;
-        // int absPos = catapult.get_position();
-        // int power = (absPos - catapult.get_position())*factor;
-        // pros::lcd::set_text(2, "Hold");
-        // setCatapult(power);
-        // pros::delay(10);
 
             if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1) == 1 || cata_shoot == true) {
                 hold = false;

@@ -34,10 +34,9 @@ void initialize() {
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    // pros::Task holding(cata_hold);
+    pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
     // pros::Task print_task(print_info);
-    // pros::Task MatchLoads(SetMatchLoad);
     
 
     pros::delay(2000);
@@ -76,13 +75,13 @@ void competition_initialize() {}
 
 void autonomous() {
     // pros::Task log_task(log_data);
-    //driver_skills();
+    auton_skills();
     // auton_skills();
     // offense_auton();
     // offense_auton_elim();
     // offense_AWP();
     // solo_auton();
-    test_auton();
+    // test_auton();
     // defense_auton_elim();
     // defense_MOA();
 
@@ -103,6 +102,8 @@ void autonomous() {
  */
 void opcontrol() {
    chassis.setPose(0, 0, 0);
+   //driver_skills();
    //chassis.follow("curvetest8.txt", 20000, 10.0);
+    pros::Task MatchLoads(SetMatchLoad);
    my_opcontrol();
 }   

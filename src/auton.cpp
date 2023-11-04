@@ -133,11 +133,10 @@ void test_auton() {
     // chassis.moveTo(40, 30, 10000, 50);
 }
 
-ASSET(skills1_txt);
 void test_auton2() {
     chassis.follow(skills1_txt, 6000, 10);
     chassis.setPose(-55, 40, 180);
-    chassis.moveTo(-60, 30);
+    // chassis.moveTo(-60, 30);
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -147,7 +146,7 @@ void driver_skills() {
 
     chassis.setPose(-61, 32, 0);
 
-    int shots = 42; // How many shots to take
+    int shots = 44; // How many shots to take
     int delay = 1000; // The delay between each shot
 
     float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
@@ -188,7 +187,7 @@ void driver_skills() {
     // controller.rumble("-.");
 }
 
-
+//ASSET();
 
 void auton_skills() {
 
@@ -206,7 +205,9 @@ void auton_skills() {
     pros::delay(1000);
     wings.set_value(false); // close wings
     chassis.turnTo(-24, 64, 3000);
-    chassis.moveTo(-33.5, 65, 90, 3000);
+    setDrive(-75,-75);
+    chassis.moveTo(-33.5, 65, 90, 10000);
+
     // setDrive(-75, -75);
     // pros::delay(2000);
     // setDrive(0, 0);

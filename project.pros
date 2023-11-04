@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "LCD_Debug",
+    "project_name": "Skills",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -335,8 +335,8 @@
     },
     "upload_options": {
       "description": "Debug",
-      "icon": "alien",
-      "slot": 3
+      "icon": "X",
+      "slot": 4
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Skills",
+    "project_name": "Offense Auton",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -335,8 +335,8 @@
     },
     "upload_options": {
       "description": "Debug",
-      "icon": "X",
-      "slot": 4
+      "icon": "clawbot",
+      "slot": 6
     }
   }
 }

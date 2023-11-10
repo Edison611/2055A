@@ -18,22 +18,22 @@
  */
 void setDrive(double left, double right) {
     if (currentDrivePTO) {
-        driveLB.move(left);
-        driveLF.move(left);
-        ptoL1.move(left);
-        ptoL2.move(left);
+        driveLB.move_velocity(left);
+        driveLF.move_velocity(left);
+        ptoL1.move_velocity(left);
+        ptoL2.move_velocity(left);
 
-        driveRB.move(right);
-        driveRF.move(right);
-        ptoR1.move(right);
-        ptoR2.move(right);
+        driveRB.move_velocity(right);
+        driveRF.move_velocity(right);
+        ptoR1.move_velocity(right);
+        ptoR2.move_velocity(right);
     }   
     else {
-        driveLB.move(left);
-        driveLF.move(left);
+        driveLB.move_velocity(left);
+        driveLF.move_velocity(left);
         
-        driveRB.move(right);
-        driveRF.move(right);
+        driveRB.move_velocity(right);
+        driveRF.move_velocity(right);   
     }
     
     
@@ -55,7 +55,10 @@ void setDriveMotors() {
     double tTune = 7.5;
 
     power = exp((abs(y) - 127) * pTune / 1000) * y;
+    power = power * 600 / 127;
     turn = (exp(-1 * (tTune/10)) + exp((abs(x) - 127) / 10) * (1 - exp(-1 * (tTune / 10)))) * x;
+    turn = turn * 600 / 127;
+
 
     // if (y > deadband || x > deadband) {
     //     if (y > 85) {
@@ -91,4 +94,4 @@ void setDriveMotors() {
     double rightPower = power - turn;
     setDrive(leftPower, rightPower);
 
-}
+} 

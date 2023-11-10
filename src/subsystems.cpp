@@ -55,16 +55,16 @@ void setPTO(int L1, int L2, int R1, int R2) {
 
 void Puncher() {
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-        ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
-        ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
+        // ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
+        // ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-        ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
-        ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
+        // ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
+        // ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
         
-        ptoL1.move(-127);
-        ptoL2.move(-127);
-        ptoR1.move(127);
-        ptoR2.move(127);
+        // ptoL1.move(-127);
+        // ptoL2.move(-127);
+        // ptoR1.move(127);
+        // ptoR2.move(127);
     // } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
     //     ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
     //     ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
@@ -94,7 +94,7 @@ void setCatapult(int power) {
 } 
 
 bool hold = false;
-bool cata_shoot = true;
+bool cata_shoot = false;
 
 void setCatapultMotors() {
     if (cata_limit_switch.get_value() == 1) {
@@ -123,12 +123,16 @@ void cata_hold() {
 
     double factor = 9.25; // Tune this value
     int x = 0;
+    bool stop = true;
 
 	while (true) {
 
-        while (puncher_rot.get_angle() < 17000) { // Could change to just button value
-            pros::lcd::set_text(1, "REACHED");
-            setPTO(0, 0, 0, 0);
+        while (puncher_rot.get_angle() < 17000) { // Could change to adjust button value
+            // pros::lcd::set_text(1, "REACHED");
+            if (stop == true) {
+                setPTO(0, 0, 0, 0);
+                stop = false;
+            }
 
             if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1) == 1 || cata_shoot == true) {
                 hold = false;
@@ -142,9 +146,10 @@ void cata_hold() {
         }
 
         if (cata_shoot == true) {
-            pros::lcd::set_text(2, "Shoot");
+            // pros::lcd::set_text(2, "Shoot");
             cata_shoot = false;
             setPTO(-600, -600, -600, -600);
+            stop = true;
             // ptoL1.move(-127);
             // ptoL2.move(-127);
             // ptoR1.move(-127);
@@ -232,7 +237,8 @@ void auton_hold() {
 // WINGS
 // ------------------------------------------------------------------------------------------------------
 void ActivateWings(bool dir) {
-    wings.set_value(dir);
+    wingR.set_value(dir);
+    wingL.set_value(dir);
 }
 
 bool currentWings = false;
@@ -244,12 +250,14 @@ void op_wings() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
         if (currentWings == false) {
             currentWings = true;
-            wings.set_value(true);
+            wingR.set_value(true);
+            wingL.set_value(true);
         }
         
         else if (currentWings == true) {
             currentWings = false;
-            wings.set_value(false);
+            wingR.set_value(false);
+            wingL.set_value(false);
         }
     }
 }

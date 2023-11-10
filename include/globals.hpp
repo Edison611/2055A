@@ -38,7 +38,8 @@ extern pros::Distance distance_sensor;
 
 
 extern pros::ADIDigitalOut cata_ratchet;
-extern pros::ADIDigitalOut wings;
+extern pros::ADIDigitalOut wingR;
+extern pros::ADIDigitalOut wingL;
 extern pros::ADIDigitalOut grabber;
 extern pros::ADIDigitalOut drivePTO;
 extern pros::ADIDigitalOut claw;

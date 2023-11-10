@@ -47,7 +47,8 @@ int COLOR_SENSOR_PORT = 12;
 int DISTANCE_SENSOR_PORT = 15;
 
 char CATA_RATCHET_PORT = 'F';
-char WING_PORT = 'D';
+char WINGR_PORT = 'D';
+char WINGL_PORT = 'E';
 // char GRABBER_PORT = 'D';
 char DRIVEPTO_PORT = 'B';
 char CLAW_PORT = 'C';
@@ -60,15 +61,15 @@ pros::Rotation puncher_rot(6, false);
 // ------------------------------------------------------------------------------------------------------
 // Drivetrain 
 // ------------------------------------------------------------------------------------------------------
-pros::Motor driveLB(MOTOR_LB, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor driveLF(MOTOR_LF, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor ptoL1(MOTOR_PTOL1, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor ptoL2(MOTOR_PTOL2, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveLB(MOTOR_LB, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveLF(MOTOR_LF, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor ptoL1(MOTOR_PTOL1, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor ptoL2(MOTOR_PTOL2, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
 
-pros::Motor driveRB(MOTOR_RB, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor driveRF(MOTOR_RF, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor ptoR1(MOTOR_PTOR1, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor ptoR2(MOTOR_PTOR2, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveRB(MOTOR_RB, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveRF(MOTOR_RF, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor ptoR1(MOTOR_PTOR1, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor ptoR2(MOTOR_PTOR2, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
 
 pros::MotorGroup leftMotors({driveLB, driveLF});
 pros::MotorGroup rightMotors({driveRB, driveRF});
@@ -99,7 +100,8 @@ pros::Distance distance_sensor(DISTANCE_SENSOR_PORT);
 // Pneumatics
 // ------------------------------------------------------------------------------------------------------
 pros::ADIDigitalOut cata_ratchet(CATA_RATCHET_PORT);
-pros::ADIDigitalOut wings(WING_PORT);
+pros::ADIDigitalOut wingR(WINGR_PORT);
+pros::ADIDigitalOut wingL(WINGL_PORT);
 // pros::ADIDigitalOut grabber(GRABBER_PORT);
 pros::ADIDigitalOut drivePTO(DRIVEPTO_PORT);
 pros::ADIDigitalOut claw(CLAW_PORT);

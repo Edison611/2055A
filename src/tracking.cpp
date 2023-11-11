@@ -77,7 +77,7 @@ void deploy() {
         lemlib::Pose pose = chassis.getPose();
         if (withinRange(pose.x, -14, 1) && withinRange(pose.y, 13, 1)) {
             ActivateWings(true);
-            controller.rumble(".");
+            // controller.rumble(".");
             pros::delay(100);
         }
  

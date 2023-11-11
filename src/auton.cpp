@@ -111,10 +111,11 @@ bool GoToTriball(pros::vision_object_s_t triball) {
 ASSET(path1_txt);
 ASSET(skills1_txt);
 ASSET(newcurve4_txt);
+ASSET(leftcurve2_txt);
 
 void test_auton() {
-    chassis.setPose(41, 58, -90);
-    chassis.follow(newcurve4_txt, 20000, 15);
+    chassis.setPose(-45.00606998556999, -59.97344660894661, 100.82);
+    chassis.follow(leftcurve2_txt, 20000, 15);
 }
 
 void test_auton2() {
@@ -169,8 +170,6 @@ void driver_skills() {
     // controller.rumble("-.");
 }
 
-//ASSET();
-
 void auton_skills() {
 
     // driveLB.set_brake_mode(MOTOR_BRAKE_BRAKE);
@@ -183,21 +182,27 @@ void auton_skills() {
     chassis.setPose(-44.75, -57, -90); // for blue net side
     // chassis.setPose(57, -44.75, 180) // for red net side
     wingR.set_value(true); // open wings
-    pros::delay(1000);
+    // pros::delay(1000);
+    pros::delay(500);
     wingR.set_value(false); // close wings
-    chassis.turnTo(-64, -24, 1000); //
+    chassis.turnTo(-64, -24, 1000); 
     chassis.moveTo(-60,-37,-35, 1000);
     chassis.turnTo(-60, 72, 1000);
     // setDrive(-600,-600);
     // pros::delay(1000);
     setDrive(600, 600);
-    pros::delay(2000);
-    setDrive(0,0);
-    // chassis.moveTo(-65, -33.5, 0, 3000);
-
-    // setDrive(-75, -75);
     // pros::delay(2000);
-    // setDrive(0, 0);
+    pros::delay(1000);
+    setDrive(0,0);
+
+    // chassis.moveTo(-43, -48, -30, 2000);
+    chassis.moveTo(-43, -48, -30, 2000, false, true, 0, 0.6, 80, false); // sets max speed to 60
+    // chassis.moveTo(-44.25, -59.3, 54, 3000);
+    turnTo(54);
+    setDrive(-400, -400);
+    // pros::delay(2000); // ONLY FOR TESTING PURPOSES
+    pros::delay(1000);
+    setDrive(0, 0);
 
     // // chassis.setPose(48, 47, 300);
     // // chassis.moveTo(41, 58, 3000);
@@ -231,11 +236,10 @@ void auton_skills() {
     // turnTo(-90);
 
     // pros::delay(1000);
-    // chassis.moveTo(46, 58, -90, 2000);
+    // chassis.moveTo(-42.303626984126986, -58.72616522366522, 90, 3000);
     // pros::delay(1000);
-    // //pros::Task deploy_task(deploy);
-    // chassis.follow(curvetest9_txt, 6000, 10.0);
-    // wings.set_value(true);
+    // chassis.follow(newcurve4_txt, 7000, 15.0);
+    // ActivateWings(true);
     // chassis.moveTo(-16, 0, 2000);
     // chassis.moveTo(-100, 0, 3000);
     // chassis.moveTo(-24, -12, 1000, 80);
@@ -260,22 +264,22 @@ void solo_auton() {
     pros::delay(1000);
 
     /* Take Out Corner Triball */
-    // chassis.moveTo(-44.25, -59.3, 120, 800);
     turnTo(0);
-    chassis.moveTo(-44.25, -54, 0, 800);
-    // turnTo(-90);
+    chassis.moveTo(-44.25, -48, 0, 800);
+    turnTo(-90);
     pros::delay(100);
-    wingL.set_value(true);
-    chassis.moveTo(-48, -59, 180, 800);
-    // turnTo();
+    chassis.moveTo(-50, -48, -90, 800);
+    turnTo(-180);
+    wingR.set_value(true);
+    chassis.moveTo(-49, -55.5, -180, 800);
+    turnTo(-170);
     turnTo(90);
     pros::delay(100);
-    wingL.set_value(false);
+    wingR.set_value(false);
 
     /* Moving Toward Pole */
-    // chassis.moveTo(-40, -59, -90, 800);
-    chassis.moveTo(-10, -60, 90, 2850);
-    // chassis.moveTo(-7, -59, 90, 1903);
+    chassis.moveTo(-15, -60, 90, 2850);
+    pros::delay(500);
     claw.set_value(true);
     
     
@@ -306,7 +310,7 @@ void solo_auton() {
 void defense_auton() {
     // Get alliance triball into net
     chassis.setPose(-48, -56, 135);
-    chassis.moveTo(-60, -33, 1500, 90, true);
+    chassis.moveTo(-60, -33, 1500, 90, true); 
     pros::delay(2000);
 
     // Go grab the corner triball out of the matchload zone
@@ -360,26 +364,28 @@ void defense_auton_elim() {
  * 5. Touch the pole if needed
  */
 void offense_auton() {
-    chassis.setPose(-12, 60, 90);
+    chassis.setPose(-12, 57, 90);
     claw.set_value(true);
-    pros::delay(500);
-    chassis.moveTo(-40, 60, 90, 1000, false, false, 0, 0.6); // Move forward 
-    pros::delay(200);
-    wingL.set_value(true);
-    chassis.moveTo(-58, 42, 0, 1500, false, false, 0, 0.6); // Align with net
-    wingL.set_value(false);
-    chassis.turnTo(-60, 0, 1000);    
-    chassis.moveTo(-58, 20, 180, 533, false, false, 0, 0.6); // Rams in from the front
-    chassis.moveTo(-58, 45, 110, 742, false, false, 0, 0.6); // Back up and face the middle three triballs
+    pros::delay(750);
+    chassis.moveTo(-35, 57, 90, 1500, false, false); // Move forward 
+    chassis.moveTo(-50, 52, 45, 1500, false, false);
+    //pros::delay(200);
+    //wingL.set_value(true);
+    chassis.moveTo(-58, 40, 0, 1500, false, false); // Align with net
+    chassis.turnTo(-60, 0, 1500, false, false, 80);   
+    //wingL.set_value(false);  
+    chassis.moveTo(-55, 0, 180, 1500, false, true); // Rams in from the front
+    chassis.moveTo(-55, 60, 110, 1500, false, false); // Back up and face the middle three triballs
     claw.set_value(false);
 
     // Middle Triballs
-    // chassis.moveTo(-25, 25, 125, 1880, false, true, 0, 0.6); // Move towards center
-    // claw.set_value(true);
-    // chassis.moveTo(-10, 10, 140, 1084, false, true, 0, 0.6); // Move to back middle triball
-    // chassis.turnTo(-60, 10, 500); // Turn to net
-    // chassis.moveTo(-42, 10, 270, 1533, false, true, 0, 0.6); // Ram in from the front
-    // chassis.moveTo(-35, 10, 270, 500, false, false, 0, 0.6); // Back up 
+    // chassis.moveTo(-25, 25, 125, 1880, false, true, 0, 0.6); // Move towards centee
+    chassis.moveTo(-10, 10, 140, 1084, false, true, 0, 0.6); // Move to back middle triball
+    claw.set_value(true);
+    pros::delay(300);
+    chassis.turnTo(-60, 10, 500); // Turn to net
+    chassis.moveTo(-42, 10, 270, 1533, false, true, 0, 0.6); // Ram in from the front
+    chassis.moveTo(-35, 10, 270, 500, false, false, 0, 0.6); // Back up 
 }
 
 void offense_auton_elim() {

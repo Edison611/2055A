@@ -39,7 +39,7 @@ void initialize() {
     // pros::Task print_task(print_info);
     
 
-    pros::delay(2000);
+    pros::delay(1500);
 }
 
 /**
@@ -76,10 +76,10 @@ void competition_initialize() {}
 void autonomous() {
     // pros::Task log_task(log_data);
     // auton_skills(); // SLOT 4
-    // offense_auton(); // SLOT 6
+    offense_auton(); // SLOT 6
     // offense_auton_elim();
     // offense_AWP();
-    solo_auton(); // SLOT 5
+    // solo_auton(); // SLOT 5
     // test_auton(); // SLOT 3
     // defense_auton_elim(); // SLOT 7
 

@@ -3,6 +3,8 @@ void driveFwd(double inches, int timeout, float maxSpeed);
 void turnTo(double degrees, int timeout);
 
 void test_auton();
+void test_auton2();
+void test_auton3();
 
 void driver_skills();
 void auton_skills();

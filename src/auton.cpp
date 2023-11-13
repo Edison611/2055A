@@ -42,7 +42,7 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = (200.0F)) {
     lemlib::Pose pose = chassis.getPose();
     double x_new = inches * sin(pose.theta);
     double y_new = inches * cos(pose.theta);
-    // chassis.moveTo(pose.x + x_new, pose.y + y_new, timeout);
+    chassis.moveTo(pose.x + x_new, pose.y + y_new, pose.theta, timeout);
 }
 
 /**
@@ -110,18 +110,32 @@ bool GoToTriball(pros::vision_object_s_t triball) {
 
 ASSET(path1_txt);
 ASSET(skills1_txt);
-ASSET(newcurve4_txt);
-ASSET(leftcurve2_txt);
+ASSET(leftcurve4_txt);
+ASSET(skillstest_txt);
+ASSET(leftcurve5_txt);
 
 void test_auton() {
-    chassis.setPose(-45.00606998556999, -59.97344660894661, 100.82);
-    chassis.follow(leftcurve2_txt, 20000, 15);
+    chassis.setPose(-38.14602236652237, -60.18132683982684, 100.82);
+    // chassis.follow(leftcurve4_txt, 20000, 25);
+    chassis.follow(leftcurve5_txt, 20000, 25);
 }
 
 void test_auton2() {
     chassis.follow(skills1_txt, 6000, 10);
     chassis.setPose(-55, 40, 180);
     // chassis.moveTo(-60, 30);
+}
+
+void test_auton3() {
+    chassis.setPose(20, 0, 90);
+    ActivateWings(true);
+    chassis.moveTo(72, 0, 90, 1500);
+    chassis.setPose(48, 0, 90);
+    //chassis.moveTo(48, 0, 90, 5000);
+    ActivateWings(false);
+    chassis.moveTo(15, 13, 113, 5000, false, false);
+    ActivateWings(true);
+    chassis.moveTo(72, 13, 90, 5000);
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -183,11 +197,11 @@ void auton_skills() {
     // chassis.setPose(57, -44.75, 180) // for red net side
     wingR.set_value(true); // open wings
     // pros::delay(1000);
-    pros::delay(500);
+    pros::delay(700);
     wingR.set_value(false); // close wings
-    chassis.turnTo(-64, -24, 1000); 
+    chassis.turnTo(-64, -24, 700); 
     chassis.moveTo(-60,-37,-35, 1000);
-    chassis.turnTo(-60, 72, 1000);
+    chassis.turnTo(-60, 72, 700);
     // setDrive(-600,-600);
     // pros::delay(1000);
     setDrive(600, 600);
@@ -196,23 +210,16 @@ void auton_skills() {
     setDrive(0,0);
 
     // chassis.moveTo(-43, -48, -30, 2000);
-    chassis.moveTo(-43, -48, -30, 2000, false, true, 0, 0.6, 80, false); // sets max speed to 60
+    chassis.moveTo(-43, -48, -30, 1200, false, true, 0, 0.6, 80, false); // sets max speed to 60
     // chassis.moveTo(-44.25, -59.3, 54, 3000);
     turnTo(54);
     setDrive(-400, -400);
     // pros::delay(2000); // ONLY FOR TESTING PURPOSES
-    pros::delay(1000);
+    pros::delay(700);
     setDrive(0, 0);
 
-    // // chassis.setPose(48, 47, 300);
-    // // chassis.moveTo(41, 58, 3000);
-    // // turnTo(270);
-    // // driveFwd(10, 3000);
-    // // chassis.setPose(46, 58, -90);
-    // // pros::delay(100000);
-
-    // int shots = 40; // How many shots to take
-    // int delay = 1000; // The delay between each shot
+    // int shots = 44; // How many shots to take
+    // int delay = 900; // The delay between each shot
 
     // float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based off # of shots and delay
     // int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
@@ -236,15 +243,29 @@ void auton_skills() {
     // turnTo(-90);
 
     // pros::delay(1000);
-    // chassis.moveTo(-42.303626984126986, -58.72616522366522, 90, 3000);
-    // pros::delay(1000);
-    // chassis.follow(newcurve4_txt, 7000, 15.0);
+    //chassis.moveTo(-38.977543290043286, -59.14192568542568, 90, 3000);
+    //pros::delay(1000);
+    //chassis.follow(skillstest_txt, 7000, 15.0);
     // ActivateWings(true);
-    // chassis.moveTo(-16, 0, 2000);
+    // chassis.moveTo(-16, 0, 2000);    
     // chassis.moveTo(-100, 0, 3000);
     // chassis.moveTo(-24, -12, 1000, 80);
     // chassis.moveTo(-10, -12, 1000, 80);
     
+    setDrive(70, 70);
+    pros::delay(200);
+    setDrive(0, 0);
+    turnTo(90);
+    chassis.moveTo(42, -57.5, 90, 3000);
+    chassis.turnTo(-5, 22, 800);
+    chassis.moveTo(15, -10, -25, 2500);
+    turnTo(90);
+    ActivateWings(true);
+    chassis.moveTo(50, -10, 90, 2000);
+    chassis.setPose(40, -10, 90);
+    ActivateWings(false);
+    chassis.moveTo(15, -10, 45, 2000, false, false);
+    chassis.moveTo(50, 10, 90, 2000);
 }
 
 
@@ -282,29 +303,6 @@ void solo_auton() {
     pros::delay(500);
     claw.set_value(true);
     
-    
-    // Touch the pole for AWP
-
-    // Goes to lower pole
-    // chassis.moveTo(65.5, -32, 2000, 70, true);
-    // chassis.turnTo(65.5, 0, 1000, true);
-    // chassis.moveTo(65.5, -18, 2000, 70, true);
-    // grabber.set_value(true);
-
-
-    // Goes to center and touch pole (OLD)
-    // chassis.turnTo(40, -20, 1000);
-    // chassis.moveTo(40, -20, 2000, 70);
-    // chassis.turnTo(53, 0, 1000, true);
-    // chassis.moveTo(45, -15, 1000, 70, true);
-    // chassis.turnTo(55, 0, 1000, true);
-    // grabber.set_value(true);
-    // setDrive(25, -25);
-    // pros::delay(250);
-    // setDrive(0, 0);
-    // setDrive(-15, -15);
-    // pros::delay(250);
-    // setDrive(0, 0);  
 }
 
 void defense_auton() {
@@ -364,29 +362,36 @@ void defense_auton_elim() {
  * 5. Touch the pole if needed
  */
 void offense_auton() {
-    chassis.setPose(-12, 57, 90);
+    chassis.setPose(-12, 56, 90);
     claw.set_value(true);
-    pros::delay(750);
-    chassis.moveTo(-35, 57, 90, 1500, false, false); // Move forward 
-    chassis.moveTo(-50, 52, 45, 1500, false, false);
+    pros::delay(650);
+    // chassis.moveTo(-35, 57, 90, 1500, false, false); // Move forward 
+    chassis.moveTo(-50, 50, 45, 1500, false, false, 0.6, 3, 127); // Move forward
     //pros::delay(200);
     //wingL.set_value(true);
-    chassis.moveTo(-58, 40, 0, 1500, false, false); // Align with net
-    chassis.turnTo(-60, 0, 1500, false, false, 80);   
+    chassis.moveTo(-62, 20, 0, 1200, false, false); // Align with net
+    chassis.turnTo(-60, 0, 1000, false, false, 90);   
     //wingL.set_value(false);  
-    chassis.moveTo(-55, 0, 180, 1500, false, true); // Rams in from the front
-    chassis.moveTo(-55, 60, 110, 1500, false, false); // Back up and face the middle three triballs
     claw.set_value(false);
+    pros::delay(300);
+    chassis.moveTo(-60, -50, 180, 1500, false, true); // Rams in from the front
+    chassis.setPose(-60, 32, 180);
+    chassis.moveTo(-50, 50, 110, 1500, false, false); // Back up and face the middle three triballs
 
     // Middle Triballs
+    chassis.turnTo(0, 0, 800);
     // chassis.moveTo(-25, 25, 125, 1880, false, true, 0, 0.6); // Move towards centee
-    chassis.moveTo(-10, 10, 140, 1084, false, true, 0, 0.6); // Move to back middle triball
+    chassis.moveTo(0, 0, 140, 1500); // Move to back middle triball
     claw.set_value(true);
     pros::delay(300);
-    chassis.turnTo(-60, 10, 500); // Turn to net
-    chassis.moveTo(-42, 10, 270, 1533, false, true, 0, 0.6); // Ram in from the front
-    chassis.moveTo(-35, 10, 270, 500, false, false, 0, 0.6); // Back up 
+    chassis.turnTo(-60, 10, 750, false, false, 70); // Turn to net
+    claw.set_value(false);  
+    ActivateWings(true);
+    chassis.moveTo(-50, 10, 270, 1200); // Ram in from the front
+    chassis.moveTo(-35, 10, 270, 1000); // Back up 
 }
+
+
 
 void offense_auton_elim() {
     chassis.setPose(-12, 60, 90);

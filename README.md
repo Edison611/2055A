@@ -23,6 +23,11 @@ Below are some of the features that can be mentioned for programming when judgin
     2. Increase the kD value until it stops oscillating
     3. Keep repeating those steps until the robot can no longer stop oscillating and use those kP and kD values
 
+## Version Control System / Managing the Code:
+- We use Github to manage all of our code with different branches to organize different features on the robot (e.g One branch for a brain display, another branch for testing odometry, another one for pure pursuit). At the end, we can combine all of these branches for our finalized code
+- We can also record the issues that we face, so that all members are aware of them and can think of solutions.
+- We also use Liveshare (VsCode Extension) to directly share the code during meetings where all members will can directly edit the code on different devices. 
+
 ## Solo Autonomous Win Point:
 - Our robot is designed to be able to get the autonomous win point by itself by shooting the alliance triball across the field into the net, picking up the triball in the corner, and also touching the pole
 

@@ -146,7 +146,7 @@ void driver_skills() {
     chassis.setPose(-61, 32, 0);
 
     int shots = 44; // How many shots to take
-    int delay = 1000; // The delay between each shot
+    int delay = 1200; // The delay between each shot
 
     float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
     int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
@@ -193,33 +193,43 @@ void auton_skills() {
     // chassis.setPose(-49.25, -59, 61);
 
     // chassis.setPose(36, 60, -90); change this -- facing front, front of robot aligned with
-    chassis.setPose(-44.75, -57, -90); // for blue net side
+                //chassis.setPose(-44.75, -57, -90); // for blue net side
     // chassis.setPose(57, -44.75, 180) // for red net side
-    wingR.set_value(true); // open wings
+                //wingR.set_value(true); // open wings
     // pros::delay(1000);
-    pros::delay(700);
-    wingR.set_value(false); // close wings
-    chassis.turnTo(-64, -24, 700); 
-    chassis.moveTo(-60,-37,-35, 1000);
-    chassis.turnTo(-60, 72, 700);
+                //pros::delay(700);
+                //wingR.set_value(false); // close wings
+                // chassis.turnTo(-64, -15, 700); 
+                // chassis.moveTo(-58, -37.5, -35, 1000);
+                // chassis.turnTo(-60, 72, 700);
     // setDrive(-600,-600);
     // pros::delay(1000);
-    setDrive(600, 600);
+    // chassis.moveTo(-60, 0, 0, 750);
+                //setDrive(600, 600);
     // pros::delay(2000);
-    pros::delay(1000);
-    setDrive(0,0);
+                // pros::delay(1000);
+                // setDrive(0,0);
 
     // chassis.moveTo(-43, -48, -30, 2000);
-    chassis.moveTo(-43, -48, -30, 1200, false, true, 0, 0.6, 80, false); // sets max speed to 60
+                //chassis.moveTo(-43, -54, -30, 1200, false, true, 0, 0.6, 80, false); // sets max speed to 60
     // chassis.moveTo(-44.25, -59.3, 54, 3000);
-    turnTo(54);
-    setDrive(-400, -400);
+                // turnTo(54);
+                //setDrive(-400, -400);
     // pros::delay(2000); // ONLY FOR TESTING PURPOSES
-    pros::delay(700);
+                // pros::delay(700);
+                // setDrive(0, 0);
+    chassis.setPose(-44.25, -59.3, 54);
+    setDrive(-400, -400);
+    pros::delay(1100);
     setDrive(0, 0);
+    claw.set_value(true);
 
-    // int shots = 44; // How many shots to take
-    // int delay = 900; // The delay between each shot
+    setPTO(-600, -600, -600, -600);
+    pros::delay(10000);
+    setPTO(0, 0, 0, 0);
+
+    // int shots = 15; // How many shots to take
+    // int delay = 1000; // The delay between each shot
 
     // float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based off # of shots and delay
     // int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
@@ -256,16 +266,23 @@ void auton_skills() {
     pros::delay(200);
     setDrive(0, 0);
     turnTo(90);
-    chassis.moveTo(42, -57.5, 90, 3000);
+    chassis.moveTo(10, -60, 90, 2000);
+    claw.set_value(false);
+    chassis.moveTo(42, -60, 90, 2000);
     chassis.turnTo(-5, 22, 800);
-    chassis.moveTo(15, -10, -25, 2500);
+    chassis.moveTo(10, -5, -25, 2500);
     turnTo(90);
     ActivateWings(true);
-    chassis.moveTo(50, -10, 90, 2000);
-    chassis.setPose(40, -10, 90);
+    chassis.moveTo(100, -10, 90, 1500);
+    // chassis.setPose(40, -10, 90);
     ActivateWings(false);
-    chassis.moveTo(15, -10, 45, 2000, false, false);
-    chassis.moveTo(50, 10, 90, 2000);
+    chassis.moveTo(5, 0, 45, 1500, false, false);
+    ActivateWings(true);
+    chassis.moveTo(100, 10, 90, 1500);
+    ActivateWings(false);
+    chassis.moveTo(30, 10, 90, 1000);
+
+
 }
 
 
@@ -299,7 +316,7 @@ void solo_auton() {
     wingR.set_value(false);
 
     /* Moving Toward Pole */
-    chassis.moveTo(-15, -60, 90, 2850);
+    chassis.moveTo(-16, -60, 90, 2850);
     pros::delay(500);
     claw.set_value(true);
     
@@ -362,23 +379,25 @@ void defense_auton_elim() {
  * 5. Touch the pole if needed
  */
 void offense_auton() {
+    // Reverse into Net
     chassis.setPose(-12, 56, 90);
+    // chassis.moveTo(-30, 56, 90, 800, false, true, 0.6, 3, 127);
     claw.set_value(true);
     pros::delay(650);
-    // chassis.moveTo(-35, 57, 90, 1500, false, false); // Move forward 
-    chassis.moveTo(-50, 50, 45, 1500, false, false, 0.6, 3, 127); // Move forward
-    //pros::delay(200);
-    //wingL.set_value(true);
-    chassis.moveTo(-62, 20, 0, 1200, false, false); // Align with net
+    chassis.moveTo(-20, 50, 90, 1500, false, false, 0.6, 3, 127);
+    chassis.moveTo(-50, 50, 45, 1500, false, false, 0.6, 3, 127);
+    chassis.moveTo(-62, 20, 0, 1200, false, false);
+    
+    // Turn Around and Push into Net
     chassis.turnTo(-60, 0, 1000, false, false, 90);   
-    //wingL.set_value(false);  
+    // turnTo(180);
     claw.set_value(false);
     pros::delay(300);
-    chassis.moveTo(-60, -50, 180, 1500, false, true); // Rams in from the front
-    chassis.setPose(-60, 32, 180);
-    chassis.moveTo(-50, 50, 110, 1500, false, false); // Back up and face the middle three triballs
+    chassis.moveTo(-60, -50, 180, 1300, false, true);
+    chassis.moveTo(-50, 50, 110, 1500, false, false);
 
-    // Middle Triballs
+    
+    // // Middle Triballs
     chassis.turnTo(0, 0, 800);
     // chassis.moveTo(-25, 25, 125, 1880, false, true, 0, 0.6); // Move towards centee
     chassis.moveTo(0, 0, 140, 1500); // Move to back middle triball

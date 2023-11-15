@@ -37,7 +37,7 @@ extern pros::ADIAnalogIn line_sensor;
 extern pros::Distance distance_sensor;
 
 
-extern pros::ADIDigitalOut cata_ratchet;
+extern pros::ADIDigitalOut blocker;
 extern pros::ADIDigitalOut wingR;
 extern pros::ADIDigitalOut wingL;
 extern pros::ADIDigitalOut grabber;

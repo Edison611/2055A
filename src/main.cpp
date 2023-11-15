@@ -39,7 +39,7 @@ void initialize() {
     // pros::Task print_task(print_info);
     
 
-    pros::delay(1500);
+    // pros::delay(3000);
 }
 
 /**

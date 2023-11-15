@@ -97,17 +97,8 @@ bool hold = false;
 bool cata_shoot = false;
 
 void setCatapultMotors() {
-    if (cata_limit_switch.get_value() == 1) {
-        hold = true;
-    }
-    // pros::lcd::set_text(3, "Limit Switch: " + std::to_string(limit_switch.get_value()));
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1) == 1) {
-        hold = false;
-        // Shoot Catapult
-        // setPTO(-600, -600, -600, -600);
-        // setCatapult(127);
-        pros::delay(250);
-        // setCatapult(127);
+        cata_shoot = true;
     }
 }
 
@@ -121,20 +112,20 @@ void shoot() {
  */
 void cata_hold() {
 
-    double factor = 9.25; // Tune this value
-    int x = 0;
+    // double factor = 9.25; // Tune this value
+    // int x = 0;
     bool stop = true;
 
 	while (true) {
 
         while (puncher_rot.get_angle() < 17000) { // Could change to adjust button value
             // pros::lcd::set_text(1, "REACHED");
-            if (stop == true) {
+            if (stop == true || ) {
                 setPTO(0, 0, 0, 0);
                 stop = false;
             }
 
-            if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1) == 1 || cata_shoot == true) {
+            if (cata_shoot == true) {
                 hold = false;
                 cata_shoot = true;
                 break;
@@ -154,7 +145,7 @@ void cata_hold() {
             // ptoL2.move(-127);
             // ptoR1.move(-127);
             // ptoR2.move(-127);
-            pros::delay(350);
+            pros::delay(300);
         }
 
         // if (cata_limit_switch.get_value() == 1) {
@@ -236,9 +227,11 @@ void auton_hold() {
 // ------------------------------------------------------------------------------------------------------
 // WINGS
 // ------------------------------------------------------------------------------------------------------
+
 void ActivateWings(bool dir) {
     wingR.set_value(dir);
     wingL.set_value(dir);
+
 }
 
 bool currentWings = false;
@@ -248,17 +241,10 @@ bool currentWings = false;
  */
 void op_wings() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
-        if (currentWings == false) {
-            currentWings = true;
-            wingR.set_value(true);
-            wingL.set_value(true);
-        }
-        
-        else if (currentWings == true) {
-            currentWings = false;
-            wingR.set_value(false);
-            wingL.set_value(false);
-        }
+        currentWings = !currentWings;
+        wingR.set_value(currentWings);
+        wingL.set_value(currentWings);
+
     }
 }
 
@@ -271,15 +257,34 @@ bool currentClaw = false;
 
 void op_claw() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
-        if (currentClaw == false) {
-            currentClaw = true;
-            claw.set_value(true);
-        }
+        currentClaw = !currentClaw;
+        claw.set_value(currentClaw);
+
+        // if (currentClaw == false) {
+        //     currentClaw = true;
+        //     claw.set_value(true);
+        // }
         
-        else if (currentClaw == true) {
-            currentClaw = false;
-            claw.set_value(false);
-        }
+        // else if (currentClaw == true) {
+        //     currentClaw = false;
+        //     claw.set_value(false);
+        // }
     }
 }
+
+
+bool currentBlocker = false;
+
+/**
+ * @brief Controls the blocker of the bot. On button press, it pulls it up if it is dropped, and drops it if it was up.
+ */
+
+void op_blocker() {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
+        currentBlocker = !currentBlocker;
+        blocker.set_value(currentBlocker);
+    }
+}
+
+
 // ------------------------------------------------------------------------------------------------------

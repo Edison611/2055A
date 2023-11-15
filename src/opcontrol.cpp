@@ -60,13 +60,15 @@ void my_opcontrol() {
         pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
         pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position
         pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
-        pros::delay(20);
+        pros::delay(30);
 		setDriveMotors();
 		op_wings();
 		DrivePTO();
 		// Puncher();
+		setCatapultMotors();
 		macroLoad();
 		op_claw();
+		op_blocker();
 		// std::string line = getAllPower();
 		// Data << std::to_string(time) + ", " + line << std::endl;
 		// pros::delay(20);

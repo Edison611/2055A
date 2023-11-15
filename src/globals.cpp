@@ -46,7 +46,7 @@ int COLOR_SENSOR_PORT = 12;
 // char LINE_SENSOR_PORT = 'F';
 int DISTANCE_SENSOR_PORT = 15;
 
-char CATA_RATCHET_PORT = 'F';
+char BLOCKER_PORT = 'G';
 char WINGR_PORT = 'D';
 char WINGL_PORT = 'E';
 // char GRABBER_PORT = 'D';
@@ -99,7 +99,7 @@ pros::Distance distance_sensor(DISTANCE_SENSOR_PORT);
 // ------------------------------------------------------------------------------------------------------
 // Pneumatics
 // ------------------------------------------------------------------------------------------------------
-pros::ADIDigitalOut cata_ratchet(CATA_RATCHET_PORT);
+pros::ADIDigitalOut blocker(BLOCKER_PORT);
 pros::ADIDigitalOut wingR(WINGR_PORT);
 pros::ADIDigitalOut wingL(WINGL_PORT);
 // pros::ADIDigitalOut grabber(GRABBER_PORT);

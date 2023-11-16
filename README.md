@@ -18,6 +18,8 @@ Below are some of the features that can be mentioned for programming when judgin
 - **P**: **Proportional** term used to calculate error between actual and desired value. The farther away from the target, the more power you give to the motor.
 - **I**: **Integral** term (currently not in use). Accumulated error (sum of error), so it keeps increasing. This will often cause the robot to overshoot which is why a hard cap on the value is required. 
 - **D**: **Derivative** term (Δerror) used to find the change in your error which predicts future trends on the change in power given to the motor.
+- **Slew Rate**: Controls the maximum acceleration of the robot which prevents tipping. Higher values make the robot accelerate faster, and slower values make the robot accelerate slower.
+- **Chase Power**: Speed that the robot tries to make the curves.
 - **Tuning** these value uses **Manual Trial & Error** and requires:
     1. Increasing the kP term until the robot begins overshooting and slightly oscillating.
     2. Increase the kD value until it stops oscillating

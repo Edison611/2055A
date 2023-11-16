@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Auton Skills",
+    "project_name": "Solo Auton",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -335,8 +335,8 @@
     },
     "upload_options": {
       "description": "N/A",
-      "icon": "clawbot",
-      "slot": 4
+      "icon": "X",
+      "slot": 3
     }
   }
 }

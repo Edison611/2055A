@@ -52,6 +52,7 @@ char WINGL_PORT = 'E';
 // char GRABBER_PORT = 'D';
 char DRIVEPTO_PORT = 'B';
 char CLAW_PORT = 'C';
+char WEDGE_PORT = 'F';
 
 // pros::Rotation back_rot(6, false);
 pros::Rotation puncher_rot(6, false);
@@ -105,6 +106,7 @@ pros::ADIDigitalOut wingL(WINGL_PORT);
 // pros::ADIDigitalOut grabber(GRABBER_PORT);
 pros::ADIDigitalOut drivePTO(DRIVEPTO_PORT);
 pros::ADIDigitalOut claw(CLAW_PORT);
+pros::ADIDigitalOut wedge(WEDGE_PORT);
 
 // ------------------------------------------------------------------------------------------------------
 // CONTROLLER

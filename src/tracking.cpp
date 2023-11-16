@@ -175,9 +175,10 @@ void macroLoad() {
  */
 void SetMatchLoad() {
     while (true) {
-        if (loadMacro == true) {
+        if (loadMacro == true && currentDrivePTO == false) {
+        
             shoot();
-            pros::delay(1000);
+            pros::delay(1200);
             // bool launch = cata_ball_detection();
             // if (launch == true) {
             //     pros::delay(100);

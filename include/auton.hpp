@@ -12,7 +12,7 @@ void auton_skills();
 void solo_auton();
 void offense_auton();
 void offense_auton_elim();
-void offense_AWP();
+void offenseV2();
 void defense_auton();
 void defense_auton_elim();
 void defense_MOA();

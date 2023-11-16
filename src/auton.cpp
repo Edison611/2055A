@@ -143,13 +143,13 @@ void test_auton3() {
 // ------------------------------------------------------------------------------------------------------
 void driver_skills() {
 
-    chassis.setPose(-61, 32, 0);
+    // chassis.setPose(-61, 32, 0);
 
-    int shots = 44; // How many shots to take
-    int delay = 1200; // The delay between each shot
+    // int shots = 44; // How many shots to take
+    // int delay = 1200; // The delay between each shot
 
-    float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
-    int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
+    // float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
+    // int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
 
     // Start Code
 
@@ -158,30 +158,34 @@ void driver_skills() {
 
     // setDrive(45, 35);
     // pros::delay(100);
-    int x = inertial_sensor.get_rotation();
+    // int x = inertial_sensor.get_rotation();
  
     // grabber.set_value(true);
-    pros::delay(50);
-
-
-    for (int i = 0; i < shots; i++) {
-        shoot();
-        // pros::lcd::set_text(1, "time: " + std::to_string(i));
-        // if (inertial_sensor.get_rotation() >= x) {
-        //     setDrive(5, 15);
-        // }
-        // else if (inertial_sensor.get_rotation() <= x-2) {
-        //     setDrive(15, 5);
-        // }
-        // else {
-        //     setDrive(15, 10);
-        // }
-
-        pros::delay(delay);
-    }
-
+    // pros::delay(50);
+    setDrive(-400, -400);
+    pros::delay(500);
     setDrive(0, 0);
-    // controller.rumble("-.");
+
+    setPTO(-600, -600, -600, -600);
+    pros::delay(45000);
+    setPTO(0, 0, 0, 0);
+    // for (int i = 0; i < shots; i++) {
+    //     shoot();
+    //     // pros::lcd::set_text(1, "time: " + std::to_string(i));
+    //     // if (inertial_sensor.get_rotation() >= x) {
+    //     //     setDrive(5, 15);
+    //     // }
+    //     // else if (inertial_sensor.get_rotation() <= x-2) {
+    //     //     setDrive(15, 5);
+    //     // }
+    //     // else {
+    //     //     setDrive(15, 10);
+    //     // }
+
+    //     pros::delay(delay);
+    // }
+
+    controller.rumble("-.");
 }
 
 void auton_skills() {
@@ -218,7 +222,9 @@ void auton_skills() {
     // pros::delay(2000); // ONLY FOR TESTING PURPOSES
                 // pros::delay(700);
                 // setDrive(0, 0);
-    chassis.setPose(-44.25, -59.3, 54);
+    chassis.setPose(-44.25, -60.3, 54);
+    wedge.set_value(true);
+    pros::delay(300);
     setDrive(-400, -400);
     pros::delay(1100);
     setDrive(0, 0);
@@ -357,15 +363,15 @@ void defense_auton_elim() {
     // chassis.turnTo(0, -10, 1000);
     // chassis.moveTo(-2, -10, 1000, 60);
 
-    chassis.setPose(35, 60, -50);
-    chassis.moveTo(62, 35, 0, 2090);
-    chassis.moveTo(45, 55, -40, 1562);
-    chassis.moveTo(45, 55, 35, 800);
-    chassis.moveTo(38, 8, 0, 2626);
-    chassis.moveTo(38, 8, -90, 800);
-    chassis.moveTo(10, 8, -90, 1650);
-    ActivateWings(true);
-    chassis.moveTo(10, 8, -90, 1600);
+    chassis.setPose(35, 60, 130);
+    chassis.moveTo(60, 30, 180, 2203);
+    chassis.moveTo(35, 55, 120, 2018, false, false);
+    turnTo(180);
+    chassis.moveTo(38, 12, 180, 2405);
+    turnTo(270);
+    wingL.set_value(true);
+    chassis.moveTo(10, 12, -90, 1650);
+    wingL.set_value(false);
     
 }
 
@@ -410,32 +416,55 @@ void offense_auton() {
     chassis.moveTo(-35, 10, 270, 1000); // Back up 
 }
 
+void offenseV2() {
+    // Alliance tri-ball
+    chassis.setPose(-45, 60, 225);
+    chassis.moveTo(-60, 25, 180, 2154);
+    chassis.moveTo(-50, 50, 210, 1596, false, false);
+    chassis.turnTo(5, -7, 800);
+
+    // Middle tri-balls
+    chassis.moveTo(-12.5, 12.5, 145, 2725);
+    pros::delay(200);
+    claw.set_value(true);
+    pros::delay(200);
+    chassis.turnTo(-65, 12.5, 800, false, false, 80);
+    wingL.set_value(true);
+    claw.set_value(false);
+    chassis.moveTo(-60, 13, 270, 2000);
+    wingL.set_value(false);
+
+    // Last tri-ball 
+    chassis.moveTo(-15, 13, 270, 2500, false, false);
+    chassis.turnTo(10, 40, 800);
+    claw.set_value(true);
+    pros::delay(200);
+    chassis.turnTo(-65, 12.5, 800, false, false, 80);
+    claw.set_value(false);
+    chassis.moveTo(-60, 13, 270, 2500);
+}
 
 
 void offense_auton_elim() {
-    chassis.setPose(-12, 60, 90);
+    chassis.setPose(-44.75, 54, -90);
+    wingL.set_value(true);
+    pros::delay(1000);
+    wingL.set_value(false);
+    chassis.moveTo(-44.75, 54, -90, 1000);
+    chassis.moveTo(-56, 47, 225, 913);
+    turnTo(180);
+    chassis.moveTo(-60, 0, 180, 2000);
 
-    // Grab middle Triball and score both alliance triball and grabbed triball
-    // claw.set_value(true);
-    // chassis.moveTo(-40, 60, 1200, 90, true); // Move forward a little
-    // // wings.set_value(true);
-    // chassis.moveTo(-62.5, 40, 1400, 90, true); // Move the the net
-    // // wings.set_value(false);
-    // turnTo(0); // Adjust the back of the bot to face the net
-    // chassis.moveTo(-62.5, 28, 1000, 110, true); // Push the Red Tri-Ball into the net
-    // chassis.moveTo(-62.5, 35, 1200, 110, true); // Back-Up
-    // turnTo(180); // Turn the bot around so the front is facing the net
-    // chassis.moveTo(-62.5, 28, 1000, 110); // Push the Green Tri-Ball into the net
-    // chassis.moveTo(-55, 42.5, 1200, 110); // Back-Up
-    // claw.set_value(false);
-    
-    // // Go for center 3 triballs
-    // chassis.turnTo(-12, 38, 900); // 
-    // chassis.moveTo(-12, 9, 2200, 90); // Move towards the Middle Back Tr-Ball
-    // claw.set_value(true);
-    // pros::delay(400);
-    // turnTo(-90);
-    // chassis.moveTo(-47, 10, 1500, 110);
-
+    // Middle Triball
+    chassis.moveTo(-50, 50, 30, 1596, false, false); // ONLY LINE DIFFERENT
+    chassis.moveTo(-12.5, 12.5, 145, 2000);
+    pros::delay(200);
+    claw.set_value(true);
+    pros::delay(200);
+    chassis.turnTo(-65, 12.5, 800, false, false, 80);
+    wingL.set_value(true);
+    claw.set_value(false);
+    chassis.moveTo(-60, 13, 270, 2000);
+    wingL.set_value(false);
 }
 

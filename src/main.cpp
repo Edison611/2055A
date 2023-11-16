@@ -75,13 +75,12 @@ void competition_initialize() {}
 
 void autonomous() {
     // pros::Task log_task(log_data);
-    auton_skills(); // SLOT 4
-    // offense_auton(); // SLOT 6
+    // auton_skills(); // SLOT 2
+    // offense_auton(); // SLOT 4
     // offense_auton_elim();
-    // offense_AWP();
-    // solo_auton(); // SLOT 5
-    // test_auton(); // SLOT 3
-    // test_auton3(); // SLOT 3
+    solo_auton(); // SLOT 3
+    // test_auton(); // SLOT 7
+    // test_auton3(); // SLOT 7
     // defense_auton_elim(); // SLOT 7
 
 

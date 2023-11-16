@@ -16,11 +16,17 @@
 #include <string>
 
 // ------------------------------------------------------------------------------------------------------
-bool currentDrivePTO = false;
+bool currentDrivePTO = false; // This means that puncher is active when it is false
 void DrivePTO() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
         if (currentDrivePTO == false) {
             currentDrivePTO = true;
+            while (puncher_rot.get_angle() < 25000) {
+                setPTO(-600, -600, -600, -600);
+                pros::delay(20);
+            }
+            setPTO(0, 0, 0, 0);
+            pros::delay(100);
             drivePTO.set_value(true);
 
             ptoL1.set_brake_mode(MOTOR_BRAKE_COAST);
@@ -41,7 +47,7 @@ void DrivePTO() {
             ptoR1.set_brake_mode(MOTOR_BRAKE_COAST);
             ptoR2.set_brake_mode(MOTOR_BRAKE_COAST);
             pros::delay(500);
-            cata_shoot = true;
+            // cata_shoot = true;
         }
     }
 }
@@ -118,9 +124,9 @@ void cata_hold() {
 
 	while (true) {
 
-        while (puncher_rot.get_angle() < 17000) { // Could change to adjust button value
+        while (puncher_rot.get_angle() < 17500) { // Could change to adjust button value
             // pros::lcd::set_text(1, "REACHED");
-            if (stop == true || ) {
+            if (stop == true) {
                 setPTO(0, 0, 0, 0);
                 stop = false;
             }
@@ -136,15 +142,15 @@ void cata_hold() {
             }
         }
 
+        // while (currentDrivePTO == true) {
+        //     pros::delay(20);
+        // }
+
         if (cata_shoot == true) {
             // pros::lcd::set_text(2, "Shoot");
             cata_shoot = false;
             setPTO(-600, -600, -600, -600);
             stop = true;
-            // ptoL1.move(-127);
-            // ptoL2.move(-127);
-            // ptoR1.move(-127);
-            // ptoR2.move(-127);
             pros::delay(300);
         }
 
@@ -173,33 +179,7 @@ void cata_hold() {
     
 }
 
-void auton_hold() {
-    
-    // while (true) {
-    //     if (cata_limit_switch.get_value() == 1) {
-    //         hold = true;
-    //         }
-    //     }
 
-    // if (cata_shoot == true) {
-    //     cata_shoot = false;
-    //     setCatapult(127);
-    //     pros::delay(200);
-            
-    // }
-
-    //     pros::delay(10);
-}
-
-
-/**
- * @brief Controls the catapult ratchet of the bot based on button presses
- */
-
-/**
- * @brief Spins catapult other way in case of jam
- * 
- */
 
 
 

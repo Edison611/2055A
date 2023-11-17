@@ -160,11 +160,13 @@ void macroLoad() {
         if (loadMacro == false) {
             //cata_ratchet.set_value(true);
             loadMacro = true;
+            setPTO(-600, -600, -600, -600);
         }
 
         else if (loadMacro == true) {
             loadMacro = false;
             //cata_ratchet.set_value(false);
+            setPTO(0, 0, 0, 0);
         }
     }
 }
@@ -174,20 +176,20 @@ void macroLoad() {
  * 
  */
 void SetMatchLoad() {
-    while (true) {
-        if (loadMacro == true && currentDrivePTO == false) {
+    // while (true) {
+    //     if (loadMacro == true && currentDrivePTO == false) {
         
-            shoot();
-            pros::delay(1200);
-            // bool launch = cata_ball_detection();
-            // if (launch == true) {
-            //     pros::delay(100);
-            //     shoot();
+    //         shoot();
+    //         pros::delay(1200);
+    //         // bool launch = cata_ball_detection();
+    //         // if (launch == true) {
+    //         //     pros::delay(100);
+    //         //     shoot();
                 
-            // }
-        }
-        pros::delay(10);
-    }
+    //         // }
+    //     }
+    //     pros::delay(10);
+    // }
 }
 
 // Intake

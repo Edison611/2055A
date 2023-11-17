@@ -34,7 +34,7 @@ void initialize() {
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    pros::Task holding(cata_hold);
+    // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
     // pros::Task print_task(print_info);
     
@@ -75,10 +75,11 @@ void competition_initialize() {}
 
 void autonomous() {
     // pros::Task log_task(log_data);
-    // auton_skills(); // SLOT 2
+    auton_skills(); // SLOT 6
     // offense_auton(); // SLOT 4
+    // offenseV2(); // Slot 6
     // offense_auton_elim();
-    solo_auton(); // SLOT 3
+    // solo_auton(); // SLOT 3
     // test_auton(); // SLOT 7
     // test_auton3(); // SLOT 7
     // defense_auton_elim(); // SLOT 7

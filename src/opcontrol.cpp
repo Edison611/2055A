@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/misc.h"
 #include "pros/rtos.hpp"
 #include <ostream>
 #include <fstream>
@@ -55,10 +56,14 @@ void my_opcontrol() {
     // Data.open("/usd/ROBOT/log.txt", std::ios_base::app);
 	// double time = 0;
 	// Data << "Time (s), LB, LF, ptoL1, ptoL2, RB, RF, ptoR1, ptoR2" << std::endl;
+	claw.set_value(false);
 	wedge.set_value(true);
 	pros::delay(50);
 	wedge.set_value(false);
 	// driver_skills();
+	// loadMacro = true;
+	// setPTO(-600, -600, -600, -600);
+
 	while (true) {
 		// lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
         // pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
@@ -73,6 +78,9 @@ void my_opcontrol() {
 		macroLoad();
 		op_claw();
 		op_blocker();
+		// if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
+		// 	setPTO(0, 0, 0, 0);
+		// }
 		// std::string line = getAllPower();
 		// Data << std::to_string(time) + ", " + line << std::endl;
 		// pros::delay(20);

@@ -52,7 +52,7 @@ void setDriveMotors() {
     double power = 0;
     double turn = 0;
     double pTune = 7.5;
-    double tTune = 7.5;
+    double tTune = 10;
 
     power = exp((abs(y) - 127) * pTune / 1000) * y;
     power = power * 600 / 127;

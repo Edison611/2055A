@@ -229,7 +229,7 @@ void auton_skills() {
     pros::delay(800);
     setDrive(0, 0);
     claw.set_value(true);
-    pros::delay(43000);
+    pros::delay(40000);
     while (true) {
         if (puncher_rot.get_angle() < 17500) {
             setPTO(0, 0, 0, 0);
@@ -277,7 +277,7 @@ void auton_skills() {
     turnTo(90);
     chassis.moveTo(10, -58, 90, 2000);
     claw.set_value(false);
-    chassis.moveTo(42, -58, 90, 2000);
+    chassis.moveTo(40, -53, 90, 2000);
     chassis.turnTo(-5, 22, 800);
     chassis.moveTo(10, -5, -25, 2500);
     turnTo(90);
@@ -313,8 +313,6 @@ void solo_auton() {
     chassis.setPose(-44.25, -59.3, 54);
     shoot();
     pros::delay(1500);
-    shoot();
-    pros::delay(1000);
 
     /* Take Out Corner Triball */
     turnTo(0);
@@ -473,8 +471,9 @@ void offenseV2() {
     chassis.moveTo(-25, 13, 270, 1000, false, false);
 }
 
-// NOT IN USE
 void offense_auton_elim() {
+    
+    /*  OLD CODE
     chassis.setPose(-44.75, 54, -90);
     wingL.set_value(true);
     pros::delay(1000);
@@ -495,6 +494,43 @@ void offense_auton_elim() {
     claw.set_value(false);
     chassis.moveTo(-60, 13, 270, 1000, false, true, 600);
     wingL.set_value(false);
+    */
+
+   // NEW CODE
+   // Alliance tri-ball
+    chassis.setPose(-45, 60, 225);
+    chassis.moveTo(-60, -40, 180, 2154);
+    // chassis.moveTo(-60, 50, 180, 1000);
+    // chassis.moveTo(-60, -100, 180, 1500);
+    // turnTo(180);
+    // setDrive(600, 600);
+    // pros::delay(1000);
+    // setDrive(0, 0);
+    chassis.moveTo(-50, 50, 210, 1596, false, false);
+    chassis.turnTo(5, -7, 800);
+
+    // Middle tri-balls
+    chassis.moveTo(-12, 12, 145, 2725);
+    pros::delay(200);
+    claw.set_value(true);
+    pros::delay(200);
+    chassis.turnTo(-65, 12.5, 800, false, false, 50);
+    wingL.set_value(true);
+    claw.set_value(false);
+    chassis.moveTo(-60, 13, 270, 1500);
+    wingL.set_value(false);
+
+    // Last tri-ball 
+    chassis.moveTo(-16, 12, 270, 2400, false, false);
+    chassis.turnTo(10, 40, 800);
+    claw.set_value(true);
+    pros::delay(800);
+    chassis.turnTo(-65, 12.5, 1000, false, false, 40);
+    wingL.set_value(true);
+    claw.set_value(false);
+    chassis.moveTo(-68, 10, 270, 2000);
+    wingL.set_value(false);
+    chassis.moveTo(-25, 10, 270, 2000, false, false);
 }
 
 // Last Updated: 11/18/2023 (Right after Speedway)

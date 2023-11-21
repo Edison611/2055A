@@ -18,3 +18,4 @@ void defense_auton_elim();
 void defense_MOA();
 
 void testAuton2();
+void test_auton_skills();

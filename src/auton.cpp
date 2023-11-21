@@ -229,7 +229,8 @@ void auton_skills() {
     pros::delay(800);
     setDrive(0, 0);
     claw.set_value(true);
-    pros::delay(40000);
+    pros::delay(40000); // USE THIS FOR REAL AUTON SKILLS
+    // pros::delay(15000); // FOR TESTING PURPOSES
     while (true) {
         if (puncher_rot.get_angle() < 17500) {
             setPTO(0, 0, 0, 0);
@@ -275,9 +276,11 @@ void auton_skills() {
     pros::delay(200);
     setDrive(0, 0);
     turnTo(90);
-    chassis.moveTo(10, -58, 90, 2000);
+    // chassis.moveTo(10, -58, 90, 2000);
+    chassis.moveTo(14,-58, 90, 2000);
     claw.set_value(false);
-    chassis.moveTo(40, -53, 90, 2000);
+    // chassis.moveTo(40, -53, 90, 2000);
+    chassis.moveTo(42, -51, 90, 2000);
     chassis.turnTo(-5, 22, 800);
     chassis.moveTo(10, -5, -25, 2500);
     turnTo(90);
@@ -296,6 +299,66 @@ void auton_skills() {
     chassis.moveTo(30, 13, 90, 1000);
 
 
+}
+
+void test_auton_skills() {
+
+    // Shoot
+    chassis.setPose(-44.25, -60.5, 54);
+    setPTO(-600, -600, -600, -600);
+    wedge.set_value(true);
+    pros::delay(300);
+    wedge.set_value(false);
+    setDrive(-400, -400);
+    pros::delay(800);
+    setDrive(0, 0);
+    claw.set_value(true);
+    pros::delay(40000); // USE THIS FOR REAL AUTON SKILLS
+    // pros::delay(2000); // FOR TESTING PURPOSES
+    while (true) {
+        if (puncher_rot.get_angle() < 17500) {
+            setPTO(0, 0, 0, 0);
+            break;
+        }
+    } 
+    claw.set_value(false);
+    
+    // Turn to start moving to other side
+    setDrive(70, 70);
+    pros::delay(200);
+    setDrive(0, 0);
+    turnTo(90);
+
+    // Start moving to other side
+    chassis.moveTo(17,-58, 90, 2000);
+    chassis.moveTo(42, -51, 90, 2000);
+    chassis.turnTo(-5, 22, 800);
+    chassis.moveTo(10, -5, -25, 2500);
+    turnTo(90);
+    ActivateWings(true);
+    
+    // Start ramming
+    chassis.moveTo(100, 8, 90, 1500);
+    chassis.setPose(35, 8, 90);
+    ActivateWings(false);
+    chassis.moveTo(10, 24, 180, 2500, false, false);
+    chassis.moveTo(8, 42, 180, 2500, false, false);
+    ActivateWings(true);
+    chassis.moveTo(72, 12, -90, 3000);
+    // chassis.moveTo(0, 17, 90, 1700, false, false);
+    // ActivateWings(true);
+    // setDrive(600, 600);
+    // pros::delay(1400);
+    // setDrive(0, 0);
+    // ActivateWings(false);
+        // chassis.setPose(35, 17, 90);
+        // chassis.moveTo(24, 17, 90, 1500, false, false);
+        // chassis.moveTo(100, 17, 90, 1500);
+    // chassis.moveTo(0, 23, 90, 1700, false, false);
+    // ActivateWings(true);
+    // setDrive(600, 600);
+    // pros::delay(1400);
+    // setDrive(0, 0);
 }
 
 
@@ -331,7 +394,7 @@ void solo_auton() {
     wingR.set_value(false);
 
     /* Moving Toward Pole */
-    chassis.moveTo(-19, -60, 90, 2850);
+    chassis.moveTo(-15, -60, 90, 3000); 
     pros::delay(500);
     claw.set_value(true);
     

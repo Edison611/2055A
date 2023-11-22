@@ -304,7 +304,7 @@ void auton_skills() {
 void test_auton_skills() {
 
     // Shoot
-    chassis.setPose(-44.25, -60.5, 54);
+    chassis.setPose(-44.25, -60.5, 54);  
     setPTO(-600, -600, -600, -600);
     wedge.set_value(true);
     pros::delay(300);
@@ -313,8 +313,8 @@ void test_auton_skills() {
     pros::delay(800);
     setDrive(0, 0);
     claw.set_value(true);
-    pros::delay(40000); // USE THIS FOR REAL AUTON SKILLS
-    // pros::delay(2000); // FOR TESTING PURPOSES
+    // pros::delay(38500); // USE THIS FOR REAL AUTON SKILLS
+    pros::delay(2000); // FOR TESTING PURPOSES
     while (true) {
         if (puncher_rot.get_angle() < 17500) {
             setPTO(0, 0, 0, 0);
@@ -324,14 +324,15 @@ void test_auton_skills() {
     claw.set_value(false);
     
     // Turn to start moving to other side
+    chassis.setPose(-47.75, -62.75, 54);
     setDrive(70, 70);
     pros::delay(200);
     setDrive(0, 0);
     turnTo(90);
 
     // Start moving to other side
-    chassis.moveTo(17,-58, 90, 2000);
-    chassis.moveTo(42, -51, 90, 2000);
+    chassis.moveTo(22,-58, 90, 2000);
+    chassis.moveTo(44, -51, 90, 2000);
     chassis.turnTo(-5, 22, 800);
     chassis.moveTo(10, -5, -25, 2500);
     turnTo(90);
@@ -341,10 +342,25 @@ void test_auton_skills() {
     chassis.moveTo(100, 8, 90, 1500);
     chassis.setPose(35, 8, 90);
     ActivateWings(false);
-    chassis.moveTo(10, 24, 180, 2500, false, false);
-    chassis.moveTo(8, 42, 180, 2500, false, false);
+    chassis.moveTo(14, 22, 170, 2500, false, false);
+    chassis.moveTo(10, 38, 180, 2250, false, false);
+    chassis.moveTo(13, 24, 120, 1000);
+    // chassis.moveTo(13, 24, 120, 1000, false, false);
     ActivateWings(true);
-    chassis.moveTo(72, 12, -90, 3000);
+    chassis.moveTo(48, 14, -90, 2000);
+    // setDrive(-300, -300);
+    setDrive(-600, -600);
+    // pros::delay(200);
+    pros::delay(200);
+    setDrive(0, 0);
+    chassis.moveTo(72, 14, -90, 1000);
+    ActivateWings(false);
+    setDrive(-600, -600);
+    pros::delay(150);
+    setDrive(0, 0);
+    // ActivateWings(true);
+    // chassis.moveTo(72, 12, -90, 3000);
+    // ActivateWings(false);
     // chassis.moveTo(0, 17, 90, 1700, false, false);
     // ActivateWings(true);
     // setDrive(600, 600);

@@ -134,13 +134,8 @@ void cata_hold() { ///
             }
 
             if (cata_shoot == true) {
-                hold = false;
                 cata_shoot = true;
                 break;
-                // hold = false;
-                // cata_shoot = false;
-                // setCatapult(127);
-                // pros::delay(300);
             }
         }
 
@@ -156,27 +151,9 @@ void cata_hold() { ///
             pros::delay(300);
         }
 
-        // if (cata_limit_switch.get_value() == 1) {
-        //     cata_shoot = false;
-        //     hold = true;
-        // }
-
-        // catapult.move_velocity(200);
         
         pros::delay(20);
 
-        // OLD HOLD CODE
-        // ------------------------------------------
-		// if (hold) {
-		// 	int absPos = catapult.get_position();
-        
-        //     // while (hold) {
-        //         int power = (absPos - catapult.get_position())*factor;
-        //         setCatapult(power);
-        //         pros::delay(10);
-        //     // }
-        // }
-        // pros::delay(10);
 	}
     
 }
@@ -214,6 +191,15 @@ void ActivateWings(bool dir) {
     wingR.set_value(dir);
     wingL.set_value(dir);
 
+}
+
+/**
+ * @brief Manually rams the robot. 
+ */
+void ram(int time, int dir=1) {
+    setDrive(600*dir, 600*dir);
+    pros::delay(time);
+    setDrive(0, 0);
 }
 
 bool currentWings = false;

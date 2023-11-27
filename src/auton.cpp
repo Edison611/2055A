@@ -471,25 +471,41 @@ void defense_auton() {
  */
 void defense_auton_elim() {
 
-    chassis.setPose(35, 60, 130);
-    chassis.moveTo(60, 35, 180, 2003, false, true, 0, 0.6, 600);
-    turnTo(180);
-    setDrive(600, 600);
-    pros::delay(1000);
-    setDrive(0, 0);
-    chassis.moveTo(30, 60, 120, 2018, false, false, 0, 0.6, 600);
-    turnTo(180);
-    chassis.moveTo(25, 10, 180, 1505, false, true, 0, 0.6, 600);
-    // turnTo(270);
-    pros::delay(300);
+    /**OLD**/
+    // chassis.setPose(35, 60, 130);
+    // chassis.moveTo(60, 35, 180, 2003, false, true, 0, 0.6, 600);
+    // turnTo(180);
+    // setDrive(600, 600);
+    // pros::delay(1000);
+    // setDrive(0, 0);
+    // chassis.moveTo(30, 60, 120, 2018, false, false, 0, 0.6, 600);
+    // turnTo(180);
+    // chassis.moveTo(25, 10, 180, 1505, false, true, 0, 0.6, 600);
+    // // turnTo(270);
+    // pros::delay(300);
+    // claw.set_value(true);
+    // pros::delay(500);
+    // chassis.moveTo(30, 60, 120, 2000, false, false, 0, 0.6, 600);
+    // chassis.turnTo(-20, 60, 1000);
+    // claw.set_value(false);
+    // chassis.moveTo(0, 60, 90, 1000, false, true, 0, 0.6, 600);
+
+    /**NEW*/
+    chassis.setPose(36, 62, 180);
+    // wingR.set_value(true);
+    // pros::delay(500);
+    // wingR.set_value(false);
+    chassis.moveTo(36, 40, 180, 800);
+    turnTo(195);
+    chassis.moveTo(30, 15, 195, 900);
     claw.set_value(true);
-    pros::delay(500);
-    chassis.moveTo(30, 60, 120, 2000, false, false, 0, 0.6, 600);
-    chassis.turnTo(-20, 60, 1000);
+    wingL.set_value(true);
+    pros::delay(200);
+    turnTo(-90);
     claw.set_value(false);
-    chassis.moveTo(0, 60, 90, 1000, false, true, 0, 0.6, 600);
-    
-    
+    // turnTo(0);
+    // turnTo(-90);
+    chassis.moveTo(10, 9, -90, 800);
 }
 
 /**

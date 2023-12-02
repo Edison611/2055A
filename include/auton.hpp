@@ -1,6 +1,4 @@
-void vector(double x, double y, int turnTimeout, int driveTimeout);
-void driveFwd(double inches, int timeout, float maxSpeed);
-void turnTo(double degrees, int timeout);
+
 
 void test_auton();
 void test_auton2();

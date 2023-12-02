@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Defense_Auton",
+    "project_name": "Offense Auton Elim",
     "target": "v5",
     "templates": {
       "LemLib": {

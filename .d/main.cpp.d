@@ -82,9 +82,9 @@ bin/main.cpp.o: src/main.cpp include/main.h include/api.h \
  include/pros/rotation.hpp include/lemlib/pose.hpp \
  include/lemlib/logger.hpp include/drive.hpp include/subsystems.hpp \
  include/opcontrol.hpp include/auton.hpp include/tracking.hpp \
- include/pure-pursuit.hpp include/helper.hpp include/lemlib/api.hpp \
- include/lemlib/util.hpp include/lemlib/pid.hpp include/pros/llemu.hpp \
- include/pros/misc.hpp
+ include/pure-pursuit.hpp include/helper.hpp include/test-functions.hpp \
+ include/lemlib/api.hpp include/lemlib/util.hpp include/lemlib/pid.hpp \
+ include/pros/llemu.hpp include/pros/misc.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -255,6 +255,7 @@ include/auton.hpp:
 include/tracking.hpp:
 include/pure-pursuit.hpp:
 include/helper.hpp:
+include/test-functions.hpp:
 include/lemlib/api.hpp:
 include/lemlib/util.hpp:
 include/lemlib/pid.hpp:

@@ -131,8 +131,8 @@ lemlib::Drivetrain_t drivetrain {
 
 // forward/backward PID
 lemlib::ChassisController_t lateralController {
-    75, // kP // 40 Before
-    170, // kD // 125 Before
+    75, // kP
+    900, // kD May lower in the future
     1, // smallErrorRange
     100, // smallErrorTimeout
     3, // largeErrorRange
@@ -142,8 +142,8 @@ lemlib::ChassisController_t lateralController {
  
 // turning PID
 lemlib::ChassisController_t angularController {
-    6, // kP // 2 Before
-    25, // kD // 20 Before
+    4, // kP  
+    30, // kD 
     1, // smallErrorRange
     100, // smallErrorTimeout
     3, // largeErrorRange

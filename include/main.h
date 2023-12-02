@@ -82,6 +82,7 @@ void opcontrol(void);
 #include "tracking.hpp"
 #include "pure-pursuit.hpp"
 #include "helper.hpp"
+#include "test-functions.hpp"
 #endif
 
 #endif  // _PROS_MAIN_H_

@@ -82,7 +82,8 @@ bin/subsystems.cpp.o: src/subsystems.cpp include/main.h include/api.h \
  include/pros/rotation.hpp include/lemlib/pose.hpp \
  include/lemlib/logger.hpp include/drive.hpp include/subsystems.hpp \
  include/opcontrol.hpp include/auton.hpp include/tracking.hpp \
- include/pure-pursuit.hpp include/helper.hpp include/pros/llemu.hpp
+ include/pure-pursuit.hpp include/helper.hpp include/test-functions.hpp \
+ include/pros/llemu.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -253,4 +254,5 @@ include/auton.hpp:
 include/tracking.hpp:
 include/pure-pursuit.hpp:
 include/helper.hpp:
+include/test-functions.hpp:
 include/pros/llemu.hpp:

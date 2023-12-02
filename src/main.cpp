@@ -34,7 +34,7 @@ void initialize() {
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    pros::Task holding(cata_hold);
+    // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
     // pros::Task print_task(print_info);
     
@@ -75,14 +75,13 @@ void competition_initialize() {}
 
 void autonomous() {
     // pros::Task log_task(log_data);
-    // auton_skills(); // SLOT 6
-    // test_auton_skills(); // SLOT 8
-    // offenseV2(); // SLOT 4
-    // offense_auton_elim(); // SLOT 7
-    // solo_auton(); // SLOT 3
-    // test_auton(); // SLOT 7
-    // test_auton3(); // SLOT 7
-    defense_auton_elim(); // SLOT 5
+
+    // offense_auton(); // SLOT 4
+    offense_auton_elim(); // SLOT 5
+    // defense_auton_elim(); // SLOT 6
+
+    // auton_skills(); // SLOT 7
+    // test_auton_skills(); // SLOT 8 // RENAME AND PUT AS ACTUAL SKILLS AUTON
 
 
 }
@@ -102,10 +101,7 @@ void autonomous() {
  */
 void opcontrol() {
    chassis.setPose(0, 0, 0);
-   // chassis.moveTo(24, 24, -90, 2000, false, true, 1, 0.6, 127, false);
-    //chassis.moveTo(24, 24, -90, 2000);
    //driver_skills();
-   //chassis.follow("curvetest8.txt", 20000, 10.0);
     // pros::Task MatchLoads(SetMatchLoad);
    my_opcontrol();
 }   

@@ -158,31 +158,6 @@ void cata_hold() { ///
     
 }
 
-
-
-
-
-// ------------------------------------------------------------------------------------------------------
-// GRABBER (OLD)
-// ------------------------------------------------------------------------------------------------------
-// bool currentGrabber = false;
-
-// /**
-//  * @brief Controls the grabber of the bot, drops if it was up, pulls it up if it is dropped on button press.
-//  */
-// void SetGrabber() {
-//     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
-//         if (currentGrabber == false) {
-//             currentGrabber = true;
-//             grabber.set_value(true);
-//         }
-//         else if (currentGrabber == true) {
-//             currentGrabber = false;
-//             grabber.set_value(false);
-//         }
-//     }
-// }
-
 // ------------------------------------------------------------------------------------------------------
 // WINGS
 // ------------------------------------------------------------------------------------------------------
@@ -190,7 +165,14 @@ void cata_hold() { ///
 void ActivateWings(bool dir) {
     wingR.set_value(dir);
     wingL.set_value(dir);
+}
 
+void setWings(bool right, bool left, int delay) {
+    wingR.set_value(right);
+    wingL.set_value(left);
+    pros::delay(delay);
+    wingR.set_value(false);
+    wingL.set_value(false);
 }
 
 /**

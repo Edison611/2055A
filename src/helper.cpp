@@ -57,12 +57,12 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = (200.0F)) {
  * @param degrees 
  * @param timeout 
  */
-void turnTo(double degrees, int timeout) {
+void turnTo(double degrees, int maxSpeed, int timeout, bool reversed, bool async) {
     lemlib::Pose pose = chassis.getPose();
     double rad = degrees * 3.14159265358979323846 / 180;
     double x_offset = sin(rad) * 20;
     double y_offset = cos(rad) * 20;
-    chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout);
+    chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout, async, reversed, maxSpeed);
 }
 
 /**

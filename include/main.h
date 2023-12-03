@@ -83,6 +83,7 @@ void opcontrol(void);
 #include "pure-pursuit.hpp"
 #include "helper.hpp"
 #include "test-functions.hpp"
+#include "selection.h"
 #endif
 
 #endif  // _PROS_MAIN_H_

@@ -83,7 +83,7 @@ bin/subsystems.cpp.o: src/subsystems.cpp include/main.h include/api.h \
  include/lemlib/logger.hpp include/drive.hpp include/subsystems.hpp \
  include/opcontrol.hpp include/auton.hpp include/tracking.hpp \
  include/pure-pursuit.hpp include/helper.hpp include/test-functions.hpp \
- include/pros/llemu.hpp
+ include/selection.h include/pros/llemu.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -255,4 +255,5 @@ include/tracking.hpp:
 include/pure-pursuit.hpp:
 include/helper.hpp:
 include/test-functions.hpp:
+include/selection.h:
 include/pros/llemu.hpp:

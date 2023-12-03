@@ -83,8 +83,9 @@ bin/globals.cpp.o: src/globals.cpp include/main.h include/api.h \
  include/lemlib/logger.hpp include/drive.hpp include/subsystems.hpp \
  include/opcontrol.hpp include/auton.hpp include/tracking.hpp \
  include/pure-pursuit.hpp include/helper.hpp include/test-functions.hpp \
- include/pros/misc.hpp include/pros/optical.hpp include/pros/vision.hpp \
- include/lemlib/api.hpp include/lemlib/util.hpp include/lemlib/pid.hpp
+ include/selection.h include/pros/misc.hpp include/pros/optical.hpp \
+ include/pros/vision.hpp include/lemlib/api.hpp include/lemlib/util.hpp \
+ include/lemlib/pid.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -256,6 +257,7 @@ include/tracking.hpp:
 include/pure-pursuit.hpp:
 include/helper.hpp:
 include/test-functions.hpp:
+include/selection.h:
 include/pros/misc.hpp:
 include/pros/optical.hpp:
 include/pros/vision.hpp:

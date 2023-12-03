@@ -34,6 +34,8 @@ void initialize() {
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
+    selector::init();
+
     // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
     // pros::Task print_task(print_info);
@@ -75,10 +77,26 @@ void competition_initialize() {}
 
 void autonomous() {
     // pros::Task log_task(log_data);
+    if(selector::auton == 1){
+        offense_auton_safe(); 
+    }
+    if(selector::auton == 2){
+        offense_auton_midrush();
+    }
+    if(selector::auton == 3){
+        offense_auton_6balls();
+    }
 
-    // offense_auton(); // SLOT 4
-    offense_auton_elim(); // SLOT 5
-    // defense_auton_elim(); // SLOT 6
+    if(selector::auton == -1){
+        defense_auton();
+    }
+    if(selector::auton == -2){
+        defense_auton_elim();
+    }
+
+    if (selector::auton == 0) {
+        auton_skills();
+    }
 
     // auton_skills(); // SLOT 7
     // test_auton_skills(); // SLOT 8 // RENAME AND PUT AS ACTUAL SKILLS AUTON

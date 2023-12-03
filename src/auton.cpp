@@ -375,13 +375,13 @@ void offense_auton_6balls() {
     // chassis.moveTo(50, -50, 45, 1000, false, false);
     chassis.moveTo(48, -55, 45, 1000, false, false);
     wingL.set_value(true);
-    chassis.moveTo(59, -45, 45, 1000, false, true);    
+    // chassis.moveTo(59, -45, 45, 1000, false, true);    
     // turnTo(0);
     // ram(500, 1);
     // chassis.setPose(59, -30, 0);
-    chassis.moveTo(59, -30, 0, 1200, false, true);
-    ram(200, -1);
-    ram(200, 1);
+    chassis.moveTo(59, -30, 0, 2200, false, true);
+    // ram(200, -1);
+    // ram(200, 1);
 
     
     // turnTo(-100);

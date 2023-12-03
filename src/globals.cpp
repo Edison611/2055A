@@ -24,15 +24,13 @@
 // - Use numbers if it is in a port
 // - Use letters if it is a triport
 // ------------------------------------------------------------------------------------------------------
-int MOTOR_LB = 2;
-int MOTOR_LF = 1;
-int MOTOR_PTOL1 = 3;
-int MOTOR_PTOL2 = 4;
+int MOTOR_LB = 18;
+int MOTOR_LM = 19;
+int MOTOR_LF = 20;
 
-int MOTOR_RB = 9;
-int MOTOR_RF = 10;
-int MOTOR_PTOR1 = 8;
-int MOTOR_PTOR2 = 7;
+int MOTOR_RB = 14;
+int MOTOR_RM = 12;
+int MOTOR_RF = 11;
 
 int MOTOR_INTAKE1 = 5;
 int MOTOR_INTAKE2 = 16;
@@ -40,11 +38,11 @@ int MOTOR_CATAPULT = 17;
 
 int VISION_SENSOR_PORT = 23;
 char CATA_LIMIT_SWITCH_PORT = 'H'; // RENAME TO BUMPER
-int INERTIAL_SENSOR_PORT = 20;
-int COLOR_SENSOR_PORT = 12;
+int INERTIAL_SENSOR_PORT = 26;
+int COLOR_SENSOR_PORT = 25;
 // char INTAKE_LIMIT_SWITCH_PORT = 'E';
 // char LINE_SENSOR_PORT = 'F';
-int DISTANCE_SENSOR_PORT = 15;
+int DISTANCE_SENSOR_PORT = 24;
 
 char BLOCKER_PORT = 'G';
 char WINGR_PORT = 'D';
@@ -62,18 +60,17 @@ pros::Rotation puncher_rot(6, false);
 // ------------------------------------------------------------------------------------------------------
 // Drivetrain 
 // ------------------------------------------------------------------------------------------------------
-pros::Motor driveLB(MOTOR_LB, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor driveLF(MOTOR_LF, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor ptoL1(MOTOR_PTOL1, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor ptoL2(MOTOR_PTOL2, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveLB(MOTOR_LB, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveLM(MOTOR_LM, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveLF(MOTOR_LF, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
 
-pros::Motor driveRB(MOTOR_RB, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor driveRF(MOTOR_RF, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor ptoR1(MOTOR_PTOR1, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor ptoR2(MOTOR_PTOR2, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveRB(MOTOR_RB, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveRM(MOTOR_RM, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveRF(MOTOR_RF, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
 
-pros::MotorGroup leftMotors({driveLB, driveLF});
-pros::MotorGroup rightMotors({driveRB, driveRF});
+
+pros::MotorGroup leftMotors({driveLB, driveLM, driveLF});
+pros::MotorGroup rightMotors({driveRB, driveRM, driveRF});
 
 // pros::MotorGroup lPTOMotors({ptoL1, ptoL2});
 // pros::MotorGroup rPTOMotors({ptoR1, ptoR2});

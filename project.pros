@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Auton Selector",
+    "project_name": "DriveCode",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -351,8 +351,8 @@
     },
     "upload_options": {
       "description": "N/A",
-      "icon": "X",
-      "slot": 2
+      "icon": "pizza",
+      "slot": 1
     }
   }
 }

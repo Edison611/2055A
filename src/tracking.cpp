@@ -160,13 +160,13 @@ void macroLoad() {
         if (loadMacro == false) {
             //cata_ratchet.set_value(true);
             loadMacro = true;
-            setPTO(-600, -600, -600, -600);
+            // setPTO(-600, -600, -600, -600);
         }
 
         else if (loadMacro == true) {
             loadMacro = false;
             //cata_ratchet.set_value(false);
-            setPTO(0, 0, 0, 0);
+            // setPTO(0, 0, 0, 0);
         }
     }
 }

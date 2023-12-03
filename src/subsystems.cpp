@@ -16,50 +16,7 @@
 #include <string>
 
 // ------------------------------------------------------------------------------------------------------
-bool currentDrivePTO = false; // This means that puncher is active when it is false
-void DrivePTO() {
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)){
-        if (currentDrivePTO == false) {
-            currentDrivePTO = true;
-            while (puncher_rot.get_angle() < 25000) {
-                setPTO(-600, -600, -600, -600);
-                pros::delay(20);
-            }
-            setPTO(0, 0, 0, 0);
-            pros::delay(100);
-            drivePTO.set_value(true);
-            controller.print(1,1,"drive");
-            ptoL1.set_brake_mode(MOTOR_BRAKE_COAST);
-            ptoL2.set_brake_mode(MOTOR_BRAKE_COAST);
 
-            ptoR1.set_brake_mode(MOTOR_BRAKE_COAST);
-            ptoR2.set_brake_mode(MOTOR_BRAKE_COAST);
-        }
-        
-        else if (currentDrivePTO == true) {
-            currentDrivePTO = false;
-            drivePTO.set_value(false);
-            
-            controller.print(1,1,"puncher");
-
-            ptoL1.set_brake_mode(MOTOR_BRAKE_COAST);
-            ptoL2.set_brake_mode(MOTOR_BRAKE_COAST);
-
-            ptoR1.set_brake_mode(MOTOR_BRAKE_COAST);
-            ptoR2.set_brake_mode(MOTOR_BRAKE_COAST);
-            pros::delay(500);
-            // cata_shoot = true;
-        }
-        controller.rumble(".");
-    }
-}
-
-void setPTO(int L1, int L2, int R1, int R2) {
-    ptoL1.move_velocity(L1);
-    ptoL2.move_velocity(L2);
-    ptoR1.move_velocity(R1);
-    ptoR2.move_velocity(R2);
-}
 
 void Puncher() {
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {

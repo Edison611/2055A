@@ -17,27 +17,16 @@
  * @param right The power to give the right side
  */
 void setDrive(double left, double right) {
-    if (currentDrivePTO) {
-        driveLB.move_velocity(left);
-        driveLF.move_velocity(left);
-        ptoL1.move_velocity(left);
-        ptoL2.move_velocity(left);
+    driveLB.move_velocity(left);
+    driveLM.move_velocity(left);
+    driveLF.move_velocity(left);
 
-        driveRB.move_velocity(right);
-        driveRF.move_velocity(right);
-        ptoR1.move_velocity(right);
-        ptoR2.move_velocity(right);
-    }   
-    else {
-        driveLB.move_velocity(left);
-        driveLF.move_velocity(left);
-        
-        driveRB.move_velocity(right);
-        driveRF.move_velocity(right);   
-    }
+    driveRB.move_velocity(right);
+    driveRM.move_velocity(right);
+    driveRF.move_velocity(right);
+}   
     
     
-}
 // dkadso
 /**
  * @brief Set the Drive Motors object to control the robot using the controller

@@ -5,35 +5,35 @@
 #include <fstream>
 
 // CHORE MOVE THESE 3 FUNCTIONS TO tracking.cpp
-std::string getAllPower() {
-	std::string left = std::to_string(driveLB.get_power()) + ", " + std::to_string(driveLF.get_power()) 
-	+ ", " + std::to_string(ptoL1.get_power()) + ", " + std::to_string(ptoL2.get_power());
-	std::string right = std::to_string(driveRB.get_power()) + ", " + std::to_string(driveRF.get_power()) 
-	+ ", " + std::to_string(ptoR1.get_power()) + ", " + std::to_string(ptoR2.get_power());
+// std::string getAllPower() {
+// 	std::string left = std::to_string(driveLB.get_power()) + ", " + std::to_string(driveLF.get_power()) 
+// 	+ ", " + std::to_string(ptoL1.get_power()) + ", " + std::to_string(ptoL2.get_power());
+// 	std::string right = std::to_string(driveRB.get_power()) + ", " + std::to_string(driveRF.get_power()) 
+// 	+ ", " + std::to_string(ptoR1.get_power()) + ", " + std::to_string(ptoR2.get_power());
 
-	std::string str = left + ", " + right;
-	return str;
-}
+// 	std::string str = left + ", " + right;
+// 	return str;
+// }
 
-std::string getAllVelocity() {
-	std::string left = std::to_string(driveLB.get_actual_velocity()) + ", " + std::to_string(driveLF.get_actual_velocity()) 
-	+ ", " + std::to_string(ptoL1.get_actual_velocity()) + ", " + std::to_string(ptoL2.get_actual_velocity());
-	std::string right = std::to_string(driveRB.get_actual_velocity()) + ", " + std::to_string(driveRF.get_actual_velocity()) 
-	+ ", " + std::to_string(ptoR1.get_actual_velocity()) + ", " + std::to_string(ptoR2.get_actual_velocity());
+// std::string getAllVelocity() {
+// 	std::string left = std::to_string(driveLB.get_actual_velocity()) + ", " + std::to_string(driveLF.get_actual_velocity()) 
+// 	+ ", " + std::to_string(ptoL1.get_actual_velocity()) + ", " + std::to_string(ptoL2.get_actual_velocity());
+// 	std::string right = std::to_string(driveRB.get_actual_velocity()) + ", " + std::to_string(driveRF.get_actual_velocity()) 
+// 	+ ", " + std::to_string(ptoR1.get_actual_velocity()) + ", " + std::to_string(ptoR2.get_actual_velocity());
 
-	std::string str = left + ", " + right;
-	return str;
-}
+// 	std::string str = left + ", " + right;
+// 	return str;
+// }
 
-std::string getAllVoltage() {
-	std::string left = std::to_string(driveLB.get_voltage()) + ", " + std::to_string(driveLF.get_voltage()) 
-	+ ", " + std::to_string(ptoL1.get_voltage()) + ", " + std::to_string(ptoL2.get_voltage());
-	std::string right = std::to_string(driveRB.get_voltage()) + ", " + std::to_string(driveRF.get_voltage()) 
-	+ ", " + std::to_string(ptoR1.get_voltage()) + ", " + std::to_string(ptoR2.get_voltage());
+// std::string getAllVoltage() {
+// 	std::string left = std::to_string(driveLB.get_voltage()) + ", " + std::to_string(driveLF.get_voltage()) 
+// 	+ ", " + std::to_string(ptoL1.get_voltage()) + ", " + std::to_string(ptoL2.get_voltage());
+// 	std::string right = std::to_string(driveRB.get_voltage()) + ", " + std::to_string(driveRF.get_voltage()) 
+// 	+ ", " + std::to_string(ptoR1.get_voltage()) + ", " + std::to_string(ptoR2.get_voltage());
 
-	std::string str = left + ", " + right;
-	return str;
-}
+// 	std::string str = left + ", " + right;
+// 	return str;
+// }
 
 /**
  * @brief Code to call during the driving period
@@ -72,10 +72,10 @@ void my_opcontrol() {
         // pros::delay(30);
 		setDriveMotors();
 		op_wings();
-		DrivePTO();
+		// DrivePTO();
 		// Puncher();
 		setCatapultMotors();
-		macroLoad();
+		// macroLoad();
 		op_claw();
 		op_blocker();
 		// if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y) == 1) {

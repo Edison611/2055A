@@ -56,15 +56,16 @@ void Puncher() {
 // ------------------------------------------------------------------------------------------------------
 void setCatapult(int power) {
     catapult.move(power);
+    catapult2.move(power);
 } 
 
-bool hold = false;
+//bool hold = false;
 bool cata_shoot = false;
 
 void setCatapultMotors() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1) == 1) {
-        cata_shoot = true;
-    }
+    int intake_power = 127 * controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
+    setCatapult(intake_power);    
+    cata_shoot = true;
 }
 
 void shoot() {
@@ -75,45 +76,59 @@ void shoot() {
  * A task to hold the catapult in place.
  * Tune the factor variable to let the catapult sit in place.
  */
-void cata_hold() { ///
+// void cata_hold() { ///
 
-    // double factor = 9.25; // Tune this value
-    // int x = 0;
-    bool stop = true;
+//     // double factor = 9.25; // Tune this value
+//     // int x = 0;
+//     bool stop = true;
 
-	while (true) {
+// 	while (true) {
 
-        while (puncher_rot.get_angle() < 17500) { // Could change to adjust button value
-            // pros::lcd::set_text(1, "REACHED");
-            if (stop == true) {
-                setPTO(0, 0, 0, 0);
-                stop = false;
-            }
+//         // while (puncher_rot.get_angle() < 17500) { // Could change to adjust button value
+//         //     // pros::lcd::set_text(1, "REACHED");
+//         //     if (stop == true) {
+//         //         setPTO(0, 0, 0, 0);
+//         //         stop = false;
+//         //     }
 
-            if (cata_shoot == true) {
-                cata_shoot = true;
-                break;
-            }
-        }
+//             if (cata_shoot == true) {
+//                 cata_shoot = true;
+//                 break;
+//             }
+//         }
 
-        // while (currentDrivePTO == true) {
-        //     pros::delay(20);
-        // }
+//         // while (currentDrivePTO == true) {
+//         //     pros::delay(20);
+//         // }
 
-        if (cata_shoot == true) {
-            // pros::lcd::set_text(2, "Shoot");
-            cata_shoot = false;
-            setPTO(-600, -600, -600, -600);
-            stop = true;
-            pros::delay(300);
-        }
+//         // if (cata_shoot == true) {
+//         //     // pros::lcd::set_text(2, "Shoot");
+//         //     cata_shoot = false;
+//         //     setPTO(-600, -600, -600, -600);
+//         //     stop = true;
+//         //     pros::delay(300);
+//         // }
 
         
-        pros::delay(20);
+//         pros::delay(20);
 
-	}
+// 	}
     
+// }
+
+// ------------------------------------------------------------------------------------------------------
+// INTAKE
+// ------------------------------------------------------------------------------------------------------
+
+void setIntake(int power) {
+    intake.move(power);
 }
+
+void setIntakeMotors() {
+    int intake_power = 127 * (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1) - controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2));
+    setIntake(intake_power);    
+}
+
 
 // ------------------------------------------------------------------------------------------------------
 // WINGS
@@ -132,15 +147,6 @@ void setWings(bool right, bool left, int delay) {
     wingL.set_value(false);
 }
 
-/**
- * @brief Manually rams the robot. 
- */
-void ram(int time, int dir=1) {
-    setDrive(600*dir, 600*dir);
-    pros::delay(time);
-    setDrive(0, 0);
-}
-
 bool currentWings = false;
 
 /**
@@ -155,29 +161,38 @@ void op_wings() {
     }
 }
 
+/**
+ * @brief Manually rams the robot. 
+ */
+void ram(int time, int dir=1) {
+    setDrive(600*dir, 600*dir);
+    pros::delay(time);
+    setDrive(0, 0);
+}
 
-bool currentClaw = false;
+
+//bool currentClaw = false;
 
 /**
  * @brief Controls the grabber of the bot, drops if it was up, pulls it up if it is dropped on button press.
  */
 
-void op_claw() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
-        currentClaw = !currentClaw;
-        claw.set_value(currentClaw);
+// void op_claw() {
+//     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
+//         currentClaw = !currentClaw;
+//         claw.set_value(currentClaw);
 
-        // if (currentClaw == false) {
-        //     currentClaw = true;
-        //     claw.set_value(true);
-        // }
+//         // if (currentClaw == false) {
+//         //     currentClaw = true;
+//         //     claw.set_value(true);
+//         // }
         
-        // else if (currentClaw == true) {
-        //     currentClaw = false;
-        //     claw.set_value(false);
-        // }
-    }
-}
+//         // else if (currentClaw == true) {
+//         //     currentClaw = false;
+//         //     claw.set_value(false);
+//         // }
+//     }
+// }
 
 
 bool currentBlocker = false;
@@ -189,9 +204,17 @@ bool currentBlocker = false;
 void op_blocker() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
         currentBlocker = !currentBlocker;
-        blocker.set_value(currentBlocker);
+        climb.set_value(currentBlocker);
     }
 }
+
+// ------------------------------------------------------------------------------------------------------
+// WINGS
+// ------------------------------------------------------------------------------------------------------
+
+
+
+
 
 
 // ------------------------------------------------------------------------------------------------------

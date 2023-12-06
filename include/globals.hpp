@@ -22,9 +22,10 @@ extern pros::Motor driveRF;
 extern pros::MotorGroup leftMotors;
 extern pros::MotorGroup rightMotors;
 
-extern pros::Motor intake1;
+extern pros::Motor intake;
 extern pros::Motor intake2;
 extern pros::Motor catapult;
+extern pros::Motor catapult2;
 
 extern pros::Vision vision_sensor;
 extern pros::ADIDigitalIn cata_limit_switch;
@@ -35,7 +36,7 @@ extern pros::ADIAnalogIn line_sensor;
 extern pros::Distance distance_sensor;
 
 
-extern pros::ADIDigitalOut blocker;
+extern pros::ADIDigitalOut climb;
 extern pros::ADIDigitalOut wingR;
 extern pros::ADIDigitalOut wingL;
 extern pros::ADIDigitalOut grabber;

@@ -1,6 +1,7 @@
 
 // Intake
-
+void setIntake();
+void setIntakeMotors();
 
 // Catapult
 void setCatapult(int power);
@@ -27,7 +28,9 @@ void setWings(bool right, bool left, int delay);
 void op_wings();
 
 // Claw
-void op_claw();
+//void op_claw();
 
 // Blocker
 void op_blocker();
+
+// Climb

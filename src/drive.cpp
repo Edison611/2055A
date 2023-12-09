@@ -48,6 +48,14 @@ void setDriveMotors() {
     turn = (exp(-1 * (tTune/10)) + exp((abs(x) - 127) / 10) * (1 - exp(-1 * (tTune / 10)))) * x;
     turn = turn * 600 / 127;
 
+    if (x < deadband) {
+        turn = 0;
+    }
+
+    if (y < deadband) {
+        power = 0;
+    }
+
 
     // if (y > deadband || x > deadband) {
     //     if (y > 85) {

@@ -18,54 +18,67 @@
 // ------------------------------------------------------------------------------------------------------
 
 
-void Puncher() {
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-        // ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
-        // ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
-
-        // ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
-        // ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
-        
-        // ptoL1.move(-127);
-        // ptoL2.move(-127);
-        // ptoR1.move(127);
-        // ptoR2.move(127);
-    // } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-    //     ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
-    //     ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
-
-    //     ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
-    //     ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
-
-    //     ptoL1.move(127);
-    //     ptoL2.move(127);
-    //     ptoR1.move(-127);
-    //     ptoR2.move(-127);
-    }
-    // else {
-    //     ptoL1.move(0);
-    //     ptoL2.move(0);
-    //     ptoR1.move(0);
-    //     ptoR2.move(0);
-    // }
-}
-
-
 // ------------------------------------------------------------------------------------------------------
 // CATAPULT
 // ------------------------------------------------------------------------------------------------------
 void setCatapult(int power) {
-    catapult.move(power);
-    catapult2.move(power);
+    catapult.move_velocity(power);
+    catapult2.move_velocity(power);
 } 
 
 //bool hold = false;
 bool cata_shoot = false;
 
 void setCatapultMotors() {
-    int intake_power = 127 * controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
+    int intake_power = 600 * controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
     setCatapult(intake_power);    
     cata_shoot = true;
+}
+bool hold = false;
+
+void toggleDown() {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)) {
+        hold = true;
+    }
+}
+
+void kickerTask() {
+    double prev;
+    double delta;
+    while (true) {
+        double prev = distance_sensor.get();
+
+        if (hold) {
+            setCatapult(600);
+            while (distance_sensor.get() < 50) {
+                setCatapult(0);
+                if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)) {
+                    hold = false;
+                    break;
+                }
+                pros::delay(10);
+            }
+
+        }
+
+        // while (hold) {
+        //     setCatapult(0);
+        //     pros::delay(10);
+        // }
+
+        pros::delay(10);
+        delta = distance_sensor.get() - prev;
+        if (delta > 0.1) {
+            pistonBoost.set_value(true);
+        }
+        if (delta < -0.1) {
+            pistonBoost.set_value(false);
+        }
+        
+    }
+    setCatapult(127);
+    pros::delay(100);
+    setCatapult(0);
 }
 
 void shoot() {
@@ -129,6 +142,7 @@ void setIntakeMotors() {
     setIntake(intake_power);    
 }
 
+// 50
 
 // ------------------------------------------------------------------------------------------------------
 // WINGS
@@ -195,16 +209,16 @@ void ram(int time, int dir=1) {
 // }
 
 
-bool currentBlocker = false;
+bool currentClimb = false;
 
 /**
  * @brief Controls the blocker of the bot. On button press, it pulls it up if it is dropped, and drops it if it was up.
  */
 
-void op_blocker() {
+void op_climb() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
-        currentBlocker = !currentBlocker;
-        climb.set_value(currentBlocker);
+        currentClimb = !currentClimb;
+        climb.set_value(currentClimb);
     }
 }
 

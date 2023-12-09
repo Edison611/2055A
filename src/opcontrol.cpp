@@ -41,13 +41,13 @@
  * UNCOMMENT LINES TO LOG DATA, MAKE SURE YOU HAVE AN SD CARD IN AND DONT END THE CODE WITH POWER BUTTON
  */
 void my_opcontrol() {
-	driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
-	driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
-    driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
+	// driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
+	// driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
+    // driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
 
-    driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
-	driveRM.set_brake_mode(MOTOR_BRAKE_COAST);
-    driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
+    // driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
+	// driveRM.set_brake_mode(MOTOR_BRAKE_COAST);
+    // driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
 	//chassis.setPose(0, 0, 0);
 	// chassis.setPose(-15, 59, -90);
 	// pros::Task deploy_task(deploy);
@@ -80,7 +80,8 @@ void my_opcontrol() {
 		setCatapultMotors();
 		// macroLoad();
 		//op_claw();
-		op_blocker();
+		op_climb();
+		toggleDown();
 		// if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
 		// 	setPTO(0, 0, 0, 0);
 		// }

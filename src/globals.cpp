@@ -43,7 +43,7 @@ int INERTIAL_SENSOR_PORT = 9;
 int COLOR_SENSOR_PORT = 25;
 // char INTAKE_LIMIT_SWITCH_PORT = 'E';
 // char LINE_SENSOR_PORT = 'F';
-int DISTANCE_SENSOR_PORT = 24;
+int DISTANCE_SENSOR_PORT = 4;
 
 char CLIMB_PORT = 'C';
 char WINGR_PORT = 'A';
@@ -52,6 +52,7 @@ char WINGL_PORT = 'B';
 // char DRIVEPTO_PORT = 'B';
 // char CLAW_PORT = 'C';
 char WEDGE_PORT = 'F';
+char PISTON_BOOST_PORT = 'D';
 
 // pros::Rotation back_rot(6, false);
 pros::Rotation puncher_rot(6, false);
@@ -106,6 +107,7 @@ pros::ADIDigitalOut wingL(WINGL_PORT);
 // pros::ADIDigitalOut drivePTO(DRIVEPTO_PORT);
 // pros::ADIDigitalOut claw(CLAW_PORT);
 pros::ADIDigitalOut wedge(WEDGE_PORT);
+pros::ADIDigitalOut pistonBoost(PISTON_BOOST_PORT);
 
 // ------------------------------------------------------------------------------------------------------
 // CONTROLLER
@@ -122,9 +124,9 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 lemlib::Drivetrain_t drivetrain {
     &leftMotors, // left drivetrain motors
     &rightMotors, // right drivetrain motors
-    11.25, // track width
-    4.00, // wheel diameter
-    342.85, // wheel rpm
+    10.50, // track width
+    2.75, // wheel diameter
+    480, // wheel rpm
     2 // Chase Power
 };
 

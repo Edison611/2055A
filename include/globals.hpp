@@ -43,6 +43,7 @@ extern pros::ADIDigitalOut grabber;
 extern pros::ADIDigitalOut drivePTO;
 extern pros::ADIDigitalOut claw;
 extern pros::ADIDigitalOut wedge;
+extern pros::ADIDigitalOut pistonBoost;
 
 extern pros::Controller controller;
 

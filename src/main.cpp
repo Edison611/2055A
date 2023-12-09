@@ -20,17 +20,19 @@ void initialize() {
 
     chassis.calibrate();
 
-    // driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
+	driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
 
-    // driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
+	driveRM.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
 
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    //selector::init();
-
+    selector::init();
+    pros::Task kicker_task(kickerTask);
     // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
     // pros::Task print_task(print_info);
@@ -70,34 +72,34 @@ void competition_initialize() {}
  * from where it left off.
  */
 
-// void autonomous() {
+ void autonomous() {
 //     // pros::Task log_task(log_data);
-//     if(selector::auton == 1){
-//         offense_auton_safe(); 
-//     }
-//     if(selector::auton == 2){
-//         offense_auton_midrush();
-//     }
-//     if(selector::auton == 3){
-//         offense_auton_6balls();
-//     }
+    if(selector::auton == 1){
+        offense_auton_safe(); 
+    }
+    if(selector::auton == 2){
+        offense_auton_midrush();
+    }
+    if(selector::auton == 3){
+        offense_auton_6balls();
+    }
 
-//     if(selector::auton == -1){
-//         defense_auton();
-//     }
-//     if(selector::auton == -2){
-//         defense_auton_elim();
-//     }
+    if(selector::auton == -1){
+        defense_auton();
+    }
+    if(selector::auton == -2){
+        defense_auton_elim();
+    }
 
-//     if (selector::auton == 0) {
-//         auton_skills();
-//     }
+    if (selector::auton == 0) {
+        auton_skills();
+    }
 
 //     // auton_skills(); // SLOT 7
 //     // test_auton_skills(); // SLOT 8 // RENAME AND PUT AS ACTUAL SKILLS AUTON
 
 
-// }
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -116,5 +118,6 @@ void opcontrol() {
    chassis.setPose(0, 0, 0);
    //driver_skills();
     // pros::Task MatchLoads(SetMatchLoad);
+// pid_test();
    my_opcontrol();
 }   

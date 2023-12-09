@@ -1,11 +1,13 @@
 
 // Intake
-void setIntake();
+void setIntake(int power);
 void setIntakeMotors();
 
 // Catapult
 void setCatapult(int power);
 void setCatapultMotors();
+void toggleDown();
+void kickerTask();
 void shoot();
 void cata_hold();
 extern bool cata_shoot;
@@ -30,7 +32,5 @@ void op_wings();
 // Claw
 //void op_claw();
 
-// Blocker
-void op_blocker();
-
 // Climb
+void op_climb();

@@ -4,6 +4,7 @@ void setIntake(int power);
 void setIntakeMotors();
 
 // Catapult
+extern bool hold;
 void setCatapult(int power);
 void setCatapultMotors();
 void toggleDown();

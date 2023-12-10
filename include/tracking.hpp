@@ -8,5 +8,5 @@ void SetMatchLoad();
 
 extern bool detected;
 
-
+void timeTracker(int *time, int delay);
 void print_info();

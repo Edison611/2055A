@@ -91,6 +91,11 @@ void auton_skills() {
     setDrive(0, 0);
     setIntake(127);
     wingL.set_value(false);
+
+    setCatapult(600);
+    pros::delay(40000);
+    catapult.move_velocity(0);
+    catapult2.move_velocity(0);
     // pros::delay(36500); // USE THIS FOR REAL AUTON SKILLS
     // pros::delay(2000); // FOR TESTING PURPOSES
     // while (true) {

@@ -35,7 +35,7 @@ void initialize() {
     pros::Task kicker_task(kickerTask);
     // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
-    // pros::Task print_task(print_info);
+    pros::Task print_task(print_info);
     
 
     // pros::delay(3000);

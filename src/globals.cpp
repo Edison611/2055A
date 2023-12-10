@@ -42,20 +42,19 @@ char CATA_LIMIT_SWITCH_PORT = 'H'; // RENAME TO BUMPER
 int INERTIAL_SENSOR_PORT = 9;
 int COLOR_SENSOR_PORT = 25;
 // char INTAKE_LIMIT_SWITCH_PORT = 'E';
-// char LINE_SENSOR_PORT = 'F';
 int DISTANCE_SENSOR_PORT = 4;
 
 char CLIMB_PORT = 'C';
 char WINGR_PORT = 'A';
-char WINGL_PORT = 'B';
+char WINGL_PORT = 'B'; // NOT IN USE
 // char GRABBER_PORT = 'D';
 // char DRIVEPTO_PORT = 'B';
 // char CLAW_PORT = 'C';
-char WEDGE_PORT = 'F';
+char WEDGE_PORT = 'F'; // NOT IN USE
 char PISTON_BOOST_PORT = 'D';
 
 // pros::Rotation back_rot(6, false);
-pros::Rotation puncher_rot(6, false);
+pros::Rotation kicker_rot(6, false);
 
 // lemlib::TrackingWheel back_tracking_wheel(&back_rot, 2.75, -5.75);
 

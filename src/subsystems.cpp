@@ -30,8 +30,8 @@ void setCatapult(int power) {
 bool cata_shoot = false;
 
 void setCatapultMotors() {
-    int intake_power = 600 * controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
-    setCatapult(intake_power);    
+    int power = 600 * controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
+    setCatapult(power);    
     cata_shoot = true;
 }
 bool hold = false;
@@ -45,12 +45,14 @@ void toggleDown() {
 void kickerTask() {
     double prev;
     double delta;
+    // 232 at top, stop at 205
+    // Rotational Sensor Angle increases when going -> up
     while (true) {
-        double prev = distance_sensor.get();
+        double prev = kicker_rot.get_angle();
 
         if (hold) {
             setCatapult(600);
-            while (distance_sensor.get() < 50) {
+            while (kicker_rot.get_angle() < 20500) {
                 setCatapult(0);
                 if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)) {
                     hold = false;
@@ -67,11 +69,12 @@ void kickerTask() {
         // }
 
         pros::delay(10);
-        delta = distance_sensor.get() - prev;
-        if (delta > 0.1) {
+        // delta = kicker_rot.get_angle() - prev;
+
+        if (kicker_rot.get_velocity() > 0.1) {
             pistonBoost.set_value(true);
         }
-        if (delta < -0.1) {
+        if (kicker_rot.get_velocity() < -0.1) {
             pistonBoost.set_value(false);
         }
         

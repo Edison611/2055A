@@ -25,7 +25,6 @@ void allowContinue() {
     }
 }
 
-
 void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
     lemlib::Pose pose = chassis.getPose();
     if (red == true) {
@@ -78,6 +77,31 @@ void vector(double x, double y, bool reversed=false, int maxSpeed=127, int turnT
     // chassis.moveTo(x, y, driveTimeout, maxSpeed, reversed);
 }
 
+void matchLoad(int shots, int delay) {
+    for(int i = 0; i < shots; i++) {
+        setCatapult(600);
+        while (true) {
+            if (kicker_rot.get_angle() < 20500) {
+                setCatapult(0);
+                pros::delay(delay);
+                setCatapult(600);
+                while (true) {
+                    if (kicker_rot.get_angle() > 20500) {
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+    }
+    // while (true) {
+    //     if(kicker_rot.get_angle() < 20500) {
+    //         setCatapult(0);
+    //         break;
+    //     }
+    // }
+}
+
 
 /**
  * @brief Detects whether there is a triball in front of the color sensor
@@ -125,8 +149,6 @@ std::string currentDateTime() {
     return buf;
 }
 
-
-
 /**
  * @brief Theoretically uses vision sensor to turn to where there is a triball and drive there (NOT TESTED)
  * 
@@ -161,8 +183,6 @@ void triballVision() {
 
     //         }
     //     }
-
-        
 
     //     pros::delay(20);
     // }

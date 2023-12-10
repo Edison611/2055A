@@ -30,9 +30,9 @@ void setCatapult(int power) {
 bool cata_shoot = false;
 
 void setCatapultMotors() {
-    int power = 600 * controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
-    setCatapult(power);    
-    cata_shoot = true;
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)) {
+        cata_shoot = true;
+    }
 }
 bool hold = false;
 
@@ -43,45 +43,65 @@ void toggleDown() {
 }
 
 void kickerTask() {
+    // one shot at a time
+    
     double prev;
-    double delta;
+    bool stop = true;
+
     // 232 at top, stop at 205
     // Rotational Sensor Angle increases when going -> up
     while (true) {
         double prev = kicker_rot.get_angle();
 
-        if (hold) {
-            setCatapult(600);
-            while (kicker_rot.get_angle() < 20500) {
-                setCatapult(0);
-                if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)) {
-                    hold = false;
-                    break;
-                }
-                pros::delay(10);
-            }
+        // if (hold) {
+        //     setCatapult(600);
+        //     while (kicker_rot.get_angle() < 20500) {
+        //         setCatapult(0);
+        //         if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)) {
+        //             hold = false;
+        //             break;
+        //         }
+        //         pros::delay(10);
+        //     }
 
-        }
-
-        // while (hold) {
-        //     setCatapult(0);
-        //     pros::delay(10);
         // }
 
-        pros::delay(10);
-        // delta = kicker_rot.get_angle() - prev;
+         while (kicker_rot.get_angle() < 20500) { // Could change to adjust button value
+            // pros::lcd::set_text(1, "REACHED");
+            if (stop == true) {
+                setCatapult(0);
+                stop = false;
+            }
 
-        if (kicker_rot.get_velocity() > 0.1) {
-            pistonBoost.set_value(true);
+            if (cata_shoot == true) {
+                cata_shoot = true;
+                break;
+            }
         }
-        if (kicker_rot.get_velocity() < -0.1) {
-            pistonBoost.set_value(false);
+
+        if (cata_shoot == true) {
+            // pros::lcd::set_text(2, "Shoot");
+            cata_shoot = false;
+            setCatapult(600);
+            stop = true;
+            pros::delay(150);
         }
-        
+
+        pros::delay(20);
+
     }
-    setCatapult(127);
-    pros::delay(100);
-    setCatapult(0);
+}
+
+// false
+// true
+bool pistonValue = false;
+
+void pistonBoostTask() {
+    while (true) {
+        if (kicker_rot.get_velocity() > 100) pistonBoost.set_value(true);
+        if (kicker_rot.get_velocity() < -100) pistonBoost.set_value(false);
+        pros::delay(20);
+    }
 }
 
 void shoot() {
@@ -100,12 +120,12 @@ void shoot() {
 
 // 	while (true) {
 
-//         // while (puncher_rot.get_angle() < 17500) { // Could change to adjust button value
-//         //     // pros::lcd::set_text(1, "REACHED");
-//         //     if (stop == true) {
-//         //         setPTO(0, 0, 0, 0);
-//         //         stop = false;
-//         //     }
+//         while (puncher_rot.get_angle() < 17500) { // Could change to adjust button value
+//             // pros::lcd::set_text(1, "REACHED");
+//             if (stop == true) {
+//                 setPTO(0, 0, 0, 0);
+//                 stop = false;
+//             }
 
 //             if (cata_shoot == true) {
 //                 cata_shoot = true;
@@ -113,17 +133,13 @@ void shoot() {
 //             }
 //         }
 
-//         // while (currentDrivePTO == true) {
-//         //     pros::delay(20);
-//         // }
-
-//         // if (cata_shoot == true) {
-//         //     // pros::lcd::set_text(2, "Shoot");
-//         //     cata_shoot = false;
-//         //     setPTO(-600, -600, -600, -600);
-//         //     stop = true;
-//         //     pros::delay(300);
-//         // }
+//         if (cata_shoot == true) {
+//             // pros::lcd::set_text(2, "Shoot");
+//             cata_shoot = false;
+//             setPTO(-600, -600, -600, -600);
+//             stop = true;
+//             pros::delay(300);
+//         }
 
         
 //         pros::delay(20);

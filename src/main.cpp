@@ -30,9 +30,9 @@ void initialize() {
 
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
+    catapult2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     selector::init();
-    pros::Task kicker_task(kickerTask);
     // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
     pros::Task print_task(print_info);
@@ -71,34 +71,54 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-
  void autonomous() {
-//     // pros::Task log_task(log_data);
-    if(selector::auton == 1){
-        offense_auton_safe(); 
-    }
-    if(selector::auton == 2){
-        offense_auton_midrush();
-    }
-    if(selector::auton == 3){
-        offense_auton_6balls();
+    // pros::Task log_task(log_data);
+
+    // Auton selector
+    switch (selector::auton) {
+        case 1:
+            offense_auton_safe();
+            break;
+
+        case 2:
+            offense_auton_midrush();
+            break;
+
+        case 3:
+            offense_auton_6balls_v2();
+            break;
+        
+        case -1:
+            defense_auton();
+            break;
+        
+        case -2:
+            defense_auton_elim();
+            break;
+
+        case 0:
+            auton_skills();
+            break;
     }
 
-    if(selector::auton == -1){
-        defense_auton();
-    }
-    if(selector::auton == -2){
-        defense_auton_elim();
-    }
+    // if(selector::auton == 1){
+    // }
+    // if(selector::auton == 2){
+    // }
+    // if(selector::auton == 3){
+        
+    // }
 
-    if (selector::auton == 0) {
-        auton_skills();
-    }
+    // if(selector::auton == -1){
+    // }
+    // if(selector::auton == -2){
+    // }
 
-//     // auton_skills(); // SLOT 7
-//     // test_auton_skills(); // SLOT 8 // RENAME AND PUT AS ACTUAL SKILLS AUTON
+    // if (selector::auton == 0) {
+    // }
 
-
+    // auton_skills(); // SLOT 7
+    // test_auton_skills(); // SLOT 8 // RENAME AND PUT AS ACTUAL SKILLS AUTON
 }
 
 /**
@@ -115,9 +135,11 @@ void competition_initialize() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-   chassis.setPose(0, 0, 0);
-   //driver_skills();
+    chassis.setPose(0, 0, 0);
+    // driver_skills();
     // pros::Task MatchLoads(SetMatchLoad);
-// pid_test();
-   my_opcontrol();
+    // pid_test();
+    pros::Task kicker_task(kickerTask);
+    pros::Task pistonBoost_task(pistonBoostTask);
+    my_opcontrol();
 }   

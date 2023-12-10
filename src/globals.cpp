@@ -46,15 +46,15 @@ int DISTANCE_SENSOR_PORT = 4;
 
 char CLIMB_PORT = 'C';
 char WINGR_PORT = 'A';
-char WINGL_PORT = 'B'; // NOT IN USE
+char WINGL_PORT = 'D'; // NOT IN USE
 // char GRABBER_PORT = 'D';
 // char DRIVEPTO_PORT = 'B';
 // char CLAW_PORT = 'C';
 char WEDGE_PORT = 'F'; // NOT IN USE
-char PISTON_BOOST_PORT = 'D';
+char PISTON_BOOST_PORT = 'B';
 
 // pros::Rotation back_rot(6, false);
-pros::Rotation kicker_rot(6, false);
+pros::Rotation kicker_rot(4, false);
 
 // lemlib::TrackingWheel back_tracking_wheel(&back_rot, 2.75, -5.75);
 

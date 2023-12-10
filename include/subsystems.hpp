@@ -9,6 +9,7 @@ void setCatapult(int power);
 void setCatapultMotors();
 void toggleDown();
 void kickerTask();
+void pistonBoostTask();
 void shoot();
 void cata_hold();
 extern bool cata_shoot;

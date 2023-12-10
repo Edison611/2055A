@@ -6,6 +6,7 @@
 #include <cmath>
 #include <string>
 
+// Curve paths
 ASSET(path1_txt);
 ASSET(skills1_txt);
 ASSET(leftcurve4_txt);
@@ -39,6 +40,7 @@ void test_auton3() {
 // ------------------------------------------------------------------------------------------------------
 // AUTONOMOUS CODES
 // ------------------------------------------------------------------------------------------------------
+
 void driver_skills() {
 
     // chassis.setPose(-61, 32, 0);
@@ -76,35 +78,22 @@ void driver_skills() {
 }
 
 void auton_skills() {
-    // SHOOT
-    chassis.setPose(-44.25, -60.5, 54);  
+    chassis.setPose(-38, -53, 90);
     wingL.set_value(true);
     pros::delay(200);
-    // setPTO(-600, -600, -600, -600);
-    // wingL.set_value(false);
-    wedge.set_value(true);
-    pros::delay(300);
-    wedge.set_value(false);
-
-    setDrive(-400, -400);
-    pros::delay(800);
-    setDrive(0, 0);
-    setIntake(127);
     wingL.set_value(false);
+    turnTo(130);
+    chassis.moveTo(-55, -40, 130, 1320);
+    turnTo(80);
+    chassis.moveTo(-60, -40, 80, 800);  
+    pros::delay(200);
+    // wedge.set_value(true);
+    // pros::delay(300);
+    // wedge.set_value(false);
 
-    setCatapult(600);
-    pros::delay(40000);
-    catapult.move_velocity(0);
-    catapult2.move_velocity(0);
-    // pros::delay(36500); // USE THIS FOR REAL AUTON SKILLS
-    // pros::delay(2000); // FOR TESTING PURPOSES
-    // while (true) {
-    //     if (puncher_rot.get_angle() < 17500) {
-    //         setPTO(0, 0, 0, 0);
-    //         break;
-    //     }
-    // } 
-    setIntake(-127);
+    // shoots x number of times
+    // can choose length of gaps between shots
+    matchLoad(10, 600);
     
     // PUSH TWO ALLIANCE TRIBALLS INTO OUR SIDE
     chassis.setPose(-47.75, -62.75, 54);
@@ -364,14 +353,15 @@ void offense_auton_midrush() {
 
 }
 
-void offense_auton_6balls() {
+void offense_auton_6balls_v1() {
     /* Pole & Alliance Tri-Balls */
     chassis.setPose(9, -60, -90);
+    setIntake(70);
     // Intake: Input
     // chassis.moveTo(5, -60, -90, 400);   
     // Intake: Stop
 
-    /* Curve Entry to Net + Corner Tri-Ball*/
+    /* Curve Entry to Net + Corner Tri-Ball */
     chassis.moveTo(35, -60, -90, 1750, false, false);
     turnTo(-100);
     pros::delay(200);
@@ -391,7 +381,6 @@ void offense_auton_6balls() {
     chassis.moveTo(59, -30, 0, 1200, false, true);
     ram(200, -1);
     ram(200, 1);
-
     
     // turnTo(-100);
     // pros::delay(200);
@@ -434,4 +423,32 @@ void offense_auton_6balls() {
     // Intake: Output
 }
 
+void offense_auton_6balls_v2() {
+    // Pole & Alliance Tri-Ball
+    chassis.setPose(9, -58, -90);
+    setIntake(70); // Intake: Input
 
+    // Corner Tri-Ball
+    chassis.moveTo(40, -58, -90, 1750, false, false);
+    turnTo(-130);
+    wingR.set_value(true);
+    chassis.moveTo(55, -48, -130, 1151, false, false);
+    wingR.set_value(false);
+
+    // First Net
+    turnTo(-160);
+    wingR.set_value(true);
+    wingL.set_value(true);
+    chassis.moveTo(59, -34, -180, 978, false, false);
+    
+    // Second Net
+    wingR.set_value(false);
+    wingL.set_value(false);
+    chassis.moveTo(59, -38, -180, 800, false, true);
+    turnTo(-90);
+    turnTo(0);
+    chassis.moveTo(59, -34, 0, 800);
+    setIntake(-127);
+
+    // Rush Middle
+}

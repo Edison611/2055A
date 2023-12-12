@@ -45,8 +45,8 @@ int COLOR_SENSOR_PORT = 25;
 int DISTANCE_SENSOR_PORT = 4;
 
 char CLIMB_PORT = 'C';
-char WINGR_PORT = 'A';
-char WINGL_PORT = 'D'; // NOT IN USE
+char WINGB_PORT = 'A';
+char WINGF_PORT = 'D'; 
 // char GRABBER_PORT = 'D';
 // char DRIVEPTO_PORT = 'B';
 // char CLAW_PORT = 'C';
@@ -100,8 +100,8 @@ pros::Distance distance_sensor(DISTANCE_SENSOR_PORT);
 // Pneumatics
 // ------------------------------------------------------------------------------------------------------
 pros::ADIDigitalOut climb(CLIMB_PORT);
-pros::ADIDigitalOut wingR(WINGR_PORT);
-pros::ADIDigitalOut wingL(WINGL_PORT);
+pros::ADIDigitalOut wingF(WINGF_PORT);
+pros::ADIDigitalOut wingB(WINGB_PORT);
 // pros::ADIDigitalOut grabber(GRABBER_PORT);
 // pros::ADIDigitalOut drivePTO(DRIVEPTO_PORT);
 // pros::ADIDigitalOut claw(CLAW_PORT);

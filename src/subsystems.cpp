@@ -51,7 +51,7 @@ void kickerTask() {
     // 232 at top, stop at 205
     // Rotational Sensor Angle increases when going -> up
     while (true) {
-        double prev = kicker_rot.get_angle();
+        // double prev = kicker_rot.get_angle();
 
         // if (hold) {
         //     setCatapult(600);
@@ -66,7 +66,7 @@ void kickerTask() {
 
         // }
 
-         while (kicker_rot.get_angle() < 20500) { // Could change to adjust button value
+         while (kicker_rot.get_angle() < 20400) { // Could change to adjust button value
             // pros::lcd::set_text(1, "REACHED");
             if (stop == true) {
                 setCatapult(0);
@@ -74,7 +74,7 @@ void kickerTask() {
             }
 
             if (cata_shoot == true) {
-                cata_shoot = true;
+                // cata_shoot = true; 
                 break;
             }
         }
@@ -84,10 +84,10 @@ void kickerTask() {
             cata_shoot = false;
             setCatapult(600);
             stop = true;
-            pros::delay(150);
+            pros::delay(270);
         }
 
-        pros::delay(20);
+        pros::delay(10);
 
     }
 }
@@ -168,29 +168,32 @@ void setIntakeMotors() {
 // ------------------------------------------------------------------------------------------------------
 
 void ActivateWings(bool dir) {
-    wingR.set_value(dir);
-    wingL.set_value(dir);
+    wingF.set_value(false);
+    // wingL.set_value(dir);
 }
 
 void setWings(bool right, bool left, int delay) {
-    wingR.set_value(right);
-    wingL.set_value(left);
+    wingF.set_value(__bool_true_false_are_defined);
+    // wingL.set_value(left);
     pros::delay(delay);
-    wingR.set_value(false);
-    wingL.set_value(false);
+    wingF.set_value(false);
+    // wingL.set_value(false);
 }
 
-bool currentWings = false;
+bool currentWingsF = false;
+bool currentWingsB = false;
 
 /**
  * @brief Controls the wings of the bot, opens if it was closed, closes if it is open on button press.
  */
 void op_wings() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
-        currentWings = !currentWings;
-        wingR.set_value(currentWings);
-        wingL.set_value(currentWings);
-
+        currentWingsF = !currentWingsF;
+        wingF.set_value(currentWingsF);
+    }
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+        currentWingsB = !currentWingsB;
+        wingB.set_value(currentWingsB);
     }
 }
 

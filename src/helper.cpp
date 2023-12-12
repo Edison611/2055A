@@ -77,22 +77,30 @@ void vector(double x, double y, bool reversed=false, int maxSpeed=127, int turnT
     // chassis.moveTo(x, y, driveTimeout, maxSpeed, reversed);
 }
 
+
 void matchLoad(int shots, int delay) {
+    
+
+    float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
+    int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
+
     for(int i = 0; i < shots; i++) {
-        setCatapult(600);
-        while (true) {
-            if (kicker_rot.get_angle() < 20500) {
-                setCatapult(0);
-                pros::delay(delay);
-                setCatapult(600);
-                while (true) {
-                    if (kicker_rot.get_angle() > 20500) {
-                        break;
-                    }
-                }
-                break;
-            }
-        }
+        shoot();
+        pros::delay(delay);
+        // setCatapult(600);
+        // while (true) {
+        //     if (kicker_rot.get_angle() < 20500) {
+        //         setCatapult(0);
+        //         pros::delay(delay);
+        //         setCatapult(600);
+        //         while (true) {
+        //             if (kicker_rot.get_angle() > 20500) {
+        //                 break;
+        //             }
+        //         }
+        //         break;
+        //     }
+        // }
     }
     // while (true) {
     //     if(kicker_rot.get_angle() < 20500) {

@@ -33,9 +33,10 @@ void initialize() {
     catapult2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     selector::init();
+    pros::Task kicker_task(kickerTask);
     // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
-    pros::Task print_task(print_info);
+    // pros::Task print_task(print_info);
     
 
     // pros::delay(3000);
@@ -75,31 +76,34 @@ void competition_initialize() {}
     // pros::Task log_task(log_data);
 
     // Auton selector
-    switch (selector::auton) {
-        case 1:
-            offense_auton_safe();
-            break;
+    // switch (selector::auton) {
+    //     case 1:
+    //         offense_auton_safe();
+    //         break;
 
-        case 2:
-            offense_auton_midrush();
-            break;
+    //     case 2:
+    //         offense_auton_midrush();
+    //         break;
 
-        case 3:
-            offense_auton_6balls_v2();
-            break;
+    //     case 3:
+    //         offense_auton_6balls_v2();
+    //         break;
         
-        case -1:
-            defense_auton();
-            break;
+    //     case -1:
+    //         defense_auton();
+    //         break;
         
-        case -2:
-            defense_auton_elim();
-            break;
+    //     case -2:
+    //         defense_auton_elim();
+    //         break;
 
-        case 0:
-            auton_skills();
-            break;
-    }
+    //     case 0:
+    //         auton_skills();
+    //         break;
+    // }
+    // offense_auton_safe();
+    auton_skills();
+    
 
     // if(selector::auton == 1){
     // }

@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Test Code",
+    "project_name": "Auton SKills",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -351,8 +351,8 @@
     },
     "upload_options": {
       "description": "N/A",
-      "icon": "pizza",
-      "slot": 2
+      "icon": "X",
+      "slot": 3
     }
   }
 }

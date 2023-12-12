@@ -37,8 +37,8 @@ extern pros::Distance distance_sensor;
 
 
 extern pros::ADIDigitalOut climb;
-extern pros::ADIDigitalOut wingR;
-extern pros::ADIDigitalOut wingL;
+extern pros::ADIDigitalOut wingF;
+extern pros::ADIDigitalOut wingB;
 extern pros::ADIDigitalOut grabber;
 extern pros::ADIDigitalOut drivePTO;
 extern pros::ADIDigitalOut claw;

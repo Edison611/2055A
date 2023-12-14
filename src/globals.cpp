@@ -32,7 +32,7 @@ int MOTOR_RB = 16;
 int MOTOR_RM = 12;
 int MOTOR_RF = 11;
 
-int MOTOR_INTAKE = 3;
+int MOTOR_INTAKE = 6;
 // int MOTOR_INTAKE2 = 16;
 int MOTOR_CATAPULT = 1;
 int MOTOR_CATAPULT2 = 2;

@@ -213,6 +213,31 @@ void solo_auton() {
     
 }
 
+void defense_awp() {
+    // Take triball out of corner
+    setIntake(127);
+    chassis.setPose(-47, -60, 142);
+    chassis.moveTo(-51, -53, 142, 500);
+    wingF.set_value(true);
+    pros::delay(500);
+    chassis.moveTo(-51, -57, 142, 2000);
+    chassis.moveTo(-45, -59, 90, 2000);
+    wingF.set_value(false);
+
+    // Score alliance triball in net
+    turnTo(-34, 112, 1750); 
+    chassis.moveTo(-67, -30, -34, 5000);
+    setIntake(0);
+    turnTo(0);
+    chassis.moveTo(-67, -200, 0, 250, false, false);
+    chassis.moveTo(-67, 200, 0, 1000);
+
+    // Move to touch elevation bar 
+    // chassis.moveTo(-53, -53, -38, 2000);
+    // turnTo(-90);
+    // chassis.moveTo(-8.5, -53, -90, 3000);
+}
+
 void defense_auton() {
     // Get alliance triball into net
     chassis.setPose(-48, -56, 135);

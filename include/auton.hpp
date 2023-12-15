@@ -17,5 +17,6 @@ void offense_auton_elim();
 void defense_auton();
 void defense_auton_elim();
 void defense_MOA();
+void defense_awp();
 
 void test_auton_skills();

@@ -160,13 +160,13 @@ void macroLoad() {
         if (loadMacro == false) {
             //cata_ratchet.set_value(true);
             loadMacro = true;
-            setPTO(-600, -600, -600, -600);
+            // setPTO(-600, -600, -600, -600);
         }
 
         else if (loadMacro == true) {
             loadMacro = false;
             //cata_ratchet.set_value(false);
-            setPTO(0, 0, 0, 0);
+            // setPTO(0, 0, 0, 0);
         }
     }
 }
@@ -192,15 +192,13 @@ void SetMatchLoad() {
     // }
 }
 
-// Intake
-
 bool detected = false;
 
-/**
- * @brief Detects a triball within our intake system
- * 
- * Changes a global variable between true and false, while setting the Intake to 0 power if a triball is detected
- */
+
+void timeTracker(int *time, int delay) {
+    pros::delay(delay);
+    *time += delay;
+}
 
 
 /**
@@ -214,35 +212,21 @@ void print_info() {
     while (true) {
         // Controller printing
         controller.clear();
-        pros::delay(100);
-        time += 100;
+        timeTracker(&time, 100);
         
         // pros::lcd::set_text(1, "Switch: " + std::to_string(cata_limit_switch.get_value()));
-        controller.print(1, 0, "Arm: (R1), Wing: (X)");
-        pros::delay(50);
-        time += 50;
+        
+        // Kicker status
+        if (hold) controller.print(1, 0, "Kicker: Down");
+        else controller.print(1, 0, "Kicker: Up");
+        timeTracker(&time, 50);
 
-        if (loadMacro == true) {
-            controller.print(0, 0, "Match Load: ON (A)");
-        }
-        else {
-            controller.print(0, 0, "Match Load: OFF (A)");
-        }
-        pros::delay(50);
-        time += 50;
-
-        // if (currentIntakeHold == true) {
-        //     controller.print(2, 0, "HOLD");
-        // }
-        // else {
-        //     controller.print(2, 0, "PASS");
-        // }
-        pros::delay(50);
-        time += 50;
-
+        // Match load status
+        if (loadMacro) controller.print(0, 0, "Match Load: ON (A)");
+        else controller.print(0, 0, "Match Load: OFF (A)");
+        timeTracker(&time, 50);
 
         controller.set_text(2, 10, "T: " + std::to_string(time/1000) + "s");
-        // pros::delay(50);
-        // time += 50;
+        timeTracker(&time, 50);
     }
 }

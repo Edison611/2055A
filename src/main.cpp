@@ -20,20 +20,20 @@ void initialize() {
 
     chassis.calibrate();
 
-    // driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
+	driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
 
-    // driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
+	driveRM.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
 
-    ptoR1.set_brake_mode(MOTOR_BRAKE_HOLD);
-    ptoR2.set_brake_mode(MOTOR_BRAKE_HOLD);
-
-    ptoL1.set_brake_mode(MOTOR_BRAKE_HOLD);
-    ptoL2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
+    catapult2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
+    selector::init();
+    pros::Task kicker_task(kickerTask);
     // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
     // pros::Task print_task(print_info);
@@ -72,18 +72,58 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-
-void autonomous() {
+ void autonomous() {
     // pros::Task log_task(log_data);
 
-    // offense_auton(); // SLOT 4
-    offense_auton_elim(); // SLOT 5
-    // defense_auton_elim(); // SLOT 6
+    // Auton selector
+    // switch (selector::auton) {
+    //     case 1:
+    //         offense_auton_safe();
+    //         break;
+
+    //     case 2:
+    //         offense_auton_midrush();
+    //         break;
+
+    //     case 3:
+    //         offense_auton_6balls_v2();
+    //         break;
+        
+    //     case -1:
+    //         defense_auton();
+    //         break;
+        
+    //     case -2:
+    //         defense_auton_elim();
+    //         break;
+
+    //     case 0:
+    //         auton_skills();
+    //         break;
+    // }
+    // offense_auton_safe();
+    // auton_skills();
+    defense_awp();
+    
+
+    // if(selector::auton == 1){
+    // }
+    // if(selector::auton == 2){
+    // }
+    // if(selector::auton == 3){
+        
+    // }
+
+    // if(selector::auton == -1){
+    // }
+    // if(selector::auton == -2){
+    // }
+
+    // if (selector::auton == 0) {
+    // }
 
     // auton_skills(); // SLOT 7
     // test_auton_skills(); // SLOT 8 // RENAME AND PUT AS ACTUAL SKILLS AUTON
-
-
 }
 
 /**
@@ -100,8 +140,11 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-   chassis.setPose(0, 0, 0);
-   //driver_skills();
+    chassis.setPose(0, 0, 0);
+    // driver_skills();
     // pros::Task MatchLoads(SetMatchLoad);
-   my_opcontrol();
+    // pid_test();
+    pros::Task kicker_task(kickerTask);
+    pros::Task pistonBoost_task(pistonBoostTask);
+    my_opcontrol();
 }   

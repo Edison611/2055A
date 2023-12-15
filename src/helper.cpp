@@ -25,7 +25,6 @@ void allowContinue() {
     }
 }
 
-
 void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
     lemlib::Pose pose = chassis.getPose();
     if (red == true) {
@@ -57,12 +56,12 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = (200.0F)) {
  * @param degrees 
  * @param timeout 
  */
-void turnTo(double degrees, int timeout) {
+void turnTo(double degrees, int maxSpeed, int timeout, bool reversed, bool async) {
     lemlib::Pose pose = chassis.getPose();
     double rad = degrees * 3.14159265358979323846 / 180;
     double x_offset = sin(rad) * 20;
     double y_offset = cos(rad) * 20;
-    chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout);
+    chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout, async, reversed, maxSpeed);
 }
 
 /**
@@ -76,6 +75,39 @@ void turnTo(double degrees, int timeout) {
 void vector(double x, double y, bool reversed=false, int maxSpeed=127, int turnTimout = 1000, int driveTimeout = 1000) {
     chassis.turnTo(x, y, turnTimout, reversed);
     // chassis.moveTo(x, y, driveTimeout, maxSpeed, reversed);
+}
+
+
+void matchLoad(int shots, int delay) {
+    
+
+    float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
+    int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
+
+    for(int i = 0; i < shots; i++) {
+        shoot();
+        pros::delay(delay);
+        // setCatapult(600);
+        // while (true) {
+        //     if (kicker_rot.get_angle() < 20500) {
+        //         setCatapult(0);
+        //         pros::delay(delay);
+        //         setCatapult(600);
+        //         while (true) {
+        //             if (kicker_rot.get_angle() > 20500) {
+        //                 break;
+        //             }
+        //         }
+        //         break;
+        //     }
+        // }
+    }
+    // while (true) {
+    //     if(kicker_rot.get_angle() < 20500) {
+    //         setCatapult(0);
+    //         break;
+    //     }
+    // }
 }
 
 
@@ -125,8 +157,6 @@ std::string currentDateTime() {
     return buf;
 }
 
-
-
 /**
  * @brief Theoretically uses vision sensor to turn to where there is a triball and drive there (NOT TESTED)
  * 
@@ -161,8 +191,6 @@ void triballVision() {
 
     //         }
     //     }
-
-        
 
     //     pros::delay(20);
     // }

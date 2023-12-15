@@ -24,38 +24,37 @@
 // - Use numbers if it is in a port
 // - Use letters if it is a triport
 // ------------------------------------------------------------------------------------------------------
-int MOTOR_LB = 2;
-int MOTOR_LF = 1;
-int MOTOR_PTOL1 = 3;
-int MOTOR_PTOL2 = 4;
+int MOTOR_LB = 18;
+int MOTOR_LM = 19;
+int MOTOR_LF = 20;
 
-int MOTOR_RB = 9;
-int MOTOR_RF = 10;
-int MOTOR_PTOR1 = 8;
-int MOTOR_PTOR2 = 7;
+int MOTOR_RB = 16;
+int MOTOR_RM = 12;
+int MOTOR_RF = 11;
 
-int MOTOR_INTAKE1 = 5;
-int MOTOR_INTAKE2 = 16;
-int MOTOR_CATAPULT = 17;
+int MOTOR_INTAKE = 6;
+// int MOTOR_INTAKE2 = 16;
+int MOTOR_CATAPULT = 1;
+int MOTOR_CATAPULT2 = 2;
 
 int VISION_SENSOR_PORT = 23;
 char CATA_LIMIT_SWITCH_PORT = 'H'; // RENAME TO BUMPER
-int INERTIAL_SENSOR_PORT = 20;
-int COLOR_SENSOR_PORT = 12;
+int INERTIAL_SENSOR_PORT = 9;
+int COLOR_SENSOR_PORT = 25;
 // char INTAKE_LIMIT_SWITCH_PORT = 'E';
-// char LINE_SENSOR_PORT = 'F';
-int DISTANCE_SENSOR_PORT = 15;
+int DISTANCE_SENSOR_PORT = 4;
 
-char BLOCKER_PORT = 'G';
-char WINGR_PORT = 'D';
-char WINGL_PORT = 'E';
+char CLIMB_PORT = 'C';
+char WINGB_PORT = 'A';
+char WINGF_PORT = 'D'; 
 // char GRABBER_PORT = 'D';
-char DRIVEPTO_PORT = 'B';
-char CLAW_PORT = 'C';
-char WEDGE_PORT = 'F';
+// char DRIVEPTO_PORT = 'B';
+// char CLAW_PORT = 'C';
+char WEDGE_PORT = 'F'; // NOT IN USE
+char PISTON_BOOST_PORT = 'B';
 
 // pros::Rotation back_rot(6, false);
-pros::Rotation puncher_rot(6, false);
+pros::Rotation kicker_rot(4, false);
 
 // lemlib::TrackingWheel back_tracking_wheel(&back_rot, 2.75, -5.75);
 
@@ -63,17 +62,16 @@ pros::Rotation puncher_rot(6, false);
 // Drivetrain 
 // ------------------------------------------------------------------------------------------------------
 pros::Motor driveLB(MOTOR_LB, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveLM(MOTOR_LM, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor driveLF(MOTOR_LF, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor ptoL1(MOTOR_PTOL1, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor ptoL2(MOTOR_PTOL2, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 pros::Motor driveRB(MOTOR_RB, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveRM(MOTOR_RM, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor driveRF(MOTOR_RF, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor ptoR1(MOTOR_PTOR1, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor ptoR2(MOTOR_PTOR2, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
 
-pros::MotorGroup leftMotors({driveLB, driveLF});
-pros::MotorGroup rightMotors({driveRB, driveRF});
+
+pros::MotorGroup leftMotors({driveLB, driveLM, driveLF});
+pros::MotorGroup rightMotors({driveRB, driveRM, driveRF});
 
 // pros::MotorGroup lPTOMotors({ptoL1, ptoL2});
 // pros::MotorGroup rPTOMotors({ptoR1, ptoR2});
@@ -82,9 +80,10 @@ pros::MotorGroup rightMotors({driveRB, driveRF});
 // ------------------------------------------------------------------------------------------------------
 // Subsystems
 // ------------------------------------------------------------------------------------------------------
-pros::Motor intake1(MOTOR_INTAKE1, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor intake2(MOTOR_INTAKE2, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor intake(MOTOR_INTAKE, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+//pros::Motor intake2(MOTOR_INTAKE2, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor catapult(MOTOR_CATAPULT, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor catapult2(MOTOR_CATAPULT2, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 // ------------------------------------------------------------------------------------------------------
 // Sensors
@@ -100,13 +99,14 @@ pros::Distance distance_sensor(DISTANCE_SENSOR_PORT);
 // ------------------------------------------------------------------------------------------------------
 // Pneumatics
 // ------------------------------------------------------------------------------------------------------
-pros::ADIDigitalOut blocker(BLOCKER_PORT);
-pros::ADIDigitalOut wingR(WINGR_PORT);
-pros::ADIDigitalOut wingL(WINGL_PORT);
+pros::ADIDigitalOut climb(CLIMB_PORT);
+pros::ADIDigitalOut wingF(WINGF_PORT);
+pros::ADIDigitalOut wingB(WINGB_PORT);
 // pros::ADIDigitalOut grabber(GRABBER_PORT);
-pros::ADIDigitalOut drivePTO(DRIVEPTO_PORT);
-pros::ADIDigitalOut claw(CLAW_PORT);
+// pros::ADIDigitalOut drivePTO(DRIVEPTO_PORT);
+// pros::ADIDigitalOut claw(CLAW_PORT);
 pros::ADIDigitalOut wedge(WEDGE_PORT);
+pros::ADIDigitalOut pistonBoost(PISTON_BOOST_PORT);
 
 // ------------------------------------------------------------------------------------------------------
 // CONTROLLER
@@ -123,16 +123,16 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 lemlib::Drivetrain_t drivetrain {
     &leftMotors, // left drivetrain motors
     &rightMotors, // right drivetrain motors
-    11.25, // track width
-    4.00, // wheel diameter
-    342.85, // wheel rpm
+    10.50, // track width
+    2.75, // wheel diameter
+    480, // wheel rpm
     2 // Chase Power
 };
 
 // forward/backward PID
 lemlib::ChassisController_t lateralController {
     75, // kP
-    900, // kD May lower in the future
+    800, // kD May lower in the future
     1, // smallErrorRange
     100, // smallErrorTimeout
     3, // largeErrorRange

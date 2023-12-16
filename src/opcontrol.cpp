@@ -66,6 +66,10 @@ void my_opcontrol() {
 	// loadMacro = true;
 	// setPTO(-600, -600, -600, -600);
 
+	wingF.set_value(false);
+	wingB.set_value(false);
+
+
 	while (true) {
 		// lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
         // pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
@@ -81,7 +85,7 @@ void my_opcontrol() {
 		// macroLoad();
 		//op_claw();
 		op_climb();
-		toggleDown();
+		// toggleDown();
 		// if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
 		// 	setPTO(0, 0, 0, 0);
 		// }

@@ -528,3 +528,11 @@ void offense_auton_6balls_v2() {
 
     // Rush Middle
 }
+
+void jerryio_test() {
+    // chassis.follow()
+    // chassis.waitUntil(dist) 
+    // pose = chassis.currentPose 
+    // setPose(end of path)     
+    // setPose(pose)
+}

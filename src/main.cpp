@@ -104,6 +104,7 @@ void competition_initialize() {}
     // offense_auton_safe();
     // auton_skills();
     defense_awp();
+    // jerryio_test();
     
 
     // if(selector::auton == 1){
@@ -145,6 +146,6 @@ void opcontrol() {
     // pros::Task MatchLoads(SetMatchLoad);
     // pid_test();
     pros::Task kicker_task(kickerTask);
-    pros::Task pistonBoost_task(pistonBoostTask);
+    //pros::Task pistonBoost_task(pistonBoostTask);
     my_opcontrol();
 }   

@@ -20,3 +20,4 @@ void defense_MOA();
 void defense_awp();
 
 void test_auton_skills();
+void jerryio_test();

@@ -101,9 +101,9 @@ void competition_initialize() {}
     //         auton_skills();
     //         break;
     // }
-    offense_auton_safe(); // SLOT 4
-    // auton_skills(); // SLOT 3
-    // defense_awp(); // SLOT 2
+    //offense_auton_safe(); // SLOT 4
+    //auton_skills(); // SLOT 3
+    defense_awp(); // SLOT 2
     
 
     // if(selector::auton == 1){
@@ -122,7 +122,7 @@ void competition_initialize() {}
     // if (selector::auton == 0) {
     // }
 
-    // auton_skills(); // SLOT 7
+    //auton_skills(); // SLOT 7
     // test_auton_skills(); // SLOT 8 // RENAME AND PUT AS ACTUAL SKILLS AUTON
 }
 
@@ -145,6 +145,6 @@ void opcontrol() {
     // pros::Task MatchLoads(SetMatchLoad);
     // pid_test();
     pros::Task kicker_task(kickerTask);
-    pros::Task pistonBoost_task(pistonBoostTask);
+    //pros::Task pistonBoost_task(pistonBoostTask);
     my_opcontrol();
 }   

@@ -14,9 +14,15 @@ ASSET(skillstest_txt);
 ASSET(leftcurve5_txt);
 
 void test_auton() {
-    chassis.setPose(-38.14602236652237, -60.18132683982684, 100.82);
+    //chassis.setPose(-38.14602236652237, -60.18132683982684, 100.82);
     // chassis.follow(leftcurve4_txt, 20000, 25);
-    chassis.follow(leftcurve5_txt, 20000, 25);
+    //chassis.follow(leftcurve5_txt, 20000, 25);
+    //chassis.setPose(-12.482, -23.019)
+    //chassis.follow(test_txt, 20000, 25);
+    //chassis.waitUntil(dist) 
+    //pose = chassis.currentPose();
+    //setPose(end of path) 
+    //setPose(pose)
 }
 
 void test_auton2() {
@@ -64,7 +70,7 @@ void driver_skills() {
 void auton_skills() {
     wingF.set_value(true);
     chassis.setPose(-40, -53, 90);
-    shoot();
+    //shoot();
     wingB.set_value(true);
     pros::delay(500);
     wingF.set_value(false);
@@ -74,14 +80,14 @@ void auton_skills() {
     turnTo(68);
     chassis.moveTo(-60, -43, 68, 1200, false, false);  
     wingB.set_value(true);
-    pros::delay(200);
+    pros::delay(175);
     // wedge.set_value(true);
     // pros::delay(300);
     // wedge.set_value(false);
 
     // shoots x number of times
     // can choose length of gaps between shots
-    matchLoad(45, 650);
+    matchLoad(5, 600);
     
     // PUSH TWO ALLIANCE TRIBALLS INTO OUR SIDE
     // chassis.setPose(-47.75, -62.75, 54);
@@ -92,11 +98,11 @@ void auton_skills() {
 
     // chassis.moveTo(-62, -37, 180, 1500, false, false);
     wingB.set_value(false);
-    turnTo(0);
+    turnTo(-10);
     setIntake(-127);
-    chassis.moveTo(-60, 0, 0, 1000);
+    chassis.moveTo(-70, 20, -10, 1000);
     //chassis.setPose(-60, -30, 0);
-    chassis.moveTo(-60, -40, 0, 800, false, false);
+    chassis.moveTo(-70, -40, 0, 800, false, false);
     setIntake(0);
     // setDrive(600, 600);
     // pros::delay(800);
@@ -104,15 +110,15 @@ void auton_skills() {
     // setDrive(-600, -600);
     // pros::delay(100);
     // setDrive(0, 0);
-    chassis.turnTo(-38, -57, 800);
-    chassis.moveTo(-38, -57, 135, 1400);
+    chassis.turnTo(-35, -50, 800);
+    chassis.moveTo(-35, -50, 135, 1400);
     turnTo(90);
 
     // START MOVING TO OTHER SIDE
-    chassis.moveTo(38, -57, 90, 2300);
-    chassis.moveTo(44, -53, 45, 2000);
+    chassis.moveTo(38, -50, 90, 1750);
+    //chassis.moveTo(44, -45, 45, 1750);
     chassis.turnTo(-5, 22, 800);
-    chassis.moveTo(10, -8, -25, 1600);
+    chassis.moveTo(10, -8, -25, 1500);
     
     // // START RAMMING
     // // First ram
@@ -131,7 +137,7 @@ void auton_skills() {
     wingF.set_value(false);
 
     // Second ram
-    chassis.moveTo(10, 0, 120, 2000, false, false);
+    chassis.moveTo(10, 0, 120, 1750, false, false);
     turnTo(90);
     wingF.set_value(true);
     chassis.moveTo(70, 0, 90, 1500);
@@ -143,11 +149,11 @@ void auton_skills() {
     // // chassis.moveTo(13, 24, 120, 1000, false, false);
     // ActivateWings(true);
     // // setDrive(600, 600);
-    chassis.moveTo(15, 13, 90, 1500);
+    chassis.moveTo(15, 13, 90, 1300);
     turnTo(90);
     wingF.set_value(true);
     // setIntake(-127);
-    chassis.moveTo(70, 13, 90, 1200);
+    chassis.moveTo(70, 13, 90, 1000);
     wingF.set_value(false);
     // setIntake(0);
     // // chassis.moveTo(48, 14, -90, 2000);
@@ -239,7 +245,8 @@ void defense_awp() {
     chassis.moveTo(-38, -56, 128, 3000);
     turnTo(90);
     // chassis.moveTo(-8.5, -58, -90, 2000, false, false, 0, 0.59999999999999998, 80);
-    chassis.moveTo(-22, -56, 90, 2000, false, true, 0, 0.59999999999999998, 80);
+    // chassis.moveTo(-22, -56, 90, 2000, false, true, 0, 0.59999999999999998, 80);
+    chassis.moveTo(-12, -56, 90, 2000, false, true, 0, 0.59999999999999998, 80);
     // chassis.moveTo(-53, -53, -38, 2000);
     // turnTo(-90);
     // chassis.moveTo(-8.5, -53, -90, 3000);

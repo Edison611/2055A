@@ -87,6 +87,8 @@ void matchLoad(int shots, int delay) {
     for(int i = 0; i < shots; i++) {
         shoot();
         pros::delay(delay);
+
+        if (i+4 == shots) controller.rumble("-.");
         // setCatapult(600);
         // while (true) {
         //     if (kicker_rot.get_angle() < 20500) {

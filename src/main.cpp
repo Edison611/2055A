@@ -101,9 +101,9 @@ void competition_initialize() {}
     //         auton_skills();
     //         break;
     // }
-    //offense_auton_safe(); // SLOT 4
-    //auton_skills(); // SLOT 3
-    defense_awp(); // SLOT 2
+    offense_auton_safe(); // SLOT 4
+    // auton_skills(); // SLOT 3
+    // defense_awp(); // SLOT 2
     
 
     // if(selector::auton == 1){
@@ -141,7 +141,7 @@ void competition_initialize() {}
  */
 void opcontrol() {
     chassis.setPose(0, 0, 0);
-    // driver_skills();
+    // driver_skills(); 
     // pros::Task MatchLoads(SetMatchLoad);
     // pid_test();
     pros::Task kicker_task(kickerTask);

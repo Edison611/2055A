@@ -66,7 +66,7 @@ void kickerTask() {
 
         // }
 
-         while (kicker_rot.get_angle() < 30000) { // Could change to adjust button value //Prev 20400
+         while (kicker_rot.get_angle() < 29700) { // Could change to adjust button value //Prev 20400
             // pros::lcd::set_text(1, "REACHED");
             if (stop == true) {
                 setCatapult(0);
@@ -74,7 +74,7 @@ void kickerTask() {
             }
 
             if (cata_shoot == true) {
-                // cata_shoot = true; 
+                cata_shoot = true; 
                 break;
             }
         }
@@ -84,7 +84,7 @@ void kickerTask() {
             cata_shoot = false;
             setCatapult(600);
             stop = true;
-            pros::delay(270);
+            pros::delay(320);
         }
 
         pros::delay(10);

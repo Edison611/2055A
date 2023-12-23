@@ -48,156 +48,166 @@ void test_auton3() {
 // ------------------------------------------------------------------------------------------------------
 
 void driver_skills() {
-    chassis.setPose(-40, -53, 90);
+    chassis.setPose(-40, -55, -90);
+    // chassis.setPose(-40, -53, 90); // Facing forward
     shoot();
-    wingB.set_value(true);
+    // wingB.set_value(true);
     wingF.set_value(true);
     pros::delay(400);
-    wingB.set_value(false);
+    // wingB.set_value(false);
     wingF.set_value(false);
-    turnTo(130);
-    chassis.moveTo(-55, -42, 130, 1000, false, false);
-    // ram(int time, int dir)
-    // turnTo(70);
-    chassis.moveTo(-60, -43, 130, 1000, false, false);  
-    turnTo(70);
+
+    // Begin
+    setIntake(127);
+    turnTo(-45);
+    chassis.moveTo(-60, -36, -45, 1200);
+    turnTo(0);
+    setIntake(-127);
+    chassis.moveTo(-60, 0, 0, 800);
+    //---//
+    // turnTo(130);
+    // chassis.moveTo(-55, -42, 130, 1000, false, false);
+    // chassis.moveTo(-60, -43, 130, 1000, false, false);  
+    chassis.moveTo(-60, -43, 0, 1000, false, false);  
+    turnTo(65);
     wingB.set_value(true);
+    wingF.set_value(true);
+    setBrake("brake");
     pros::delay(175);
+    wingF.set_value(false);
 
+
+    
+    // shoots x number of times
+    // can choose length of gaps between shots
+    setIntake(0);
     matchLoad(45, 500);
-
-    controller.rumble("-.");
+    setBrake("coast");
+    
+    wingB.set_value(false);
 }
 
 void auton_skills() {
-    /* wingF.set_value(true);
-    chassis.setPose(-40, -53, 90);
+    // Calibration and Robot Setup
+    chassis.setPose(-40, -55, -90);
+    // chassis.setPose(-40, -53, 90); // Facing forward
     shoot();
-    wingB.set_value(true);
-    pros::delay(500);
-    wingF.set_value(false);
-    wingB.set_value(false);
-    turnTo(130);
-    chassis.moveTo(-55, -42, 130, 1320, false, false);
-    turnTo(68);
-    chassis.moveTo(-60, -43, 68, 1200, false, false);  
-    wingB.set_value(true);
-    pros::delay(175); */
-
-    chassis.setPose(-40, -53, 90);
-    shoot();
-    wingB.set_value(true);
+    // wingB.set_value(true);
     wingF.set_value(true);
     pros::delay(400);
-    wingB.set_value(false);
+    // wingB.set_value(false);
     wingF.set_value(false);
-    turnTo(130);
-    chassis.moveTo(-55, -42, 130, 1000, false, false);
-    // ram(int time, int dir)
-    // turnTo(70);
-    chassis.moveTo(-60, -43, 130, 1000, false, false);  
-    turnTo(70);
+
+    // Begin
+    setIntake(127);
+    turnTo(-45);
+    chassis.moveTo(-60, -36, -45, 1200);
+    turnTo(0);
+    setIntake(-127);
+    chassis.moveTo(-60, 10, 0, 800);
+    //---//
+    // turnTo(130);
+    // chassis.moveTo(-55, -42, 130, 1000, false, false);
+    // chassis.moveTo(-60, -43, 130, 1000, false, false);  
+    chassis.moveTo(-60, -43, 0, 1000, false, false);  
+    turnTo(65);
     wingB.set_value(true);
+    wingF.set_value(true);
+    setBrake("brake");
     pros::delay(175);
+    wingF.set_value(false);
 
-    // wedge.set_value(true);
-    // pros::delay(300);
-    // wedge.set_value(false);
 
+    
     // shoots x number of times
     // can choose length of gaps between shots
-    matchLoad(45, 500);
-    
-    // PUSH TWO ALLIANCE TRIBALLS INTO OUR SIDE
-    // chassis.setPose(-47.75, -62.75, 54);
-    // setDrive(70, 70);
-    // pros::delay(200);
-    // setDrive(0, 0);
-    // chassis.turnTo(-62, -37, 800, false, true);
-
-    // chassis.moveTo(-62, -37, 180, 1500, false, false);
-    wingB.set_value(false);
-    turnTo(-10);
-    setIntake(-127);
-    chassis.moveTo(-70, 20, -10, 1000);
-    //chassis.setPose(-60, -30, 0);
-    chassis.moveTo(-70, -40, 0, 800, false, false);
     setIntake(0);
-    // setDrive(600, 600);
-    // pros::delay(800);
-    // setDrive(0, 0);
-    // setDrive(-600, -600);
-    // pros::delay(100);
-    // setDrive(0, 0);
-    chassis.turnTo(-35, -50, 800);
-    chassis.moveTo(-35, -50, 135, 1400);
-    turnTo(90);
+    matchLoad(45, 550);
+    setBrake("coast");
+    
+    wingB.set_value(false);
+
+    // OLD
+    // turnTo(-10); // turns to close net
+    // setIntake(-127); 
+    // chassis.moveTo(-62, 20, 0, 1000); // rams net (these coordinates are way past net)
+    // //chassis.setPose(-60, -30, 0);
+    // chassis.moveTo(-62, -40, 0, 800, false, false); // moves back
+    // setIntake(0);
+    
+    chassis.turnTo(-32, -58, 800);
+    wingF.set_value(true);
+    setIntake(127);
+    chassis.moveTo(-32, -58, 90, 1400);
+    wingF.set_value(false);
+    pros::delay(500);
+    // turnTo(90);
+    // 46.75, -61
+
 
     // START MOVING TO OTHER SIDE
-    chassis.moveTo(38, -50, 90, 1750);
-    //chassis.moveTo(44, -45, 45, 1750);
-    chassis.turnTo(-5, 22, 800);
-    chassis.moveTo(10, -8, -25, 1500);
+
+    chassis.moveTo(38, -58, 90, 3000);
+
+    //**//
+    chassis.turnTo(58, -45, 800);
+    wingF.set_value(true);
+    chassis.moveTo(58, -45, 45, 1500);
+    turnTo(0);
+    wingF.set_value(false);
     
-    // // START RAMMING
-    // // First ram
     setIntake(-127);
-    // wingF.set_value(true);
-    // chassis.moveTo(60, -8, 90, 1500);
-    wingB.set_value(true);
-    chassis.moveTo(60, -8, -90, 1500, false, false);
-    // ActivateWings(true);
-    // turnTo(90);
-    // setDrive(600, 600);
-    // pros::delay(1200);
-    // setDrive(0, 0);
-    // chassis.setPose(35, 8, 90);
-    // ActivateWings(false);
-    // chassis.moveTo(14, 22, 170, 2000, false, false);
+    chassis.moveTo(60, 0, 0, 1200);
     setIntake(0);
+    // UNCOMMENT NEXT TWO LINES FOR 2nd RAM
+    // chassis.moveTo(60, -38, 0, 1000, false, false);
+    // chassis.moveTo(60, 0, 0, 1200);
+    chassis.moveTo(52, -47, 210, 1400, false, false);
+    chassis.turnTo(6, -20, 800, false, true);
+    // pros::delay(20000);
+    //**//
+
+    //chassis.turnTo(-2, -12, 800, false, true);
+    
+    chassis.moveTo(6, -20, -10, 2000, false, false);
+    wingB.set_value(true);
+    
+    // -----------------------------------------------
+    // START RAMMING
+    // Ram #1
+    chassis.turnTo(47, 0, 1700, false, true, 60);
+    // wingB.set_value(true);
+    chassis.moveTo(60, -6, -90, 1500, false, false);
     wingB.set_value(false);
 
     // Second ram
     // chassis.moveTo(10, 0, 120, 1750, false, false);
-    chassis.moveTo(10, 0, -60, 1750);
-    turnTo(-90);
-    wingB.set_value(true);
-    chassis.moveTo(70, 0, -90, 1500, false, false);
-    wingB.set_value(false);
+    setIntake(127);
+    // chassis.moveTo(6, 0, -60, 1750);
+    // turnTo(-90);
+    // wingB.set_value(true);
+    // chassis.moveTo(70, 0, -90, 1500, false, false);
+    // wingB.set_value(false);
 
-    chassis.moveTo(10, 0, -90, 1000);
-    // chassis.moveTo(10, 38, 180, 3500, false, false);
-    // chassis.moveTo(13, 24, 120, 1000); // may remove
-    // // chassis.moveTo(13, 24, 120, 1000, false, false);
-    // ActivateWings(true);
-    // // setDrive(600, 600);
-    chassis.moveTo(15, 13, -90, 1300, false, false);
-    turnTo(-90);
+    chassis.moveTo(8, -6, -90, 1000);
+    turnTo(180);
+    chassis.moveTo(8, 20, 0, 1300, false, false, 0, 0.6, 80);
+    chassis.turnTo(47, 47, 1000, false, true);
     wingB.set_value(true);
+    chassis.turnTo(47, 5, 2000, false, true, 50);
+
+    // turnTo(-90);
     // setIntake(-127);
-    chassis.moveTo(70, 13, -90, 1000, false, false);
+    chassis.moveTo(70, 10, -90, 1400, false, false);
     wingB.set_value(false);
-    // setIntake(0);
-    // // chassis.moveTo(48, 14, -90, 2000);
-    // setDrive(600, 600);
-    // pros::delay(800);
-    // // setDrive(-300, -300);
-    // // pros::delay(800);
-
-    // // Third ram
-    // setDrive(-600, -600);
-    // // pros::delay(200);
-    // pros::delay(300);
-    // setDrive(0, 0);
-    // // chassis.moveTo(72, 14, -90, 1000);
-    // setDrive(600, 600);
-    // pros::delay(500);
-    // ActivateWings(false);
-
-    // // Move backwards so not touching any triballs
-    // setDrive(-600, -600);
-    // pros::delay(150);
-    // setDrive(0, 0);
+    chassis.moveTo(30, 10, -90, 1000);
+    turnTo(90);
+    wingF.set_value(true);
+    setIntake(-40);
+    chassis.moveTo(70, 10, 90, 1400);
+    setIntake(0);
+    wingF.set_value(false);
+    chassis.moveTo(30, 10, 90, 800);
 }
 
 /**
@@ -246,8 +256,8 @@ void defense_awp() {
     wingF.set_value(true);
     pros::delay(500);
     // chassis.moveTo(-51, -57, 142, 2000);
-    chassis.moveTo(-49, -59, 142, 2000);
-    chassis.moveTo(-45, -59, 90, 2000);
+    chassis.moveTo(-47, -57, 142, 2000); // moves forward to scoop triball out with maxspeed 80
+    chassis.moveTo(-47, -57, 90, 2000);
     wingF.set_value(false);
 
     // Score alliance triball in net
@@ -257,18 +267,21 @@ void defense_awp() {
     turnTo(0);
     setIntake(-127);
     pros::delay(750);
-    setIntake(0);
     // chassis.moveTo(-67, -36, 0, 1000, false, false);
     // chassis.moveTo(-67, 10, 0, 1000);
 
     // Move to touch elevation bar 
     // chassis.moveTo(-67, -35, 0, 1000, false, false);
-    turnTo(128);
-    chassis.moveTo(-38, -56, 128, 3000);
+    chassis.moveTo(-67, -40, 0, 1000, false, false); // moves backwards away from net
+    setIntake(0);
+    turnTo(132);
+    chassis.moveTo(-38, -60, 128, 3000);
     turnTo(90);
     // chassis.moveTo(-8.5, -58, -90, 2000, false, false, 0, 0.59999999999999998, 80);
-    // chassis.moveTo(-22, -56, 90, 2000, false, true, 0, 0.59999999999999998, 80);
-    chassis.moveTo(-12, -56, 90, 2000, false, true, 0, 0.59999999999999998, 80);
+    setIntake(-127);
+    chassis.moveTo(-32, -60, 90, 2000, false, true, 0, 0.59999999999999998, 80);
+    pros::delay(500);
+    setIntake(0);
     // chassis.moveTo(-53, -53, -38, 2000);
     // turnTo(-90);
     // chassis.moveTo(-8.5, -53, -90, 3000);
@@ -341,50 +354,51 @@ void offense_auton_safe() {
     // 68, -7, 90
 
     // Corner & Alliance Tri-Ball
-    chassis.setPose(47, -57, 45);
+    chassis.setPose(46.75, -61, 45);
     wingF.set_value(true);
     // wingF.set_value(true);
     // wingF.set_value(true);
     setIntake(127);
-    chassis.moveTo(58, -45, 45, 1500);
-    turnTo(57, 10, 500);
+    chassis.moveTo(55.5, -51.8, 45, 1200);
+    turnTo(-10, 127, 500);
     wingF.set_value(false);
     //turnTo(-8);
     // wingF.set_value(false);
     // wingF.set_value(false);
     // chassis.moveTo(44, -55, 45, 1500, false, false);
-    chassis.moveTo(57, 0, 0, 900);
     setIntake(-127);
-    chassis.moveTo(57, -50, 0, 900, false, false);
     chassis.moveTo(57, 0, 0, 900);
+    chassis.moveTo(57, -50, 0, 900, false, false);
+    chassis.moveTo(60, 0, 0, 900);
     setIntake(0);
-    chassis.moveTo(62, -55, -10, 1000, false, false);
+    chassis.moveTo(62, -55, -10, 800, false, false);
 
     // Middle Tri-Balls
     chassis.turnTo(-6, -18, 800);
     setIntake(127);
-    chassis.moveTo(10, -27.5, -65, 1000);
-    pros::delay(200);
-    turnTo(0);
-    chassis.moveTo(10, -15, 0, 900);
-    turnTo(90);
+    chassis.moveTo(6, -27.5, -67, 1200);
+    pros::delay(300);
+    turnTo(45);
+    chassis.moveTo(11, -5, 45, 800);
     wingF.set_value(true);
-    chassis.moveTo(60, -10, 90, 900);
+    turnTo(90);
+    pros::delay(200);
+    chassis.moveTo(60, -6, 90, 1000);
     pros::delay(200);
     wingF.set_value(false);
-    chassis.moveTo(10, -10, 90, 900, false, false);
+    chassis.moveTo(4, -7, 90, 1000, false, false);
     //chassis.turnTo(48, 5, 1000, false, false);
-    
-    // setIntake(-127);
-    // pros::delay(500);
-    // chassis.moveTo(20, -20, 40, 800, false, true, 50);
-    // setIntake(127);
-    chassis.turnTo(-2, 16, 800);
+
+    // Last
     setIntake(127);
-    chassis.moveTo(8, -5, -25, 800);
+    turnTo(-70);
+    chassis.moveTo(0, -3, -70, 1000);
+    pros::delay(500);
+    // chassis.moveTo(8, -5, -25, 800);
     turnTo(90);
     setIntake(-30);
-    chassis.moveTo(60, -10, 90, 1000);
+    chassis.moveTo(60, -6, 90, 900);
+    chassis.moveTo(30, -8, 90, 900, false, false);
     //turnTo(-60);
     //chassis.turnTo(-9, 1, 800);
     //setIntake(127);

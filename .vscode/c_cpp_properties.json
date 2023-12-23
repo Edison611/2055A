@@ -18,17 +18,17 @@
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "C:\\Program Files\\PROS\\toolchain\\usr\\bin\\arm-none-eabi-g++",
+      "compilerPath": "/Users/edisony611/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
       "cStandard": "c17",
       "cppStandard": "c++17",
       "intelliSenseMode": "gcc-arm",
-      "compileCommands": "c:\\Users\\haris\\Desktop\\2055A\\compile_commands.json",
+      "compileCommands": "/Users/edisony611/Documents/VexRobotics/2023-2024/2055A/compile_commands.json",
       "macFrameworkPath": [
         "/System/Library/Frameworks"
       ],
       "browse": {
         "path": [
-          "c:\\Users\\haris\\Desktop\\2055A"
+          "/Users/edisony611/Documents/VexRobotics/2023-2024/2055A"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

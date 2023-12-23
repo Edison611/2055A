@@ -48,7 +48,7 @@ void kickerTask() {
     double prev;
     bool stop = true;
 
-    // 232 at top, stop at 205
+    // 323 at top, stop at 297
     // Rotational Sensor Angle increases when going -> up
     while (true) {
         // double prev = kicker_rot.get_angle();
@@ -82,9 +82,9 @@ void kickerTask() {
         if (cata_shoot == true) {
             // pros::lcd::set_text(2, "Shoot");
             cata_shoot = false;
-            setCatapult(600);
+            setCatapult(200);
             stop = true;
-            pros::delay(320);
+            pros::delay(260);
         }
 
         pros::delay(10);
@@ -108,45 +108,7 @@ void shoot() {
     cata_shoot = true;
 }
 
-/**
- * A task to hold the catapult in place.
- * Tune the factor variable to let the catapult sit in place.
- */
-// void cata_hold() { ///
 
-//     // double factor = 9.25; // Tune this value
-//     // int x = 0;
-//     bool stop = true;
-
-// 	while (true) {
-
-//         while (puncher_rot.get_angle() < 17500) { // Could change to adjust button value
-//             // pros::lcd::set_text(1, "REACHED");
-//             if (stop == true) {
-//                 setPTO(0, 0, 0, 0);
-//                 stop = false;
-//             }
-
-//             if (cata_shoot == true) {
-//                 cata_shoot = true;
-//                 break;
-//             }
-//         }
-
-//         if (cata_shoot == true) {
-//             // pros::lcd::set_text(2, "Shoot");
-//             cata_shoot = false;
-//             setPTO(-600, -600, -600, -600);
-//             stop = true;
-//             pros::delay(300);
-//         }
-
-        
-//         pros::delay(20);
-
-// 	}
-    
-// }
 
 // ------------------------------------------------------------------------------------------------------
 // INTAKE

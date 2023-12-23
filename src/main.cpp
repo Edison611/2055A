@@ -32,7 +32,7 @@ void initialize() {
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
     catapult2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    selector::init();
+    // selector::init();
     pros::Task kicker_task(kickerTask);
     // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
@@ -101,8 +101,8 @@ void competition_initialize() {}
     //         auton_skills();
     //         break;
     // }
-    offense_auton_safe(); // SLOT 4
-    // auton_skills(); // SLOT 3
+    // offense_auton_safe(); // SLOT 4
+    auton_skills(); // SLOT 3
     // defense_awp(); // SLOT 2
     
 
@@ -141,10 +141,10 @@ void competition_initialize() {}
  */
 void opcontrol() {
     chassis.setPose(0, 0, 0);
-    // driver_skills(); 
+    driver_skills(); 
     // pros::Task MatchLoads(SetMatchLoad);
     // pid_test();
-    pros::Task kicker_task(kickerTask);
+    // pros::Task kicker_task(kickerTask);
     //pros::Task pistonBoost_task(pistonBoostTask);
     my_opcontrol();
 }   

@@ -103,11 +103,11 @@ void auton_skills() {
     turnTo(-45);
     chassis.moveTo(-58.75, -36, -45, 1200);
     turnTo(0);
-    setDrive(-200, -200);
+    setDrive(-250, -250);
     pros::delay(200);
     setIntake(-127);
     
-    ram(500, 1);
+    ram(650, 1);
     // chassis.moveTo(-58.75, 30, 0, 1000);
     //---//
     // turnTo(130);
@@ -152,43 +152,45 @@ void auton_skills() {
 
     // START MOVING TO OTHER SIDE
 
-    chassis.moveTo(34, -53, 90, 1750);
+    chassis.moveTo(34, -53, 90, 1600);
 
     //**//
     turnTo(60);
     /////wingF.set_value(true);
-    chassis.moveTo(56, -40, 50, 1000);
+    chassis.moveTo(56, -40, 50, 1200);
     turnTo(0);
     ////  wingF.set_value(false);
     
     setIntake(-127);
     /////chassis.moveTo(55, 20, 0, 1200);
-    ram(500, 1);
+    ram(700, 1);
     setIntake(0);
 
     // UNCOMMENT NEXT TWO LINES FOR 2nd RAM
     // chassis.moveTo(60, -38, 0, 1000, false, false);
     // chassis.moveTo(60, 0, 0, 1200);
-    chassis.moveTo(56, -45, 0, 1000, false, false);
-    ram(500, 1);
+    chassis.moveTo(56, -40, 0, 1000, false, false);
+    ram(700, 1);
     //////chassis.moveTo(54, -45, 30, 1400, false, false);
-    chassis.moveTo(56, -45, 0, 1000, false, false);
-    turnTo(-60);
+    chassis.moveTo(56, -45, 0, 1250, false, false);
+    turnTo(-55);
     // pros::delay(20000);
     //**//
 
     //chassis.turnTo(-2, -12, 800, false, true);
     
-    chassis.moveTo(10, -20, -60, 2000);
+    chassis.moveTo(10, 5, -30, 2000);
+    //ram(750, 1);
     
     // -----------------------------------------------
     // START RAMMING
     // Ram #1
     //////////chassis.turnTo(47, 0, 1500, false, true, 60);
     // wingB.set_value(true);
-    turnTo(-110);
+    turnTo(-90);
     wingB.set_value(true);
-    chassis.moveTo(70, -10, -90, 1200, false, false);
+    //chassis.moveTo(75, -8, -90, 1750, false, false);
+    ram(1000, -1);
 
     // Second ram
     // chassis.moveTo(10, 0, 120, 1750, false, false);
@@ -200,31 +202,32 @@ void auton_skills() {
     // wingB.set_value(false);
 
     // SECOND RAM REAL
-    chassis.moveTo(8, -11, -90, 1000);
+    chassis.moveTo(8, -5, -90, 1250);
     wingB.set_value(false);
-    turnTo(0);
-    chassis.moveTo(8, 4, 0, 1200);
-    turnTo(90);
-    wingF.set_value(true);
-    ram(1000, 1);
+    turnTo(-180);
+    chassis.moveTo(8, 0, -180, 1500);
+    turnTo(-90);    
+    wingB.set_value(true);
+    ram(1250, -1);
 
     // THIRD RAM REAL
-    chassis.moveTo(8, 4, 90, 1000, false, false);
-    wingF.set_value(false);
-    turnTo(180);
-    chassis.moveTo(8, 25, 180, 1500, false, false);
-    turnTo(-60);
+    chassis.moveTo(8, 10, -90, 1250);
+    wingB.set_value(false);
+    turnTo(-180);
+    chassis.moveTo(8, 20, -180, 1200, false, false);
+    turnTo(-90);
     wingB.set_value(true);
-    // chassis.moveTo(18, 15, -90, 1500, false, false, 0, 0.6, 80);
-    chassis.moveTo(80, 15, -90, 1500, false, false);
+    //chassis.moveTo(18, 15, -90, 1500, false, false, 0, 0.6, 80);
+    //chassis.moveTo(90, 15, -90, 1750, false, false);
+    ram(1250, -1);
 
     // FOURTH RAM REAL
-    chassis.moveTo(10, 15, -90, 1000);
-    wingB.set_value(false);
-    turnTo(-140);
-    chassis.moveTo(45, 55, -140, 1200, false, false);
-    turnTo(-220);
-    chassis.moveTo(60, 0, 180, 1200);
+    // chassis.moveTo(10, 15, -90, 1000);
+    // wingB.set_value(false);
+    // turnTo(-140);
+    // chassis.moveTo(45, 55, -140, 1200, false, false);
+    // turnTo(-220);
+    // chassis.moveTo(60, 0, 180, 1200);
 
     // chassis.moveTo(0, 0, -90, false, true);
     

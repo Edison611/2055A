@@ -218,34 +218,59 @@ void auton_skills() {
 
     // Second ram
     // chassis.moveTo(10, 0, 120, 1750, false, false);
-    setIntake(127);
+    // setIntake(127);
     // chassis.moveTo(6, 0, -60, 1750);
-    // turnTo(-90);
+    // turnTo(-90);\
     // wingB.set_value(true);
     // chassis.moveTo(70, 0, -90, 1500, false, false);
     // wingB.set_value(false);
 
-    chassis.moveTo(8, -6, -90, 1000);
-    turnTo(-180);
-    chassis.moveTo(8, 15, -180, 1200, false, false, 0, 0.6, 80);
-    /////chassis.turnTo(47, 47, 1000, false, true);
-    turnTo(-90);
+    // SECOND RAM REAL
+    chassis.moveTo(8, -11, -90, 1000);
+    wingF.set_value(true);
+    turnTo(0);
+    chassis.moveTo(18, 0, 90, 1200, false, true, 0, 0.6, 80);
+    ram(1000, 1);
+    wingF.set_value(false);
+
+    // THIRD RAM REAL
+    chassis.moveTo(8, 4, 90, 1000, false, false);
     wingB.set_value(true);
-    ram(750, -1);
+    turnTo(180);
+    chassis.moveTo(18, 20, 90, 1500, false, false);
+    turnTo(-75);
+    // chassis.moveTo(18, 15, -90, 1500, false, false, 0, 0.6, 80);
+    chassis.moveTo(50, 15, 90, 1000, false, false);
+    wingB.set_value(false);
+
+    // FOURTH RAM REAL
+    wingF.set_value(true);
+    chassis.moveTo(10, 35, 0, 1200);
+    turnTo(90, 80);
+    chassis.moveTo(40, 40, 90, 1200);
+    chassis.moveTo(55, 20, 180, 1200);
+
+    // chassis.moveTo(0, 0, -90, false, true);
+    
+    // chassis.moveTo(8, 15, -180, 1200, false, false, 0, 0.6, 80);
+    /////chassis.turnTo(47, 47, 1000, false, true);
+    // turnTo(-90);
+    // wingB.set_value(true);
+    // ram(750, -1);
     ////chassis.turnTo(47, 5, 2000, false, true, 50);
 
     // turnTo(-90);
     // setIntake(-127);
     //////chassis.moveTo(70, 10, -90, 1400, false, false);
-    wingB.set_value(false);
-    chassis.moveTo(15, 15, -75, 1000);
-    turnTo(115);
-    wingF.set_value(true);
-    setIntake(-40);
-    chassis.moveTo(70, 5, 90, 1000);    
-    setIntake(0);
-    wingF.set_value(false);
-    chassis.moveTo(30, 5, 90, 800);
+    // wingB.set_value(false);
+    // chassis.moveTo(15, 15, -75, 1000);
+    // turnTo(115);
+    // wingF.set_value(true);
+    // setIntake(-40);
+    // chassis.moveTo(70, 5, 90, 1000);    
+    // setIntake(0);
+    // wingF.set_value(false);
+    // chassis.moveTo(30, 5, 90, 800);
 }
 
 /**

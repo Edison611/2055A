@@ -103,7 +103,7 @@ void competition_initialize() {}
     // }
     // offense_auton_safe(); // SLOT 4
     auton_skills(); // SLOT 3
-    // defense_awp(); // SLOT 2
+    //defense_awp(); // SLOT 2
     
 
     // if(selector::auton == 1){

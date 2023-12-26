@@ -141,7 +141,7 @@ void competition_initialize() {}
  */
 void opcontrol() {
     chassis.setPose(0, 0, 0);
-    //driver_skills(); 
+    driver_skills(); 
     // pros::Task MatchLoads(SetMatchLoad);
     // pid_test();
     // pros::Task kicker_task(kickerTask);

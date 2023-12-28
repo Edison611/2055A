@@ -102,7 +102,7 @@ void competition_initialize() {}
     //         break;
     // }
     // offense_auton_safe(); // SLOT 4
-    pros::Task log_task(log_data);
+    // pros::Task log_task(log_data);
     auton_skills(); // SLOT 3
     //defense_awp(); // SLOT 2
     

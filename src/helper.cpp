@@ -18,7 +18,7 @@ double netPos[2] = {0, -48};
 // ------------------------------------------------------------------------------------------------------
 
 void skills_matchload() {
-    matchLoad(30, 500);
+    matchLoad(47, 500);
     wingF.set_value(false);
 	wingB.set_value(false);
 }

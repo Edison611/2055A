@@ -17,6 +17,12 @@ double netPos[2] = {0, -48};
 // HELPER FUNCTIONS
 // ------------------------------------------------------------------------------------------------------
 
+void skills_matchload() {
+    matchLoad(30, 500);
+    wingF.set_value(false);
+	wingB.set_value(false);
+}
+
 void allowContinue() {
     while (true) {
         if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {

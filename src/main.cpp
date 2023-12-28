@@ -102,6 +102,7 @@ void competition_initialize() {}
     //         break;
     // }
     // offense_auton_safe(); // SLOT 4
+    pros::Task log_task(log_data);
     auton_skills(); // SLOT 3
     //defense_awp(); // SLOT 2
     
@@ -139,12 +140,22 @@ void competition_initialize() {}
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
+
 void opcontrol() {
     chassis.setPose(0, 0, 0);
     driver_skills(); 
+
+    pros::Task matchload_task(skills_matchload);
+
+
     // pros::Task MatchLoads(SetMatchLoad);
     // pid_test();
     // pros::Task kicker_task(kickerTask);
     //pros::Task pistonBoost_task(pistonBoostTask);
+
+    // COMMENT THIS FOR SKILLS
+    // wingF.set_value(false);
+	// wingB.set_value(false);
+    
     my_opcontrol();
 }   

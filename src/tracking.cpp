@@ -30,15 +30,15 @@ void screen() {
  * 
  */
 void log_data() {
-    std::string date = currentDateTime() + ".txt";
-    std::string filepath = "/usd/ROBOT/" + date;
+    // std::string date = currentDateTime() + ".txt";
+    std::string filepath = "/usd/ROBOT/log12271.txt";
 
     std::ofstream Data (filepath.c_str());
     // Data.open("/usd/2055/" + date, std::ios_base::app);
 	double time = 0;
 	Data << "X, Y, θ" << std::endl;
 	while (true) {
-        if (time >= 10000) {
+        if (time >= 40000) {
             break;  
         }
         lemlib::Pose pose = chassis.getPose();

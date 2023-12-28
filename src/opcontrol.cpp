@@ -66,8 +66,8 @@ void my_opcontrol() {
 	// loadMacro = true;
 	// setPTO(-600, -600, -600, -600);
 
-	wingF.set_value(false);
-	wingB.set_value(false);
+	// wingF.set_value(false);
+	// wingB.set_value(false);
 
 
 	while (true) {

@@ -3,6 +3,8 @@
 
 std::string currentDateTime();
 
+void skills_matchload();
+
 // Testing Functions
 void allowContinue();
 
@@ -11,7 +13,7 @@ void turnToNet(bool reversed, bool red, int delay);
 
 void vector(double x, double y, int turnTimeout, int driveTimeout);
 void driveFwd(double inches, int timeout, float maxSpeed);
-void turnTo(double degrees, int maxSpeed = 127, int timeout = 600, bool reversed = false, bool async = false);
+void turnTo(double degrees, int maxSpeed = 127, int timeout = 700, bool reversed = false, bool async = false);
 
 void setBrake(std::string mode);
 

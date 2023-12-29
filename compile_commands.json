@@ -289,11 +289,11 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/helper.cpp.o",
-            "src/helper.cpp"
+            "bin/tracking.cpp.o",
+            "src/tracking.cpp"
         ],
         "directory": "/Users/edisony611/Documents/VexRobotics/2023-2024/2055A",
-        "file": "src/helper.cpp"
+        "file": "src/tracking.cpp"
     },
     {
         "arguments": [
@@ -326,11 +326,11 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/main.cpp.o",
-            "src/main.cpp"
+            "bin/helper.cpp.o",
+            "src/helper.cpp"
         ],
         "directory": "/Users/edisony611/Documents/VexRobotics/2023-2024/2055A",
-        "file": "src/main.cpp"
+        "file": "src/helper.cpp"
     },
     {
         "arguments": [
@@ -400,10 +400,10 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/tracking.cpp.o",
-            "src/tracking.cpp"
+            "bin/main.cpp.o",
+            "src/main.cpp"
         ],
         "directory": "/Users/edisony611/Documents/VexRobotics/2023-2024/2055A",
-        "file": "src/tracking.cpp"
+        "file": "src/main.cpp"
     }
 ]

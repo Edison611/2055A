@@ -126,7 +126,7 @@ void auton_skills() {
     // shoots x number of times
     // can choose length of gaps between shots
     setIntake(0);
-    matchLoad(47, 550); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
+    matchLoad(47, 600); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
     setBrake("coast");
     wingF.set_value(false);
     wingB.set_value(false);
@@ -478,7 +478,7 @@ void offense_auton_safe() {
     chassis.moveTo(60, -6, 90, 1200);
     pros::delay(150);
     wingF.set_value(false);
-    chassis.moveTo(7, -7, 90, 1000, false, false);
+    chassis.moveTo(14, -7, 90, 1000, false, false);
     //chassis.turnTo(48, 5, 1000, false, false);
 
     // Last
@@ -492,7 +492,7 @@ void offense_auton_safe() {
     wingF.set_value(true);
     chassis.moveTo(60, -6, 90, 1200);
     wingF.set_value(false);
-    chassis.moveTo(30, -8, 90, 900, false, false);
+    chassis.moveTo(25, -8, 90, 900, false, false);
     //turnTo(-60);
     //chassis.turnTo(-9, 1, 800);
     //setIntake(127);
@@ -542,7 +542,8 @@ void offense_auton_safe() {
 void offense_auton_midrush() {
    // Alliance tri-ball
     chassis.setPose(-41, 55, 180);
-    setWings(true, false, 500);
+    setWings(true, false, 300);
+    setIntake(127);
     chassis.turnTo(-5, 0, 600);
 
     // Middle 2 tri-balls

@@ -39,7 +39,7 @@ void log_data() {
     // Data.open("/usd/2055/" + date, std::ios_base::app);
 	double time = 0;
 	Data << "X, Y, θ" << std::endl;
-    Data << "Heading, Rotation" << std::endl;
+    DataSensor << "Heading, Rotation, Pitch, Roll, Yaw" << std::endl;
 	while (true) {
         if (time >= 10000) {
             break;  
@@ -47,7 +47,7 @@ void log_data() {
         lemlib::Pose pose = chassis.getPose();
         std::string line = std::to_string(pose.x) + ", " + std::to_string(pose.y) + ", " + std::to_string(pose.theta);
 		Data << line << std::endl;
-        std::string line_sensor = std::to_string(inertial_sensor.get_heading()) + ", " + std::to_string(inertial_sensor.get_rotation());
+        std::string line_sensor = std::to_string(inertial_sensor.get_heading()) + ", " + std::to_string(inertial_sensor.get_rotation())+ ", " + std::to_string(inertial_sensor.get_pitch()) + ", " + std::to_string(inertial_sensor.get_roll()) + ", " + std::to_string(inertial_sensor.get_yaw());
         DataSensor << line_sensor << std::endl;
 		pros::delay(50);
         time += 50;

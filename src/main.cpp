@@ -102,11 +102,11 @@ void competition_initialize() {}
     //         break;
     // }
     // offense_auton_safe(); // SLOT 4
-    pros::Task log_task(log_data);
-    auton_skills(); // SLOT 3
-    //defense_awp(); // SLOT 2
-    // defense_auton_elim();
-    // offense_auton_midrush();
+    // pros::Task log_task(log_data);
+    // auton_skills(); // SLOT 3
+    // defense_awp(); // SLOT 2
+    // defense_auton_elim(); // SLOT 5
+    offense_auton_midrush(); // SLOT 7
     
 
     // if(selector::auton == 1){
@@ -145,9 +145,9 @@ void competition_initialize() {}
 
 void opcontrol() {
     chassis.setPose(0, 0, 0);
-    driver_skills(); 
+    // driver_skills(); 
 
-    pros::Task matchload_task(skills_matchload);
+    // pros::Task matchload_task(skills_matchload);
 
 
     // pros::Task MatchLoads(SetMatchLoad);

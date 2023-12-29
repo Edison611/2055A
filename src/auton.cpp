@@ -144,6 +144,12 @@ void auton_skills() {
     //////wingF.set_value(true);
     setIntake(127);
     chassis.moveTo(-30, -46.5, 120, 1400);
+    turnTo(0);
+    ram(500, -1);
+    pros::delay(500);
+    lemlib::Pose l = chassis.getPose();
+    chassis.setPose(l.x, -49.5, 0);
+    chassis.moveTo(-30, -47, 0, 1000);
     turnTo(90);
     ///////wingF.set_value(false);
     pros::delay(200);
@@ -401,24 +407,39 @@ void defense_auton_elim() {
 
     /**NEW*/
     chassis.setPose(36, 62, 180);
-    // wingL.set_value(true);
+    shoot();
+    pros::delay(400);
+    wingF.set_value(true);
+    pros::delay(400);
+    wingF.set_value(false);
+    turnTo(-36);
+    matchLoad(1, 500);
     pros::delay(300);
-    // wingL.set_value(false);
-    chassis.moveTo(36, 40, 180, 800);
-    turnTo(195, 127, 650);
-    chassis.moveTo(30, 15, 195, 800);
-    //claw.set_value(true);
-    setIntake(127);
-    // wingL.set_value(true);
-    pros::delay(300);
-    turnTo(-90, 60);
-    pros::delay(100);
-    setIntake(0);
+    turnTo(0);
+    chassis.moveTo(36, 9, 0, 1300, false, false);
+    // turnTo(195, 127, 650);
+    // chassis.moveTo(36, 15, 195, 800);
+    turnTo(90);
+    wingB.set_value(true);
+    pros::delay(400);
+    chassis.moveTo(-20, 9, 90, 1500, false, false);
+    wingB.set_value(false);
+    // setIntake(127);
+   chassis.moveTo(24, 9, 90, 1500);
+   turnTo(180);
     // wingL.set_value(false);
     // turnTo(0);
     // turnTo(-90);
-    chassis.moveTo(8, 9, -90, 1500);
-    chassis.moveTo(50, 50, 45, 3000, false, false);
+    // chassis.moveTo(8, 9, -90, 1500);
+    // turnTo(225);
+    // chassis.moveTo(50, , 45, 3000, false, false);
+    // turnTo(-45);
+    // wingF.set_value(true);
+    // pros::delay(500);
+    // chassis.moveTo(52, 52, 135, 2000);
+    // turnTo(100);
+    // wingF.set_value(false);
+
 }
 
 /**
@@ -540,45 +561,83 @@ void offense_auton_safe() {
 }
 
 void offense_auton_midrush() {
-   // Alliance tri-ball
-    chassis.setPose(-41, 55, 180);
-    setWings(true, false, 300);
-    setIntake(127);
-    chassis.turnTo(-5, 0, 600);
 
-    // Middle 2 tri-balls
-    chassis.moveTo(-10, 9, 145, 1650);
-    pros::delay(200);
-    // claw.set_value(true);
-    pros::delay(300);
-    chassis.turnTo(-65, 8, 1500, false, false);
-    // wingL.set_value(true);
-    // claw.set_value(false);
-    chassis.moveTo(-60, 8, 270, 1000);
-    // wingL.set_value(false);
+    // Coordinates 
+    // -41, 55, 180
+    // -41, 55, 150
+    // -16, 10, 152
+    // -16, 10, -90
+    // -70, 10, -90
+    // -40, 10, -90
+    // -20, 10, -90
+    // -20, 10, 130
+    // -8, 2, 130
+    // -20, 10, 130
+    // -20, 10, -90
+    // -70, 10, -90
+    // -40, 10, -90
+    // -16, 10, -90
+    // -16, 10, 35
+    // -8, 22, 35
+    // -16, 10, 35
+    // -16, 10, -90
+    // -70, 10, -90
+    // -40, 10, -90
+    // -14, 10, -90
+    // -14, 10, -35
+    // -45, 58, -35
+    // -45, 58, 88
+    // -10, 60, 88
+    // -45, 58, 88
+    // -45, 58, 225
+    // -59, 45, 225
+    // -59, 45, 180
+    // -59, 0, 180
 
-    // Last tri-ball 
-    chassis.moveTo(-16, 13, 270, 2000, false, false);
-    chassis.turnTo(-4, 24, 800);    
-    // claw.set_value(true);
-    pros::delay(600);
-    chassis.turnTo(-65, 8, 1200, false, false);
-    // claw.set_value(false);
-    // wingL.set_value(true);
-    chassis.moveTo(-68, 8, 270, 800);
-    // wingL.set_value(false);
-    chassis.moveTo(-35, 8, 270, 600, false, false);
+   chassis.setPose(-41, 55, 180);
+   wingF.set_value(true);
+   setIntake(127);
+   turnTo(150);
+   wingF.set_value(false);
+   chassis.moveTo(-16, 10, 152, 1200);
+   turnTo(-90);
+   wingF.set_value(true);
+   chassis.moveTo(-70, 10, -90, 1200);
 
-    // Corner Triball Push
-    chassis.turnTo(-50, 57, 700);
-    chassis.moveTo(-50, 57, 315, 1200);
-    turnTo(-135);
-    wingF.set_value(true);
-    chassis.moveTo(-62, 40, 180, 1000);
-    wingF.set_value(false);
-    
+   chassis.setPose(-40, 10, -90);
+   chassis.moveTo(-20, 10, -90, 800, false, false);
+   wingF.set_value(false);
+   turnTo(130);
+   chassis.moveTo(-8, 2, 130, 1000);
+   pros::delay(200);
+   chassis.moveTo(-20, 10, 130, 1000, false, false);
+   turnTo(-90);
+   chassis.moveTo(-70, 10, -90, 1200);
+
+   chassis.setPose(-40, 10, -90);
+   chassis.moveTo(-16, 10, -90, 800, false, false);
+   turnTo(35);
+   chassis.moveTo(-8, 22, 35, 1000);
+   pros::delay(200);
+   chassis.moveTo(-16, 10, 35, 1000, false, false);
+   turnTo(-90);
+   chassis.moveTo(-70, 10, -90, 1200);
+
+   chassis.setPose(-40, 10, -90);
+   chassis.moveTo(-14, 10, -90, 1000, false, false);
+   turnTo(-35);
+   chassis.moveTo(-45, 58, -35, 1200);
+   turnTo(88);
+   chassis.moveTo(-10, 60, 88, 1200);
+   pros::delay(200);
+   chassis.moveTo(-45, 58, 88, 1200, false, false);
+   turnTo(225);
+   chassis.moveTo(-59, 45, 225, 1200);
+   turnTo(180);
+   chassis.moveTo(-59, 0, 180, 1200);
 
 }
+
 
 void offense_auton_6balls_v1() {
     /* Pole & Alliance Tri-Balls */

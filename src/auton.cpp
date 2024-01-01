@@ -126,7 +126,7 @@ void auton_skills() {
     // shoots x number of times
     // can choose length of gaps between shots
     setIntake(0);
-    matchLoad(47, 600); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
+    matchLoad(48, 600); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
     setBrake("coast");
     wingF.set_value(false);
     wingB.set_value(false);
@@ -148,7 +148,7 @@ void auton_skills() {
     ram(500, -1);
     pros::delay(500);
     lemlib::Pose l = chassis.getPose();
-    chassis.setPose(l.x, -49.5, 0);
+    chassis.setPose(l.x, -50, 0);
     chassis.moveTo(-30, -47, 0, 1000);
     turnTo(90);
     ///////wingF.set_value(false);
@@ -406,27 +406,29 @@ void defense_auton() {
 void defense_auton_elim() {
 
     /**NEW*/
-    chassis.setPose(36, 62, 180);
-    shoot();
-    pros::delay(400);
+    chassis.setPose(36, 55, 0);
+    // shoot();
+    // pros::delay(400);
     wingF.set_value(true);
-    pros::delay(400);
+    wingB.set_value(true);
+    pros::delay(500);
     wingF.set_value(false);
-    turnTo(-36);
-    matchLoad(1, 500);
-    pros::delay(300);
-    turnTo(0);
-    chassis.moveTo(36, 9, 0, 1300, false, false);
+    wingB.set_value(false);
+    // turnTo(-36);
+    // matchLoad(1, 500);
+    // pros::delay(300);
+    // turnTo(0);
+    chassis.moveTo(36, 10, 0, 1300, false, false);
     // turnTo(195, 127, 650);
     // chassis.moveTo(36, 15, 195, 800);
     turnTo(90);
     wingB.set_value(true);
     pros::delay(400);
-    chassis.moveTo(-20, 9, 90, 1500, false, false);
+    chassis.moveTo(-30, 10, 90, 1500, false, false);
     wingB.set_value(false);
     // setIntake(127);
-   chassis.moveTo(24, 9, 90, 1500);
-   turnTo(180);
+    chassis.moveTo(24, 10, 90, 1500);
+    turnTo(180);
     // wingL.set_value(false);
     // turnTo(0);
     // turnTo(-90);

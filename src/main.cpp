@@ -105,8 +105,8 @@ void competition_initialize() {}
     // pros::Task log_task(log_data);
     // auton_skills(); // SLOT 3
     // defense_awp(); // SLOT 2
-    // defense_auton_elim(); // SLOT 5
-    offense_auton_midrush(); // SLOT 7
+    defense_auton_elim(); // SLOT 5
+    // offense_auton_midrush(); // SLOT 7
     
 
     // if(selector::auton == 1){

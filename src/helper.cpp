@@ -18,7 +18,7 @@ double netPos[2] = {0, -48};
 // ------------------------------------------------------------------------------------------------------
 
 void skills_matchload() {
-    matchLoad(48, 550);
+    matchLoad(47, 500);
     wingF.set_value(false);
 	wingB.set_value(false);
 }
@@ -71,6 +71,62 @@ void turnTo(double degrees, int maxSpeed, int timeout, bool reversed, bool async
     chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout, async, reversed, maxSpeed);
 }
 
+void turnToDir(int targetAngle, bool right/*, int maxSpeed=127, int timeout=10000*/) {
+    bool turn = true;
+    while (turn) {
+        /* Get Current Angle */
+        lemlib::Pose pose = chassis.getPose();
+        int currentAngle = pose.theta;
+        currentAngle = currentAngle % 360;
+
+        double kP = 2.1;
+
+        if ((currentAngle - targetAngle) > 0) {
+            if (right) {
+                currentAngle = currentAngle - 360;
+                int error = abs(targetAngle - currentAngle);
+                setDrive(error * kP, -error * kP);
+                if (abs(error) < 2) {
+                    turn = false;
+                }
+            }
+
+            else {
+                int error = abs(targetAngle - currentAngle);
+                setDrive(-error * kP, error * kP);
+                if (abs(error) < 2) {
+                    turn = false;
+                }
+            }
+        }
+
+
+        if ((currentAngle - targetAngle) < 0) {
+            if (right){
+                int error = abs(targetAngle - currentAngle);
+                setDrive(error * kP, -error * kP);
+                if (abs(error) < 2) {
+                    turn = false;
+                }
+            }
+
+            else {
+                currentAngle = currentAngle + 360;
+                int error = abs(targetAngle - currentAngle);
+                setDrive(-error * kP, error * kP);
+                if (abs(error) < 2) {
+                    turn = false;
+                }
+            }
+            // turn left:
+            // right motors positive
+            // left motors negative
+        }
+    }
+    setDrive(0, 0);
+}
+
+
 /**
  * @brief Turns and Drives straight to a specified coordinate
  * 
@@ -79,15 +135,13 @@ void turnTo(double degrees, int maxSpeed, int timeout, bool reversed, bool async
  * @param turnTimout timeout for turning (default to 1 second)
  * @param driveTimeout timeout for driving (default to 1 second)
  */
-void vector(double x, double y, bool reversed=false, int maxSpeed=127, int turnTimout = 1000, int driveTimeout = 1000) {
-    chassis.turnTo(x, y, turnTimout, reversed);
-    // chassis.moveTo(x, y, driveTimeout, maxSpeed, reversed);
+void vector(double x, double y, bool reversed, int maxSpeed, int turnTimout, int driveTimeout) {
+    chassis.turnTo(x, y, turnTimout, false, reversed);
+    chassis.moveTo(x, y, chassis.getPose().theta, driveTimeout, false, !reversed, 0, 0.6, maxSpeed);
 }
 
 
 void matchLoad(int shots, int delay) {
-    
-
     float time = ((shots * delay)/ 1000.0) - 1; // Formula for calculating time it takes to complete based of # of shots and delay
     int shotNum = 1000 * (time+1) / delay; // Formula for finding # of shots based off time and delay
     
@@ -97,27 +151,7 @@ void matchLoad(int shots, int delay) {
         pros::delay(delay);
 
         if (i+5 == shots) controller.rumble("-.");
-        // setCatapult(600);
-        // while (true) {
-        //     if (kicker_rot.get_angle() < 20500) {
-        //         setCatapult(0);
-        //         pros::delay(delay);
-        //         setCatapult(600);
-        //         while (true) {
-        //             if (kicker_rot.get_angle() > 20500) {
-        //                 break;
-        //             }
-        //         }
-        //         break;
-        //     }
-        // }
     }
-    // while (true) {
-    //     if(kicker_rot.get_angle() < 20500) {
-    //         setCatapult(0);
-    //         break;
-    //     }
-    // }
 }
 
 void setBrake(std::string mode) {

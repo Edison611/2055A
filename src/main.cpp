@@ -32,7 +32,7 @@ void initialize() {
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
     catapult2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    // selector::init();
+    selector::init();
     pros::Task kicker_task(kickerTask);
     // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
@@ -76,36 +76,43 @@ void competition_initialize() {}
     // pros::Task log_task(log_data);
 
     // Auton selector
-    // switch (selector::auton) {
-    //     case 1:
-    //         offense_auton_safe();
-    //         break;
+    switch (selector::auton) {
+        case 1:
+            offense_auton_safe();
+            break;
 
-    //     case 2:
-    //         offense_auton_midrush();
-    //         break;
+        case 2:
+            offense_auton_midrush();
+            break;
 
-    //     case 3:
-    //         offense_auton_6balls_v2();
-    //         break;
+        case 3:
+            offense_auton_6balls_v2();
+            break;
         
-    //     case -1:
-    //         defense_auton();
-    //         break;
+        case -1:
+            // Safe
+            defense_awp();
+            break;
         
-    //     case -2:
-    //         defense_auton_elim();
-    //         break;
+        case -2:
+            // Midrush
+            test_auton();
+            break;
 
-    //     case 0:
-    //         auton_skills();
-    //         break;
-    // }
+        case -3:
+            // Max Potential
+            defense_auton_max_potential();
+            break;
+
+        case 0:
+            auton_skills();
+            break;
+    } 
     // offense_auton_safe(); // SLOT 4
     // pros::Task log_task(log_data);
     // auton_skills(); // SLOT 3
     // defense_awp(); // SLOT 2
-    defense_auton_elim(); // SLOT 5
+    // defense_auton_elim(); // SLOT 5
     // offense_auton_midrush(); // SLOT 7
     
 
@@ -126,7 +133,6 @@ void competition_initialize() {}
     // }
 
     //auton_skills(); // SLOT 7
-    // test_auton_skills(); // SLOT 8 // RENAME AND PUT AS ACTUAL SKILLS AUTON
 }
 
 /**
@@ -156,8 +162,8 @@ void opcontrol() {
     //pros::Task pistonBoost_task(pistonBoostTask);
 
     // COMMENT THIS FOR SKILLS
-    // wingF.set_value(false);
-	// wingB.set_value(false);
+    wingF.set_value(false);
+	wingB.set_value(false);
     
     my_opcontrol();
 }   

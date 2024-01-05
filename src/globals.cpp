@@ -126,12 +126,12 @@ lemlib::Drivetrain_t drivetrain {
     10.50, // track width
     2.75, // wheel diameter
     480, // wheel rpm
-    2 // Chase Power
+    5 // Chase Power
 };
 
 // forward/backward PID
 lemlib::ChassisController_t lateralController {
-    75, // kP
+    80, // kP
     800, // kD May lower in the future
     1, // smallErrorRange
     100, // smallErrorTimeout

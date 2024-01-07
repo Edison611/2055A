@@ -1,6 +1,7 @@
 #include "main.h"
 #include "pros/misc.h"
 #include "pros/motors.h"
+#include "pros/rtos.hpp"
 #include <iostream>
 #include <string>
 #include <stdio.h>
@@ -71,31 +72,47 @@ void turnTo(double degrees, int maxSpeed, int timeout, bool reversed, bool async
     chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout, async, reversed, maxSpeed);
 }
 
-void turnToDir(int targetAngle, bool right/*, int maxSpeed=127, int timeout=10000*/) {
-    bool turn = true;
-    while (turn) {
+void turnToDir(int targetAngle, bool right, int maxSpeed, int timeout) {
+
+    float actualMaxSpeed = maxSpeed * (600.0/127.0);
+    int time = 0;
+    double kP = 2.1;
+
+    while (true) {
+        /* If the amount of time in variable timeout has passed, the while loop breaks */
+        if (time >= timeout) {
+            break;
+        }
         /* Get Current Angle */
         lemlib::Pose pose = chassis.getPose();
         int currentAngle = pose.theta;
         currentAngle = currentAngle % 360;
 
-        double kP = 2.1;
-
         if ((currentAngle - targetAngle) > 0) {
             if (right) {
                 currentAngle = currentAngle - 360;
                 int error = abs(targetAngle - currentAngle);
-                setDrive(error * kP, -error * kP);
                 if (abs(error) < 2) {
-                    turn = false;
+                    break;
+                }
+                if (error * kP > actualMaxSpeed) {
+                    setDrive(actualMaxSpeed, -actualMaxSpeed);
+                }
+                else {
+                    setDrive(error * kP, -error * kP);
                 }
             }
 
             else {
                 int error = abs(targetAngle - currentAngle);
-                setDrive(-error * kP, error * kP);
                 if (abs(error) < 2) {
-                    turn = false;
+                    break;                
+                }
+                if (error * kP > actualMaxSpeed) {
+                    setDrive(-actualMaxSpeed, actualMaxSpeed);
+                }
+                else {
+                    setDrive(-error * kP, error * kP);
                 }
             }
         }
@@ -104,24 +121,37 @@ void turnToDir(int targetAngle, bool right/*, int maxSpeed=127, int timeout=1000
         if ((currentAngle - targetAngle) < 0) {
             if (right){
                 int error = abs(targetAngle - currentAngle);
-                setDrive(error * kP, -error * kP);
                 if (abs(error) < 2) {
-                    turn = false;
+                    break;
+                }
+                if (error * kP > actualMaxSpeed) {
+                    setDrive(actualMaxSpeed, -actualMaxSpeed);
+                }
+                else {
+                    setDrive(error * kP, -error * kP);    
                 }
             }
+        
 
             else {
                 currentAngle = currentAngle + 360;
                 int error = abs(targetAngle - currentAngle);
-                setDrive(-error * kP, error * kP);
                 if (abs(error) < 2) {
-                    turn = false;
+                    break;
+                }
+                if (error * kP > actualMaxSpeed) {
+                    setDrive(-actualMaxSpeed, actualMaxSpeed);
+                }
+                else {
+                    setDrive(-error * kP, error * kP);
                 }
             }
             // turn left:
             // right motors positive
             // left motors negative
         }
+        pros::delay(20);
+        time += 20;
     }
     setDrive(0, 0);
 }
@@ -185,6 +215,11 @@ void setBrake(std::string mode) {
     }
 }
 
+void wallReset() {
+    double inches = distance_sensor.get() * 0.0393701;
+    chassis.setPose(10, 72 - (inches + 4), chassis.getPose().theta);
+    pros::delay(200);
+}
 
 /**
  * @brief Detects whether there is a triball in front of the color sensor

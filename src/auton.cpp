@@ -27,8 +27,8 @@ void test_auton() {
     //setPose(end of path) 
     //setPose(pose)
 
-    turnToDir(180, false); // should turn 270 degrees to the right until it reaches 270 degrees
-    pros::lcd::set_text(5, "REACHED!");
+    turnToDir(90, false, 40, 500); // should turn 270 degrees to the left until it reaches 90 degrees, at speed 
+    turnToDir(90, true, 90, 2000);
 }
 
 void test_auton2() {
@@ -110,18 +110,15 @@ void auton_skills() {
     setBrake("brake");
     pros::delay(175);
 
-
-    
     // shoots x number of times
     // can choose length of gaps between shots
     setIntake(0);
-    matchLoad(47, 500); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
+    matchLoad(47, 550); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
     setBrake("coast");
     wingF.set_value(false);
     wingB.set_value(false);
     pros::delay(300);
 
-    // OLD
     vector(-40, 57);
     // turnTo(45);
     // chassis.moveTo(-35, 57, 45, 1500);
@@ -129,16 +126,13 @@ void auton_skills() {
     setDrive(-250, -250);
     // chassis.moveTo(-38, 72, 180, 1000, false, false);
     // ram(1000, -1);
-    pros::delay(1000);
+    pros::delay(800);
     setDrive(0, 0);
     lemlib::Pose l = chassis.getPose();
     chassis.setPose(l.x, 63, 180);
-    pros::delay(500);
+    pros::delay(300);
     chassis.moveTo(-35, 62, 180, 1000);
-    pros::delay(200);
     turnTo(90);
-    ///////wingF.set_value(false);
-    pros::delay(200);
 
 
     // START MOVING TO OTHER SIDE
@@ -153,7 +147,7 @@ void auton_skills() {
     turnTo(180);
 
     setIntake(-127);
-    chassis.moveTo(60, -10, 180, 1500);
+    chassis.moveTo(60, -10, 180, 1000);
     chassis.setPose(chassis.getPose().x, 32, chassis.getPose().theta);
     setIntake(-30);
 
@@ -161,6 +155,8 @@ void auton_skills() {
     chassis.moveTo(60, 43, 180, 1500, false, false);
 
     turnTo(75);
+
+    // WALL RESET
     // turnTo(270);
     // setDrive(-250, -250);
     // pros::delay(1000);
@@ -171,8 +167,14 @@ void auton_skills() {
     // chassis.setPose(62, 36, -90);
 
     // MIDDLE RAM #1
-    chassis.moveTo(11, 32, 75, 1500, false, false);
-    turnTo(0);
+    chassis.moveTo(11, 36, 80, 1500, false, false);
+    turnTo(90);
+    setDrive(-400, -400);
+    pros::delay(400);
+    setDrive(0, 0);
+    wallReset();
+    
+    turnTo(-45);
     wingB.set_value(true);
     chassis.moveTo(60, 10, -90, 2000, false, false);
     wingB.set_value(false);
@@ -180,112 +182,31 @@ void auton_skills() {
     // MIDDLE RAM #2
     chassis.moveTo(10, 10, -90, 1750);
     turnTo(0);
-    wingB.set_value(true);
+    //wingB.set_value(true);
     chassis.moveTo(5, -30, 0, 2250, false, false, 0, 0.6, 90);
-    turnToDir(190, false);
-    chassis.moveTo(10, -13, 225, 1500, false, false);
+    turnToDir(200, false, 70, 1200);
+    wingB.set_value(true);
+    chassis.moveTo(14, -15, 240, 1500, false, false);
     turnTo(-90);
     ram(800, -1);
     wingB.set_value(false);
-    chassis.moveTo(14, -13, -90, 1000);
-    // chassis.moveTo(100, -10, -90, 2000, false, false);
 
-    pros::delay(200000);
-    // chassis.moveTo(float x, float y, float theta, int timeout)
+    // ONE VERSION
+    // chassis.moveTo(20, -20, -130, 1400);
+    // turnTo(-40);
+    // chassis.moveTo(42, -46, -40, 2000, false, false);
+    // turnTo(-120);
+    // chassis.moveTo(60, 0, -180, 2800, false, false);
 
-
-
-    chassis.moveTo(56.5, -40, 0, 1200, false, false);
-    turnTo(0);
-    ram(700, 1);
-    chassis.moveTo(55, -45, 0, 1250, false, false);
-    turnTo(-55);
-
-    
-    chassis.moveTo(5, 18, -30, 2100);
-    //ram(750, 1);
-    
-    // -----------------------------------------------
-    // START RAMMING
-    // Ram #1
-    //////////chassis.turnTo(47, 0, 1500, false, true, 60);
-    // wingB.set_value(true);
-    turnTo(-97);
-    wingB.set_value(true);
-    // chassis.moveTo(75, -8, -90, 1750, false, false);
-    ram(1000, -1);
-    wingB.set_value(false);
-
-    // Second ram
-    // chassis.moveTo(10, 0, 120, 1750, false, false);
-    // setIntake(127);
-    // chassis.moveTo(6, 0, -60, 1750);
-    // turnTo(-90);
-    // wingB.set_value(true);
-    // chassis.moveTo(70, 0, -90, 1500, false, false);
-    // wingB.set_value(false);
-
-    // SECOND RAM REAL (JASON)
-    // chassis.moveTo(11, -5, -90, 1250);
-    // turnTo(0);
-    // chassis.moveTo(8, 0, -180, 1500);
-    // turnTo(-90);    
-    // wingB.set_value(true);
-    // ram(1250, -1);
-
-    // SECOND RAM REAL (HARIS)
-    chassis.moveTo(7, 20, 0, 1000);
-    turnTo(0, 80);
+    chassis.moveTo(27, -33, 170, 1000);
     wingF.set_value(true);
-    chassis.moveTo(10, 24, 0, 1400);
-    chassis.moveTo(18, 28, 90, 1500);
-    turnTo(90);
-    ram(1000, 1);
-
-    // THIRD RAM REAL
+    chassis.moveTo(54, -45, 30, 2000);
     wingF.set_value(false);
-    chassis.moveTo(0, 30, -90, 1200, false, false);
-    wingB.set_value(true);
-    turnTo(180);
-    chassis.moveTo(18, 48, 180, 1400, false, false);
-    turnTo(-90, 60);
-    turnTo(-80, 70);
-    ram(1000, -1);
-    //chassis.moveTo(18, 15, -90, 1500, false, false, 0, 0.6, 80);
-    //chassis.moveTo(90, 15, -90, 1750, false, false);
-    // chassis.moveTo(80, 36, -90, 1200, false, false);
-    wingB.set_value(false);
-    chassis.moveTo(30, 42, -90, 1400);
 
-    // FOURTH RAM REAL
-    // chassis.moveTo(10, 15, -90, 1000);
-    // wingB.set_value(false);
-    // turnTo(-140);
-    // chassis.moveTo(45, 55, -140, 1200, false, false);
-    // turnTo(-220);
-    // chassis.moveTo(60, 0, 180, 1200);
-
-    // chassis.moveTo(0, 0, -90, false, true);
-    
-    // chassis.moveTo(8, 15, -180, 1200, false, false, 0, 0.6, 80);
-    /////chassis.turnTo(47, 47, 1000, false, true);
-    // turnTo(-90);
-    // wingB.set_value(true);
-    // ram(750, -1);
-    ////chassis.turnTo(47, 5, 2000, false, true, 50);
-
-    // turnTo(-90);
-    // setIntake(-127);
-    //////chassis.moveTo(70, 10, -90, 1400, false, false);
-    // wingB.set_value(false);
-    // chassis.moveTo(15, 15, -75, 1000);
-    // turnTo(115);
-    // wingF.set_value(true);
-    // setIntake(-40);
-    // chassis.moveTo(70, 5, 90, 1000);    
-    // setIntake(0);
-    // wingF.set_value(false);
-    // chassis.moveTo(30, 5, 90, 800);
+    // RIGHT SIDE RAM #3
+    turnTo(0);
+    chassis.moveTo(61, 30, 0, 2000);
+    chassis.moveTo(33, -60, 90, 1200, false, false);
 }
 
 void defense_awp() {
@@ -357,41 +278,38 @@ void defense_awp() {
     setIntake(0);
     // chassis.moveTo(-53, -53, -38, 2000);
     // turnTo(-90);
-    // chassis.moveTo(-8.5, -53, -90, 3000);
+    // chassis.moveTo(-8.5, -53, -90, 3000  );
     */
 }
 
 void defense_auton_max_potential() {
-    chassis.setPose(-50, -56, 135);
+    chassis.setPose(-41.25, -54.25, 90);
     shoot();
-    chassis.moveTo(-54, -52, 135, 1000, false, false);
-    pros::delay(200);
+    pros::delay(250);
     wingF.set_value(true);
-    chassis.moveTo(-48, -58, 115, 1000, false, true, 0, 0.6, 50);
+    pros::delay(300);
     wingF.set_value(false);
-    chassis.moveTo(-62, -20, 180, 1500, false, false);
-    // chassis.moveTo(-52, -54, 135, 1500);
-    // turnTo(30);
-    // setIntake(127);
-    chassis.moveTo(-35, -60, 180, 3000);
-    chassis.moveTo(-35, -8, 180, 2000, false, false);
-    //chassis.moveTo(-28, -8, 30, 2000);
-    // pros::delay(200);
+    turnTo(63);
+    matchLoad(1, 500);
+
+    chassis.moveTo(-55, -49, 138, 3000, false, false);
+    wingF.set_value(true);
+    pros::delay(250);
+    chassis.moveTo(-48, -54, 100, 2000); //135
+    //turnTo(100);
+    wingF.set_value(false);
+    pros::delay(200);
+
+    turnTo(45);
+    chassis.moveTo(-38, -11, 0, 2200);
     turnTo(-90);
     wingB.set_value(true);
-    chassis.moveTo(-8, -8, -90, 1500, false, false);
-    chassis.moveTo(-12, -8, -90, 1000);
-    wingB.set_value(false);
+    chassis.moveTo(-10, -12, -90, 2500, false, false);
+    wingB.set_value(false);     
+    //chassis.moveTo(-11.5, -8, -90, 1000);
     turnTo(-180);
-    chassis.moveTo(-12, -35, -180, 1500);
-    turnTo(-200);
-    // setIntake(-75);
-    // chassis.moveTo(-5, -35, 90, 1500);
-    // pros::delay(200);
-    // chassis.moveTo(-12, -35, 90, 1500, false, false);
-    // turnTo(180);
-    // chassis.moveTo(-12, -40, 180, 1200);
-    // turnTo(150);
+    //chassis.moveTo(-11.5, -50, -180, 2000);
+    chassis.moveTo(8, -60, -180, 2000);
 }
 
 /**

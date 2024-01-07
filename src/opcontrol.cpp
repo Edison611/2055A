@@ -68,7 +68,7 @@ void my_opcontrol() {
 
 	// wingF.set_value(false);
 	// wingB.set_value(false);
-
+	
 
 	while (true) {
 		// lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
@@ -76,6 +76,9 @@ void my_opcontrol() {
         // pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position
         // pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
         // pros::delay(30);
+		// controller.clear();
+		// pros::delay(200);
+		// controller.set_text(2, 5, distance_sensor.get() * 0.0393701);
 		setIntakeMotors();
 		setDriveMotors();
 		op_wings();

@@ -114,6 +114,7 @@ void competition_initialize() {}
     // defense_awp(); // SLOT 2
     // defense_auton_elim(); // SLOT 5
     // offense_auton_midrush(); // SLOT 7
+    // defense_auton_max_potential(); // SLOT 6
     
 
     // if(selector::auton == 1){

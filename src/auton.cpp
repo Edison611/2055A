@@ -99,16 +99,16 @@ void auton_skills() {
     
     ram(850, 1);
     chassis.setPose(chassis.getPose().x, 30, chassis.getPose().theta);
-    pros::delay(500);
+    pros::delay(300);
 
     // LINE UP TO SHOOT
     chassis.moveTo(-60, 49, 180, 1500, false, false);  
-    turnTo(105, 127, 800);
+    turnTo(107, 127, 800);
 
     wingB.set_value(true);
     wingF.set_value(true);
     setBrake("brake");
-    pros::delay(175);
+    pros::delay(100);
 
     // shoots x number of times
     // can choose length of gaps between shots
@@ -126,7 +126,7 @@ void auton_skills() {
     setDrive(-250, -250);
     // chassis.moveTo(-38, 72, 180, 1000, false, false);
     // ram(1000, -1);
-    pros::delay(800);
+    pros::delay(600);
     setDrive(0, 0);
     lemlib::Pose l = chassis.getPose();
     chassis.setPose(l.x, 63, 180);
@@ -141,13 +141,13 @@ void auton_skills() {
 
     // SIDE RAM ON LEFT #1
     //wingF.set_value(true);
-    chassis.moveTo(60, 45, 135, 2000);
+    chassis.moveTo(64, 45, 135, 2000);
     //wingF.set_value(false);
     //pros::delay(250);
     turnTo(180);
 
     setIntake(-127);
-    chassis.moveTo(60, -10, 180, 1000);
+    chassis.moveTo(66, -10, 180, 1000);
     chassis.setPose(chassis.getPose().x, 32, chassis.getPose().theta);
     setIntake(-30);
 
@@ -166,29 +166,31 @@ void auton_skills() {
     //chassis.setPose(62, chassis.getPose().y, -90);
     // chassis.setPose(62, 36, -90);
 
-    // MIDDLE RAM #1
     chassis.moveTo(11, 36, 80, 1500, false, false);
     turnTo(90);
     setDrive(-400, -400);
     pros::delay(400);
     setDrive(0, 0);
     wallReset();
-    
+
+    // MIDDLE RAM #1
     turnTo(-45);
     wingB.set_value(true);
-    chassis.moveTo(60, 10, -90, 2000, false, false);
+    chassis.moveTo(65, 9, -90, 1000, false, false);
+    turnTo(-90);
+    ram(500, -1);
     wingB.set_value(false);
     
     // MIDDLE RAM #2
     chassis.moveTo(10, 10, -90, 1750);
     turnTo(0);
-    //wingB.set_value(true);
-    chassis.moveTo(5, -30, 0, 2250, false, false, 0, 0.6, 90);
-    turnToDir(200, false, 70, 1200);
+    // wingB.set_value(true);
+    chassis.moveTo(5, -30, 0, 2250, false, false, 0, 0.6, 80);
+    turnToDir(200, false, 60, 1200);
     wingB.set_value(true);
     chassis.moveTo(14, -15, 240, 1500, false, false);
     turnTo(-90);
-    ram(800, -1);
+    ram(700, -1);
     wingB.set_value(false);
 
     // ONE VERSION
@@ -198,7 +200,7 @@ void auton_skills() {
     // turnTo(-120);
     // chassis.moveTo(60, 0, -180, 2800, false, false);
 
-    chassis.moveTo(27, -33, 170, 1000);
+    chassis.moveTo(27, -33, 170, 1500);
     wingF.set_value(true);
     chassis.moveTo(54, -45, 30, 2000);
     wingF.set_value(false);
@@ -206,7 +208,9 @@ void auton_skills() {
     // RIGHT SIDE RAM #3
     turnTo(0);
     chassis.moveTo(61, 30, 0, 2000);
+    chassis.setPose(chassis.getPose().x, -30, chassis.getPose().theta);
     chassis.moveTo(33, -60, 90, 1200, false, false);
+    turnTo(-90);
 }
 
 void defense_awp() {

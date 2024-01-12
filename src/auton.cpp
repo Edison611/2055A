@@ -113,7 +113,7 @@ void auton_skills() {
     // shoots x number of times
     // can choose length of gaps between shots
     setIntake(0);
-    matchLoad(47, 550); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
+    matchLoad(3, 550); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
     setBrake("coast");
     wingF.set_value(false);
     wingB.set_value(false);
@@ -123,7 +123,7 @@ void auton_skills() {
     // turnTo(45);
     // chassis.moveTo(-35, 57, 45, 1500);
     turnTo(180);
-    setDrive(-250, -250);
+    setDrive(-300, -300);
     // chassis.moveTo(-38, 72, 180, 1000, false, false);
     // ram(1000, -1);
     pros::delay(600);
@@ -131,13 +131,13 @@ void auton_skills() {
     lemlib::Pose l = chassis.getPose();
     chassis.setPose(l.x, 63, 180);
     pros::delay(300);
-    chassis.moveTo(-35, 62, 180, 1000);
+    chassis.moveTo(-35, 62, 180, 1200);
     turnTo(90);
 
 
     // START MOVING TO OTHER SIDE
     // driveFwd(70, 3000, 127);
-    chassis.moveTo(35, 62, 90, 3000);
+    chassis.moveTo(30, 62, 90, 3000);
 
     // SIDE RAM ON LEFT #1
     //wingF.set_value(true);
@@ -174,11 +174,15 @@ void auton_skills() {
     wallReset();
 
     // MIDDLE RAM #1
-    turnTo(-45);
+    turnTo(-70);
+    pros::delay(250);
     wingB.set_value(true);
-    chassis.moveTo(65, 9, -90, 1000, false, false);
-    turnTo(-90);
-    ram(500, -1);
+    ram(750, -1);
+    //chassis.moveTo(45, 8, -50, 1500, false, false);   
+    turnTo(-90);  
+    //chassis.moveTo(65, 9, -90, 1000, false, false);
+    //turnTo(-90);
+    //ram(500, -1);
     wingB.set_value(false);
     
     // MIDDLE RAM #2
@@ -190,7 +194,7 @@ void auton_skills() {
     wingB.set_value(true);
     chassis.moveTo(14, -15, 240, 1500, false, false);
     turnTo(-90);
-    ram(700, -1);
+    ram(800, -1);
     wingB.set_value(false);
 
     // ONE VERSION

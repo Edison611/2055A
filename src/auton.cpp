@@ -75,7 +75,7 @@ void driver_skills() {
     pros::delay(500);
     
     chassis.moveTo(-60, 49, 180, 1500, false, false);  
-    turnTo(110, 127, 800);
+    turnTo(107, 127, 800);
 
     
     setIntake(0);
@@ -113,8 +113,8 @@ void auton_skills() {
     // shoots x number of times
     // can choose length of gaps between shots
     setIntake(0);
-    matchLoad(3, 550); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
-    setBrake("coast");
+    matchLoad(47, 550); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
+    setBrake("hold");
     wingF.set_value(false);
     wingB.set_value(false);
     pros::delay(300);
@@ -174,27 +174,33 @@ void auton_skills() {
     wallReset();
 
     // MIDDLE RAM #1
-    turnTo(-70);
-    pros::delay(250);
+    turnTo(-75);
     wingB.set_value(true);
-    ram(750, -1);
-    //chassis.moveTo(45, 8, -50, 1500, false, false);   
-    turnTo(-90);  
+    pros::delay(250);
+    // ram(750, -1);
+    chassis.moveTo(60, 10, -90, 2000, false, false);  
+    ram(500, -1); 
+    // turnTo(-90);  
     //chassis.moveTo(65, 9, -90, 1000, false, false);
     //turnTo(-90);
     //ram(500, -1);
-    wingB.set_value(false);
     
     // MIDDLE RAM #2
-    chassis.moveTo(10, 10, -90, 1750);
-    turnTo(0);
+    
+    chassis.moveTo(20, 10, -90, 1750);
+    turnTo(-115);
+    wingB.set_value(false);
+    // turnTo(0);
     // wingB.set_value(true);
-    chassis.moveTo(5, -30, 0, 2250, false, false, 0, 0.6, 80);
-    turnToDir(200, false, 60, 1200);
+    chassis.moveTo(2, -20, 0, 2250, false, false, 0, 0.6);
+    // turnToDir(200, false, 60, 1200);
+    // wingB.set_value(true);
+    // chassis.moveTo(14, -15, 240, 1500, false, false);
+    turnTo(253);
     wingB.set_value(true);
-    chassis.moveTo(14, -15, 240, 1500, false, false);
-    turnTo(-90);
-    ram(800, -1);
+    pros::delay(300);
+    chassis.moveTo(60, -10, -90, 2000, false, false);   
+    ram(500, -1);
     wingB.set_value(false);
 
     // ONE VERSION
@@ -206,15 +212,23 @@ void auton_skills() {
 
     chassis.moveTo(27, -33, 170, 1500);
     wingF.set_value(true);
-    chassis.moveTo(54, -45, 30, 2000);
+    chassis.moveTo(54, -45, 30, 1500);
     wingF.set_value(false);
+    // driveFwd(-10, 1000, 127);
 
     // RIGHT SIDE RAM #3
-    turnTo(0);
-    chassis.moveTo(61, 30, 0, 2000);
-    chassis.setPose(chassis.getPose().x, -30, chassis.getPose().theta);
-    chassis.moveTo(33, -60, 90, 1200, false, false);
-    turnTo(-90);
+    // turnTo(0);
+    chassis.moveTo(61, 30, 0, 1500);
+    chassis.setPose(chassis.getPose().x, -28, chassis.getPose().theta);
+    chassis.moveTo(33, -62, 90, 1200, false, false);
+    turnTo(-90, 127, 1500);
+    climb.set_value(true);
+    setIntake(0);
+    setDrive(600, 600);
+    pros::delay(2000);
+    // driveFwd(70, 2000, 127);
+    climb.set_value(false);
+    setDrive(0, 0);
 }
 
 void defense_awp() {
@@ -560,6 +574,11 @@ void offense_auton_midrush() {
 
 }
 
+void offense_auton_midrush_new() {
+    chassis.setPose(-43.5, 57, 158);
+    setIntake(127);
+    chassis.moveTo(-24, 7, 158, 1000);
+}
 
 void offense_auton_6balls_v1() {
     /* Pole & Alliance Tri-Balls */

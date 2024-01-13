@@ -19,7 +19,7 @@ double netPos[2] = {0, -48};
 // ------------------------------------------------------------------------------------------------------
 
 void skills_matchload() {
-    matchLoad(47, 500);
+    matchLoad(47, 550);
     wingF.set_value(false);
 	wingB.set_value(false);
 }
@@ -51,11 +51,12 @@ void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
  * @param timeout 
  * @param maxSpeed
  */
-void driveFwd(double inches, int timeout=1000, float maxSpeed = (200.0F)) {
+void driveFwd(double inches, int timeout=1000, float maxSpeed = 127) {
     lemlib::Pose pose = chassis.getPose();
     double x_new = inches * sin(pose.theta);
     double y_new = inches * cos(pose.theta);
-    chassis.moveTo(pose.x + x_new, pose.y + y_new, pose.theta, timeout);
+    bool dir = inches > 0;
+    chassis.moveTo(pose.x + x_new, pose.y + y_new, pose.theta, timeout, false, dir, 0, 0.6, maxSpeed);
 }
 
 /**
@@ -67,8 +68,8 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = (200.0F)) {
 void turnTo(double degrees, int maxSpeed, int timeout, bool reversed, bool async) {
     lemlib::Pose pose = chassis.getPose();
     double rad = degrees * 3.14159265358979323846 / 180;
-    double x_offset = sin(rad) * 20;
-    double y_offset = cos(rad) * 20;
+    double x_offset = sin(rad) * 30;
+    double y_offset = cos(rad) * 30;
     chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout, async, reversed, maxSpeed);
 }
 

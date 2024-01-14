@@ -33,8 +33,8 @@ void initialize() {
     catapult2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     // selector::init();
+    // pros::Task log_task(log_data);
     pros::Task kicker_task(kickerTask);
-    // pros::Task holding(cata_hold);
     // pros::Task pos_track(screen);
     // pros::Task print_task(print_info);
     
@@ -112,6 +112,7 @@ void competition_initialize() {}
     // } 
     // offense_auton_safe(); // SLOT 4
     // pros::Task log_task(log_data);
+    // pros::delay(1000);
     auton_skills(); // SLOT 3
     // offense_auton_midrush_new(); // SLOT 7
     // defense_awp(); // SLOT 2

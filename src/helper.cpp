@@ -218,14 +218,14 @@ void setBrake(std::string mode) {
 
 void wallReset() {
     double inches = distance_sensor.get() * 0.0393701;
-    chassis.setPose(10, 72 - (inches + 4), chassis.getPose().theta);
+    chassis.setPose(10, 72 - (inches + 4), 90);
     pros::delay(200);
 }
 
 /**
  * @brief Detects whether there is a triball in front of the color sensor
  * 
- * @param triball the triball object
+ * @param triball the triball objectx
  * @return true when a triball is detected (when rgb values are all less than 50)
  * @return false all other cases
  */

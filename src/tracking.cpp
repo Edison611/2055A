@@ -31,8 +31,10 @@ void screen() {
  */
 void log_data() {
     // std::string date = currentDateTime() + ".txt";
-    std::string filepath = "/usd/ROBOT/log12281.txt";
-    std::string filepath1 = "/usd/ROBOT/sensor_log.txt";
+    // std::string date = "14-01-2024-2-14PM";
+    std::string date = "11111";
+    std::string filepath = "/usd/Logs/" + date + "/position.txt";
+    std::string filepath1 = "/usd/Logs/" + date + "/inertial_sensor_data.txt";
 
     std::ofstream Data (filepath.c_str());
     std::ofstream DataSensor (filepath1.c_str());
@@ -41,18 +43,18 @@ void log_data() {
 	Data << "X, Y, θ" << std::endl;
     DataSensor << "Heading, Rotation, Pitch, Roll, Yaw" << std::endl;
 	while (true) {
-        if (time >= 10000) {
+        if (time >= 35000) {
             break;  
         }
         lemlib::Pose pose = chassis.getPose();
         std::string line = std::to_string(pose.x) + ", " + std::to_string(pose.y) + ", " + std::to_string(pose.theta);
 		Data << line << std::endl;
-        std::string line_sensor = std::to_string(inertial_sensor.get_heading()) + ", " + std::to_string(inertial_sensor.get_rotation())+ ", " + std::to_string(inertial_sensor.get_pitch()) + ", " + std::to_string(inertial_sensor.get_roll()) + ", " + std::to_string(inertial_sensor.get_yaw());
-        DataSensor << line_sensor << std::endl;
+        std::string sensor_line = std::to_string(inertial_sensor.get_heading()) + ", " + std::to_string(inertial_sensor.get_rotation())+ ", " + std::to_string(inertial_sensor.get_pitch()) + ", " + std::to_string(inertial_sensor.get_roll()) + ", " + std::to_string(inertial_sensor.get_yaw());
+        DataSensor << sensor_line << std::endl;
 		pros::delay(50);
         time += 50;
 	}
-	Data << "END" << std::endl;
+	// Data << "END" << std::endl;
     Data.close();
     DataSensor.close();
 }

@@ -132,7 +132,6 @@ void auton_skills() {
 
 
     // START MOVING TO OTHER SIDE
-    // driveFwd(70, 3000, 127);
     chassis.moveTo(30, 62, 90, 3000);
 
     // SIDE RAM ON LEFT #1
@@ -163,6 +162,7 @@ void auton_skills() {
     // ram(750, -1);
     chassis.moveTo(60, 8, -90, 2000, false, false);  
     ram(500, -1);
+
     chassis.setPose(35, 8, chassis.getPose().theta);
     
     // MIDDLE RAM #2
@@ -210,7 +210,9 @@ void auton_skills() {
     // turnTo(0);
     turnTo(30);
     chassis.moveTo(61, 30, 0, 1500);
+
     chassis.setPose(chassis.getPose().x, -28, chassis.getPose().theta);
+    
     chassis.moveTo(33, -62, 90, 1200, false, false);
     turnTo(-90, 127, 1500);
     // climb.set_value(true);

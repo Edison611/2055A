@@ -31,14 +31,12 @@ void screen() {
  */
 void log_data() {
     // std::string date = currentDateTime() + ".txt";
-    // std::string date = "14-01-2024-2-14PM";
-    std::string date = "11111";
+    std::string date = "14-01-2024-2-14PM";
     std::string filepath = "/usd/Logs/" + date + "/position.txt";
     std::string filepath1 = "/usd/Logs/" + date + "/inertial_sensor_data.txt";
 
     std::ofstream Data (filepath.c_str());
     std::ofstream DataSensor (filepath1.c_str());
-    // Data.open("/usd/2055/" + date, std::ios_base::app);
 	double time = 0;
 	Data << "X, Y, θ" << std::endl;
     DataSensor << "Heading, Rotation, Pitch, Roll, Yaw" << std::endl;
@@ -54,7 +52,6 @@ void log_data() {
 		pros::delay(50);
         time += 50;
 	}
-	// Data << "END" << std::endl;
     Data.close();
     DataSensor.close();
 }

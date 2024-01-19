@@ -215,7 +215,10 @@ void setBrake(std::string mode) {
         driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
     }
 }
-
+/**
+ * @brief Resets the position of the robot to a set distance 
+ *        from the wall using the distance sensor
+ */
 void wallReset() {
     double inches = distance_sensor.get() * 0.0393701;
     chassis.setPose(10, 72 - (inches + 4), 90);

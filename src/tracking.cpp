@@ -32,7 +32,7 @@ void screen() {
 void log_data() {
     // std::string date = currentDateTime() + ".txt";
     // std::string date = "19012024";
-    std::string filepath = "/position.txt";
+    std::string filepath = "/usd/Logs/test.txt";
     // std::string filepath1 = "/usd/19012024_inertial_sensor_data.txt";
 
     std::ofstream Data (filepath.c_str());
@@ -41,7 +41,7 @@ void log_data() {
 	Data << "X, Y, θ" << std::endl;
     // DataSensor << "Heading, Rotation, Pitch, Roll, Yaw" << std::endl;
 	while (true) {
-        if (time >= 45000) {
+        if (time >= 35000) {
             break;  
         }
         lemlib::Pose pose = chassis.getPose();

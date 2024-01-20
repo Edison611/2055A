@@ -33,7 +33,7 @@ void initialize() {
     catapult2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     // selector::init();
-    pros::Task log_task(log_data);
+    // pros::Task log_task(log_data);
     pros::Task kicker_task(kickerTask);
     // pros::Task pos_track(screen);
     // pros::Task print_task(print_info);

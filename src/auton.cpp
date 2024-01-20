@@ -85,6 +85,7 @@ void driver_skills() {
 void auton_skills() {
     // Calibration and Robot Setup
     chassis.setPose(-40, 55, -90);
+    pros::Task log_task(log_data);
     shoot();
     wingF.set_value(true);
     pros::delay(200);
@@ -113,7 +114,7 @@ void auton_skills() {
     // shoots x number of times
     // can choose length of gaps between shots
     setIntake(0);
-    matchLoad(47, 550); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
+    matchLoad(2, 550); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
     setBrake("hold");
     wingF.set_value(false);
     wingB.set_value(false);
@@ -140,29 +141,35 @@ void auton_skills() {
 
     setIntake(-127);
     chassis.moveTo(66, -10, 180, 1000);
-    chassis.setPose(chassis.getPose().x, 32, chassis.getPose().theta);
+    chassis.setPose(chassis.getPose().x, 30, chassis.getPose().theta);
     setIntake(-30);
 
     // BACK UP
-    chassis.moveTo(60, 43, 180, 1500, false, false);
+    // chassis.moveTo(60, 43, 180, 1500, false, false); // SKILLS 1
+    chassis.moveTo(60, 48, 190, 1500, false, false);
 
-    turnTo(75);
+    // turnTo(75); // SKILLS 1
+    turnTo(80);
 
-    chassis.moveTo(11, 36, 80, 1500, false, false);
-    turnTo(90);
-    setDrive(-400, -400);
-    pros::delay(400);
-    setDrive(0, 0);
-    wallReset();
-
-    // MIDDLE RAM #1
-    turnTo(-75);
+    // chassis.moveTo(11, 36, 80, 1500, false, false);
+    chassis.moveTo(35, 40, 75, 1400, false, false);
     wingB.set_value(true);
-    pros::delay(250);
-    // ram(750, -1);
-    chassis.moveTo(60, 8, -90, 2000, false, false);  
-    chassis.moveTo(30, 8, -90, 600);
+    chassis.moveTo(25, 25, 0, 1000, false, false);
+    chassis.moveTo(40, 16, -90, 1559, false, false);
+    // turnTo(90); // SKILLS 1
+    // setDrive(-500, -500); // SKILLS !
     ram(500, -1);
+    pros::delay(200);
+    // setDrive(0, 0); // SKILLS 1
+
+    // MIDDLE RAM #1    
+    // turnTo(-75);
+    // wingB.set_value(true);
+    // pros::delay(250);
+    // // ram(750, -1);
+    // chassis.moveTo(60, 8, -90, 2000, false, false);  
+    // chassis.moveTo(30, 8, -90, 600);
+    // ram(500, -1);
 
     chassis.setPose(35, 8, chassis.getPose().theta);
     
@@ -171,8 +178,8 @@ void auton_skills() {
     turnTo(-120);
     wingB.set_value(false);
     pros::delay(200);
-    wingF.set_value(true);
-    chassis.moveTo(7, 0, 180, 1500, false, true, 0, 0.6, 80);
+    // wingF.set_value(true);
+    chassis.moveTo(5, 0, 180, 1500, false, true, 0, 0.6, 80);
     wingF.set_value(true);
     pros::delay(500);
     chassis.moveTo(18, -23, 85, 1500);
@@ -530,18 +537,22 @@ void offense_auton_midrush_new() {
     
     wingF.set_value(true); // lower front wings so intake is lowered
     setIntake(127); // intake
-    chassis.moveTo(-33, 11, 164, 1500, true); // async true
+    chassis.moveTo(-30, 10, 164, 1500, true); // async true
     chassis.waitUntilDist(5); // waits until bot has travelled 5 inches
     wingF.set_value(false); // close front wings
-    
-    pros::delay(1500);
-    chassis.moveTo(-25, 60, 265, 2000, false, false);
+    pros::delay(1250);
+    chassis.moveTo(-33, 60, 265, 2000, false, false);
    
-    // chassis.moveTo(-54, 47, 220, 1500, true);
-    // chassis.waitUntilDist(20);
-    // wingF.set_value(true);
-    
-    // chassis.moveTo(-60, -20, 180 )
+    chassis.moveTo(-60, 45, 200, 1750, true);
+    chassis.waitUntilDist(8);
+    wingF.set_value(true);
+    pros::delay(1500);
+
+    wingF.set_value(false);
+    chassis.moveTo(-56, 55, 220, 1500, false, false);
+    chassis.moveTo(-65, -20, 180, 1500);
+
+    chassis.moveTo(-15, 60, 200, 2000, false, false);
 }
 
 void offense_auton_6balls_v1() {

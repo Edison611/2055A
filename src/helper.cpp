@@ -46,6 +46,7 @@ void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
 
 /**
  * @brief Drives x inches forward
+ * We should change this function from Lemlib to our own function
  * 
  * @param inches 
  * @param timeout 

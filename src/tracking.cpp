@@ -30,24 +30,39 @@ void screen() {
  * 
  */
 void log_data() {
-    // std::string date = currentDateTime() + ".txt";
-    // std::string date = "19012024";
-    std::string filepath = "/usd/Logs/test.txt";
-    // std::string filepath1 = "/usd/19012024_inertial_sensor_data.txt";
+    // Reads config file number
+    std::ifstream ConfigRead ("/usd/config.txt");
+
+    std::string text;
+    std::string filenum;
+
+    while (std::getline(ConfigRead, text)) {
+        filenum = text;
+    }
+    ConfigRead.close();
+    std::string filepath = "/usd/Logs/" + filenum + ".txt";
+    // std::string filepath1 = "/usd/Logs/" + filenum + "/inertial_sensor_data.txt";
 
     std::ofstream Data (filepath.c_str());
     // std::ofstream DataSensor (filepath1.c_str());
+
+    // Update config file number
+    std::ofstream ConfigWrite ("/usd/config.txt");
+
+    ConfigWrite << std::stoi(filenum) + 1;
+    ConfigWrite.close();
+
 	double time = 0;
 	Data << "X, Y, θ" << std::endl;
     // DataSensor << "Heading, Rotation, Pitch, Roll, Yaw" << std::endl;
 	while (true) {
-        if (time >= 35000) {
+        if (time >= 60000) {
             break;  
         }
         lemlib::Pose pose = chassis.getPose();
         std::string line = std::to_string(pose.x) + ", " + std::to_string(pose.y) + ", " + std::to_string(pose.theta);
 		Data << line << std::endl;
-        // std::string sensor_line = std::to_string(inertial_sensor.get_heading()) + ", " + std::to_string(inertial_sensor.get_rotation())+ ", " + std::to_string(inertial_sensor.get_pitch()) + ", " + std::to_string(inertial_sensor.get_roll()) + ", " + std::to_string(inertial_sensor.get_yaw());
+        std::string sensor_line =  std::to_string(inertial_sensor.get_heading()) + ", " + std::to_string(inertial_sensor.get_rotation())+ ", " + std::to_string(inertial_sensor.get_pitch()) + ", " + std::to_string(inertial_sensor.get_roll()) + ", " + std::to_string(inertial_sensor.get_yaw());
         // DataSensor << sensor_line << std::endl;
 		pros::delay(50);
         time += 50;

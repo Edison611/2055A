@@ -75,44 +75,43 @@ void competition_initialize() {}
  void autonomous() {
 
     // Auton selector
-    switch (selector::auton) {
-        case 1:
-            // Safe 5 Triball Auton
-            offense_auton_safe();
-            break;
+    // switch (selector::auton) {
+    //     case 1:
+    //         // Safe 5 Triball Auton
+    //         offense_auton_safe();
+    //         break;
 
-        case 2:
-            // 
-            offense_auton_midrush_new();
-            break;
+    //     case 2:
+    //         // 
+    //         offense_auton_midrush_new();
+    //         break;
 
-        case 3:
-            offense_auton_6balls_v2();
-            break;
+    //     case 3:
+    //         offense_auton_6balls_v2();
+    //         break;
         
-        case -1:
-            // Safe
-            defense_awp();
-            break;
+    //     case -1:
+    //         // Safe
+    //         defense_awp();
+    //         break;
         
-        case -2:
-            // Midrush
-            defense_auton_midrush();
-            break;
+    //     case -2:
+    //         // Midrush
+    //         defense_auton_midrush();
+    //         break;
 
-        case -3:
-            // Max Potential
-            defense_auton_max_potential();
-            break;
+    //     case -3:
+    //         // Max Potential
+    //         defense_auton_max_potential();
+    //         break;
 
-        case 0:
-            auton_skills();
-            break;
-    } 
+    //     case 0:
+    //         auton_skills();
+    //         break;
+    // } 
     // offense_auton_safe(); // SLOT 4
-    // pros::Task log_task(log_data);
     // pros::delay(500);   
-    // auton_skills(); // SLOT 3
+    auton_skills(); // SLOT 3
     // offense_auton_midrush_new(); // SLOT 7
     // defense_awp(); // SLOT 2
     // defense_auton_elim(); // SLOT 5
@@ -155,9 +154,9 @@ void competition_initialize() {}
 
 void opcontrol() {
     chassis.setPose(0, 0, 0);
-    // driver_skills(); 
+    driver_skills(); 
 
-    // pros::Task matchload_task(skills_matchload);
+    pros::Task matchload_task(skills_matchload);
 
 
     // pros::Task MatchLoads(SetMatchLoad);
@@ -165,7 +164,7 @@ void opcontrol() {
     // pros::Task kicker_task(kickerTask);
     //pros::Task pistonBoost_task(pistonBoostTask);
 
-    // COMMENT THIS FOR SKILLS
+    // COMMENT THIS FOR DRIVER SKILLS
     // wingF.set_value(false);
 	// wingB.set_value(false);
     

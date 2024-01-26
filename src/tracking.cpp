@@ -56,7 +56,7 @@ void log_data() {
 	Data << "X, Y, θ" << std::endl;
     // DataSensor << "Heading, Rotation, Pitch, Roll, Yaw" << std::endl;
 	while (true) {
-        if (time >= 60000) {
+        if (time >= 55000) {
             break;  
         }
         lemlib::Pose pose = chassis.getPose();

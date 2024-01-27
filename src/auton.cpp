@@ -282,7 +282,7 @@ void defense_auton_max_potential() {
     //chassis.moveTo(-11.5, -8, -90, 1000);
     turnTo(-180);
     //chassis.moveTo(-11.5, -50, -180, 2000);
-    chassis.moveTo(8, -60, -180, 2000, false, true, 0, 0.6, 70);
+    chassis.moveTo(6, -60, -180, 2000, false, true, 0, 0.6, 70);
     // wingF.set_value(true);
 }
 

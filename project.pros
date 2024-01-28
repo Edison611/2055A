@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Defense Max Potential",
+    "project_name": "Skills",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -352,7 +352,7 @@
     "upload_options": {
       "description": "N/A",
       "icon": "X",
-      "slot": 6
+      "slot": 3
     }
   }
 }

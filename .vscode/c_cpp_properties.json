@@ -18,17 +18,17 @@
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "/Users/ayushkothari/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
+      "compilerPath": "C:\\Program Files\\PROS\\toolchain\\usr\\bin\\arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
-      "compileCommands": "/Users/ayushkothari/Documents/GitHub/2055A/compile_commands.json",
+      "compileCommands": "c:\\Users\\haris\\Desktop\\2055A\\compile_commands.json",
       "macFrameworkPath": [
         "/System/Library/Frameworks"
       ],
       "browse": {
         "path": [
-          "/Users/ayushkothari/Documents/GitHub/2055A"
+          "c:\\Users\\haris\\Desktop\\2055A"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

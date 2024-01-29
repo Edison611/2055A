@@ -79,6 +79,7 @@ void my_opcontrol() {
 		// controller.clear();
 		// pros::delay(200);
 		// controller.set_text(2, 5, distance_sensor.get() * 0.0393701);
+		driverAssist();
 		setIntakeMotors();
 		setDriveMotors();
 		op_wings();

@@ -45,6 +45,31 @@ void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
     
 }
 
+// NEW FEATURE
+void driverAssist() {
+    lemlib::Pose pose = chassis.getPose();
+
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
+        if (pose.y > 25 && pose.x < 0) {
+        turnTo(107, 127, 800);
+        wingB.set_value(true);
+        }
+
+        if (pose.y < -25 && pose.x < 0) {
+        turnTo(73, 127, 800);
+        wingB.set_value(true);
+        }
+
+        if (pose.y > 25 && pose.x > 0) {
+        chassis.turnTo(55, 30, 100);
+        }
+
+        if (pose.y < -25 && pose.x > 0) {
+        chassis.turnTo(55, -25, 100);
+        }
+    }
+}
+
 /**
  * @brief Drives x inches forward
  * We should change this function from Lemlib to our own function

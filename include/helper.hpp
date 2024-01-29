@@ -10,6 +10,7 @@ void allowContinue();
 
 // Functions for Bot
 void turnToNet(bool reversed, bool red, int delay);
+void driverAssist();
 
 void vector(double x, double y, bool reversed=false, int maxSpeed=127, int turnTimout = 700, int driveTimeout = 2000);
 void driveFwd(double inches, int timeout, float maxSpeed);

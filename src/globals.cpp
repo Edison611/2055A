@@ -111,7 +111,7 @@ lemlib::Drivetrain drivetrain {
     10.50, // track width
     2.75, // wheel diameter
     480, // wheel rpm
-    5 // Chase Power
+    3 // Chase Power
 };
 
 // forward/backward PID
@@ -119,7 +119,7 @@ lemlib::ControllerSettings linearController {
     80, // kP
     0, // 0
     800, // kD May lower in the future
-    3, // anti windup
+    0, // anti windup
     1, // smallErrorRange
     100, // smallErrorTimeout
     3, // largeErrorRange
@@ -137,7 +137,7 @@ lemlib::ControllerSettings angularController {
     100, // smallErrorTimeout
     3, // largeErrorRange
     500, // largeErrorTimeout
-    3 // slew rate
+    5 // slew rate
 };
     
 /**

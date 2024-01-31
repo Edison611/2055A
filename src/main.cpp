@@ -13,6 +13,7 @@
 #include "pros/rtos.hpp"
 #include "pros/vision.h"
 #include <string>
+#include <sys/types.h>
 
 
 void initialize() {
@@ -32,7 +33,7 @@ void initialize() {
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
     catapult2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    selector::init();
+    // selector::init();
     // pros::Task log_task(log_data);
     pros::Task kicker_task(kickerTask);
     // pros::Task pos_track(screen);
@@ -108,12 +109,13 @@ void competition_initialize() {}
     // } 
 
     // REORDER
-    // auton_skills(); // SLOT 2
+    auton_skills(); // SLOT 2
     // defense_awp(); // SLOT 3
     // offense_auton_safe(); // SLOT 4
     // defense_auton_midrush(); // SLOT 5
     // defense_auton_max_potential(); // SLOT 6
     // offense_auton_midrush(); // SLOT 7
+    // pid_test(); // SLOT 8
 
 }
 
@@ -135,6 +137,7 @@ void opcontrol() {
     chassis.setPose(0, 0, 0);
     // driver_skills();
     // pros::Task matchload_task(skills_matchload);
+    // pid_test();
 
     // COMMENT THIS FOR DRIVER SKILLS
     wingF.set_value(false);

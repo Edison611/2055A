@@ -2,6 +2,7 @@
 #include "lemlib/pose.hpp"
 #include "main.h"
 #include "pros/llemu.hpp"
+#include "pros/misc.hpp"
 #include "pros/rtos.hpp"
 #include "pros/vision.h"
 #include <cmath>
@@ -10,8 +11,17 @@
 // TEST AUTONS
 
 void test_auton() {
-    turnToDir(90, false, 40, 500); // should turn 270 degrees to the left until it reaches 90 degrees, at speed 
-    turnToDir(90, true, 90, 2000);
+    // turnToDir(90, false, 40, 500); // should turn 270 degrees to the left until it reaches 90 degrees, at speed 
+    // turnToDir(90, true, 90, 2000);
+    chassis.setPose(0, 0, 0);
+    turnTo(180);
+    pros::delay(250);
+    turnTo(0);
+    pros::delay(250);
+    turnTo(-90);
+    pros::delay(250);
+    chassis.moveToPose(-50, -30, -120, 3000, {}, false);
+    controller.rumble("-.");
 }
 
 void test_auton2() {
@@ -57,7 +67,9 @@ void driver_skills() {
     setIntake(0);
 }
 
-ASSET(skills_txt);
+ASSET(skills1_txt);
+ASSET(s1_txt);
+ASSET(s2_txt);
 
 void auton_skills() {
     // Calibration and Robot Setup
@@ -70,19 +82,22 @@ void auton_skills() {
 
     // Begin
     setIntake(127);
-    turnTo(-135, 127, 500);
-    chassis.moveToPose(-58.75, 36, -135, 700);
-    turnTo(180, 127, 600);
+    turnTo(-135);
+    chassis.moveToPose(-64, 36, -135, 1000, {}, false);
+    turnTo(180, 127);
     setIntake(-127);
     
-    ram(400, 1);
-    pros::delay(100);
-    chassis.setPose(-60, 30, chassis.getPose().theta);
+    ram(500, 1);
+    pros::delay(500);
+    chassis.setPose(-60, 33, chassis.getPose().theta);
     pros::delay(100);
 
     // LINE UP TO SHOOT
-    chassis.moveToPose(-60, 49, 180, 1200, {.forwards=false});  
-    turnTo(107, 127, 800);
+    chassis.moveToPose(-60, 49, 180, 1000, {.forwards=false});  
+    pros::delay(200);
+    turnTo(107, 127, 1500);
+    // pros::delay(200);
+    turnTo(107, 127, 1200);
 
     wingB.set_value(true);
     wingF.set_value(true);
@@ -96,34 +111,49 @@ void auton_skills() {
     wingF.set_value(false);
     wingB.set_value(false);
     pros::delay(300);
-    chassis.follow(skills_txt, 15, 20000, false);
-
-    pros::delay(100000000);
-
-    vector(-40, 57, false, 127, 600, 1000);
-    turnTo(90);
-    // START MOVING TO OTHER SIDE
-    chassis.moveToPose(30, 62, 90, 2000);
-
-    // SIDE RAM ON LEFT #1
-    chassis.moveToPose(64, 40, 135, 1000);
-    turnTo(180, 127, 500);
-
-    setIntake(-127);
+    turnTo(287);
+    chassis.follow(s1_txt, 15, 7000, false);
+    chassis.waitUntil(24);
+    wingB.set_value(true);
+    chassis.waitUntil(90);
+    wingB.set_value(false);
+    chassis.follow(s2_txt, 15, 7000, true);
+    pros::delay(5000);
+    chassis.moveToPose(60, -39, 180, 2000, {.forwards=false});
+    turnTo(0);
     ram(500, 1);
-    chassis.setPose(chassis.getPose().x, 32, chassis.getPose().theta);
+
+    // vector(-40, 57, false, 127, 600, 1000);
+    // turnTo(90);
+    // // START MOVING TO OTHER SIDE
+    // chassis.moveToPose(30, 62, 90, 2000);
+
+    // // SIDE RAM ON LEFT #1
+    // chassis.moveToPose(64, 40, 135, 1000);
+    // turnTo(180, 127, 500);
+
+    // setIntake(-127);
+    // ram(500, 1);
+    pros::delay(100);
+    chassis.setPose(chassis.getPose().x, -32, chassis.getPose().theta);
     setIntake(-30);
 
     // BACK UP and MOVE TO MIDDLE
-    chassis.moveToPose(60, 48, 190, 1200, {.forwards=false});
+    chassis.moveToPose(60, -48, -10, 1200, {.forwards=false});
     turnTo(75, 127, 600);
-    chassis.moveToPose(39, 43, 75, 1400, {.forwards=false});
-    // wingB.set_value(true);
-    chassis.moveToPose(18, 35, 0, 1200, {.forwards=false});
 
+    // Changed up to here
+    chassis.moveToPose(39, -43, 105, 1400, {.forwards=false});
+    // wingB.set_value(true);
+    chassis.moveToPose(18, -35, 180, 1200, {.forwards=false});
+
+
+    pros::delay(10000000);
+
+    // Changed up to here
     // MIDDLE RAM #1 (LEFT SIDE)
     wingB.set_value(true);
-    chassis.moveToPose(25, 25, -40, 800, {.forwards=false});
+    chassis.moveToPose(25, -25, -40, 800, {.forwards=false});
     turnTo(-80, 80, 500);
     ram(800, -1);
     pros::delay(100);
@@ -207,7 +237,7 @@ void defense_awp() {
     chassis.moveToPose(-55, -49, 138, 3500, {.forwards=false});
     wingF.set_value(true);
     pros::delay(500);
-    chassis.moveToPose(-52, -52, 135, 2000);
+    chassis.moveToPose(-52, -52, 135, 2000); 
     turnTo(100);
     wingF.set_value(false);
 

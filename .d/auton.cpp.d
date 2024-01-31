@@ -83,7 +83,8 @@ bin/auton.cpp.o: src/auton.cpp include/lemlib/asset.hpp \
  include/lemlib/exitcondition.hpp include/drive.hpp \
  include/subsystems.hpp include/opcontrol.hpp include/auton.hpp \
  include/tracking.hpp include/pure-pursuit.hpp include/helper.hpp \
- include/test-functions.hpp include/selection.h include/pros/llemu.hpp
+ include/test-functions.hpp include/selection.h include/pros/llemu.hpp \
+ include/pros/misc.hpp
 include/lemlib/asset.hpp:
 include/lemlib/pose.hpp:
 include/main.h:
@@ -258,3 +259,4 @@ include/helper.hpp:
 include/test-functions.hpp:
 include/selection.h:
 include/pros/llemu.hpp:
+include/pros/misc.hpp:

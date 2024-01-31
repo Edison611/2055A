@@ -49,10 +49,10 @@ void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
 void driverAssist() {
     lemlib::Pose pose = chassis.getPose();
 
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)) {
         if (pose.y > 25 && pose.x < 0) {
-        turnTo(107, 127, 800);
-        wingB.set_value(true);
+            turnTo(107, 127, 800);
+            wingB.set_value(true);
         }
 
         if (pose.y < -25 && pose.x < 0) {
@@ -97,7 +97,7 @@ void turnTo(double degrees, int maxSpeed, int timeout, bool reversed, bool async
     double rad = degrees * 3.14159265358979323846 / 180;
     double x_offset = sin(rad) * 30;
     double y_offset = cos(rad) * 30;
-    chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout, async, reversed, maxSpeed);
+    chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout, !reversed, maxSpeed, async);
 }
 
 void turnToDir(int targetAngle, bool right, int maxSpeed, int timeout) {

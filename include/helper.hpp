@@ -1,3 +1,4 @@
+#include <cmath>
 #include <string>
 #include <iostream>
 
@@ -12,7 +13,7 @@ void allowContinue();
 void turnToNet(bool reversed, bool red, int delay);
 void driverAssist();
 
-void vector(double x, double y, bool reversed=false, int maxSpeed=127, int turnTimout = 700, int driveTimeout = 2000);
+void vector(double x, double y, bool reversed=false, float maxSpeed=127, int turnTimout = 700, int driveTimeout = 2000);
 void driveFwd(double inches, int timeout, float maxSpeed);
 void turnTo(double degrees, int maxSpeed = 127, int timeout = 800, bool reversed = false, bool async = false);
 void turnToDir(int targetAngle, bool right, int maxSpeed = 127, int timeout = 1500);

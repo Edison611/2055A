@@ -1,3 +1,4 @@
+#include "lemlib/chassis/chassis.hpp"
 #include "main.h"
 #include "pros/adi.hpp"
 #include "pros/gps.h"
@@ -120,7 +121,7 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 /**
  * @brief Define the parameters of your drivetrain here:
  */
-lemlib::Drivetrain_t drivetrain {
+lemlib::Drivetrain drivetrain {
     &leftMotors, // left drivetrain motors
     &rightMotors, // right drivetrain motors
     10.50, // track width
@@ -130,20 +131,24 @@ lemlib::Drivetrain_t drivetrain {
 };
 
 // forward/backward PID
-lemlib::ChassisController_t lateralController {
+lemlib::ControllerSettings linearController {
     80, // kP
+    0, // 0
     800, // kD May lower in the future
+    3, // anti windup
     1, // smallErrorRange
     100, // smallErrorTimeout
     3, // largeErrorRange
     500, // largeErrorTimeout
-    3 // slew rate
+    20 // slew rate
 };
  
 // turning PID
-lemlib::ChassisController_t angularController {
+lemlib::ControllerSettings angularController {
     4, // kP  
+    0, // kI
     30, // kD 
+    3, // anti windup
     1, // smallErrorRange
     100, // smallErrorTimeout
     3, // largeErrorRange
@@ -154,7 +159,7 @@ lemlib::ChassisController_t angularController {
 /**
  * @brief Define the sensors used for the robot here:
  */
-lemlib::OdomSensors_t sensors {
+lemlib::OdomSensors sensors {
     nullptr, // vertical tracking wheel 1
     nullptr, // vertical tracking wheel 2
     nullptr, // horizontal tracking wheel 1
@@ -162,5 +167,5 @@ lemlib::OdomSensors_t sensors {
     &inertial_sensor // inertial sensor
 };
 
-lemlib::Chassis chassis(drivetrain, lateralController, angularController, sensors);
+lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors);
 // ------------------------------------------------------------------------------------------------------

@@ -17,6 +17,7 @@ ASSET(skillstest_txt);
 ASSET(leftcurve5_txt);
 
 void test_auton() {
+    chassis.moveToPose(-40, 55, -90, 1000, {.maxSpeed = 100, .minSpeed = 90});
     //chassis.setPose(-38.14602236652237, -60.18132683982684, 100.82);
     // chassis.follow(leftcurve4_txt, 20000, 25);
     //chassis.follow(leftcurve5_txt, 20000, 25);
@@ -138,8 +139,6 @@ void auton_skills() {
     // pros::delay(200);
     // chassis.moveTo(-35, 62, 180, 800);
     turnTo(90);
-
-
     // START MOVING TO OTHER SIDE
     chassis.moveTo(30, 62, 90, 2000);
 
@@ -629,7 +628,7 @@ void offense_auton_6balls_v2() {
     // Pole & Alliance Tri-Ball
     chassis.setPose(9, -58, -90);
     setIntake(70); // Intake: Input
-
+    chassis.moveToPose(1, 1, 1, 1000);
     // Corner Tri-Ball
     chassis.moveTo(40, -58, -90, 1750, false, false);
     turnTo(-130);

@@ -41,27 +41,19 @@
  * UNCOMMENT LINES TO LOG DATA, MAKE SURE YOU HAVE AN SD CARD IN AND DONT END THE CODE WITH POWER BUTTON
  */
 void my_opcontrol() {
-	// driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
-	// driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
-    // driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
+	driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
+	driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
 
-    // driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
-	// driveRM.set_brake_mode(MOTOR_BRAKE_COAST);
-    // driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
-	//chassis.setPose(0, 0, 0);
-	// chassis.setPose(-15, 59, -90);
-	// pros::Task deploy_task(deploy);
-
-	// chassis.follow("path5.txt", 35000, 6);
+    driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
+	driveRM.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
+	chassis.setPose(0, 0, 0);
 
 	// std::ofstream Data;
     // Data.open("/usd/ROBOT/log.txt", std::ios_base::app);
 	// double time = 0;
 	// Data << "Time (s), LB, LF, ptoL1, ptoL2, RB, RF, ptoR1, ptoR2" << std::endl;
-	// claw.set_value(false);
-	// wedge.set_value(true);
-	// pros::delay(50);
-	// wedge.set_value(false);
 	// driver_skills();
 	// loadMacro = true;
 	// setPTO(-600, -600, -600, -600);
@@ -78,10 +70,9 @@ void my_opcontrol() {
         // pros::delay(30);
 		// controller.clear();
 		// pros::delay(200);
-		// controller.set_text(2, 5, distance_sensor.get() * 0.0393701);
 		driverAssist();
 		setIntakeMotors();
-		setDriveMotors();
+		// setDriveMotors();
 		op_wings();
 		// DrivePTO();
 		// Puncher();
@@ -89,10 +80,12 @@ void my_opcontrol() {
 		// macroLoad();
 		//op_claw();
 		op_climb();
-		// toggleDown();
-		// if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
-		// 	setPTO(0, 0, 0, 0);
-		// }
+		int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+		chassis.arcade(leftY, rightX, 100); // Tune the 3rd value to change the speed of the robot
+		
+
+
 		// std::string line = getAllPower();
 		// Data << std::to_string(time) + ", " + line << std::endl;
 		// pros::delay(20);
@@ -101,8 +94,6 @@ void my_opcontrol() {
 		// 	break;
 		// }
 
-		// pros::lcd::set_text(3, "angle:" + std::to_string(puncher_rot.get_angle()));
-		// pros::delay(100);
 		pros::delay(10);
 	}
 	// Data << "END" << std::endl;

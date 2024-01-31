@@ -34,7 +34,6 @@ int MOTOR_RM = 12;
 int MOTOR_RF = 11;
 
 int MOTOR_INTAKE = 6;
-// int MOTOR_INTAKE2 = 16;
 int MOTOR_CATAPULT = 1;
 int MOTOR_CATAPULT2 = 2;
 
@@ -48,11 +47,6 @@ int DISTANCE_SENSOR_PORT = 10;
 char CLIMB_PORT = 'C';
 char WINGB_PORT = 'A';
 char WINGF_PORT = 'D'; 
-// char GRABBER_PORT = 'D';
-// char DRIVEPTO_PORT = 'B';
-// char CLAW_PORT = 'C';
-char WEDGE_PORT = 'F'; // NOT IN USE
-char PISTON_BOOST_PORT = 'B';
 
 // pros::Rotation back_rot(6, false);
 pros::Rotation kicker_rot(4, false);
@@ -73,9 +67,6 @@ pros::Motor driveRF(MOTOR_RF, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENC
 
 pros::MotorGroup leftMotors({driveLB, driveLM, driveLF});
 pros::MotorGroup rightMotors({driveRB, driveRM, driveRF});
-
-// pros::MotorGroup lPTOMotors({ptoL1, ptoL2});
-// pros::MotorGroup rPTOMotors({ptoR1, ptoR2});
 
 
 // ------------------------------------------------------------------------------------------------------
@@ -103,12 +94,6 @@ pros::Distance distance_sensor(DISTANCE_SENSOR_PORT);
 pros::ADIDigitalOut climb(CLIMB_PORT);
 pros::ADIDigitalOut wingF(WINGF_PORT);
 pros::ADIDigitalOut wingB(WINGB_PORT);
-// pros::ADIDigitalOut grabber(GRABBER_PORT);
-// pros::ADIDigitalOut drivePTO(DRIVEPTO_PORT);
-// pros::ADIDigitalOut claw(CLAW_PORT);
-pros::ADIDigitalOut wedge(WEDGE_PORT);
-pros::ADIDigitalOut pistonBoost(PISTON_BOOST_PORT);
-
 // ------------------------------------------------------------------------------------------------------
 // CONTROLLER
 // ------------------------------------------------------------------------------------------------------

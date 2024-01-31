@@ -37,9 +37,6 @@ void initialize() {
     pros::Task kicker_task(kickerTask);
     // pros::Task pos_track(screen);
     // pros::Task print_task(print_info);
-    
-
-    // pros::delay(3000);
 }
 
 /**
@@ -74,7 +71,7 @@ void competition_initialize() {}
  */
  void autonomous() {
 
-    // Auton selector
+    // Auton selector (SLOT 1)
     // switch (selector::auton) {
     //     case 1:
     //         // Safe 5 Triball Auton
@@ -83,7 +80,7 @@ void competition_initialize() {}
 
     //     case 2:
     //         // 
-    //         offense_auton_midrush_new();
+    //         offense_auton_midrush();
     //         break;
 
     //     case 3:
@@ -111,13 +108,12 @@ void competition_initialize() {}
     // } 
 
     // REORDER
+    // auton_skills(); // SLOT 2
+    // defense_awp(); // SLOT 3
     // offense_auton_safe(); // SLOT 4
-    auton_skills(); // SLOT 3
-    // offense_auton_midrush_new(); // SLOT 7
-    // defense_awp(); // SLOT 2
-    // defense_auton_elim(); // SLOT 5
+    // defense_auton_midrush(); // SLOT 5
     // defense_auton_max_potential(); // SLOT 6
-    
+    // offense_auton_midrush(); // SLOT 7
 
 }
 
@@ -139,9 +135,6 @@ void opcontrol() {
     chassis.setPose(0, 0, 0);
     // driver_skills();
     // pros::Task matchload_task(skills_matchload);
-
-    // pros::Task MatchLoads(SetMatchLoad);
-    // pid_test();
 
     // COMMENT THIS FOR DRIVER SKILLS
     wingF.set_value(false);

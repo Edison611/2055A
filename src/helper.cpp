@@ -83,7 +83,7 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = 127) {
     double x_new = inches * sin(pose.theta);
     double y_new = inches * cos(pose.theta);
     bool dir = inches > 0;
-    chassis.moveTo(pose.x + x_new, pose.y + y_new, pose.theta, timeout, false, dir, 0, 0.6, maxSpeed);
+    chassis.moveToPose(pose.x + x_new, pose.y + y_new, pose.theta, timeout, {.forwards=dir, .maxSpeed=maxSpeed});
 }
 
 /**
@@ -193,9 +193,9 @@ void turnToDir(int targetAngle, bool right, int maxSpeed, int timeout) {
  * @param turnTimout timeout for turning (default to 1 second)
  * @param driveTimeout timeout for driving (default to 1 second)
  */
-void vector(double x, double y, bool reversed, int maxSpeed, int turnTimout, int driveTimeout) {
+void vector(double x, double y, bool reversed, float maxSpeed, int turnTimout, int driveTimeout) {
     chassis.turnTo(x, y, turnTimout, false, reversed);
-    chassis.moveTo(x, y, chassis.getPose().theta, driveTimeout, false, !reversed, 0, 0.6, maxSpeed);
+    chassis.moveToPose(x, y, chassis.getPose().theta, driveTimeout, {.forwards=!reversed, .maxSpeed=maxSpeed});
 }
 
 

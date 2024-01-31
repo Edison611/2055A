@@ -67,7 +67,7 @@ void driver_skills() {
     setIntake(0);
 }
 
-ASSET(skills1_txt);
+ASSET(skills_txt);
 ASSET(s1_txt);
 ASSET(s2_txt);
 
@@ -112,14 +112,14 @@ void auton_skills() {
     wingB.set_value(false);
     pros::delay(300);
     turnTo(287);
-    chassis.follow(s1_txt, 15, 7000, false);
+    chassis.follow(skills_txt, 15, 8000, false);
     chassis.waitUntil(24);
     wingB.set_value(true);
-    chassis.waitUntil(90);
+    chassis.waitUntil(100);
     wingB.set_value(false);
-    chassis.follow(s2_txt, 15, 7000, true);
-    pros::delay(5000);
-    chassis.moveToPose(60, -39, 180, 2000, {.forwards=false});
+    // chassis.follow(s2_txt, 15, 7000, true);
+    chassis.waitUntilDone();
+    chassis.moveToPose(60, -39, 180, 2000);
     turnTo(0);
     ram(500, 1);
 
@@ -140,41 +140,40 @@ void auton_skills() {
 
     // BACK UP and MOVE TO MIDDLE
     chassis.moveToPose(60, -48, -10, 1200, {.forwards=false});
-    turnTo(75, 127, 600);
+    turnTo(115, 127, 700);
 
     // Changed up to here
     chassis.moveToPose(39, -43, 105, 1400, {.forwards=false});
     // wingB.set_value(true);
     chassis.moveToPose(18, -35, 180, 1200, {.forwards=false});
-
-
-    pros::delay(10000000);
-
-    // Changed up to here
+    
     // MIDDLE RAM #1 (LEFT SIDE)
     wingB.set_value(true);
-    chassis.moveToPose(25, -25, -40, 800, {.forwards=false});
-    turnTo(-80, 80, 500);
+    chassis.moveToPose(25, -25, -140, 800, {.forwards=false});
+    turnTo(-100, 80, 500);
     ram(800, -1);
     pros::delay(100);
-    chassis.setPose(39, chassis.getPose().y, chassis.getPose().theta);
+    // chassis.setPose(39, chassis.getPose().y, chassis.getPose().theta);
     pros::delay(100);
+
     
     // MIDDLE RAM #2 (RIGHT SIDE)
-    chassis.moveToPose(20, 14, -80, 1000);
-    turnTo(-150, 127, 500);
+    chassis.moveToPose(20, -14, -100, 1000);
+    turnTo(-30, 127, 500);
     wingB.set_value(false);
     pros::delay(250);
-    chassis.moveToPose(18, 0, 180, 1000);
-    chassis.moveToPose(18, -26, 85, 1200);
-    // wingF.set_value(true);
+    chassis.moveToPose(18, 0, 0, 1000);
+    chassis.moveToPose(18, 26, 95, 1200);
     wingF.set_value(true);
     pros::delay(200);
-    turnTo(65, 90, 800);
+    turnTo(115, 90, 800);
     ram(850, 1);
     pros::delay(100);
     chassis.setPose(39, -19, chassis.getPose().theta);
     pros::delay(100);
+
+    // Changed up to here
+    pros::delay(10000000);
 
     // Middle Ram #3 (In the middle)
     // chassis.moveToPose(20, -14, 90, 1200, false, false);
@@ -193,7 +192,6 @@ void auton_skills() {
     // wingF.set_value(true);
     chassis.moveToPose(46, -46, 120, 1500);
     // wingF.set_value(false);
-    // driveFwd(-10, 1000, 127);
 
     // RIGHT SIDE RAM #1 + 2
     turnTo(30);

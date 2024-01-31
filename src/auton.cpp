@@ -57,7 +57,7 @@ void driver_skills() {
     setIntake(0);
 }
 
-// ASSET(skills_txt);
+ASSET(skills_txt);
 
 void auton_skills() {
     // Calibration and Robot Setup
@@ -96,7 +96,9 @@ void auton_skills() {
     wingF.set_value(false);
     wingB.set_value(false);
     pros::delay(300);
-    // chassis.follow(skills_txt, float lookahead, int timeout)
+    chassis.follow(skills_txt, 15, 20000, false);
+
+    pros::delay(100000000);
 
     vector(-40, 57, false, 127, 600, 1000);
     turnTo(90);
@@ -177,8 +179,6 @@ void auton_skills() {
     turnTo(225, 127, 600);
     chassis.moveToPose(40, -64, -90, 1000);
     turnTo(-90, 127, 400);
-
-    // chassis.moveToPose(33, -62, 90, 1200, false, false);
 
     // CLIMB
     // turnTo(-90, 127, 1200);

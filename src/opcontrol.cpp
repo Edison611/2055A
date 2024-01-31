@@ -81,8 +81,12 @@ void my_opcontrol() {
 		// controller.set_text(2, 5, distance_sensor.get() * 0.0393701);
 		driverAssist();
 		setIntakeMotors();
-		setDriveMotors();
+		// setDriveMotors();
 		op_wings();
+	    int x = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+    	int y = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+		chassis.arcade(y, x, 50);
+
 		// DrivePTO();
 		// Puncher();
 		setCatapultMotors();

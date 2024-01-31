@@ -19,7 +19,7 @@ double netPos[2] = {0, -48};
 // ------------------------------------------------------------------------------------------------------
 
 void skills_matchload() {
-    matchLoad(47, 525);
+    matchLoad(47, 500);
     // matchLoad(2, 525); // FOR TESTING
     wingF.set_value(false);
 	wingB.set_value(false);
@@ -49,7 +49,7 @@ void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
 void driverAssist() {
     lemlib::Pose pose = chassis.getPose();
 
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)) {
         if (pose.y > 25 && pose.x < 0) {
         turnTo(107, 127, 800);
         wingB.set_value(true);

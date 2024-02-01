@@ -85,7 +85,7 @@ void my_opcontrol() {
 		op_wings();
 	    int x = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
     	int y = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-		chassis.arcade(y, x, 50);
+		chassis.arcade(y, x, 1);
 
 		// DrivePTO();
 		// Puncher();

@@ -4,25 +4,29 @@
       "name": "PROS Project",
       "includePath": [
         "${workspaceFolder}/**",
-        "c:\\Users\\haris\\Desktop\\2055A\\include"
+        "c:\\Users\\haris\\Desktop\\2055A\\include",
+        "/Users/ayushkothari/Documents/GitHub/2055A/include"
       ],
       "defines": [
         "_DEBUG",
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "C:\\Program Files\\PROS\\toolchain\\usr\\bin\\arm-none-eabi-g++",
+      "compilerPath": "/Users/ayushkothari/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
-      "compileCommands": "c:\\Users\\haris\\Desktop\\2055A\\compile_commands.json",
+      "compileCommands": "/Users/ayushkothari/Documents/GitHub/2055A/compile_commands.json",
       "browse": {
         "path": [
-          "c:\\Users\\haris\\Desktop\\2055A"
+          "/Users/ayushkothari/Documents/GitHub/2055A"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""
-      }
+      },
+      "macFrameworkPath": [
+        "/System/Library/Frameworks"
+      ]
     }
   ],
   "version": 4

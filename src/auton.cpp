@@ -278,17 +278,18 @@ void defense_auton_max_potential() {
     pros::delay(200);
 
     turnTo(45);
-    chassis.moveTo(-39, -12, 0, 2200);
+    chassis.moveTo(-39, -14, 0, 2200);
     turnTo(-90);
     wingB.set_value(true);
     pros::delay(300);
-    chassis.moveTo(0, -12, -90, 2000, false, false);
+    chassis.moveTo(0, -14, -90, 2000, false, false);
     wingB.set_value(false);     
     //chassis.moveTo(-11.5, -8, -90, 1000);
     turnTo(-180);
     //chassis.moveTo(-11.5, -50, -180, 2000);
-    chassis.moveTo(6, -60, -180, 2000, false, true, 0, 0.6, 70);
+    /* NORMAL */ chassis.moveTo(6, -60, -180, 2000, false, true, 0, 0.6, 70);
     // wingF.set_value(true);
+    // /* TEST */ chassis.moveTo(9, -60, -180, 2000, false, true, 0, 0.6, 70); // this works
 }
 
 /**

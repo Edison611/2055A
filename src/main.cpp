@@ -110,9 +110,9 @@ void competition_initialize() {}
     //         break;
     // } 
     // offense_auton_safe(); // SLOT 4
-    auton_skills(); // SLOT 3
+    auton_skills(); // SLOT 2
     // offense_auton_midrush_new(); // SLOT 7
-    // defense_awp(); // SLOT 2
+    // defense_awp(); // SLOT 3
     // defense_auton_elim(); // SLOT 5
     // defense_auton_max_potential(); // SLOT 6
     

@@ -5,21 +5,22 @@
       "includePath": [
         "${workspaceFolder}/**",
         "c:\\Users\\haris\\Desktop\\2055A\\include",
-        "/Users/ayushkothari/Documents/GitHub/2055A/include"
+        "/Users/ayushkothari/Documents/GitHub/2055A/include",
+        "c:\\Users\\yangx\\Downloads\\Programming\\Github Desktop\\2055A\\2055A\\include"
       ],
       "defines": [
         "_DEBUG",
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "C:\\Program Files\\PROS\\toolchain\\usr\\bin\\arm-none-eabi-g++",
+      "compilerPath": "c:\\Users\\yangx\\AppData\\Roaming\\Code\\User\\globalStorage\\sigbots.pros\\install\\pros-toolchain-windows\\usr\\bin\\arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
-      "compileCommands": "c:\\Users\\haris\\Desktop\\2055A\\compile_commands.json",
+      "compileCommands": "c:\\Users\\yangx\\Downloads\\Programming\\Github Desktop\\2055A\\2055A\\compile_commands.json",
       "browse": {
         "path": [
-          "c:\\Users\\haris\\Desktop\\2055A"
+          "c:\\Users\\yangx\\Downloads\\Programming\\Github Desktop\\2055A\\2055A"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

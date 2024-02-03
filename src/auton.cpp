@@ -232,30 +232,46 @@ void auton_skills() {
 }
 
 void defense_awp() {
-    
-    /* Shoot Pre-Load Triball */
-    chassis.setPose(-41.25, -54.25, 90);
-    shoot();
-    pros::delay(500);
-    wingF.set_value(true);
-    pros::delay(500);
-    wingF.set_value(false);
-    turnTo(63);
-    matchLoad(1, 500);
 
-    /* Take Triball Out of Corner */
-    chassis.moveTo(-55, -49, 138, 3500, false, false);
+    chassis.setPose(-48, -56, 134);
+    setIntake(127);
+    chassis.moveTo(-53, -51, 134, 1200, false, false);
     wingF.set_value(true);
-    pros::delay(500);
-    chassis.moveTo(-52, -52, 135, 2000);
+    pros::delay(250);
+    chassis.moveTo(-50, -54, 134, 1200);
+    pros::delay(300);
     turnTo(100);
+    pros::delay(250);
     wingF.set_value(false);
-
-    /* Move to Elevation Bar */
-    setIntake(-127); // to shoot triballs it touches to the other side of the field
-    chassis.moveTo(-12, -58, 90, 3000);
+    pros::delay(250);
+    chassis.moveTo(-12.5, -58, 90, 2100);
+    setIntake(-127);
     pros::delay(500);
     setIntake(0);
+    
+    // /* Shoot Pre-Load Triball */
+    // chassis.setPose(-41.25, -54.25, 90);
+    // shoot();
+    // pros::delay(500);
+    // wingF.set_value(true);
+    // pros::delay(500);
+    // wingF.set_value(false);
+    // turnTo(63);
+    // matchLoad(1, 500);
+
+    // /* Take Triball Out of Corner */
+    // chassis.moveTo(-55, -49, 138, 3500, false, false);
+    // wingF.set_value(true);
+    // pros::delay(500);
+    // chassis.moveTo(-52, -52, 135, 2000);
+    // turnTo(100);
+    // wingF.set_value(false);
+
+    // /* Move to Elevation Bar */
+    // setIntake(-127); // to shoot triballs it touches to the other side of the field
+    // chassis.moveTo(-12, -58, 90, 3000);
+    // pros::delay(500);
+    // setIntake(0);
     
 }
 

@@ -221,14 +221,14 @@ void auton_skills() {
     // chassis.moveTo(33, -62, 90, 1200, false, false);
 
     // CLIMB
-    // turnTo(-90, 127, 1200);
-    // climb.set_value(true);
-    // setIntake(0);
-    // setDrive(600, 600);
-    // pros::delay(2000);
-    // // driveFwd(70, 2000, 127);
-    // climb.set_value(false);
-    // setDrive(0, 0);
+    //turnTo(-90, 127, 1200);
+    climb.set_value(true);
+    setIntake(0);
+    setDrive(600, 600);
+    pros::delay(2000);
+    // driveFwd(70, 2000, 127);
+    climb.set_value(false);
+    setDrive(0, 0);
 }
 
 void defense_awp() {

@@ -153,10 +153,10 @@ void op_wings() {
         currentWingsF = !currentWingsF;
         wingF.set_value(currentWingsF);
     }
-    // if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
-    //     currentWingsB = !currentWingsB;
-    //     wingB.set_value(currentWingsB);
-    // }
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+        currentWingsB = !currentWingsB;
+        wingB.set_value(currentWingsB);
+    }
 }
 
 /**

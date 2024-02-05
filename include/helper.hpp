@@ -18,6 +18,6 @@ void turnTo(double degrees, int maxSpeed = 127, int timeout = 800, bool reversed
 void turnToDir(int targetAngle, bool right, int maxSpeed = 127, int timeout = 1500);
 
 void setBrake(std::string mode);
-void wallReset();
+void wallReset(std::string wall);
 
 void matchLoad(int shots, int delay);

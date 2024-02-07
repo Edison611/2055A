@@ -115,6 +115,7 @@ void competition_initialize() {}
     //defense_awp(); // SLOT 3
     // defense_auton_elim(); // SLOT 5
     // defense_auton_max_potential(); // SLOT 6
+    // pid_test(); // SLOT 8
     
 
     // if(selector::auton == 1){
@@ -152,6 +153,7 @@ void competition_initialize() {}
 
 void opcontrol() {
     chassis.setPose(0, 0, 0);
+    // pid_test();
     driver_skills();
     pros::Task matchload_task(skills_matchload);
 

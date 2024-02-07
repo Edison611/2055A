@@ -19,9 +19,12 @@ double netPos[2] = {0, -48};
 // ------------------------------------------------------------------------------------------------------
 
 void skills_matchload() {
-    matchLoad(47, 500);
+    setCatapult(120);
+    pros::delay(24000);
+    setCatapult(0);
+    // SmatchLoad(47, 500);
     // matchLoad(2, 525); // FOR TESTING
-    wingF.set_value(false);
+    // wingF.set_value(false);
 	// wingB.set_value(false);
 }
 
@@ -251,10 +254,10 @@ void wallReset(std::string wall) {
     double inches = distance_sensor.get() * 0.0393701;
     double distance = inches * cos((Pi/2)-(chassis.getPose().theta*Pi/180));
     if (wall == "top") {
-        chassis.setPose(chassis.getPose().x, 70 - (distance + 4 * cos((Pi/2)-(chassis.getPose().theta*Pi/180))), chassis.getPose().theta);
+        chassis.setPose(chassis.getPose().x, 71 - (distance + 4 * cos((Pi/2)-(chassis.getPose().theta*Pi/180))), chassis.getPose().theta);
     }
     else if (wall == "bottom") {
-        chassis.setPose(chassis.getPose().x, -70 + (distance + 4 * cos((Pi/2)-(chassis.getPose().theta*Pi/180))), chassis.getPose().theta);
+        chassis.setPose(chassis.getPose().x, -71 + (distance + 4 * cos((Pi/2)-(chassis.getPose().theta*Pi/180))), chassis.getPose().theta);
     }
 }
 

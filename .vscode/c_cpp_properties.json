@@ -14,14 +14,14 @@
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "c:\\Users\\yangx\\AppData\\Roaming\\Code\\User\\globalStorage\\sigbots.pros\\install\\pros-toolchain-windows\\usr\\bin\\arm-none-eabi-g++",
+      "compilerPath": "C:\\Program Files\\PROS\\toolchain\\usr\\bin\\arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
-      "compileCommands": "c:\\Users\\yangx\\Downloads\\Programming\\Github Desktop\\2055A\\2055A\\compile_commands.json",
+      "compileCommands": "c:\\Users\\haris\\Desktop\\2055A\\compile_commands.json",
       "browse": {
         "path": [
-          "c:\\Users\\yangx\\Downloads\\Programming\\Github Desktop\\2055A\\2055A"
+          "c:\\Users\\haris\\Desktop\\2055A"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

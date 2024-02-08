@@ -419,6 +419,7 @@ void offense_auton_safe() {
     turnTo(90);
     pros::delay(100);
     chassis.moveTo(60, -7, 90, 1200);
+    setIntake(-127);
     chassis.setPose(40, chassis.getPose().y, chassis.getPose().theta);
     pros::delay(150);
     chassis.moveTo(20, -7, 90, 1000, false, false);
@@ -426,18 +427,18 @@ void offense_auton_safe() {
 
     // Last
     setIntake(127);
-    chassis.turnTo(4, 0, 800);
-    chassis.moveTo(4, 0, -70, 1000);
+    chassis.turnTo(4, -7, 800);
+    chassis.moveTo(4, -7, -70, 1000);
     // turnTo(-90);
     // chassis.moveTo(-15, -3, -70, 1000);
-    pros::delay(300);
+    pros::delay(200);
     // chassis.moveTo(8, -5, -25, 800);
     turnTo(90);
     setIntake(-30);
     wingF.set_value(true);
-    chassis.moveTo(60, -6, 90, 1200);
+    chassis.moveTo(60, -8, 90, 1200);
     setIntake(0);
-    chassis.moveTo(25, -8, 90, 900, false, false);
+    chassis.moveTo(25, -9, 90, 900, false, false);
     wingF.set_value(false);
 }
 

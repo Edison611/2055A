@@ -366,6 +366,30 @@ void defense_auton_midrush() {
 
 }
 
+void defense_last_min() {
+    chassis.setPose(-39, -56, 17.5);
+    wingF.set_value(true);
+    setIntake(127);
+    chassis.moveTo(-27.5, -8, 15, 1250, true);
+    chassis.waitUntilDist(5);
+    wingF.set_value(false);
+    pros::delay(1200);
+    
+    turnTo(90);
+    chassis.moveTo(-5, -8, 90, 1100);
+    chassis.moveTo(-15, -8, 90, 1000, false, false);
+    turnTo(45);
+    chassis.moveTo(-51, -51, 45, 1300, false, false);
+    turnTo(140);
+
+    wingF.set_value(true);
+    pros::delay(200);
+    chassis.moveTo(-38, -60, 90, 1200);
+    wingF.set_value(false);
+    setIntake(-50);
+    chassis.moveTo(-14, -60, 90, 1200);
+}
+
 /**
  * @brief offensive autonomous
  * 
@@ -406,7 +430,6 @@ void offense_auton_safe() {
     pros::delay(200);
     setIntake(0);
     chassis.moveTo(60, -55, -10, 800, false, false);
-    
 
     // Middle Tri-Balls
     chassis.turnTo(-5, -23, 800);
@@ -539,7 +562,7 @@ void offense_auton_midrush_new() {
 
     wingF.set_value(false); // close wing
     chassis.moveTo(-55, 55, 210, 1200, false, false); // back up
-    chassis.moveTo(-72, -00, 180, 1000);
+    chassis.moveTo(-72, -100, 180, 1000);
     chassis.moveTo(chassis.getPose().x, chassis.getPose().y + 7.5, chassis.getPose().theta, 850, false, false);
     ram(500, 1);
     pros::delay(100);

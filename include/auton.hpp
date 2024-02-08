@@ -19,3 +19,4 @@ void offense_auton_elim();
 void defense_awp();
 void defense_auton_midrush();
 void defense_auton_max_potential();
+void defense_last_min();

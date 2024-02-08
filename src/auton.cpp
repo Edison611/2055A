@@ -106,7 +106,7 @@ void auton_skills() {
 
     // LINE UP TO SHOOT
     chassis.moveTo(chassis.getPose().x, 49, 180, 1000, false, false);  
-    turnTo(105, 127, 800);
+    turnTo(104, 127, 800); //105
 
     wingB.set_value(true);
     // wingF.set_value(true);
@@ -116,7 +116,7 @@ void auton_skills() {
     // can choose length of gaps between shots
     setIntake(0);
     setCatapult(120);
-    pros::delay(24000);
+    pros::delay(2000); // 24000
     setCatapult(0);
     // matchLoad(47, 500); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
     setBrake("hold");
@@ -159,12 +159,13 @@ void auton_skills() {
     // MIDDLE RAM #1 (LEFT SIDE)
     // wingB.set_value(true);
     // chassis.moveTo(25, 25, -40, 800, false, false);
-    turnTo(-70, 80, 600);
+    turnTo(-55, 80, 600); //70
     wingB.set_value(true);
     pros::delay(200);
-    ram(800, -1);
+    // ram(800, -1);
+    chassis.moveTo(70, 10, -90, 1400, false, false); //Test
     chassis.moveTo(chassis.getPose().x-10, chassis.getPose().y, -90, 700);
-    ram(400, -1);
+    ram(450, -1); 
     chassis.setPose(39, chassis.getPose().y, chassis.getPose().theta);
     pros::delay(100);
     
@@ -179,7 +180,7 @@ void auton_skills() {
     turnTo(60, 127, 800);
     wingF.set_value(true);
     pros::delay(200);
-    ram(750, 1);
+    ram(850, 1);
     pros::delay(100);
     chassis.setPose(39, -19, chassis.getPose().theta);
     // pros::delay(100);
@@ -191,7 +192,7 @@ void auton_skills() {
     turnTo(90, 127, 400);
     wingF.set_value(true);
     pros::delay(200);
-    ram(600, 1);
+    ram(750, 1);
     pros::delay(50);
     chassis.setPose(39, 0, chassis.getPose().theta);
     pros::delay(50);
@@ -207,11 +208,14 @@ void auton_skills() {
 
     // RIGHT SIDE RAM #1 + 2
     turnTo(30);
-    ram(500, 1);
+    //ram(500, 1); idk
+    setDrive(400, 600);
+    pros::delay(600);
+    setDrive(0, 0);
     // chassis.moveTo(chassis.getPose().x+2, chassis.getPose().y - 8.5, 0, 800, false, false);
     // ram(500, 1);
     chassis.moveTo(chassis.getPose().x+1, chassis.getPose().y - 8.5, 0, 800, false, false);
-    turnTo(180);
+    turnTo(190);
     ram(500, -1);
     chassis.setPose(60, -30, chassis.getPose().theta);
     pros::delay(0);
@@ -220,9 +224,9 @@ void auton_skills() {
     // Back up
     // chassis.moveTo(60, -40, 0, 800);
     // turnTo(225, 127, 600);
-    chassis.moveTo(34, -60, 225, 1500);
+    chassis.moveTo(34, -58, 225, 1500);
     // chassis.moveTo(40, -60, 225, 1500);
-    turnTo(-85, 127, 600);
+    turnTo(-90, 127, 600);
     wallReset("bottom");
 
     // chassis.moveTo(33, -62, 90, 1200, false, false);
@@ -231,7 +235,10 @@ void auton_skills() {
     //turnTo(-90, 127, 1200);
     climb.set_value(true);
     setIntake(0);
-    chassis.moveTo(chassis.getPose().x-200, chassis.getPose().y, -85, 1500);
+    // chassis.moveTo(chassis.getPose().x-200, chassis.getPose().y, -90, 1500); //idk
+    setDrive(500, 450);
+    pros::delay(1500);
+    setDrive(0, 0);
     // setDrive(600, 600);
     // pros::delay(1500);
     // driveFwd(70, 2000, 127);
@@ -251,7 +258,7 @@ void defense_awp() {
     pros::delay(250);
     wingF.set_value(false);
     pros::delay(250);
-    chassis.moveTo(-12.5, -58, 90, 2100);
+    chassis.moveTo(-13.5, -58, 90, 2100);
     setIntake(-127);
     pros::delay(500);
     setIntake(0);
@@ -414,7 +421,7 @@ void offense_auton_safe() {
     chassis.moveTo(60, -7, 90, 1200);
     chassis.setPose(40, chassis.getPose().y, chassis.getPose().theta);
     pros::delay(150);
-    chassis.moveTo(14, -7, 90, 1000, false, false);
+    chassis.moveTo(20, -7, 90, 1000, false, false);
     wingF.set_value(false);
 
     // Last

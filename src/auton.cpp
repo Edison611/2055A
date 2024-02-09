@@ -116,7 +116,7 @@ void auton_skills() {
     // can choose length of gaps between shots
     setIntake(0);
     setCatapult(120);
-    pros::delay(2000); // 24000
+    pros::delay(24000); // 24000
     setCatapult(0);
     // matchLoad(47, 500); // 550 MILLISECONDS FOR COMPETITIONS /|\ 45 Matchloads
     setBrake("hold");
@@ -710,45 +710,8 @@ void offense_auton_6balls_v1() {
     // Intake: Output
 }
 
-void offense_auton_6balls_v2() {
- 
-    // Capybaras Website Coordinates -- Courtesy of Edison Ying
-    // 9, -58, -90
-    // 40, -58, -90
-    // 40, -58, -130
-    // 55, -48, -130
-    // 55, -48, -160
-    // 59, -34, -180
-    // 59, -38, -180
-    // 59, -38, -90
-    // 59, -38, 0
-    // 59, -34, 0
-
-    // Pole & Alliance Tri-Ball
-    chassis.setPose(9, -58, -90);
-    setIntake(70); // Intake: Input
-
-    // Corner Tri-Ball
-    chassis.moveTo(40, -58, -90, 1750, false, false);
-    turnTo(-130);
-    wingF.set_value(true);
-    chassis.moveTo(55, -48, -130, 1151, false, false);
-    wingF.set_value(false);
-
-    // First Net
-    turnTo(-160);
-    wingF.set_value(true);
-    // // wingL.set_value(true);
-    chassis.moveTo(59, -34, -180, 978, false, false);
-    
-    // Second Net
-    wingF.set_value(false);
-    // wingL.set_value(false);
-    chassis.moveTo(59, -38, -180, 800, false, true);
-    turnTo(-90);
-    turnTo(0);
-    chassis.moveTo(59, -34, 0, 800);
-    setIntake(-127);
-
-    // Rush Middle
+void matchloadp() {
+    shoot();
+    pros::delay(500);
+    setCatapult(120);
 }

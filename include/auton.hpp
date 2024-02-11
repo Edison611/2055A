@@ -19,5 +19,6 @@ void defense_awp();
 void defense_auton_midrush();
 void defense_auton_max_potential();
 void defense_last_min();
+void def_botb();
 
 void matchloadp();

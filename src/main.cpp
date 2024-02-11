@@ -110,15 +110,16 @@ void competition_initialize() {}
     //         break;
     // } 
     // offense_auton_safe(); // SLOT 4
-    auton_skills(); // SLOT 2
+    // auton_skills(); // SLOT 2
     // offense_auton_midrush_new(); // SLOT 5
-    // offense_last_min(); // SLOT 6
+    offense_last_min(); // SLOT 6
     // defense_last_min(); // SLOT 7
     // defense_awp(); // SLOT 3
     // defense_auton_elim(); // SLOT 5
-    // defense_auton_max_potential(); // SLOT 6
+    // defense_auton_max_potential(); // SLOT 8
     // pid_test(); // SLOT 8
-    //matchloadp(); // SLOT 7
+    // matchloadp(); // SLOT 7
+    // def_botb(); // SLOT 8
     
 
     // if(selector::auton == 1){
@@ -157,8 +158,8 @@ void competition_initialize() {}
 void opcontrol() {
     chassis.setPose(0, 0, 0);
     // pid_test();
-    driver_skills();
-    pros::Task matchload_task(skills_matchload);
+    // driver_skills();
+    // pros::Task matchload_task(skills_matchload);
 
 
     // pros::Task MatchLoads(SetMatchLoad);
@@ -167,8 +168,8 @@ void opcontrol() {
     //pros::Task pistonBoost_task(pistonBoostTask);
 
     // COMMENT THIS FOR DRIVER SKILLS
-    //wingF.set_value(false);
-	//wingB.set_value(false);
+    wingF.set_value(false);
+	wingB.set_value(false);
     
     my_opcontrol();
 }   

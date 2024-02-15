@@ -87,13 +87,8 @@ void my_opcontrol() {
     	int y = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 		chassis.arcade(y, x, 1);
 
-		// DrivePTO();
-		// Puncher();
 		setCatapultMotors();
-		// macroLoad();
-		//op_claw();
 		op_climb();
-		// toggleDown();
 		// if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
 		// 	setPTO(0, 0, 0, 0);
 		// }

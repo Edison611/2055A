@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Elim",
+    "project_name": "Defense LM",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -352,7 +352,7 @@
     "upload_options": {
       "description": "N/A",
       "icon": "X",
-      "slot": 8
+      "slot": 7
     }
   }
 }

@@ -393,31 +393,36 @@ void defense_auton_midrush() {
 }
 
 void defense_last_min() {
-    chassis.setPose(-38, -56, 15); //-39, -56, 17.5
+    pros::Task task_log(log_data);
+    chassis.setPose(-38, -57, 15); //-39, -56, 17.5
     setIntake(127);
-    wingB.set_value(true);
-    chassis.moveTo(-26, -10, 15, 1250); //-27.5, -10, 16
-    pros::delay(100000); //Test
+    chassis.moveTo(-26, -16.5, 15, 1250); //-27.5, -10, 16
+    pros::delay(500);
     
     turnTo(90);
-    wingB.set_value(false);
     wingF.set_value(true);
     pros::delay(200);
-    chassis.moveTo(10, -10, 90, 1100);
+    setIntake(-127);
+    chassis.moveTo(0, chassis.getPose().y, 90, 1100);
+    chassis.setPose(-10, chassis.getPose().y, chassis.getPose().theta);
     wingF.set_value(false);
-    pros::delay(100000); //Test
-    chassis.moveTo(-15, -10, 90, 1000, false, false);
+    chassis.moveTo(-15, -16, 90, 1000, false, false);
     turnTo(45);
-    chassis.moveTo(-49, -49, 45, 1300, false, false);
-    turnTo(140);
+    chassis.moveTo(-49, -47, 45, 2500, false, false, 0, 0.6, 80);
+    turnTo(145);
 
     wingF.set_value(true);
     pros::delay(200);
-    chassis.moveTo(-45, -54, 140, 1200);
-    wingF.set_value(false);
+    chassis.moveTo(-45, -51, 145, 1500);
+    pros::delay(200);
     turnTo(100);
-    setIntake(-50);
-    chassis.moveTo(-12, -57, 90, 1200);
+    wingF.set_value(false);
+    chassis.moveTo(-12, -55, 90, 3000, false, true, 0, 0.6, 85);
+    setIntake(-60);
+    chassis.moveTo(-36, chassis.getPose().y, 90, 2000, false, false);
+    turnTo(130);
+    setIntake(0);
+    chassis.moveTo(-53, -46, 130, 1200, false, false);
 }
 
 /**

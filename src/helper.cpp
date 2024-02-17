@@ -19,8 +19,8 @@ double netPos[2] = {0, -48};
 // ------------------------------------------------------------------------------------------------------
 
 void skills_matchload() {
-    setCatapult(150);
-    pros::delay(18800);
+    setCatapult(133.33);
+    pros::delay(21150);
     setCatapult(0);
     // SmatchLoad(47, 500);
     // matchLoad(2, 525); // FOR TESTING

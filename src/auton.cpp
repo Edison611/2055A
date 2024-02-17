@@ -342,7 +342,7 @@ void defense_awp() {
     pros::delay(250);
     wingF.set_value(false);
     pros::delay(250);
-    chassis.moveTo(-15.5, -58, 90, 2100, false, true, 0, 0.6, 60);
+    chassis.moveTo(-11.5, -61, 90, 4100, false, true, 0, 0.6, 70);
     setIntake(-127);
     pros::delay(500);
     setIntake(0);
@@ -696,6 +696,7 @@ void offense_auton_midrush_new() {
 }
 
 void offense_last_min() {
+    // BOTB
     chassis.setPose(-39, 57, 152);
     
     wingF.set_value(true); // lower front wings so intake is lowered
@@ -729,16 +730,62 @@ void offense_last_min() {
     chassis.moveTo(-52, 52, 220, 1000, false, false);
     turnTo(130, 127, 600); //123
     setIntake(127);
-    chassis.moveTo(-11, 30, 120, 1500);
+    chassis.moveTo(-10, 30, 120, 1500);
     pros::delay(500);
     turnTo(180, 80, 600); //240
-    chassis.moveTo(-11, 14, 180, 1200);
+    chassis.moveTo(-10, 12, 180, 1200);
     turnTo(-90);
     wingF.set_value(true);
     setIntake(-50);
-    chassis.moveTo(-70, 14, -90, 1200);
+    chassis.moveTo(-70, 12, -90, 1200);
     pros::delay(200);
     chassis.moveTo(chassis.getPose().x + 15, 13, -90, 1200, false, false);
+    wingF.set_value(false);
+
+    // LAUNCH
+    // chassis.setPose(-39, 57, 152);
+    
+    // wingF.set_value(true); // lower front wings so intake is lowered
+    // setIntake(127); // intake
+    // chassis.moveTo(-11, 10, 140, 1250, true); // async true
+    // //chassis.moveTo(-12, 8, 135, 1300, true);
+    // chassis.waitUntilDist(5); // waits until bot has travelled 5 inches
+    // wingF.set_value(false); // close front wings
+    // pros::delay(1200);
+    // chassis.moveTo(-30, 60, 265, 2000, false, false); // move behind the bar, to the right of short barrier, facing bar
+    // chassis.moveTo(-43, 58, 225, 1200);
+    // wingF.set_value(true);
+    // chassis.moveTo(-52, 50, 225, 1200); //-52, 51
+    // turnTo(180);
+   
+    // //chassis.moveTo(-54, 52, 230, 1750, true); // move to get corner triball out
+    // //////////chassis.moveTo(-57.5, 45, 190, 1400);
+    // //chassis.waitUntilDist(5); // waits until bot has travelled 5 inches
+    //  // open the wing to get corner triball out
+    // setIntake(-127);
+
+    // wingF.set_value(false); // close wing
+    // //chassis.moveTo(-55, 55, 205, 1200, false, false); // back up
+    // chassis.moveTo(-64, 10, 180, 1000);
+    // chassis.moveTo(chassis.getPose().x, chassis.getPose().y + 4.5, 180, 850, false, false);
+    // ram(500, 1);
+    // pros::delay(100);
+    // chassis.setPose(chassis.getPose().x, 30, chassis.getPose().theta);
+    // pros::delay(100);
+    // // Go for middle triballs
+    // chassis.moveTo(-52, 52, 220, 1000, false, false);
+    // turnTo(130, 127, 600); //123
+    // setIntake(127);
+    // chassis.moveTo(-11, 30, 120, 1500);
+    // pros::delay(500);
+    // turnTo(180, 80, 600); //240
+    // chassis.moveTo(-11, 11, 180, 1200);
+    // turnTo(-90);
+    // wingF.set_value(true);
+    // setIntake(-50);
+    // chassis.moveTo(-70, 11, -90, 1200);
+    // pros::delay(200);
+    // chassis.moveTo(chassis.getPose().x + 15, 13, -90, 1200, false, false);
 }
 
 

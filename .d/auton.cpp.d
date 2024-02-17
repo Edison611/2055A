@@ -1,9 +1,9 @@
-bin/auton.cpp.o: src/auton.cpp include/lemlib/pose.hpp include/main.h \
- include/api.h include/pros/adi.h include/pros/colors.h \
- include/pros/distance.h include/pros/error.h include/pros/ext_adi.h \
- include/pros/adi.h include/pros/adi.h include/pros/gps.h \
- include/pros/imu.h include/pros/link.h include/pros/llemu.h \
- include/display/lvgl.h include/display/lv_version.h \
+bin/auton.cpp.o: src/auton.cpp include/lemlib/asset.hpp \
+ include/lemlib/pose.hpp include/main.h include/api.h include/pros/adi.h \
+ include/pros/colors.h include/pros/distance.h include/pros/error.h \
+ include/pros/ext_adi.h include/pros/adi.h include/pros/adi.h \
+ include/pros/gps.h include/pros/imu.h include/pros/link.h \
+ include/pros/llemu.h include/display/lvgl.h include/display/lv_version.h \
  include/display/lv_misc/lv_log.h include/display/lv_conf.h \
  include/display/lv_conf_checker.h include/display/lv_misc/lv_task.h \
  include/display/lv_misc/lv_mem.h include/display/lv_misc/lv_log.h \
@@ -77,12 +77,13 @@ bin/auton.cpp.o: src/auton.cpp include/lemlib/pose.hpp include/main.h \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h include/pros/link.hpp include/pros/link.h \
  include/globals.hpp include/lemlib/chassis/chassis.hpp \
- include/pros/motors.hpp include/pros/imu.hpp include/lemlib/asset.hpp \
+ include/pros/motors.hpp include/pros/imu.hpp \
  include/lemlib/chassis/trackingWheel.hpp include/pros/adi.hpp \
  include/pros/rotation.hpp include/lemlib/logger.hpp include/drive.hpp \
  include/subsystems.hpp include/opcontrol.hpp include/auton.hpp \
  include/tracking.hpp include/pure-pursuit.hpp include/helper.hpp \
  include/test-functions.hpp include/selection.h include/pros/llemu.hpp
+include/lemlib/asset.hpp:
 include/lemlib/pose.hpp:
 include/main.h:
 include/api.h:
@@ -241,7 +242,6 @@ include/globals.hpp:
 include/lemlib/chassis/chassis.hpp:
 include/pros/motors.hpp:
 include/pros/imu.hpp:
-include/lemlib/asset.hpp:
 include/lemlib/chassis/trackingWheel.hpp:
 include/pros/adi.hpp:
 include/pros/rotation.hpp:

@@ -21,7 +21,7 @@
 // ------------------------------------------------------------------------------------------------------
 // CATAPULT
 // ------------------------------------------------------------------------------------------------------
-void setCatapult(int power) {
+void setCatapult(double power) {
     catapult.move_velocity(power);
     catapult2.move_velocity(power);
 } 

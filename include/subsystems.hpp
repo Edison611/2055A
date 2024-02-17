@@ -5,7 +5,7 @@ void setIntakeMotors();
 
 // Catapult
 extern bool hold;
-void setCatapult(int power);
+void setCatapult(double power);
 void setCatapultMotors();
 void toggleDown();
 void kickerTask();

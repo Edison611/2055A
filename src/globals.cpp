@@ -24,22 +24,24 @@
 // - Use numbers if it is in a port
 // - Use letters if it is a triport
 // ------------------------------------------------------------------------------------------------------
-int MOTOR_LB = 18;
-int MOTOR_LM = 19;
-int MOTOR_LF = 20;
+int MOTOR_LB = 7;
+int MOTOR_LM = 20;
+int MOTOR_LF = 19;
+int MOTOR_LH = 6;
 
-int MOTOR_RB = 16;
-int MOTOR_RM = 12;
-int MOTOR_RF = 11;
+int MOTOR_RB = 4;
+int MOTOR_RM = 11;
+int MOTOR_RF = 12;
+int MOTOR_RH = 5;
 
-int MOTOR_INTAKE = 6;
+int MOTOR_INTAKE = 13;
 // int MOTOR_INTAKE2 = 16;
 int MOTOR_CATAPULT = 1;
 int MOTOR_CATAPULT2 = 2;
 
 int VISION_SENSOR_PORT = 23;
 char CATA_LIMIT_SWITCH_PORT = 'H'; // RENAME TO BUMPER
-int INERTIAL_SENSOR_PORT = 9;
+int INERTIAL_SENSOR_PORT = 15;
 int COLOR_SENSOR_PORT = 25;
 // char INTAKE_LIMIT_SWITCH_PORT = 'E';
 int DISTANCE_SENSOR_PORT = 10;
@@ -54,7 +56,7 @@ char WEDGE_PORT = 'F'; // NOT IN USE
 char PISTON_BOOST_PORT = 'B';
 
 // pros::Rotation back_rot(6, false);
-pros::Rotation kicker_rot(4, false);
+pros::Rotation kicker_rot(14, false);
 
 // lemlib::TrackingWheel back_tracking_wheel(&back_rot, 2.75, -5.75);
 
@@ -64,14 +66,16 @@ pros::Rotation kicker_rot(4, false);
 pros::Motor driveLB(MOTOR_LB, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor driveLM(MOTOR_LM, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor driveLF(MOTOR_LF, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveLH(MOTOR_LH, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
 
 pros::Motor driveRB(MOTOR_RB, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor driveRM(MOTOR_RM, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor driveRF(MOTOR_RF, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor driveRH(MOTOR_RH, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 
-pros::MotorGroup leftMotors({driveLB, driveLM, driveLF});
-pros::MotorGroup rightMotors({driveRB, driveRM, driveRF});
+pros::MotorGroup leftMotors({driveLB, driveLM, driveLF, driveLH});
+pros::MotorGroup rightMotors({driveRB, driveRM, driveRF, driveRH});
 
 // pros::MotorGroup lPTOMotors({ptoL1, ptoL2});
 // pros::MotorGroup rPTOMotors({ptoR1, ptoR2});

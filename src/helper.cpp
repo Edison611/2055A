@@ -220,20 +220,24 @@ void setBrake(std::string mode) {
         driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
         driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
         driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
+        driveLH.set_brake_mode(MOTOR_BRAKE_COAST);
 
         driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
         driveRM.set_brake_mode(MOTOR_BRAKE_COAST);
         driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
+        driveRH.set_brake_mode(MOTOR_BRAKE_COAST);
 
     }
     else if (mode == "brake") {
         driveLB.set_brake_mode(MOTOR_BRAKE_BRAKE);
         driveLM.set_brake_mode(MOTOR_BRAKE_BRAKE);
         driveLF.set_brake_mode(MOTOR_BRAKE_BRAKE);
+        driveLH.set_brake_mode(MOTOR_BRAKE_BRAKE);
 
         driveRB.set_brake_mode(MOTOR_BRAKE_BRAKE);
         driveRM.set_brake_mode(MOTOR_BRAKE_BRAKE);
         driveRF.set_brake_mode(MOTOR_BRAKE_BRAKE);
+        driveRH.set_brake_mode(MOTOR_BRAKE_BRAKE);
     }
     else if (mode == "hold") {
         driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);

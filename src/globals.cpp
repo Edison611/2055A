@@ -34,7 +34,7 @@ int MOTOR_RM = 11;
 int MOTOR_RF = 12;
 int MOTOR_RH = 5;
 
-int MOTOR_INTAKE = 13;
+int MOTOR_INTAKE = 16;
 // int MOTOR_INTAKE2 = 16;
 int MOTOR_CATAPULT = 1;
 int MOTOR_CATAPULT2 = 2;
@@ -128,26 +128,26 @@ lemlib::Drivetrain_t drivetrain {
     &leftMotors, // left drivetrain motors
     &rightMotors, // right drivetrain motors
     10.50, // track width
-    2.75, // wheel diameter
-    480, // wheel rpm
-    5 // Chase Power
+    3.25, // wheel diameter
+    450, // wheel rpm
+    2 // Chase Power
 };
 
 // forward/backward PID
 lemlib::ChassisController_t lateralController {
-    80, // kP
-    800, // kD May lower in the future
+    50, // kP    //80
+    825, // kD May lower in the future      //800
     1, // smallErrorRange
     100, // smallErrorTimeout
     3, // largeErrorRange
     500, // largeErrorTimeout
-    3 // slew rate
+    3 // slew rate     //3
 };
  
 // turning PID
 lemlib::ChassisController_t angularController {
-    4, // kP  
-    30, // kD 
+    6, // kP  
+    47.5, // kD 
     1, // smallErrorRange
     100, // smallErrorTimeout
     3, // largeErrorRange

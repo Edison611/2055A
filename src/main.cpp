@@ -120,11 +120,11 @@ void competition_initialize() {}
     // defense_awp(); // SLOT 3
     // defense_auton_elim(); // SLOT 5
     // defense_auton_max_potential(); // SLOT 8
-    // pid_test(); // SLOT 8
+    pid_test(); // SLOT 8
     // matchloadp(); // SLOT 7
     // def_botb(); // SLOT 8
 
-    test_auton();
+    //test_auton();
     
 
     // if(selector::auton == 1){

@@ -22,10 +22,12 @@ void setDrive(double left, double right) {
     driveLB.move_velocity(left);
     driveLM.move_velocity(left);
     driveLF.move_velocity(left);
+    driveLH.move_velocity(left);
 
     driveRB.move_velocity(right);
     driveRM.move_velocity(right);
     driveRF.move_velocity(right);
+    driveRH.move_velocity(right);
 }   
     
 /**

@@ -80,11 +80,16 @@ bin/main.cpp.o: src/main.cpp include/main.h include/api.h \
  include/pros/motors.hpp include/pros/imu.hpp include/lemlib/asset.hpp \
  include/lemlib/chassis/trackingWheel.hpp include/pros/adi.hpp \
  include/pros/rotation.hpp include/lemlib/pose.hpp \
- include/lemlib/logger.hpp include/drive.hpp include/subsystems.hpp \
- include/opcontrol.hpp include/auton.hpp include/tracking.hpp \
- include/pure-pursuit.hpp include/helper.hpp include/test-functions.hpp \
- include/selection.h include/lemlib/api.hpp include/lemlib/util.hpp \
- include/lemlib/pid.hpp include/pros/llemu.hpp include/pros/misc.hpp
+ include/lemlib/logger.hpp include/EZ-Template/drive/drive.hpp \
+ include/EZ-Template/PID.hpp include/EZ-Template/util.hpp include/api.h \
+ include/EZ-Template/slew.hpp include/okapi/api/units/QAngle.hpp \
+ include/okapi/api/units/RQuantity.hpp \
+ include/okapi/api/units/QLength.hpp include/okapi/api/units/QTime.hpp \
+ include/drive.hpp include/subsystems.hpp include/opcontrol.hpp \
+ include/auton.hpp include/tracking.hpp include/pure-pursuit.hpp \
+ include/helper.hpp include/test-functions.hpp include/selection.h \
+ include/lemlib/api.hpp include/lemlib/util.hpp include/lemlib/pid.hpp \
+ include/pros/llemu.hpp include/pros/misc.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -248,6 +253,15 @@ include/pros/adi.hpp:
 include/pros/rotation.hpp:
 include/lemlib/pose.hpp:
 include/lemlib/logger.hpp:
+include/EZ-Template/drive/drive.hpp:
+include/EZ-Template/PID.hpp:
+include/EZ-Template/util.hpp:
+include/api.h:
+include/EZ-Template/slew.hpp:
+include/okapi/api/units/QAngle.hpp:
+include/okapi/api/units/RQuantity.hpp:
+include/okapi/api/units/QLength.hpp:
+include/okapi/api/units/QTime.hpp:
 include/drive.hpp:
 include/subsystems.hpp:
 include/opcontrol.hpp:

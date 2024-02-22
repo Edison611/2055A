@@ -1,4 +1,5 @@
 #include "lemlib/chassis/chassis.hpp"
+#include "EZ-Template/drive/drive.hpp"
 #include "pros/adi.hpp"
 #include "pros/distance.hpp"
 #include "pros/imu.hpp"
@@ -14,10 +15,12 @@
 extern pros::Motor driveLB;
 extern pros::Motor driveLM;
 extern pros::Motor driveLF;
+extern pros::Motor driveLH;
 
 extern pros::Motor driveRB;
 extern pros::Motor driveRM;
 extern pros::Motor driveRF;
+extern pros::Motor driveRH;
 
 extern pros::MotorGroup leftMotors;
 extern pros::MotorGroup rightMotors;
@@ -35,7 +38,6 @@ extern pros::Optical color_sensor;
 extern pros::ADIAnalogIn line_sensor;
 extern pros::Distance distance_sensor;
 
-
 extern pros::ADIDigitalOut climb;
 extern pros::ADIDigitalOut wingF;
 extern pros::ADIDigitalOut wingB;
@@ -49,5 +51,7 @@ extern pros::Controller controller;
 
 extern lemlib::ChassisController_t lateralController;
 extern lemlib::Chassis chassis;
+
+extern ez::Drive ezChassis;
 
 extern pros::Rotation kicker_rot;

@@ -20,11 +20,23 @@ void test_auton() {
     //setPose(end of path) 
     //setPose(pose)
 
-    turnToDir(90, false, 40, 500); // should turn 270 degrees to the left until it reaches 90 degrees, at speed 
-    turnToDir(90, true, 90, 2000);
+    // turnToDir(90, false, 40, 500); // should turn 270 degrees to the left until it reaches 90 degrees, at speed 
+    // turnToDir(90, true, 90, 2000);
+
+    chassis.setPose(0, 0, 0);
+    chassis.moveTo(0, 24, 0, 1000);
+    chassis.moveTo(0, 0, 0, 1000);
+    chassis.moveTo(0, 48, 0, 1000);
+    chassis.moveTo(0, 0, 0, 1000);
+    turnTo(45);
+    turnTo(0);
+
 }
 
+/* EZ Template Test */
 void test_auton2() {
+    ezChassis.pid_drive_set(24, 110, true);
+    ezChassis.pid_wait();
 }
 
 void test_auton3() {

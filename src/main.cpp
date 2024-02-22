@@ -23,19 +23,20 @@ void initialize() {
     driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
 	driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
     driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveLH.set_brake_mode(MOTOR_BRAKE_COAST);
 
     driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
 	driveRM.set_brake_mode(MOTOR_BRAKE_COAST);
     driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
-
+    driveRH.set_brake_mode(MOTOR_BRAKE_COAST);
 
     catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
     catapult2.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    selector::init();
+    // selector::init();
     // pros::Task log_task(log_data);
-    pros::Task kicker_task(kickerTask);
-    // pros::Task pos_track(screen);
+    // pros::Task kicker_task(kickerTask);
+    pros::Task pos_track(screen);
     // pros::Task print_task(print_info);
     
 
@@ -89,6 +90,7 @@ void competition_initialize() {}
 
     //     case 3:
     //         // offense_auton_6balls_v2();
+
     //         break;
         
     //     case -1:
@@ -113,7 +115,7 @@ void competition_initialize() {}
     // offense_auton_safe(); // SLOT 4
     // auton_skills(); // SLOT 2
     // offense_auton_midrush_new(); // SLOT 5
-    offense_last_min(); // SLOT 6
+    // offense_last_min(); // SLOT 6
     // defense_last_min(); // SLOT 7
     // defense_awp(); // SLOT 3
     // defense_auton_elim(); // SLOT 5
@@ -121,6 +123,8 @@ void competition_initialize() {}
     // pid_test(); // SLOT 8
     // matchloadp(); // SLOT 7
     // def_botb(); // SLOT 8
+
+    test_auton();
     
 
     // if(selector::auton == 1){
@@ -169,8 +173,8 @@ void opcontrol() {
     //pros::Task pistonBoost_task(pistonBoostTask);
 
     // COMMENT THIS FOR DRIVER SKILLS
-    wingF.set_value(false);
-	wingB.set_value(false);
+    //wingF.set_value(false);
+	//wingB.set_value(false);
     
     my_opcontrol();
 }   

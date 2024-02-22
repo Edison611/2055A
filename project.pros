@@ -1,9 +1,37 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Offense LM",
+<<<<<<< HEAD
+    "project_name": "Drive Test",
+=======
+    "project_name": "PID Test",
+>>>>>>> 9bf2bf22ce91b637bda034c7873e2e5c559ec901
     "target": "v5",
     "templates": {
+      "EZ-Template": {
+        "location": "/Users/ayushkothari/Library/Application Support/PROS/templates/EZ-Template@3.0.0",
+        "metadata": {
+          "origin": "local"
+        },
+        "name": "EZ-Template",
+        "py/object": "pros.conductor.templates.local_template.LocalTemplate",
+        "supported_kernels": "^3.8.0",
+        "system_files": [
+          "include\\EZ-Template\\slew.hpp",
+          "include\\EZ-Template\\api.hpp",
+          "include\\EZ-Template\\sdcard.hpp",
+          "include\\EZ-Template\\drive\\drive.hpp",
+          "include\\EZ-Template\\auton.hpp",
+          "include\\EZ-Template\\piston.hpp",
+          "include\\EZ-Template\\util.hpp",
+          "firmware\\EZ-Template.a",
+          "include\\EZ-Template\\auton_selector.hpp",
+          "include\\EZ-Template\\PID.hpp"
+        ],
+        "target": "v5",
+        "user_files": [],
+        "version": "3.0.0"
+      },
       "LemLib": {
         "location": "/Users/ayushkothari/Library/Application Support/PROS/templates/LemLib@0.5.0-beta1",
         "metadata": {
@@ -352,7 +380,11 @@
     "upload_options": {
       "description": "N/A",
       "icon": "X",
-      "slot": 6
+<<<<<<< HEAD
+      "slot": 1
+=======
+      "slot": 2
+>>>>>>> 9bf2bf22ce91b637bda034c7873e2e5c559ec901
     }
   }
 }

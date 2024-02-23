@@ -318,8 +318,8 @@ void auton_skills() {
 }
 
 void sd() {
-    chassis.setPose(-50, -56, -46);
-    chassis.moveTo(-53, -53, -46, 1000);
+    chassis.setPose(-50, -53, -46);
+    chassis.moveTo(-54, -57, -46, 1000);
     wingB.set_value(true);
     pros::delay(200);
     chassis.moveTo(-48, -58, -70, 1000, false, false);
@@ -329,12 +329,12 @@ void sd() {
     turnTo(16);
 
     setIntake(true);
-    chassis.moveTo(-26, -8, 16, 1300);
+    chassis.moveTo(-26, -8, 16, 2000);
     pros::delay(250);
-    chassis.moveTo(-40, -58, -90, 1200, false, false);
+    chassis.moveTo(-40, -58, -16, 2000, false, false);
     turnTo(90);
     setIntake(-127);
-    chassis.moveTo(-12, -58, 90, 1200, false, false);
+    chassis.moveTo(-12, -58, 90, 3000);
 }
 
 void so() {

@@ -40,15 +40,16 @@ int MOTOR_CATAPULT = 1;
 int MOTOR_CATAPULT2 = 2;
 
 int VISION_SENSOR_PORT = 23;
-char CATA_LIMIT_SWITCH_PORT = 'H'; // RENAME TO BUMPER
+char CATA_LIMIT_SWITCH_PORT = 'E'; // RENAME TO BUMPER
 int INERTIAL_SENSOR_PORT = 15;
 int COLOR_SENSOR_PORT = 25;
 // char INTAKE_LIMIT_SWITCH_PORT = 'E';
 int DISTANCE_SENSOR_PORT = 10;
 
-char CLIMB_PORT = 'C';
+char CLIMB_PORT = 'H';
 char WINGB_PORT = 'A';
 char WINGF_PORT = 'D'; 
+// char PARK_PORT = 'H';
 // char GRABBER_PORT = 'D';
 // char DRIVEPTO_PORT = 'B';
 // char CLAW_PORT = 'C';
@@ -106,6 +107,7 @@ pros::Distance distance_sensor(DISTANCE_SENSOR_PORT);
 pros::ADIDigitalOut climb(CLIMB_PORT);
 pros::ADIDigitalOut wingF(WINGF_PORT);
 pros::ADIDigitalOut wingB(WINGB_PORT);
+// pros::ADIDigitalOut park(PARK_PORT);
 // pros::ADIDigitalOut grabber(GRABBER_PORT);
 // pros::ADIDigitalOut drivePTO(DRIVEPTO_PORT);
 // pros::ADIDigitalOut claw(CLAW_PORT);
@@ -135,19 +137,19 @@ lemlib::Drivetrain_t drivetrain {
 
 // forward/backward PID
 lemlib::ChassisController_t lateralController {
-    50, // kP    //80
-    825, // kD May lower in the future      //800
+    55, // kP    //80
+    850, // kD May lower in the future      //800
     1, // smallErrorRange
-    100, // smallErrorTimeout
+    300, // smallErrorTimeout
     3, // largeErrorRange
-    500, // largeErrorTimeout
+    600, // largeErrorTimeout
     3 // slew rate     //3
 };
  
 // turning PID
 lemlib::ChassisController_t angularController {
-    6, // kP  
-    47.5, // kD 
+    1.7, // kP  
+    6, // kD 
     1, // smallErrorRange
     100, // smallErrorTimeout
     3, // largeErrorRange

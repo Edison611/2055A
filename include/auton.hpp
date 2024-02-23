@@ -21,4 +21,8 @@ void defense_auton_max_potential();
 void defense_last_min();
 void def_botb();
 
+//Bot #5 (PROVS)
+void sd();
+void so();
+
 void matchloadp();

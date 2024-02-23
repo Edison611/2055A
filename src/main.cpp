@@ -76,6 +76,16 @@ void competition_initialize() {}
  */
  void autonomous() {
 
+    driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
+	driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveLH.set_brake_mode(MOTOR_BRAKE_HOLD);
+
+    driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
+	driveRM.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveRH.set_brake_mode(MOTOR_BRAKE_HOLD);
+
     // Auton selector
     // switch (selector::auton) {
     //     case 1:
@@ -123,8 +133,10 @@ void competition_initialize() {}
     pid_test(); // SLOT 8
     // matchloadp(); // SLOT 7
     // def_botb(); // SLOT 8
-
     //test_auton();
+
+    //sd();
+    //so();
     
 
     // if(selector::auton == 1){
@@ -162,6 +174,16 @@ void competition_initialize() {}
 
 void opcontrol() {
     chassis.setPose(0, 0, 0);
+
+    driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
+	driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveLH.set_brake_mode(MOTOR_BRAKE_COAST);
+
+    driveRB.set_brake_mode(MOTOR_BRAKE_COAST);
+	driveRM.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveRH.set_brake_mode(MOTOR_BRAKE_COAST);
     // pid_test();
     // driver_skills();
     // pros::Task matchload_task(skills_matchload);

@@ -318,6 +318,7 @@ void auton_skills() {
 }
 
 void sd() {
+    pros::Task log_task(log_data);
     chassis.setPose(-50, -53, -46);
     chassis.moveTo(-54, -57, -46, 1000);
     wingB.set_value(true);

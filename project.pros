@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Def Safe",
+    "project_name": "SD",
     "target": "v5",
     "templates": {
       "LemLib": {

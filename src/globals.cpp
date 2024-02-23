@@ -47,7 +47,7 @@ int COLOR_SENSOR_PORT = 25;
 int DISTANCE_SENSOR_PORT = 10;
 
 char CLIMB_PORT = 'H';
-char WINGB_PORT = 'A';
+char WINGB_PORT = 'G';
 char WINGF_PORT = 'D'; 
 // char PARK_PORT = 'H';
 // char GRABBER_PORT = 'D';
@@ -148,8 +148,13 @@ lemlib::ChassisController_t lateralController {
  
 // turning PID
 lemlib::ChassisController_t angularController {
-    2.2, // kP  
-    30, // kD 
+    // 2.2, // kP  
+    // 30, // kD 
+    2.2,
+    30,
+    
+    // 2.2
+    // 30
     1, // smallErrorRange
     100, // smallErrorTimeout
     3, // largeErrorRange

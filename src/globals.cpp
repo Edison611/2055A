@@ -152,8 +152,13 @@ lemlib::ChassisController_t lateralController {
  
 // turning PID
 lemlib::ChassisController_t angularController {
-    1.7, // kP  
-    6, // kD 
+    // 2.2, // kP  
+    // 30, // kD 
+    2.2,
+    30,
+    
+    // 2.2
+    // 30
     1, // smallErrorRange
     100, // smallErrorTimeout
     3, // largeErrorRange

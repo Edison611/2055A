@@ -334,7 +334,7 @@ void sd() {
     chassis.moveTo(-40, -58, -90, 1200, false, false);
     turnTo(90);
     setIntake(-127);
-    chassis.moveTo(-12, -58, 90, 1200, false, false);
+    chassis.moveTo(-12, -58, 90, 3000);
 }
 
 void so() {

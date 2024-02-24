@@ -48,8 +48,8 @@ int DISTANCE_SENSOR_PORT = 10;
 
 char CLIMB_PORT = 'F';
 char WINGF_PORT = 'C';
-char WINGFR_PORT = 'H';
-char WINGFL_PORT = 'G'; 
+char WINGFR_PORT = 'G';
+char WINGFL_PORT = 'H'; 
 char WINGB_PORT = 'D';
 // char PARK_PORT = 'H';
 // char GRABBER_PORT = 'D';

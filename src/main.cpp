@@ -122,22 +122,25 @@ void competition_initialize() {}
     //         auton_skills();
     //         break;
     // } 
-    // offense_auton_safe(); // SLOT 4
+    //offense_auton_safe(); // SLOT 4
     // auton_skills(); // SLOT 2
     // offense_auton_midrush_new(); // SLOT 5
     // offense_last_min(); // SLOT 6
     // defense_last_min(); // SLOT 7
     // defense_awp(); // SLOT 3
     // defense_auton_elim(); // SLOT 5
-    sd();
+    //sd();
     // defense_auton_max_potential(); // SLOT 8
     // pid_test(); // SLOT 8
     // matchloadp(); // SLOT 7
     // def_botb(); // SLOT 8
     //test_auton();
 
-    sd();
-    //so();
+    ////////////////////////////// PROVINCIALS
+    // def_botb(); // SLOT 1
+    so(); // SLOT 2
+    // SLOT 3
+    // offense_last_min(); // SLOT 4
     
 
     // if(selector::auton == 1){
@@ -210,6 +213,7 @@ void opcontrol() {
     // COMMENT THIS FOR DRIVER SKILLS
     //wingF.set_value(false);
 	//wingB.set_value(false);
+    ActivateWings(false);
     
     my_opcontrol();
 }   

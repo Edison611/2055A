@@ -131,8 +131,8 @@ void setIntakeMotors() {
 // ------------------------------------------------------------------------------------------------------
 
 void ActivateWings(bool dir) {
-    wingF.set_value(false);
-    // wingL.set_value(dir);
+    wingFR.set_value(dir);
+    wingFL.set_value(dir);
 }
 
 void setWings(bool right, bool left, int delay) {

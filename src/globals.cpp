@@ -46,14 +46,16 @@ int COLOR_SENSOR_PORT = 25;
 // char INTAKE_LIMIT_SWITCH_PORT = 'E';
 int DISTANCE_SENSOR_PORT = 10;
 
-char CLIMB_PORT = 'H';
-char WINGB_PORT = 'A';
-char WINGF_PORT = 'D'; 
+char CLIMB_PORT = 'F';
+char WINGF_PORT = 'C';
+char WINGFR_PORT = 'H';
+char WINGFL_PORT = 'G'; 
+char WINGB_PORT = 'D';
 // char PARK_PORT = 'H';
 // char GRABBER_PORT = 'D';
 // char DRIVEPTO_PORT = 'B';
 // char CLAW_PORT = 'C';
-char WEDGE_PORT = 'F'; // NOT IN USE
+char WEDGE_PORT = 'A'; // NOT IN USE
 char PISTON_BOOST_PORT = 'B';
 
 // pros::Rotation back_rot(6, false);
@@ -106,6 +108,8 @@ pros::Distance distance_sensor(DISTANCE_SENSOR_PORT);
 // ------------------------------------------------------------------------------------------------------
 pros::ADIDigitalOut climb(CLIMB_PORT);
 pros::ADIDigitalOut wingF(WINGF_PORT);
+pros::ADIDigitalOut wingFR(WINGFR_PORT);
+pros::ADIDigitalOut wingFL(WINGFL_PORT);
 pros::ADIDigitalOut wingB(WINGB_PORT);
 // pros::ADIDigitalOut park(PARK_PORT);
 // pros::ADIDigitalOut grabber(GRABBER_PORT);

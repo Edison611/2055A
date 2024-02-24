@@ -152,7 +152,8 @@ bool currentWingsB = false;
 void op_wings() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
         currentWingsF = !currentWingsF;
-        wingF.set_value(currentWingsF);
+        wingFR.set_value(currentWingsF);
+        wingFL.set_value(currentWingsF);
     }
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
         currentWingsB = !currentWingsB;

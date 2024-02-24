@@ -318,19 +318,19 @@ void auton_skills() {
 }
 
 void sd() {
-    chassis.setPose(-50, -56, -46);
-    chassis.moveTo(-53, -53, -46, 1000);
-    wingB.set_value(true);
-    pros::delay(200);
-    chassis.moveTo(-48, -58, -70, 1000, false, false);
-    wingB.set_value(false);
-    pros::delay(200);
-    chassis.moveTo(-40, -58, -90, 1200, false, false);
+    chassis.setPose(-50, -56, 134);
+    chassis.moveTo(-53, -53, 134, 1000, false, false);
+    wingFR.set_value(true);
+    pros::delay(250);
+    chassis.moveTo(-48, -58, 110, 1000);
+    wingFR.set_value(false);
+    pros::delay(250);
+    chassis.moveTo(-40, -58, 90, 1200, false, false);
     turnTo(16);
 
     setIntake(true);
     chassis.moveTo(-26, -8, 16, 1300);
-    pros::delay(250);
+    pros::delay(500);
     chassis.moveTo(-40, -58, -90, 1200, false, false);
     turnTo(90);
     setIntake(-127);

@@ -14,10 +14,12 @@
 extern pros::Motor driveLB;
 extern pros::Motor driveLM;
 extern pros::Motor driveLF;
+extern pros::Motor driveLH;
 
 extern pros::Motor driveRB;
 extern pros::Motor driveRM;
 extern pros::Motor driveRF;
+extern pros::Motor driveRH;
 
 extern pros::MotorGroup leftMotors;
 extern pros::MotorGroup rightMotors;
@@ -35,9 +37,10 @@ extern pros::Optical color_sensor;
 extern pros::ADIAnalogIn line_sensor;
 extern pros::Distance distance_sensor;
 
-
 extern pros::ADIDigitalOut climb;
 extern pros::ADIDigitalOut wingF;
+extern pros::ADIDigitalOut wingFR;
+extern pros::ADIDigitalOut wingFL;
 extern pros::ADIDigitalOut wingB;
 extern pros::ADIDigitalOut grabber;
 extern pros::ADIDigitalOut drivePTO;

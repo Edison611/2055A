@@ -131,8 +131,8 @@ void setIntakeMotors() {
 // ------------------------------------------------------------------------------------------------------
 
 void ActivateWings(bool dir) {
-    wingF.set_value(false);
-    // wingL.set_value(dir);
+    wingFR.set_value(dir);
+    wingFL.set_value(dir);
 }
 
 void setWings(bool right, bool left, int delay) {
@@ -152,7 +152,8 @@ bool currentWingsB = false;
 void op_wings() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
         currentWingsF = !currentWingsF;
-        wingF.set_value(currentWingsF);
+        wingFR.set_value(currentWingsF);
+        wingFL.set_value(currentWingsF);
     }
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
         currentWingsB = !currentWingsB;
@@ -206,6 +207,7 @@ void op_climb() {
         climb.set_value(currentClimb);
     }
 }
+
 
 // ------------------------------------------------------------------------------------------------------
 // WINGS

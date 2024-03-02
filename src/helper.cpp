@@ -48,6 +48,17 @@ void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
     
 }
 
+void liftRam() {
+    while (abs(int(inertial_sensor.get_roll())) <= 7 && abs(int(inertial_sensor.get_pitch())) <= 7) {
+        setDrive(500, 500);
+    }
+    setDrive(0, 0);
+    while (abs(int(inertial_sensor.get_roll())) >= 1 || abs(int(inertial_sensor.get_pitch())) >= 1) {
+        setDrive(-500, -500);
+    }
+    setDrive(0, 0);
+}
+
 // NEW FEATURE
 void driverAssist() {
     lemlib::Pose pose = chassis.getPose();
@@ -86,7 +97,7 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = 127) {
     double x_new = inches * sin(pose.theta);
     double y_new = inches * cos(pose.theta);
     bool dir = inches > 0;
-    chassis.moveTo(pose.x + x_new, pose.y + y_new, pose.theta, timeout, false, dir, 0, 0.6, maxSpeed);
+    // chassis.moveTo(pose.x + x_new, pose.y + y_new, pose.theta, timeout, false, dir, 0, 0.6, maxSpeed);
 }
 
 /**
@@ -98,9 +109,9 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = 127) {
 void turnTo(double degrees, int maxSpeed, int timeout, bool reversed, bool async) {
     lemlib::Pose pose = chassis.getPose();
     double rad = degrees * 3.14159265358979323846 / 180;
-    double x_offset = sin(rad) * 30;
-    double y_offset = cos(rad) * 30;
-    chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout, async, reversed, maxSpeed);
+    double x_offset = sin(rad) * 200;
+    double y_offset = cos(rad) * 200;
+    chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout, reversed, maxSpeed, async);
 }
 
 void turnToDir(int targetAngle, bool right, int maxSpeed, int timeout) {
@@ -198,7 +209,7 @@ void turnToDir(int targetAngle, bool right, int maxSpeed, int timeout) {
  */
 void vector(double x, double y, bool reversed, int maxSpeed, int turnTimout, int driveTimeout) {
     chassis.turnTo(x, y, turnTimout, false, reversed);
-    chassis.moveTo(x, y, chassis.getPose().theta, driveTimeout, false, !reversed, 0, 0.6, maxSpeed);
+    // chassis.moveTo(x, y, chassis.getPose().theta, driveTimeout, false, !reversed, 0, 0.6, maxSpeed);
 }
 
 

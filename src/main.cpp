@@ -122,44 +122,9 @@ void competition_initialize() {}
     //         auton_skills();
     //         break;
     // } 
-    //offense_auton_safe(); // SLOT 4
-    // auton_skills(); // SLOT 2
-    // offense_auton_midrush_new(); // SLOT 5
-    // offense_last_min(); // SLOT 6
-    // defense_last_min(); // SLOT 7
-    // defense_awp(); // SLOT 3
-    // defense_auton_elim(); // SLOT 5
-    //sd();
-    // defense_auton_max_potential(); // SLOT 8
-    // pid_test(); // SLOT 8
-    // matchloadp(); // SLOT 7
-    // def_botb(); // SLOT 8
-    //test_auton();
 
-    ////////////////////////////// PROVINCIALS
-    // def_botb(); // SLOT 1
-    so(); // SLOT 2
-    // SLOT 3
-    // offense_last_min(); // SLOT 4
+    auton_skills();
     
-
-    // if(selector::auton == 1){
-    // }
-    // if(selector::auton == 2){
-    // }
-    // if(selector::auton == 3){
-        
-    // }
-
-    // if(selector::auton == -1){
-    // }
-    // if(selector::auton == -2){
-    // }
-
-    // if (selector::auton == 0) {
-    // }
-
-    //auton_skills(); // SLOT 7
 }
 
 /**

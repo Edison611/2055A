@@ -50,7 +50,7 @@ extern pros::ADIDigitalOut pistonBoost;
 
 extern pros::Controller controller;
 
-extern lemlib::ChassisController_t lateralController;
+extern lemlib::ControllerSettings lateralController;
 extern lemlib::Chassis chassis;
 
 extern pros::Rotation kicker_rot;

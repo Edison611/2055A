@@ -35,7 +35,8 @@ extern pros::IMU inertial_sensor;
 extern pros::Optical color_sensor;
 // extern pros::ADIDigitalIn intake_limit_switch;
 extern pros::ADIAnalogIn line_sensor;
-extern pros::Distance distance_sensor;
+extern pros::Distance distance_sensorL;
+extern pros::Distance distance_sensorR;
 
 extern pros::ADIDigitalOut climb;
 extern pros::ADIDigitalOut wingF;

@@ -48,15 +48,51 @@ void turnToNet(bool reversed=false, bool red=true, int delay=1000) {
     
 }
 
-void liftRam() {
+void liftRam(int timeout) {
+    int time = 0;
     while (abs(int(inertial_sensor.get_roll())) <= 7 && abs(int(inertial_sensor.get_pitch())) <= 7) {
-        setDrive(500, 500);
+        if (time >= timeout) {
+            break;
+        }
+        setDrive(600, 600);
+        pros::delay(10);
+        time += 10;
     }
     setDrive(0, 0);
     while (abs(int(inertial_sensor.get_roll())) >= 1 || abs(int(inertial_sensor.get_pitch())) >= 1) {
-        setDrive(-500, -500);
+        if (time >= timeout) {
+            break;
+        }
+        setDrive(-150, -150);
+        pros::delay(10);
+        time += 10;
     }
     setDrive(0, 0);
+}
+
+void secondRam(int backUpInches, int forwardMillis, int backUpTimeout, bool side) {
+    if (side == false) {
+        if (chassis.getPose().x < 0){
+            chassis.moveToPose(chassis.getPose().x + backUpInches, chassis.getPose().y, chassis.getPose().theta, backUpTimeout);
+        }
+        else {
+            chassis.moveToPose(chassis.getPose().x - backUpInches, chassis.getPose().y, chassis.getPose().theta, backUpTimeout);
+        }
+        setDrive(600, 600);
+        pros::delay(forwardMillis);
+        setDrive(0, 0);
+    }
+    else {
+        if (chassis.getPose().y < 0){
+            chassis.moveToPose(chassis.getPose().x, chassis.getPose().y - backUpInches, chassis.getPose().theta, backUpTimeout);
+        }
+        else {
+            chassis.moveToPose(chassis.getPose().x, chassis.getPose().y + backUpInches, chassis.getPose().theta, backUpTimeout);
+        }
+        setDrive(600, 600);
+        pros::delay(forwardMillis);
+        setDrive(0, 0);
+    }
 }
 
 // NEW FEATURE
@@ -97,7 +133,7 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = 127) {
     double x_new = inches * sin(pose.theta);
     double y_new = inches * cos(pose.theta);
     bool dir = inches > 0;
-    // chassis.moveTo(pose.x + x_new, pose.y + y_new, pose.theta, timeout, false, dir, 0, 0.6, maxSpeed);
+    chassis.moveToPose(pose.x + x_new, pose.y + y_new, pose.theta, timeout, {.forwards = dir, .maxSpeed = maxSpeed});
 }
 
 /**
@@ -106,12 +142,12 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = 127) {
  * @param degrees 
  * @param timeout 
  */
-void turnTo(double degrees, int maxSpeed, int timeout, bool reversed, bool async) {
+void turnTo(double degrees, int maxSpeed, int timeout, bool forwards, bool async) {
     lemlib::Pose pose = chassis.getPose();
     double rad = degrees * 3.14159265358979323846 / 180;
-    double x_offset = sin(rad) * 200;
-    double y_offset = cos(rad) * 200;
-    chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout, reversed, maxSpeed, async);
+    double x_offset = sin(rad) * 100;
+    double y_offset = cos(rad) * 100;
+    chassis.turnTo(pose.x+x_offset, pose.y+y_offset, timeout, forwards, maxSpeed, async);
 }
 
 void turnToDir(int targetAngle, bool right, int maxSpeed, int timeout) {
@@ -264,51 +300,41 @@ void setBrake(std::string mode) {
  * @brief Resets the position of the robot to a set distance 
  *        from the wall using the distance sensor
  */
-void wallReset(std::string wall) {
+void wallReset(std::string wall, std::string sensor) {
     double Pi = 3.14159265358979323846;
-    double inches = distance_sensor.get() * 0.0393701;
-    double distance = inches * cos((Pi/2)-(chassis.getPose().theta*Pi/180));
-    if (wall == "top") {
+    if (wall == "top" && sensor == "left") {
+        double inches = distance_sensorL.get() * 0.0393701;
+        double distance = inches * cos((Pi/2)-(chassis.getPose().theta*Pi/180));
         chassis.setPose(chassis.getPose().x, 71 - (distance + 4 * cos((Pi/2)-(chassis.getPose().theta*Pi/180))), chassis.getPose().theta);
     }
-    else if (wall == "bottom") {
+    else if (wall == "top" && sensor == "right") {
+        double inches = distance_sensorR.get() * 0.0393701;
+        double distance = inches * cos((Pi/2)-(chassis.getPose().theta*Pi/180));
+        chassis.setPose(chassis.getPose().x, 71 - (distance + 4 * cos((Pi/2)-(chassis.getPose().theta*Pi/180))), chassis.getPose().theta);
+    }
+    else if (wall == "bottom" && sensor == "left") {
+        double inches = distance_sensorL.get() * 0.0393701;
+        double distance = inches * cos((Pi/2)-(chassis.getPose().theta*Pi/180));
         chassis.setPose(chassis.getPose().x, -71 + (distance + 4 * cos((Pi/2)-(chassis.getPose().theta*Pi/180))), chassis.getPose().theta);
     }
+    else if (wall == "bottom" && sensor == "right"){
+        double inches = distance_sensorR.get() * 0.0393701;
+        double distance = inches * cos((Pi/2)-(chassis.getPose().theta*Pi/180));
+        chassis.setPose(chassis.getPose().x, -72 + (distance + 4 * cos((Pi/2)-(chassis.getPose().theta*Pi/180))), chassis.getPose().theta);
+    }
+    else if (wall == "right" && sensor == "right") {
+        double inches = distance_sensorR.get() * 0.0393701;
+        double distance = inches * cos((Pi/2)-(chassis.getPose().theta*Pi/180));
+        chassis.setPose(71 - (distance + 4 * cos((Pi/2)-(chassis.getPose().theta*Pi/180))), chassis.getPose().y, chassis.getPose().theta);
+    }
+    else if (wall == "right" && sensor == "left") {
+        double inches = distance_sensorL.get() * 0.0393701;
+        double distance = inches * cos((Pi/2)-(chassis.getPose().theta*Pi/180));
+        chassis.setPose(71 - (distance + 4 * cos((Pi/2)-(chassis.getPose().theta*Pi/180))), chassis.getPose().y, chassis.getPose().theta);
+    }
+
 }
 
-/**
- * @brief Detects whether there is a triball in front of the color sensor
- * 
- * @param triball the triball objectx
- * @return true when a triball is detected (when rgb values are all less than 50)
- * @return false all other cases
- */
-bool GoToTriball(pros::vision_object_s_t triball) {
-    int center = 158;
-    bool pause = false;
-    double x = triball.x_middle_coord;
-    double width = triball.width;
-
-    if ((x > (center - 5)) || (x < (center + 5))) {
-        setDrive(50, 50);
-        if (width > 200) {
-            setDrive(0, 0);
-            pause = true;
-            return true;
-        }
-    }
-
-    else if (x < center || pause == true) {
-        setDrive(50, -50);
-    }
-
-    else if (x > center || pause == true) {
-        setDrive(-50, 50);
-    }
-
-    return false;
-
-}
 
 std::string currentDateTime() {
     time_t now = time(0);
@@ -320,43 +346,4 @@ std::string currentDateTime() {
     strftime(buf, sizeof(buf), "%Y-%m-%d-%X", &tstruct);
 
     return buf;
-}
-
-/**
- * @brief Theoretically uses vision sensor to turn to where there is a triball and drive there (NOT TESTED)
- * 
- */
-void triballVision() {
-    // Defining Triball Signatures
-    // pros::vision_signature_s_t TRIBALL_SIG = pros::Vision::signature_from_utility(2, -6223, -4453, -5338, -6399, -4153, -5276, 3.000, 0);
-    // vision_sensor.set_signature(1, &TRIBALL_SIG); 
-
-
-    // int center = 158;
-    // chassis.calibrate();
-
-    // while (true) {
-    //     vision_sensor.clear_led();
-    //     pros::vision_object_s_t rtn = vision_sensor.get_by_sig(0, 1);   
-
-    //     // Vision sensor values
-    //     int count = vision_sensor.get_object_count();
-    //     int x = rtn.x_middle_coord;
-    //     int y = rtn.y_middle_coord;
-    //     // double angle = rtn.angle;
-        
-    //     pros::lcd::set_text(1, "Count: " + std::to_string(count));
-    //     pros::lcd::set_text(2, "Triball X, Y: " + std::to_string(x) + ", " + std::to_string(y));
-    //     // pros::lcd::set_text(3, "Triball angle: " + std::to_string(angle));
-    //     pros::lcd::set_text(4, "Triball width: " + std::to_string(rtn.width));
-
-    //     if (count >= 1) {
-    //         bool grabbed = GoToTriball(rtn);
-    //         if (grabbed == true) {
-
-    //         }
-    //     }
-
-    //     pros::delay(20);
-    // }
 }

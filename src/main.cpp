@@ -142,7 +142,7 @@ void competition_initialize() {}
  */
 
 void opcontrol() {
-    chassis.setPose(0, 0, 0);
+    // chassis.setPose(0, 0, 0);
 
     // driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
 	// driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);

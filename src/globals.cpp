@@ -44,7 +44,8 @@ char CATA_LIMIT_SWITCH_PORT = 'E'; // RENAME TO BUMPER
 int INERTIAL_SENSOR_PORT = 15;
 int COLOR_SENSOR_PORT = 25;
 // char INTAKE_LIMIT_SWITCH_PORT = 'E';
-int DISTANCE_SENSOR_PORT = 10;
+int DISTANCE_SENSOR_PORT_LEFT = 10;
+int DISTANCE_SENSOR_PORT_RIGHT = 14;
 
 char CLIMB_PORT = 'F';
 char WINGF_PORT = 'C';
@@ -59,7 +60,7 @@ char WEDGE_PORT = 'A'; // NOT IN USE
 char PISTON_BOOST_PORT = 'B';
 
 // pros::Rotation back_rot(6, false);
-pros::Rotation kicker_rot(14, false);
+pros::Rotation kicker_rot(13, false);
 
 // lemlib::TrackingWheel back_tracking_wheel(&back_rot, 2.75, -5.75);
 
@@ -101,7 +102,8 @@ pros::IMU inertial_sensor(INERTIAL_SENSOR_PORT);
 pros::Optical color_sensor(COLOR_SENSOR_PORT);
 // pros::ADIDigitalIn intake_limit_switch(INTAKE_LIMIT_SWITCH_PORT);
 // pros::ADIAnalogIn line_sensor(LINE_SENSOR_PORT);
-pros::Distance distance_sensor(DISTANCE_SENSOR_PORT);
+pros::Distance distance_sensorL(DISTANCE_SENSOR_PORT_LEFT);
+pros::Distance distance_sensorR(DISTANCE_SENSOR_PORT_RIGHT);
 
 // ------------------------------------------------------------------------------------------------------
 // Pneumatics

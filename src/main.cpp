@@ -123,7 +123,8 @@ void competition_initialize() {}
     //         break;
     // } 
 
-    auton_skills();
+    // auton_skills();
+    offense_auton_max_potential();
     
 }
 

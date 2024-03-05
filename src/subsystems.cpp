@@ -144,7 +144,15 @@ void setWings(bool right, bool left, int delay) {
 }
 
 bool currentWingsF = false;
+bool currentWingFR = false;
 bool currentWingsB = false;
+
+void rightWing() {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+        currentWingFR = !currentWingFR;
+        wingFR.set_value(currentWingFR);
+    }
+}
 
 /**
  * @brief Controls the wings of the bot, opens if it was closed, closes if it is open on button press.

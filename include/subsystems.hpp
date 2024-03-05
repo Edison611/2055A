@@ -27,6 +27,7 @@ void SetGrabber();
 
 // Wings
 void ActivateWings(bool dir);
+void rightWing();
 void setWings(bool right, bool left, int delay);
 
 void op_wings();

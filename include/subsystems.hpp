@@ -26,6 +26,7 @@ void ram(int time, int dir);
 
 // Wings
 void ActivateWings(bool dir);
+void rightWing();
 void setWings(bool right, bool left, int delay);
 
 void op_wings();

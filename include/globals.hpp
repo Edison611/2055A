@@ -45,9 +45,8 @@ extern pros::ADIDigitalOut wingFL;
 extern pros::ADIDigitalOut wingB;
 extern pros::ADIDigitalOut grabber;
 extern pros::ADIDigitalOut drivePTO;
+extern pros::ADIDigitalOut intake_up;
 extern pros::ADIDigitalOut claw;
-extern pros::ADIDigitalOut wedge;
-extern pros::ADIDigitalOut pistonBoost;
 
 extern pros::Controller controller;
 

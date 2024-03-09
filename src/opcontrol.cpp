@@ -79,16 +79,18 @@ void my_opcontrol() {
 		// controller.clear();
 		// pros::delay(200);
 		// controller.set_text(2, 5, distance_sensor.get() * 0.0393701);
-		driverAssist();
+		// driverAssist();
 		setIntakeMotors();
+		op_intake();
 		// setDriveMotors();
 		op_wings();
 	    int x = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
     	int y = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 		chassis.arcade(y, x, 1);
 
-		setCatapultMotors();
-		op_climb();
+		// setCatapultMotors();
+		// op_climb();
+
 		// if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y) == 1) {
 		// 	setPTO(0, 0, 0, 0);
 		// }

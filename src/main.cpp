@@ -124,7 +124,7 @@ void competition_initialize() {}
     // } 
 
     // auton_skills();
-    offense_auton_max_potential();
+    // offense_auton_max_potential();
     
 }
 
@@ -145,17 +145,17 @@ void competition_initialize() {}
 void opcontrol() {
     // chassis.setPose(0, 0, 0);
 
-    // driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
-	// driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveLH.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
+	driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveLH.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    // driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
-	// driveRM.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveRH.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
+	driveRM.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveRH.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    // pid_test();
+    pid_test();
 
     driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
 	driveLM.set_brake_mode(MOTOR_BRAKE_COAST);

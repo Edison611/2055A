@@ -143,7 +143,7 @@ lemlib::Drivetrain drivetrain {
 lemlib::ControllerSettings linearController {
     120, // kP    //80
     0, // KI
-    750, // kD May lower in the future      //800
+    900, // kD May lower in the future      //800
     0, // anti windup
     1, // smallErrorRange
     300, // smallErrorTimeout
@@ -154,9 +154,9 @@ lemlib::ControllerSettings linearController {
  
 // turning PID
 lemlib::ControllerSettings angularController {
-    2.6,
+    2.4,
     0, // kI
-    16,
+    5,
     3, // anti windup
     1, // smallErrorRange
     100, // smallErrorTimeout

@@ -100,7 +100,7 @@ void shoot() {
 
 bool currentPTO = false;
 void setDrivePTO() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
         currentPTO = !currentPTO;
         drivePTO.set_value(currentPTO);
     }
@@ -124,7 +124,7 @@ void setIntakeMotors() {
 bool currentIntake = false;
 
 void op_intake() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
         currentIntake = !currentIntake;
         intake_up.set_value(currentIntake);
     }

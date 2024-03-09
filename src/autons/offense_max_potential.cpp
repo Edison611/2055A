@@ -10,16 +10,6 @@
 
 
 void offense_auton_max_potential() {
-    // Initialize settings
-    driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
-	driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveLH.set_brake_mode(MOTOR_BRAKE_HOLD);
-
-    driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
-	driveRM.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveRH.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     // Tri-ball 1
     chassis.setPose(-41, 57, 150);

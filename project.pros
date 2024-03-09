@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "MPO",
+    "project_name": "PID Test",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -365,7 +365,7 @@
     "upload_options": {
       "description": "N/A",
       "icon": "X",
-      "slot": 2
+      "slot": 3
     }
   }
 }

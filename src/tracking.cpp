@@ -110,65 +110,6 @@ void deploy() {
 }
 
 /**
- * @brief Detects triball using Color Sensor
- * 
- *
- * @return true when the rgb values are less than 50
- * @return false in all other cases
- */
-bool ball_detection() {
-    // double hue = color_sensor.get_hue();
-    pros::c::optical_rgb_s_t rgb = color_sensor.get_rgb();
-    // pros::lcd::set_text(2, "R: " + std::to_string(int(rgb.red)) + ", G: " + std::to_string(int(rgb.green)) + ", B: " + std::to_string(int(rgb.blue)));
-    // pros::lcd::set_text(3, "Hue: " + std::to_string(hue));
-    if (rgb.red < 50 && rgb.green < 50 && rgb.blue < 50) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-/**
- * @brief Detects triball using Distance Sensor
- * 
- *
- * @return true when the size is less than 10
- * @return false in all other cases
- */
-bool cata_ball_detection() {
-    // int val = line_sensor1.get_value();
-    int size = distance_sensor.get_object_size();
-    int dist = distance_sensor.get();
-    // pros::lcd::set_text(2, "Value: " + std::to_string(val));
-    pros::lcd::set_text(2, "Distance: " + std::to_string(dist));
-    pros::lcd::set_text(3, "Size: " + std::to_string(size));
-
-    if (dist < 30) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-/**
- * @brief Detects triball using line sensor
- * 
- * @return true 
- * @return false 
- */
-bool ball_detection_line() {
-    int val = line_sensor.get_value();
-    if (val < 4000 && val > 2000) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-/**
  * @brief variable that toggles between true or false
  * 
  */

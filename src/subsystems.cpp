@@ -93,22 +93,19 @@ void kickerTask() {
     }
 }
 
-// false
-// true
-bool pistonValue = false;
-
-void pistonBoostTask() {
-    while (true) {
-        if (kicker_rot.get_velocity() > 100) pistonBoost.set_value(true);
-        if (kicker_rot.get_velocity() < -100) pistonBoost.set_value(false);
-        pros::delay(20);
-    }
-}
 
 void shoot() {
     cata_shoot = true;
 }
 
+bool currentPTO = false;
+void setDrivePTO() {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+        currentPTO = !currentPTO;
+        drivePTO.set_value(currentPTO);
+    }
+    
+}
 
 
 // ------------------------------------------------------------------------------------------------------
@@ -124,7 +121,16 @@ void setIntakeMotors() {
     setIntake(intake_power);    
 }
 
-// 50
+bool currentIntake = false;
+
+void op_intake() {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
+        currentIntake = !currentIntake;
+        intake_up.set_value(currentIntake);
+    }
+}
+
+
 
 // ------------------------------------------------------------------------------------------------------
 // WINGS
@@ -163,10 +169,10 @@ void op_wings() {
         wingFR.set_value(currentWingsF);
         wingFL.set_value(currentWingsF);
     }
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
-        currentWingsB = !currentWingsB;
-        wingB.set_value(currentWingsB);
-    }
+    // if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+    //     currentWingsB = !currentWingsB;
+    //     wingB.set_value(currentWingsB);
+    // }
 }
 
 /**
@@ -179,28 +185,6 @@ void ram(int time, int dir=1) {
 }
 
 
-//bool currentClaw = false;
-
-/**
- * @brief Controls the grabber of the bot, drops if it was up, pulls it up if it is dropped on button press.
- */
-
-// void op_claw() {
-//     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
-//         currentClaw = !currentClaw;
-//         claw.set_value(currentClaw);
-
-//         // if (currentClaw == false) {
-//         //     currentClaw = true;
-//         //     claw.set_value(true);
-//         // }
-        
-//         // else if (currentClaw == true) {
-//         //     currentClaw = false;
-//         //     claw.set_value(false);
-//         // }
-//     }
-// }
 
 
 bool currentClimb = false;
@@ -216,14 +200,3 @@ void op_climb() {
     }
 }
 
-
-// ------------------------------------------------------------------------------------------------------
-// WINGS
-// ------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-// ------------------------------------------------------------------------------------------------------

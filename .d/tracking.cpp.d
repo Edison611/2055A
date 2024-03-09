@@ -79,7 +79,8 @@ bin/tracking.cpp.o: src/tracking.cpp include/lemlib/pose.hpp \
  include/globals.hpp include/lemlib/chassis/chassis.hpp \
  include/pros/motors.hpp include/pros/imu.hpp include/lemlib/asset.hpp \
  include/lemlib/chassis/trackingWheel.hpp include/pros/adi.hpp \
- include/pros/rotation.hpp include/lemlib/logger.hpp include/drive.hpp \
+ include/pros/rotation.hpp include/lemlib/pid.hpp \
+ include/lemlib/exitcondition.hpp include/drive.hpp \
  include/subsystems.hpp include/opcontrol.hpp include/auton.hpp \
  include/tracking.hpp include/pure-pursuit.hpp include/helper.hpp \
  include/test-functions.hpp include/selection.h include/pros/llemu.hpp
@@ -245,7 +246,8 @@ include/lemlib/asset.hpp:
 include/lemlib/chassis/trackingWheel.hpp:
 include/pros/adi.hpp:
 include/pros/rotation.hpp:
-include/lemlib/logger.hpp:
+include/lemlib/pid.hpp:
+include/lemlib/exitcondition.hpp:
 include/drive.hpp:
 include/subsystems.hpp:
 include/opcontrol.hpp:

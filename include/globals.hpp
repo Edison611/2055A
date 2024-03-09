@@ -35,7 +35,8 @@ extern pros::IMU inertial_sensor;
 extern pros::Optical color_sensor;
 // extern pros::ADIDigitalIn intake_limit_switch;
 extern pros::ADIAnalogIn line_sensor;
-extern pros::Distance distance_sensor;
+extern pros::Distance distance_sensorL;
+extern pros::Distance distance_sensorR;
 
 extern pros::ADIDigitalOut climb;
 extern pros::ADIDigitalOut wingF;
@@ -44,13 +45,12 @@ extern pros::ADIDigitalOut wingFL;
 extern pros::ADIDigitalOut wingB;
 extern pros::ADIDigitalOut grabber;
 extern pros::ADIDigitalOut drivePTO;
+extern pros::ADIDigitalOut intake_up;
 extern pros::ADIDigitalOut claw;
-extern pros::ADIDigitalOut wedge;
-extern pros::ADIDigitalOut pistonBoost;
 
 extern pros::Controller controller;
 
-extern lemlib::ChassisController_t lateralController;
+extern lemlib::ControllerSettings lateralController;
 extern lemlib::Chassis chassis;
 
 extern pros::Rotation kicker_rot;

@@ -49,10 +49,8 @@ int DISTANCE_SENSOR_PORT_RIGHT = 14;
 
 char INTAKE_PORT = 'G';
 char CLIMB_PORT = 'F';
-char WINGF_PORT = 'C';
-char WINGFR_PORT = 'J';
+char WINGFR_PORT = 'F';
 char WINGFL_PORT = 'E'; 
-char WINGB_PORT = 'D';
 // char PARK_PORT = 'H';
 // char GRABBER_PORT = 'D';
 char DRIVEPTO_PORT = 'H';
@@ -111,10 +109,8 @@ pros::Distance distance_sensorR(DISTANCE_SENSOR_PORT_RIGHT);
 // ------------------------------------------------------------------------------------------------------
 pros::ADIDigitalOut intake_up(INTAKE_PORT);
 pros::ADIDigitalOut climb(CLIMB_PORT);
-pros::ADIDigitalOut wingF(WINGF_PORT);
 pros::ADIDigitalOut wingFR(WINGFR_PORT);
 pros::ADIDigitalOut wingFL(WINGFL_PORT);
-pros::ADIDigitalOut wingB(WINGB_PORT);
 // pros::ADIDigitalOut park(PARK_PORT);
 pros::ADIDigitalOut drivePTO(DRIVEPTO_PORT);
 
@@ -141,9 +137,9 @@ lemlib::Drivetrain drivetrain {
 
 // forward/backward PID
 lemlib::ControllerSettings linearController {
-    120, // kP    //80
+    110, // kP    //80
     0, // KI
-    900, // kD May lower in the future      //800
+    700, // kD May lower in the future      //800
     0, // anti windup
     1, // smallErrorRange
     300, // smallErrorTimeout
@@ -154,9 +150,9 @@ lemlib::ControllerSettings linearController {
  
 // turning PID
 lemlib::ControllerSettings angularController {
-    2.4,
+    2.1,
     0, // kI
-    5,
+    12,
     3, // anti windup
     1, // smallErrorRange
     100, // smallErrorTimeout

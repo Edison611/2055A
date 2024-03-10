@@ -9,5 +9,22 @@
 #include <sys/_intsup.h>
 
 void defense_awp() {
-    
+    chassis.setPose(-48, -56, 134);
+    setIntake(127);
+    chassis.moveToPose(-53, -51, 134, 1200, {.forwards=false});
+    chassis.waitUntilDone();
+    wingFR.set_value(true);
+    pros::delay(250);
+    chassis.moveToPose(-50, -54, 134, 1200);
+    chassis.waitUntilDone();
+    pros::delay(300);
+    turnTo(100);
+    pros::delay(250);
+    wingFR.set_value(false);
+    pros::delay(250);
+    chassis.moveToPose(-11.5, -61, 90, 4100, {.maxSpeed=90});
+    setIntake(-127);
+    chassis.waitUntilDone();
+    pros::delay(500);
+    setIntake(0);
 }

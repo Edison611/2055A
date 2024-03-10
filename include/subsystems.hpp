@@ -2,6 +2,7 @@
 // Intake
 void setIntake(int power);
 void setIntakeMotors();
+extern bool currentIntake;
 void op_intake();
 
 // Catapult

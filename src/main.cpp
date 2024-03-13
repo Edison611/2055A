@@ -127,8 +127,6 @@ void competition_initialize() {}
     // offense_auton_safe(); //SLOT 3
     // defense_awp(); // SLOT 4
     offense_auton_max_potential(); // SLOT 5
-
-    
 }
 
 /**

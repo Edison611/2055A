@@ -34,3 +34,7 @@ void op_wings();
 
 // Climb
 void op_climb();
+
+extern bool currentEndgame;
+void op_endgame();
+

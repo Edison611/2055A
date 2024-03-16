@@ -102,12 +102,12 @@ void driverAssist() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)) {
         if (pose.y > 25 && pose.x < 0) {
         turnTo(107, 127, 800);
-        wingB.set_value(true);
+        // wingB.set_value(true);
         }
 
         if (pose.y < -25 && pose.x < 0) {
         turnTo(73, 127, 800);
-        wingB.set_value(true);
+        // wingB.set_value(true);
         }
 
         if (pose.y > 25 && pose.x > 0) {

@@ -50,8 +50,8 @@ int DISTANCE_SENSOR_PORT_RIGHT = 14;
 char INTAKE_PORT = 'G';
 char CLIMB_PORT = 'F';
 char WINGFR_PORT = 'F';
-char WINGFL_PORT = 'E'; 
-// char PARK_PORT = 'H';
+char WINGFL_PORT = 'A'; 
+char ENDGAME_PORT = 'E';
 // char GRABBER_PORT = 'D';
 char DRIVEPTO_PORT = 'H';
 // char CLAW_PORT = 'C';
@@ -111,7 +111,7 @@ pros::ADIDigitalOut intake_up(INTAKE_PORT);
 pros::ADIDigitalOut climb(CLIMB_PORT);
 pros::ADIDigitalOut wingFR(WINGFR_PORT);
 pros::ADIDigitalOut wingFL(WINGFL_PORT);
-// pros::ADIDigitalOut park(PARK_PORT);
+pros::ADIDigitalOut endgame(ENDGAME_PORT);
 pros::ADIDigitalOut drivePTO(DRIVEPTO_PORT);
 
 // ------------------------------------------------------------------------------------------------------

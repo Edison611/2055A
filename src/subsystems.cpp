@@ -142,10 +142,10 @@ void ActivateWings(bool dir) {
 }
 
 void setWings(bool right, bool left, int delay) {
-    wingF.set_value(__bool_true_false_are_defined);
+    // wingF.set_value(__bool_true_false_are_defined);
     // wingL.set_value(left);
     pros::delay(delay);
-    wingF.set_value(false);
+    // wingF.set_value(false);
     // wingL.set_value(false);
 }
 
@@ -197,6 +197,19 @@ void op_climb() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
         currentClimb = !currentClimb;
         climb.set_value(currentClimb);
+    }
+}
+
+bool currentEndgame = false;
+
+/**
+ * @brief Controls the blocker of the bot. On button press, it pulls it up if it is dropped, and drops it if it was up.
+ */
+
+void op_endgame() {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+        currentEndgame = !currentEndgame;
+        endgame.set_value(currentEndgame);
     }
 }
 

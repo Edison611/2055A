@@ -2,6 +2,9 @@
 - For team members, clone the repository locally and pull the main branch
 - An alternative is to go to [Releases](https://github.com/Edison611/2055A/releases) and install the most up to date version
 
+# ROUTE PLACEMENTS
+(Will add in the future)
+
 # JUDGING
 Below are some of the features that can be mentioned for programming when judging:
 
@@ -29,9 +32,6 @@ Below are some of the features that can be mentioned for programming when judgin
 - We use Github to manage all of our code with different branches to organize different features on the robot (e.g One branch for a brain display, another branch for testing odometry, another one for pure pursuit). At the end, we can combine all of these branches for our finalized code
 - We can also record the issues that we face, so that all members are aware of them and can think of solutions.
 - We also use Liveshare (VsCode Extension) to directly share the code during meetings where all members will can directly edit the code on different devices. 
-
-## Solo Autonomous Win Point:
-- Our robot is designed to be able to get the autonomous win point by itself by shooting the alliance triball across the field into the net, picking up the triball in the corner, and also touching the pole
 
 ## Autonomous Coding Process:
 - The first step is to find a possible route that is able to perform the tasks required in autonomous
@@ -62,3 +62,6 @@ Below are some of the features that can be mentioned for programming when judgin
 
 ## Distance Sensor:
 - Detects if a triball is placed in the match load position, so that it can shoot automatically for matchloads after a triball is placed. This makes it easier for the driver as they don't have to keep clicking a button over and over, and it would be faster for the person placing the triball on the bot as there is less human error involved.
+
+## Solo Autonomous Win Point:
+- Our robot is designed to be able to get the autonomous win point by itself by shooting the alliance triball across the field into the net, picking up the triball in the corner, and also touching the pole

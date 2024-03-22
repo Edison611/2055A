@@ -1,4 +1,5 @@
 #include "lemlib/chassis/chassis.hpp"
+#include "EZ-Template/drive/drive.hpp"
 #include "pros/adi.hpp"
 #include "pros/distance.hpp"
 #include "pros/imu.hpp"
@@ -51,3 +52,5 @@ extern lemlib::ControllerSettings lateralController;
 extern lemlib::Chassis chassis;
 
 extern pros::Rotation kicker_rot;
+
+extern ez::Drive ezChassis;

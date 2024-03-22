@@ -84,6 +84,7 @@ void opcontrol(void);
 #include "helper.hpp"
 #include "test-functions.hpp"
 #include "selection.h"
+#include "settings.hpp"
 #endif
 
 #endif  // _PROS_MAIN_H_

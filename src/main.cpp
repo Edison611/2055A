@@ -14,9 +14,10 @@
 #include "pros/vision.h"
 #include <string>
 
-
 void initialize() {
 	pros::lcd::initialize();
+    default_constants();
+    ezChassis.initialize();
 
     chassis.calibrate();
 
@@ -126,7 +127,16 @@ void competition_initialize() {}
     // auton_skills();
     // offense_auton_safe(); //SLOT 3
     // defense_awp(); // SLOT 4
-    offense_auton_max_potential(); // SLOT 5
+    
+    ezChassis.pid_drive_set(24, 90, true);
+    ezChassis.pid_wait();
+
+    ezChassis.pid_drive_set(-12, 90, false);
+    ezChassis.pid_wait();
+
+    ezChassis.pid_drive_set(12, 90, false);
+    ezChassis.pid_wait();
+    // offense_auton_max_potential(); // SLOT 5
 }
 
 /**
@@ -185,4 +195,6 @@ void opcontrol() {
     intake_up.set_value(true);
     
     my_opcontrol();
+
+    
 }   

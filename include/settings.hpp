@@ -1,0 +1,1 @@
+void default_constants();

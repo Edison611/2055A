@@ -173,7 +173,7 @@ lemlib::OdomSensors sensors {
     &inertial_sensor // inertial sensor
 };
 
-// lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors);
+lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors);
 
 
 ez::Drive ezChassis (

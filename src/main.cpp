@@ -1,4 +1,5 @@
 #include "main.h"
+#include "EZ-Template/util.hpp"
 #include "lemlib/api.hpp"
 #include "lemlib/chassis/trackingWheel.hpp"
 #include "pros/adi.hpp"
@@ -20,6 +21,7 @@ void initialize() {
     ezChassis.initialize();
 
     chassis.calibrate();
+    ezChassis.drive_sensor_reset(); 
 
     driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
 	driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
@@ -128,14 +130,35 @@ void competition_initialize() {}
     // offense_auton_safe(); //SLOT 3
     // defense_awp(); // SLOT 4
     
-    ezChassis.pid_drive_set(24, 90, true);
+    ezChassis.pid_drive_set(60, 90, false);
     ezChassis.pid_wait();
+
+    ezChassis.pid_drive_set(0, 90, false);
+    pros::delay(2000);
 
     ezChassis.pid_drive_set(-12, 90, false);
     ezChassis.pid_wait();
+    
+    ezChassis.pid_drive_set(0, 90, false);
 
-    ezChassis.pid_drive_set(12, 90, false);
-    ezChassis.pid_wait();
+    // // pros::delay(4000);
+    // // allowContinue();
+
+    // ezChassis.pid_drive_set(-12, 90, false);
+    // ezChassis.pid_wait();
+    // // allowContinue();
+
+    // ezChassis.pid_drive_set(12, 90, false);
+    // ezChassis.pid_wait();
+
+    // ezChassis.pid_turn_set(90, 90, false);
+    // ezChassis.pid_wait();
+
+
+    // ezChassis.pid_turn_set(-90, 90, false);
+    // ezChassis.pid_wait();
+
+     
     // offense_auton_max_potential(); // SLOT 5
 }
 

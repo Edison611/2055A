@@ -1,8 +1,8 @@
 #include "main.h"
 
-const int DRIVE_SPEED = 110;  
-const int TURN_SPEED = 90;
-const int SWING_SPEED = 90;
+// const int DRIVE_SPEED = 110;  
+// const int TURN_SPEED = 90;
+// const int SWING_SPEED = 90;
 
 void default_constants() {
   ezChassis.pid_heading_constants_set(3, 0, 20);

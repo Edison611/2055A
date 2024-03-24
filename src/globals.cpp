@@ -179,17 +179,17 @@ lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors
 ez::Drive ezChassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is used as the sensor
-  {-MOTOR_LB, -MOTOR_LM, -MOTOR_LF, MOTOR_LH}
+  { -MOTOR_LM, -MOTOR_LB, -MOTOR_LF, MOTOR_LH}
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is used as the sensor
-  ,{MOTOR_RB, MOTOR_RM, MOTOR_RF, -MOTOR_RH}
+  ,{MOTOR_RM, MOTOR_RB, MOTOR_RF, -MOTOR_RH}
 
   // IMU Port
   ,INERTIAL_SENSOR_PORT
 
   // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
-  ,3.25
+  ,550
 
   // Cartridge RPM
   ,600

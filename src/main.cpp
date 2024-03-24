@@ -1,5 +1,5 @@
 #include "main.h"
-#include "EZ-Template/util.hpp"
+#include "EZ-Template/api.hpp"
 #include "lemlib/api.hpp"
 #include "lemlib/chassis/trackingWheel.hpp"
 #include "pros/adi.hpp"
@@ -21,7 +21,7 @@ void initialize() {
     ezChassis.initialize();
 
     chassis.calibrate();
-    ezChassis.drive_sensor_reset(); 
+    // ezChassis.drive_sensor_reset(); 
 
     driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
 	driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
@@ -41,6 +41,10 @@ void initialize() {
     // pros::Task log_task(log_data);
     // pros::Task kicker_task(kickerTask);
     pros::Task pos_track(screen);
+
+    // ezChassis.pid_targets_reset();
+    // ezChassis.drive_imu_reset(); 
+    // ezChassis.drive_sensor_reset(); 
     // pros::Task print_task(print_info);
     
 
@@ -78,16 +82,18 @@ void competition_initialize() {}
  * from where it left off.
  */
  void autonomous() {
+    
+    ezChassis.drive_brake_set(MOTOR_BRAKE_HOLD); 
 
-    driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
-	driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveLH.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
+	// driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveLH.set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
-	driveRM.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveRH.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
+	// driveRM.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
+    // driveRH.set_brake_mode(MOTOR_BRAKE_HOLD);
 
     // Auton selector
     // switch (selector::auton) {
@@ -126,20 +132,18 @@ void competition_initialize() {}
     //         break;
     // } 
 
-    // auton_skills();
-    // offense_auton_safe(); //SLOT 3
-    // defense_awp(); // SLOT 4
     
-    ezChassis.pid_drive_set(60, 90, false);
-    ezChassis.pid_wait();
-
-    ezChassis.pid_drive_set(0, 90, false);
-    pros::delay(2000);
-
-    ezChassis.pid_drive_set(-12, 90, false);
-    ezChassis.pid_wait();
     
-    ezChassis.pid_drive_set(0, 90, false);
+    // ezChassis.pid_drive_set(48, 127, false, true);
+    // ezChassis.pid_wait();
+
+    // ezChassis.pid_drive_set(0, 90, false);
+    // pros::delay(2000);
+
+    // ezChassis.pid_drive_set(-24, 127, false, true);
+    // ezChassis.pid_wait();
+    
+    // ezChassis.pid_drive_set(0, 90, false);
 
     // // pros::delay(4000);
     // // allowContinue();
@@ -158,8 +162,13 @@ void competition_initialize() {}
     // ezChassis.pid_turn_set(-90, 90, false);
     // ezChassis.pid_wait();
 
+    // auton_skills();
+    // offense_auton_safe(); //SLOT 3
+    // defense_awp(); // SLOT 4
+
      
-    // offense_auton_max_potential(); // SLOT 5
+    offense_auton_max_potential(); // SLOT 5
+    // defense_auton_max_potential(); // SLOT 6
 }
 
 /**

@@ -12,9 +12,9 @@ void default_constants() {
   ezChassis.pid_turn_constants_set(3, 0, 20);
   ezChassis.pid_swing_constants_set(5, 0, 30);
 
-  ezChassis.pid_turn_exit_condition_set(300, 3, 500, 7, 750, 750);
-  ezChassis.pid_swing_exit_condition_set(300, 3, 500, 7, 750, 750);
-  ezChassis.pid_drive_exit_condition_set(300, 1, 500, 3, 750, 750);
+  ezChassis.pid_turn_exit_condition_set(300_ms, 3_deg, 500_ms, 7_deg, 750_ms, 750_ms);
+  ezChassis.pid_swing_exit_condition_set(300_ms, 3_deg, 500_ms, 7_deg, 750_ms, 750_ms);
+  ezChassis.pid_drive_exit_condition_set(300_ms, 1_in, 500_ms, 3_in, 750_ms, 750_ms);
 
 
   ezChassis.slew_drive_constants_set(7_in, 80);

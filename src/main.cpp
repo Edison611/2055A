@@ -17,8 +17,8 @@
 
 void initialize() {
 	pros::lcd::initialize();
-    default_constants();
-    ezChassis.initialize();
+    // default_constants();
+    // ezChassis.initialize();
 
     chassis.calibrate();
     // ezChassis.drive_sensor_reset(); 
@@ -83,7 +83,7 @@ void competition_initialize() {}
  */
  void autonomous() {
     
-    ezChassis.drive_brake_set(MOTOR_BRAKE_HOLD); 
+    // ezChassis.drive_brake_set(MOTOR_BRAKE_HOLD); 
 
     // driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
 	// driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);

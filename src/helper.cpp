@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/llemu.hpp"
 #include "pros/misc.h"
 #include "pros/motors.h"
 #include "pros/rtos.hpp"
@@ -128,12 +129,76 @@ void driverAssist() {
  * @param timeout 
  * @param maxSpeed
  */
-void driveFwd(double inches, int timeout=1000, float maxSpeed = 127) {
-    lemlib::Pose pose = chassis.getPose();
-    double x_new = inches * sin(pose.theta);
-    double y_new = inches * cos(pose.theta);
-    bool dir = inches > 0;
-    chassis.moveToPose(pose.x + x_new, pose.y + y_new, pose.theta, timeout, {.forwards = dir, .maxSpeed = maxSpeed}, false);
+void driveFwd(double inches, int timeout=1000, float maxSpeed = 600) {
+    double wheelDiameter = 3.25;
+    double PI = 3.14159265358979323846;
+    double wheelCircumference = PI * wheelDiameter;
+
+    // driveLM.tare_position();
+    // driveRM.tare_position();
+
+    // The next two vars are not used
+    double targetRotations = inches / wheelCircumference; // 2.351 rotations, inches = 24, wheelCircumference = 10.205
+    double targetDegrees = 360 * targetRotations; // 846.64 degrees
+
+    double startingPos = 8 * (driveLM.get_position() + driveRM.get_position()) / 2;
+    double prevPos = 8 * (driveLM.get_position() + driveRM.get_position()) / 2;
+    double currentPos = 0;
+
+    double deadband = 5; // Number of Rotations of Deadband, Change 1st value which is num of inches of deadband
+
+    int time = 0;
+
+    double kP = 30;
+    double kD = 0;
+
+    while (currentPos < inches) {
+
+        if (time >= timeout) {
+            break;
+        }
+
+        currentPos = 8 * (driveLM.get_position() + driveRM.get_position()) / 2;
+        pros::lcd::set_text(1, "Current Pos: " + std::to_string(currentPos));
+
+        double deltaPos = (currentPos - prevPos);
+
+        // pros::lcd::set_text(2, "Rotations: " + std::to_string(rotations));
+
+        double error = inches - (currentPos - startingPos);
+        pros::lcd::set_text(3, "Error: " + std::to_string(error));
+
+        if (abs(error) <= deadband) {
+            break;
+        }
+
+        double vel = error * kP + deltaPos * kD;
+
+        if (vel > maxSpeed) {
+            vel = maxSpeed;
+        }
+
+        if (inches > 0) {
+            setDrive(vel, vel);
+        }
+
+        else {
+            setDrive(-vel, -vel);
+        }
+        
+        pros::delay(20);
+        time += 20;
+        prevPos = currentPos;
+    }
+
+    setDrive(0, 0);
+    
+
+    // lemlib::Pose pose = chassis.getPose();
+    // double x_new = inches * sin(pose.theta);
+    // double y_new = inches * cos(pose.theta);
+    // bool dir = inches > 0;
+    // chassis.moveToPose(pose.x + x_new, pose.y + y_new, pose.theta, timeout, {.forwards = dir, .maxSpeed = maxSpeed}, false);
     // chassis.waitUntilDone();
 }
 

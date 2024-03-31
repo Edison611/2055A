@@ -129,7 +129,7 @@ void driverAssist() {
  * @param timeout 
  * @param maxSpeed
  */
-void driveFwd(double inches, int timeout=1000, float maxSpeed = 600) {
+void driveFwd(double inches, int timeout = 1000, float maxSpeed = 600) {
     double wheelDiameter = 3.25;
     double PI = 3.14159265358979323846;
     double wheelCircumference = PI * wheelDiameter;
@@ -145,12 +145,12 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = 600) {
     double prevPos = 8 * (driveLM.get_position() + driveRM.get_position()) / 2;
     double currentPos = 0;
 
-    double deadband = 5; // Number of Rotations of Deadband, Change 1st value which is num of inches of deadband
+    double deadband = 0; // Number of Rotations of Deadband, Change 1st value which is num of inches of deadband
 
     int time = 0;
 
     double kP = 30;
-    double kD = 0;
+    double kD = 0;  
 
     while (currentPos < inches) {
 
@@ -192,7 +192,6 @@ void driveFwd(double inches, int timeout=1000, float maxSpeed = 600) {
     }
 
     setDrive(0, 0);
-    
 
     // lemlib::Pose pose = chassis.getPose();
     // double x_new = inches * sin(pose.theta);

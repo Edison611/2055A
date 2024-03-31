@@ -25,10 +25,9 @@ void offense_auton_safe() {
     wingFR.set_value(false);
     turnTo(220);
     setIntake(-127);
-    chassis.moveToPose(-58, 10, 180, 1200, {.minSpeed = 110}, false);
+    chassis.moveToPose(-58, 10, 180, 1000, {.minSpeed = 115}, false);
     //chassis.moveToPose(-60, chassis.getPose().y + 10, 180, 1250, {.forwards = false}, false);
     //chassis.moveToPose(-60, chassis.getPose().y - 10, 180, 1500, {.minSpeed = 127}, false);
-
     //Middle Denter Tri-Balls
     chassis.setPose(chassis.getPose().x, 32.5, chassis.getPose().theta); 
     pros::delay(150);
@@ -46,13 +45,21 @@ void offense_auton_safe() {
     //Last Middle Tri-Ball
     chassis.setPose(-40, chassis.getPose().y, -90);
     chassis.moveToPose(-20, chassis.getPose().y, -90, 1200, {.forwards = false, .minSpeed = 80}, false);    
-    turnTo(30);
+    turnTo(35);
     setIntake(127);
-    chassis.moveToPose(-10, 30, 10, 1000, {.minSpeed = 50}, false);
+    chassis.moveToPose(-8, 28, 20, 1000, {.minSpeed = 30}, false);
     pros::delay(200);
-    turnTo(-75);
-    pros::delay(10000000);
-    chassis.moveToPose(-45, 48, -60, 1000, {}, false);
-    turnTo(-130);
+    turnTo(-65);
+    chassis.moveToPose(-52, 48, -65, 1000, {}, false);
+    turnTo(-140);
     setIntake(-127);
+    pros::delay(200);
+    turnTo(50);
+    setIntake(127);
+    chassis.moveToPose(-10, 60, 90, 1200, {.minSpeed = 80}, false);
+    pros::delay(200);
+    turnTo(-90);
+    chassis.moveToPose(-55, 46, -145, 1000, {.minSpeed = 50}, false);
+    setIntake(-50);
+    chassis.moveToPose(-62, 10, -180, 1000, {.minSpeed = 100}, false);
 }

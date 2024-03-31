@@ -14,14 +14,14 @@
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "/Users/edisony611/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
+      "compilerPath": "/Users/ayushkothari/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
-      "compileCommands": "/Users/edisony611/Documents/VexRobotics/2023-2024/2055A/compile_commands.json",
+      "compileCommands": "/Users/ayushkothari/Documents/GitHub/2055A/compile_commands.json",
       "browse": {
         "path": [
-          "/Users/edisony611/Documents/VexRobotics/2023-2024/2055A"
+          "/Users/ayushkothari/Documents/GitHub/2055A"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

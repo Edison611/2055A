@@ -31,16 +31,18 @@ bool cata_shoot = false;
 
 void setCatapultMotors() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)) {
-        cata_shoot = true;
+        cata_shoot = !cata_shoot;
+        catapult.move_velocity(133.3);
     }
 }
-bool hold = false;
 
-void toggleDown() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)) {
-        hold = true;
-    }
-}
+// bool hold = false;
+
+// void toggleDown() {
+//     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)) {
+//         hold = true;
+//     }
+// }
 
 
 void kickerTask() {

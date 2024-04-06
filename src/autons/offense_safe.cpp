@@ -34,32 +34,42 @@ void offense_auton_safe() {
     chassis.moveToPose(-48, 54, 220, 800, {.forwards = false, .minSpeed = 75}, false); //-54, 48
     turnTo(130);
     setIntake(127);
-    chassis.moveToPose(0, 12.5, 145, 1500, {.minSpeed = 80}, false); //0, 4, 145
+    chassis.moveToPose(-3, 8, 140, 1400, {.minSpeed = 70}, false); 
     pros::delay(250);   
     turnTo(270, 50);
     ActivateWings(true);
     setIntake(-50);
-    chassis.moveToPose(-55, chassis.getPose().y, 270, 900, {.minSpeed = 120}, false);
+    chassis.moveToPose(-55, chassis.getPose().y, 270, 850, {.minSpeed = 120}, false);
     ActivateWings(false);
 
     //Last Middle Tri-Ball
     chassis.setPose(-40, chassis.getPose().y, -90);
     chassis.moveToPose(-20, chassis.getPose().y, -90, 1200, {.forwards = false, .minSpeed = 80}, false);    
-    turnTo(35);
+    turnTo(25);
     setIntake(127);
-    chassis.moveToPose(-8, 28, 20, 1000, {.minSpeed = 30}, false);
-    pros::delay(200);
-    turnTo(-65);
-    chassis.moveToPose(-52, 48, -65, 1000, {}, false);
+    pros::delay(150);
+    chassis.moveToPose(-12, 24, 20, 1300, {.minSpeed = 50}, false);
+    pros::delay(150);
+
+    //Last Middle Ram
+    turnTo(-55);
+    pros::delay(150);
+    chassis.moveToPose(-48, 49, -55, 1200, {.minSpeed = 80}, false);
+    pros::delay(100000);
     turnTo(-140);
-    setIntake(-127);
-    pros::delay(200);
-    turnTo(50);
-    setIntake(127);
-    chassis.moveToPose(-10, 60, 90, 1200, {.minSpeed = 80}, false);
-    pros::delay(200);
-    turnTo(-90);
-    chassis.moveToPose(-55, 46, -145, 1000, {.minSpeed = 50}, false);
+    chassis.moveToPose(-58, 42, -180, 1200, {.minSpeed = 30}, false);
+    turnTo(-180);
     setIntake(-50);
-    chassis.moveToPose(-62, 10, -180, 1000, {.minSpeed = 100}, false);
+    chassis.moveToPose(-58, 5, -180, 900, {.minSpeed = 120}, false);
+    chassis.moveToPose(-58, chassis.getPose().y + 20, -180, 1000, {.forwards = false}, false);
+    turnTo(-250);
+
+    // turnTo(50);
+    // setIntake(127);
+    // chassis.moveToPose(-10, 60, 90, 1200, {.minSpeed = 80}, false);
+    // pros::delay(200);
+    // turnTo(-90);
+    // chassis.moveToPose(-55, 46, -145, 1000, {.minSpeed = 50}, false);
+    // setIntake(-50);
+    // chassis.moveToPose(-62, 10, -180, 1000, {.minSpeed = 100}, false);
 }

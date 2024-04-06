@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Off-Safe",
+    "project_name": "Off-S",
     "target": "v5",
     "templates": {
       "EZ-Template": {

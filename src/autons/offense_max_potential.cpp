@@ -23,21 +23,22 @@ void offense_auton_max_potential() {
     // wingFR.set_value(false);
     
 
-    chassis.moveToPose(-6, 3, 145, 1500);
+    chassis.moveToPose(/*-6, 3, 145, 1500*/ /*-6, 4, 145, 1500*/ /*-10, 7, 145, 1500*/ -9, 6, 145, 1500); // need to fix this
     chassis.waitUntil(3);
     wingFR.set_value(false);
     setIntake(127);
     chassis.waitUntilDone();
+
     // -6 3 145
     
-    chassis.moveToPose(-41, 41, 135, 2000, {.forwards = false});
+    chassis.moveToPose(-37, 42, 135, 2000, {.forwards = false});
     chassis.waitUntilDone();
     
     chassis.moveToPose(-32, 61, 230, 2000, {.forwards = false});
     chassis.waitUntil(6);
     setIntake(-127);
     pros::delay(1000);
-    setIntake(0);
+    setIntake(127);
     chassis.waitUntilDone();
     
     // TEST: chassis.moveToPose(-56, 39, 214, 3000);
@@ -52,11 +53,13 @@ void offense_auton_max_potential() {
     // turnTo(90);
     // turnToDir(90, false);
     // chassis.waitUntilDone();
-    setIntake(127);
-    chassis.moveToPose(3.5, 60, 90, 1400);
+    turnTo(90);
+    //setIntake(127);
+    chassis.moveToPose(/*3.5*/ 1.5, 70, 90, 4000);
     chassis.waitUntilDone();
     pros::delay(100);
 
+    pros::delay(100000); // FOR TESTING PURPOSES
     // Tri-ball 3
     chassis.moveToPose(-33, 60, 90, 1300, {.forwards = false});
     chassis.waitUntilDone();

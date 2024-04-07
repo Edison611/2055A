@@ -47,7 +47,7 @@ void offense_auton_safe() {
     chassis.moveToPose(-20, chassis.getPose().y, -90, 1200, {.forwards = false, .minSpeed = 80}, false);    
     turnTo(30);
     setIntake(127);
-    pros::delay(200);
+    pros::delay(250);
     // chassis.moveToPose(-7, 23, 30, 1000, {.chasePower = 4}, false);
     chassis.moveToPose(-10, 25, 50, 1000, {.chasePower = 4}, false);
 

@@ -34,7 +34,7 @@ void offense_auton_safe() {
     chassis.moveToPose(-48, 54, 220, 800, {.forwards = false, .minSpeed = 75}, false); //-54, 48
     turnTo(130);
     setIntake(127);
-    chassis.moveToPose(0, 8, 140, 1400, {.chasePower = 4}, false); 
+    chassis.moveToPose(0, 6, 140, 1400, {.chasePower = 4}, false); 
     pros::delay(250);   
     turnTo(270, 50);
     ActivateWings(true);
@@ -44,21 +44,22 @@ void offense_auton_safe() {
 
     //Last Middle Tri-Ball
     chassis.setPose(-40, chassis.getPose().y, -90);
-    chassis.moveToPose(-20, chassis.getPose().y, -90, 1200, {.forwards = false, .minSpeed = 80}, false);    
-    turnTo(30);
     setIntake(127);
-    pros::delay(250);
+    chassis.moveToPose(-20, chassis.getPose().y, -90, 1200, {.forwards = false}, false);    
+    turnTo(35);
+    // pros::delay(250);   
     // chassis.moveToPose(-7, 23, 30, 1000, {.chasePower = 4}, false);
-    chassis.moveToPose(-10, 25, 50, 1000, {.chasePower = 4}, false);
+    chassis.moveToPose(10, 25, 30, 1200, {.chasePower = 4}, false); //-10, 25, 50
+    pros::delay(200);
 
     //Last Middle Ram
-    turnTo(-57.5);
+    turnTo(-57); 
     pros::delay(250);
-    chassis.moveToPose(-52, 52, -57.5, 1400, {.minSpeed = 80}, false);
-    turnTo(-135);
-    pros::delay(250);
-    setIntake(-127);
-    chassis.moveToPose(-58, 10, 180, 1000, {.minSpeed = 115}, false);
-    chassis.moveToPose(-60, chassis.getPose().y + 20, -180, 1000, {.forwards = false, .minSpeed = 50}, false);
-    turnTo(-250);
+    chassis.moveToPose(-47.5, 46, -57.5, 1200, {.minSpeed = 80}, false);
+    // turnTo(-125);
+    // setIntake(-127);
+    // chassis.moveToPose(-55, 0, 180, 1200, {.minSpeed = 75}, false);
+    // pros::delay(200);
+    // chassis.moveToPose(chassis.getPose().x, chassis.getPose().y + 20, -180, 1200, {.forwards = false, .minSpeed = 60}, false);
+    // turnTo(-250);
 }

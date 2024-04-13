@@ -38,7 +38,7 @@ void offense_auton_max_potential() {
 
     setIntake(-127);
     
-    chassis.moveToPose(-28, 65, 230, 2000, {.forwards = false});
+    chassis.moveToPose(-28, 62, 220, 2000, {.forwards = false});
     chassis.waitUntil(3);
     setIntake(127);
     // chassis.waitUntil(6);
@@ -65,8 +65,12 @@ void offense_auton_max_potential() {
     chassis.waitUntilDone();
     pros::delay(100);
 
-    pros::delay(100000); // FOR TESTING PURPOSES
-    // Tri-ball 3
+    chassis.moveToPose(-26, 63, 90, 3000, {.forwards = false});
+    turnTo(-90);
+
+    pros::delay(1000000);
+
+    // Tri-ball
     chassis.moveToPose(-33, 60, 90, 1300, {.forwards = false});
     chassis.waitUntilDone();
     // chassis.setPose(-40, chassis.getPose().y, chassis.getPose().theta);

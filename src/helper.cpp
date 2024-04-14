@@ -189,7 +189,7 @@ void driveFwd(double inches, int timeout = 1000, float maxSpeed = 600) {
         pros::delay(20);
         time += 20;
         prevPos = currentPos;
-    }\
+    }
     
 
     setDrive(0, 0);

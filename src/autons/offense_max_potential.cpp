@@ -33,14 +33,14 @@ void offense_auton_max_potential() {
 
     // -7 6 145
     
-    chassis.moveToPose(-43, 48, 135, 2000, {.forwards = false});
+    chassis.moveToPose(-43, 48, 135, 1500, {.forwards = false});
     chassis.waitUntilDone();
 
-    turnTo(220);
+    turnTo(220, 127, 500);
 
     setIntake(-127);
     
-    chassis.moveToPose(-28, 62, 220, 2000, {.forwards = false});
+    chassis.moveToPose(-28, 60, 220, 1000, {.forwards = false});
     chassis.waitUntil(3);
     setIntake(127);
     // chassis.waitUntil(6);
@@ -61,31 +61,58 @@ void offense_auton_max_potential() {
     // turnTo(90);
     // turnToDir(90, false);
     // chassis.waitUntilDone();
-    turnTo(90);
+    turnTo(90, 127, 600);
     //setIntake(127);
-    chassis.moveToPose(/*3.5*/ 1.5, 70, 90, 4000);
+    chassis.moveToPose(/*3.5*/ 3, 68, 90, 1200);
     chassis.waitUntilDone();
     pros::delay(100);
 
-    chassis.moveToPose(-32, 66, 90, 3000, {.forwards = false});
+    chassis.moveToPose(-27, 65, 90, 1200, {.forwards = false});
     chassis.waitUntilDone();
-    turnTo(225);
+    turnTo(225, 127, 500);
 
     wingFR.set_value(true);
 
-    chassis.moveToPose(-45, 55, 225, 1500);
+    chassis.moveToPose(-46, 47, 225, 1000);
     chassis.waitUntilDone();
 
-    turnTo(205);
+    turnTo(200, 127, 300);
+    wingFR.set_value(false);
+    setIntake(-127);
 
+    chassis.moveToPose(-66, -20, 185, 650, {.minSpeed = 90});
+    chassis.waitUntilDone();
+    chassis.setPose(chassis.getPose().x, 30, chassis.getPose().theta);
+    chassis.moveToPose(chassis.getPose().x+3, chassis.getPose().y+12, 180, 600, {.forwards=false});
+    chassis.waitUntilDone();
+    turnTo(180, 127, 500);
+    ram(400, 1);
+    // chassis.moveToPose(-63, chassis.getPose().y-40, 180, 1200, {.minSpeed = 110});
+    chassis.waitUntilDone();
+    chassis.setPose(-60, 30, chassis.getPose().theta);
+    
+    // Back up
+    chassis.moveToPose(-53, 40, 225, 1000, {.forwards=false});
+    chassis.waitUntilDone();
+
+    chassis.turnTo(-4, 24, 600);
+    setIntake(127);
+    chassis.moveToPose(-9, 25, 125, 1400);
+    chassis.waitUntilDone(); 
+    turnTo(180, 127, 500);
+    chassis.moveToPose(-60, -5, 270, 1500);
+    chassis.waitUntil(10);
+    wingFR.set_value(true);
+    setIntake(-127);
 
 
     pros::delay(1000000);  
 
+    // .
     chassis.moveToPose(-35.5, 69, 225, 3000);
     chassis.waitUntilDone();
 
-    pros::delay(1000000);
+    // pros::delay(1000000);
 
     // Tri-ball
     chassis.moveToPose(-33, 60, 90, 1300, {.forwards = false});

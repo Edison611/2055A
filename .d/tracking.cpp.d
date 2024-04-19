@@ -1,17 +1,18 @@
-bin/tracking.cpp.o: src/tracking.cpp include/lemlib/pose.hpp \
- include/main.h include/api.h include/pros/adi.h include/pros/colors.h \
- include/pros/distance.h include/pros/error.h include/pros/ext_adi.h \
- include/pros/adi.h include/pros/adi.h include/pros/gps.h \
- include/pros/imu.h include/pros/link.h include/pros/llemu.h \
- include/display/lvgl.h include/display/lv_version.h \
- include/display/lv_misc/lv_log.h include/display/lv_conf.h \
- include/display/lv_conf_checker.h include/display/lv_misc/lv_task.h \
- include/display/lv_misc/lv_mem.h include/display/lv_misc/lv_log.h \
- include/display/lv_misc/lv_ll.h include/display/lv_hal/lv_hal.h \
- include/display/lv_hal/lv_hal_disp.h include/display/lv_hal/lv_hal.h \
- include/display/lv_misc/lv_color.h include/display/lv_misc/lv_area.h \
- include/display/lv_hal/lv_hal_indev.h include/display/lv_core/lv_obj.h \
- include/display/lv_core/lv_style.h include/display/lv_misc/lv_font.h \
+bin/tracking.cpp.o: src/tracking.cpp include/EZ-Template/drive/drive.hpp \
+ include/EZ-Template/PID.hpp include/EZ-Template/util.hpp include/api.h \
+ include/pros/adi.h include/pros/colors.h include/pros/distance.h \
+ include/pros/error.h include/pros/ext_adi.h include/pros/adi.h \
+ include/pros/adi.h include/pros/gps.h include/pros/imu.h \
+ include/pros/link.h include/pros/llemu.h include/display/lvgl.h \
+ include/display/lv_version.h include/display/lv_misc/lv_log.h \
+ include/display/lv_conf.h include/display/lv_conf_checker.h \
+ include/display/lv_misc/lv_task.h include/display/lv_misc/lv_mem.h \
+ include/display/lv_misc/lv_log.h include/display/lv_misc/lv_ll.h \
+ include/display/lv_hal/lv_hal.h include/display/lv_hal/lv_hal_disp.h \
+ include/display/lv_hal/lv_hal.h include/display/lv_misc/lv_color.h \
+ include/display/lv_misc/lv_area.h include/display/lv_hal/lv_hal_indev.h \
+ include/display/lv_core/lv_obj.h include/display/lv_core/lv_style.h \
+ include/display/lv_misc/lv_font.h \
  include/display/lv_misc/lv_symbol_def.h \
  include/display/lv_fonts/lv_font_builtin.h \
  include/display/lv_misc/lv_anim.h include/display/lv_misc/lv_mem.h \
@@ -76,16 +77,18 @@ bin/tracking.cpp.o: src/tracking.cpp include/lemlib/pose.hpp \
  include/pros/rotation.hpp include/pros/rotation.h include/pros/rtos.hpp \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h include/pros/link.hpp include/pros/link.h \
+ include/EZ-Template/slew.hpp include/okapi/api/units/QAngle.hpp \
+ include/okapi/api/units/RQuantity.hpp \
+ include/okapi/api/units/QLength.hpp include/okapi/api/units/QTime.hpp \
+ include/lemlib/pose.hpp include/main.h include/api.h \
  include/okapi/api.hpp \
  include/okapi/api/chassis/controller/chassisControllerIntegrated.hpp \
  include/okapi/api/chassis/controller/chassisController.hpp \
  include/okapi/api/chassis/controller/chassisScales.hpp \
- include/okapi/api/units/QAngle.hpp include/okapi/api/units/RQuantity.hpp \
- include/okapi/api/units/QLength.hpp include/okapi/api/util/logging.hpp \
- include/okapi/api/coreProsAPI.hpp include/api.h include/pros/apix.h \
- include/pros/serial.h include/pros/serial.hpp \
+ include/okapi/api/util/logging.hpp include/okapi/api/coreProsAPI.hpp \
+ include/pros/apix.h include/pros/serial.h include/pros/serial.hpp \
  include/okapi/api/util/abstractTimer.hpp \
- include/okapi/api/units/QFrequency.hpp include/okapi/api/units/QTime.hpp \
+ include/okapi/api/units/QFrequency.hpp \
  include/okapi/api/util/mathUtil.hpp \
  include/okapi/api/device/motor/abstractMotor.hpp \
  include/okapi/api/control/controllerOutput.hpp \
@@ -205,14 +208,14 @@ bin/tracking.cpp.o: src/tracking.cpp include/lemlib/pose.hpp \
  include/pros/imu.hpp include/lemlib/asset.hpp \
  include/lemlib/chassis/trackingWheel.hpp include/pros/adi.hpp \
  include/pros/rotation.hpp include/lemlib/pid.hpp \
- include/lemlib/exitcondition.hpp include/EZ-Template/drive/drive.hpp \
- include/EZ-Template/PID.hpp include/EZ-Template/util.hpp \
- include/EZ-Template/slew.hpp include/drive.hpp include/subsystems.hpp \
- include/opcontrol.hpp include/auton.hpp include/tracking.hpp \
- include/pure-pursuit.hpp include/helper.hpp include/test-functions.hpp \
- include/selection.h include/settings.hpp include/pros/llemu.hpp
-include/lemlib/pose.hpp:
-include/main.h:
+ include/lemlib/exitcondition.hpp include/drive.hpp \
+ include/subsystems.hpp include/opcontrol.hpp include/auton.hpp \
+ include/tracking.hpp include/pure-pursuit.hpp include/helper.hpp \
+ include/test-functions.hpp include/selection.h include/settings.hpp \
+ include/pros/llemu.hpp
+include/EZ-Template/drive/drive.hpp:
+include/EZ-Template/PID.hpp:
+include/EZ-Template/util.hpp:
 include/api.h:
 include/pros/adi.h:
 include/pros/colors.h:
@@ -365,22 +368,25 @@ include/pros/vision.hpp:
 include/pros/vision.h:
 include/pros/link.hpp:
 include/pros/link.h:
+include/EZ-Template/slew.hpp:
+include/okapi/api/units/QAngle.hpp:
+include/okapi/api/units/RQuantity.hpp:
+include/okapi/api/units/QLength.hpp:
+include/okapi/api/units/QTime.hpp:
+include/lemlib/pose.hpp:
+include/main.h:
+include/api.h:
 include/okapi/api.hpp:
 include/okapi/api/chassis/controller/chassisControllerIntegrated.hpp:
 include/okapi/api/chassis/controller/chassisController.hpp:
 include/okapi/api/chassis/controller/chassisScales.hpp:
-include/okapi/api/units/QAngle.hpp:
-include/okapi/api/units/RQuantity.hpp:
-include/okapi/api/units/QLength.hpp:
 include/okapi/api/util/logging.hpp:
 include/okapi/api/coreProsAPI.hpp:
-include/api.h:
 include/pros/apix.h:
 include/pros/serial.h:
 include/pros/serial.hpp:
 include/okapi/api/util/abstractTimer.hpp:
 include/okapi/api/units/QFrequency.hpp:
-include/okapi/api/units/QTime.hpp:
 include/okapi/api/util/mathUtil.hpp:
 include/okapi/api/device/motor/abstractMotor.hpp:
 include/okapi/api/control/controllerOutput.hpp:
@@ -510,10 +516,6 @@ include/pros/adi.hpp:
 include/pros/rotation.hpp:
 include/lemlib/pid.hpp:
 include/lemlib/exitcondition.hpp:
-include/EZ-Template/drive/drive.hpp:
-include/EZ-Template/PID.hpp:
-include/EZ-Template/util.hpp:
-include/EZ-Template/slew.hpp:
 include/drive.hpp:
 include/subsystems.hpp:
 include/opcontrol.hpp:

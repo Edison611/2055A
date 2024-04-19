@@ -1,3 +1,4 @@
+#include "EZ-Template/drive/drive.hpp"
 #include "lemlib/pose.hpp"
 #include "main.h"
 #include "pros/llemu.hpp"
@@ -5,6 +6,7 @@
 #include "pros/optical.h"
 #include "pros/rtos.h"
 #include "pros/rtos.hpp"
+#include <cmath>
 #include <string>
 #include <iostream>
 #include <ostream>
@@ -18,6 +20,9 @@ void screen() {
     // loop forever
     while (true) {
         lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
+        pros::lcd::set_text(2, "RM, RF: " + std::to_string(round(driveRM.get_torque()*100)/100) + " " + std::to_string(round(driveRF.get_torque()*100)/100));
+        pros::lcd::set_text(3, "LM, LF: " + std::to_string(round(driveLM.get_torque()*100)/100) + " " + std::to_string(round(driveLF.get_torque()*100)/100));
+
         pros::lcd::set_text(4, "Encoder Units: " + std::to_string(driveLM.get_position()));
         pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
         pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position

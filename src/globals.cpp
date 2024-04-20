@@ -28,7 +28,7 @@
 int MOTOR_LB = 9;
 int MOTOR_LM = 8;
 int MOTOR_LF = 20;
-int MOTOR_LH = 10;
+int MOTOR_LH = 7;
 
 int MOTOR_RB = 2;
 int MOTOR_RM = 3;

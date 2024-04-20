@@ -23,7 +23,7 @@ void offense_auton_max_potential() {
     // wingFR.set_value(false);
     
 
-    chassis.moveToPose(/*-6, 3, 145, 1500*/ /*-6, 4, 145, 1500*/ /*-10, 7, 145, 1500*/ -7, 6, 145, 1500);
+    chassis.moveToPose(/*-6, 3, 145, 1500*/ /*-6, 4, 145, 1500*/ /*-10, 7, 145, 1500*/ /*-7, 6, 145, 1500*/ -6, 6, 145, 1500);
     chassis.waitUntil(3);
     wingFR.set_value(false);
     // setIntake(-127);
@@ -73,14 +73,18 @@ void offense_auton_max_potential() {
 
     wingFR.set_value(true);
 
-    chassis.moveToPose(-46, 47, 225, 1000);
+    // chassis.moveToPose(-46, 47, 225, 1000);
+    chassis.moveToPose(-42, 51, 225, 1000);
     chassis.waitUntilDone();
 
-    turnTo(200, 127, 300);
+    // turnTo(200, 127, 300);
+    turnTo(160, 127, 500);
     wingFR.set_value(false);
+
+    turnTo(190, 127, 500);
     setIntake(-127);
 
-    chassis.moveToPose(-66, -20, 185, 650, {.minSpeed = 90});
+    chassis.moveToPose(-52, -20, 180, 650, {.minSpeed = 90});
     chassis.waitUntilDone();
     chassis.setPose(chassis.getPose().x, 30, chassis.getPose().theta);
     chassis.moveToPose(chassis.getPose().x+3, chassis.getPose().y+12, 180, 600, {.forwards=false});

@@ -15,43 +15,48 @@ void defense_auton_midrush() {
     chassis.setPose(-40, -56, 15);
     ActivateWings(true);
 
-    chassis.moveToPose(-28.5, -10, 15, 1250);
+    chassis.moveToPose(-28, -8, 15, 1250, {.minSpeed = 60});
     chassis.waitUntil(3);
     ActivateWings(false);
     setIntake(127);
     chassis.waitUntilDone();
 
-    pros::delay(250);
-    chassis.moveToPose(-29, -12, 15, 1000, {.forwards = false}, false);
+    chassis.moveToPose(-31, -18, 15, 1200, {.forwards = false}, false);
     turnTo(90);
-    pros::delay(250);
-    ActivateWings(true);
-    chassis.moveToPose(-5, chassis.getPose().y, 90, 1300, {.minSpeed = 115}, false);   
-
-    chassis.setPose(-8, -12, 90);
     pros::delay(200);
+    ActivateWings(true);
+    chassis.moveToPose(-5, chassis.getPose().y, 90, 1300, {.minSpeed = 120}, false);   
+
+    chassis.setPose(-8, chassis.getPose().y, 90);
+    pros::delay(250);   
     ActivateWings(false);
-    chassis.moveToPose(-23, -12, 90, 1200, {.forwards = false}, false);
+    chassis.moveToPose(-20, chassis.getPose().y, 90, 1200, {.forwards = false}, false);
     turnTo(30);
     pros::delay(200);
-    chassis.moveToPose(-44, -54, 30, 1200, {.forwards = false}, false);
+    chassis.moveToPose(-42, -52, 30, 1200, {.forwards = false}, false);
     turnTo(135);
     pros::delay(200);
-    
-    chassis.moveToPose(-48, -50, 135, 1000, {.forwards = false}, false);
+    chassis.moveToPoint(-48, -46, 1200);
     ActivateWings(true);
-    pros::delay(200);
-    chassis.moveToPose(-42, -56, 110, 1000, {}, false);
+    pros::delay(250);
+    chassis.moveToPoint(-40, -54, 1200);
+    
+    // chassis.moveToPose(-48, -48, 135, 1500, {.forwards = false}, false);
+    // ActivateWings(true);
     // pros::delay(200);
-    chassis.moveToPose(-48, -50, 135, 1000, {.forwards = false}, false);
-    ActivateWings(false);
-    // pros::delay(200);
-    chassis.moveToPose(-40, -58, 135, 1000, {}, false);
 
-    turnTo(90);
-    setIntake(-127);
-    chassis.moveToPose(-15, -58, 90, 1200, {}, false);
+    // chassis.moveToPose(-44, -52, 135, 1500, {.minSpeed = 35}, false);
+    // ActivateWings(true);
+    // pros::delay(250);
+    turnTo(80);
+    ActivateWings(false);
     pros::delay(200);
-    chassis.moveToPose(-45, -58, 90, 1200, {.forwards = false}, false);
+    turnTo(115);
+
+    setIntake(-127);
+    pros::delay(200);
+    chassis.moveToPose(-5, -58, 90, 1500, {}, false); // Change to -5 instead of -15
+    pros::delay(250);
+    chassis.moveToPose(-45, -58, 90, 2000, {.forwards = false, .minSpeed = 30}, false);
 
 }

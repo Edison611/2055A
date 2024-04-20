@@ -105,6 +105,9 @@ void setDrivePTO() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
         currentPTO = !currentPTO;
         drivePTO.set_value(currentPTO);
+        if (currentPTO == true) {
+            setDriveMotors(600, 600);
+        }
     }
     
 }

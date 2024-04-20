@@ -28,7 +28,7 @@ void defense_auton_max_potential() {
 
     setIntake(127);
 
-    chassis.moveToPose(-28, -4, 10, 3100);
+    chassis.moveToPose(-33, -8, 10, 3100);
     chassis.waitUntilDone();
 
     pros::delay(1000);
@@ -43,14 +43,14 @@ void defense_auton_max_potential() {
     // ezChassis.
     pros::delay(10);
 
-    turnTo(-120);
+    // turnTo(-120);
     turnTo(90);
 
     // ezChassis.pid_turn_set(70, 127, false);
     // ezChassis.pid_wait();
     setIntake(-127);
 
-    chassis.moveToPose(-11.5, -61, 90, 5100, {.maxSpeed=90});
+    chassis.moveToPose(-9, -60, 90, 5100, {.maxSpeed=90});
     pros::delay(2000);
     setIntake(0);
 

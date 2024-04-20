@@ -32,7 +32,7 @@ bool cata_shoot = false;
 void setCatapultMotors() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)) {
         cata_shoot = !cata_shoot;
-        catapult.move_velocity(133.3);
+        catapult.move_velocity(133);
     }
 }
 
@@ -106,7 +106,12 @@ void setDrivePTO() {
         currentPTO = !currentPTO;
         drivePTO.set_value(currentPTO);
         if (currentPTO == true) {
-            setDriveMotors(600, 600);
+            pros::delay(100);
+            setDrive(600, 600);
+            pros::delay(3000);
+            endgame.set_value(true);
+            pros::delay(4000);
+            setDrive(0, 0);
         }
     }
     

@@ -14,11 +14,11 @@ void defense_auton_midrush() {
 
     chassis.setPose(-40, -56, 15);
     ActivateWings(true);
+    setIntake(127);
 
     chassis.moveToPose(-28, -8, 15, 1250, {.minSpeed = 60});
     chassis.waitUntil(3);
     ActivateWings(false);
-    setIntake(127);
     chassis.waitUntilDone();
 
     chassis.moveToPose(-31, -18, 15, 1200, {.forwards = false}, false);
@@ -36,10 +36,10 @@ void defense_auton_midrush() {
     chassis.moveToPose(-42, -52, 30, 1200, {.forwards = false}, false);
     turnTo(135);
     pros::delay(200);
-    chassis.moveToPoint(-48, -46, 1200);
+    chassis.moveToPoint(-48, -46, 1200, false, 127, false);
     ActivateWings(true);
     pros::delay(250);
-    chassis.moveToPoint(-40, -54, 1200);
+    chassis.moveToPoint(-40, -54, 1200, true, 127, false);
     
     // chassis.moveToPose(-48, -48, 135, 1500, {.forwards = false}, false);
     // ActivateWings(true);

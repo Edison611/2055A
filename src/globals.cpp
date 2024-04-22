@@ -31,7 +31,7 @@ int MOTOR_LF = 20;
 int MOTOR_LH = 7;
 
 int MOTOR_RB = 2;
-int MOTOR_RM = 3;
+int MOTOR_RM = 4;
 int MOTOR_RF = 11;
 int MOTOR_RH = 1;
 

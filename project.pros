@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Def-MR",
+    "project_name": "Off-MPO",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -389,7 +389,7 @@
     "upload_options": {
       "description": "N/A",
       "icon": "X",
-      "slot": 7
+      "slot": 5
     }
   }
 }

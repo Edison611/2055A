@@ -124,39 +124,15 @@ bool loadMacro = true;
 void macroLoad() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
         if (loadMacro == false) {
-            //cata_ratchet.set_value(true);
             loadMacro = true;
-            // setPTO(-600, -600, -600, -600);
         }
 
         else if (loadMacro == true) {
             loadMacro = false;
-            //cata_ratchet.set_value(false);
-            // setPTO(0, 0, 0, 0);
         }
     }
 }
 
-/**
- * @brief Triggers the matchload phase where if a triball is detected than it shoots
- * 
- */
-void SetMatchLoad() {
-    // while (true) {
-    //     if (loadMacro == true && currentDrivePTO == false) {
-        
-    //         shoot();
-    //         pros::delay(1200);
-    //         // bool launch = cata_ball_detection();
-    //         // if (launch == true) {
-    //         //     pros::delay(100);
-    //         //     shoot();
-                
-    //         // }
-    //     }
-    //     pros::delay(10);
-    // }
-}
 
 bool detected = false;
 
@@ -166,7 +142,7 @@ void timeTracker(int *time, int delay) {
     *time += delay;
 }
 
-
+int clock_time = 0;
 /**
  * @brief Prints information to Brain and Controller
  * 
@@ -174,26 +150,25 @@ void timeTracker(int *time, int delay) {
  * Needs a 50ms delay between each print line
  */
 void print_info() {
-    int time = 0;
     while (true) {
         // Controller printing
         controller.clear();
-        timeTracker(&time, 100);
+        timeTracker(&clock_time, 100);
         
         // pros::lcd::set_text(1, "Switch: " + std::to_string(cata_limit_switch.get_value()));
         
         // Kicker status
         if (hold) controller.print(1, 0, "Kicker: Down");
         else controller.print(1, 0, "Kicker: Up");
-        timeTracker(&time, 50);
+        timeTracker(&clock_time, 50);
 
         // Match load status
         if (loadMacro) controller.print(0, 0, "Match Load: ON (A)");
         else controller.print(0, 0, "Match Load: OFF (A)");
-        timeTracker(&time, 50);
+        timeTracker(&clock_time, 50);
 
-        controller.set_text(2, 10, "T: " + std::to_string(time/1000) + "s");
-        timeTracker(&time, 50);
+        controller.set_text(2, 10, "T: " + std::to_string(clock_time/1000) + "s");
+        timeTracker(&clock_time, 50);
     }
 }
 

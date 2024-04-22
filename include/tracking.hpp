@@ -7,6 +7,7 @@ void macroLoad();
 void SetMatchLoad();
 
 extern bool detected;
+extern int clock_time;
 
 void timeTracker(int *time, int delay);
 void print_info();

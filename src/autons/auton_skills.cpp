@@ -13,6 +13,7 @@ ASSET(s2_txt);
 ASSET(s3_txt);
 void auton_skills() {
     // Initialize settings
+    setBrake("hold");
 
     // inertial_sensor.set_roll(0);
     // inertial_sensor.set_pitch(0);

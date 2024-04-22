@@ -40,7 +40,7 @@ void initialize() {
     // selector::init();
     // pros::Task log_task(log_data);
     // pros::Task kicker_task(kickerTask);
-    pros::Task pos_track(screen);
+    // pros::Task pos_track(screen);
 
     // ezChassis.pid_targets_reset();
     // ezChassis.drive_imu_reset(); 
@@ -82,8 +82,6 @@ void competition_initialize() {}
  * from where it left off.
  */
  void autonomous() {
-    
-    // ezChassis.drive_brake_set(MOTOR_BRAKE_HOLD); 
 
     // driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
 	// driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
@@ -166,9 +164,9 @@ void competition_initialize() {}
     // offense_auton_safe(); //SLOT 3
     // defense_awp(); // SLOT 4
 
-    // offense_auton_max_potential(); // SLOT 5
+    offense_auton_max_potential(); // SLOT 5
     // defense_auton_max_potential(); // SLOT 6
-    defense_auton_midrush(); // SLOT 7
+    // defense_auton_midrush(); // SLOT 7
 }
 
 /**
@@ -186,19 +184,8 @@ void competition_initialize() {}
  */
 
 void opcontrol() {
-    // chassis.setPose(0, 0, 0);
-
-    // driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
-	// driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveLH.set_brake_mode(MOTOR_BRAKE_HOLD);
-
-    // driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
-	// driveRM.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveRH.set_brake_mode(MOTOR_BRAKE_HOLD);
-
-    // pid_test();
+    pros::Task pos_track(screen);
+    
 
     driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
 	driveLM.set_brake_mode(MOTOR_BRAKE_COAST);

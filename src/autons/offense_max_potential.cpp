@@ -16,6 +16,7 @@ void offense_auton_max_potential() {
     // Tri-ball 1
     // chassis.setPose(-41, 57, 145);
     chassis.setPose(-42, 58, 147);
+    setIntake(127);
     wingFR.set_value(true);
         
     // setDrive(600, 600);
@@ -28,7 +29,6 @@ void offense_auton_max_potential() {
     wingFR.set_value(false);
     // setIntake(-127);
     // chassis.waitUntil(6);
-    setIntake(127);
     chassis.waitUntilDone();
 
     // -7 6 145
@@ -84,10 +84,10 @@ void offense_auton_max_potential() {
     turnTo(190, 127, 500);
     setIntake(-127);
 
-    chassis.moveToPose(-52, -20, 180, 650, {.minSpeed = 90});
+    chassis.moveToPose(-52, -20, 180, 650, {.minSpeed = 120});
     chassis.waitUntilDone();
     chassis.setPose(chassis.getPose().x, 30, chassis.getPose().theta);
-    chassis.moveToPose(chassis.getPose().x+3, chassis.getPose().y+12, 180, 600, {.forwards=false});
+    chassis.moveToPose(chassis.getPose().x+3, chassis.getPose().y+18, 180, 700, {.forwards=false});
     chassis.waitUntilDone();
     turnTo(180, 127, 500);
     ram(400, 1);
@@ -104,53 +104,56 @@ void offense_auton_max_potential() {
     chassis.moveToPose(-9, 25, 125, 1400);
     chassis.waitUntilDone(); 
     turnTo(180, 127, 500);
-    chassis.moveToPose(-60, -5, 270, 1500);
-    chassis.waitUntil(10);
-    wingFR.set_value(true);
-    setIntake(-127);
-
-
-    pros::delay(1000000);  
-
-    // .
-    chassis.moveToPose(-35.5, 69, 225, 3000);
+    chassis.moveToPose(-18, -10, 200, 1000);
     chassis.waitUntilDone();
+    wingFR.set_value(true);
+    turnTo(280);
+    setIntake(-127);
+    ram(500, 1);
+    chassis.moveToPose(chassis.getPose().x-15, -5, 270, 1000, {.forwards=false});
+    chassis.waitUntilDone();
+    
+
+    // pros::delay(1000000);  
+
+    // chassis.moveToPose(-35.5, 69, 225, 3000);
+    // chassis.waitUntilDone();
 
     // pros::delay(1000000);
 
     // Tri-ball
-    chassis.moveToPose(-33, 60, 90, 1300, {.forwards = false});
-    chassis.waitUntilDone();
-    // chassis.setPose(-40, chassis.getPose().y, chassis.getPose().theta);
-    turnTo(225);
-    // turnToDir(-90, true);
-    chassis.moveToPose(-58, 45, 225, 1000);
-    chassis.waitUntil(5);
-    wingFR.set_value(true);
-    chassis.waitUntilDone();
-    turnTo(180);
-    wingFR.set_value(false);
-    setIntake(-127);
+    // chassis.moveToPose(-33, 60, 90, 1300, {.forwards = false});
+    // chassis.waitUntilDone();
+    // // chassis.setPose(-40, chassis.getPose().y, chassis.getPose().theta);
+    // turnTo(225);
+    // // turnToDir(-90, true);
+    // chassis.moveToPose(-58, 45, 225, 1000);
+    // chassis.waitUntil(5);
+    // wingFR.set_value(true);
+    // chassis.waitUntilDone();
+    // turnTo(180);
+    // wingFR.set_value(false);
+    // setIntake(-127);
 
-    // 2 Rams to get Triballs #1-4
-    // chassis.moveToPose(-57, -10, 180, 1500, {.minSpeed = 110});
-    ram(650, 1);
-    chassis.waitUntilDone();
-    chassis.setPose(chassis.getPose().x, 30, chassis.getPose().theta);
-    chassis.moveToPose(chassis.getPose().x, chassis.getPose().y+10, 180, 650, {.forwards=false});
-    chassis.waitUntilDone();
-    turnTo(190);
-    ram(500, 1);
-    // chassis.moveToPose(-63, chassis.getPose().y-40, 180, 1200, {.minSpeed = 110});
-    chassis.waitUntilDone();
-    chassis.setPose(-60, 30, chassis.getPose().theta);
-    chassis.moveToPose(-57, 46, 225, 1000, {.forwards=false});
-    chassis.waitUntilDone();
-    setIntake(127);
-    chassis.turnTo(-4, 24, 700);
-    chassis.waitUntilDone();
-    chassis.moveToPose(-12, 30, 120, 1000);
-    chassis.waitUntilDone();
+    // // 2 Rams to get Triballs #1-4
+    // // chassis.moveToPose(-57, -10, 180, 1500, {.minSpeed = 110});
+    // ram(650, 1);
+    // chassis.waitUntilDone();
+    // chassis.setPose(chassis.getPose().x, 30, chassis.getPose().theta);
+    // chassis.moveToPose(chassis.getPose().x, chassis.getPose().y+10, 180, 650, {.forwards=false});
+    // chassis.waitUntilDone();
+    // turnTo(190);
+    // ram(500, 1);
+    // // chassis.moveToPose(-63, chassis.getPose().y-40, 180, 1200, {.minSpeed = 110});
+    // chassis.waitUntilDone();
+    // chassis.setPose(-60, 30, chassis.getPose().theta);
+    // chassis.moveToPose(-57, 46, 225, 1000, {.forwards=false});
+    // chassis.waitUntilDone();
+    // setIntake(127);
+    // chassis.turnTo(-4, 24, 700);
+    // chassis.waitUntilDone();
+    // chassis.moveToPose(-12, 30, 120, 1000);
+    // chassis.waitUntilDone();
 
     // Final 2 Middle Triballs
     

@@ -110,7 +110,7 @@ void setDrivePTO() {
             setDrive(600, 600);
             pros::delay(3000);
             endgame.set_value(true);
-            pros::delay(4000);
+            pros::delay(7000);
             setDrive(0, 0);
         }
     }
@@ -217,7 +217,7 @@ bool currentEndgame = false;
  */
 
 void op_endgame() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
         currentEndgame = !currentEndgame;
         endgame.set_value(currentEndgame);
     }

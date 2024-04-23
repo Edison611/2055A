@@ -110,8 +110,9 @@ void setDrivePTO() {
             setDrive(600, 600);
             pros::delay(3000);
             endgame.set_value(true);
-            pros::delay(7000);
+            pros::delay(2050);
             setDrive(0, 0);
+            endgame.set_value(false);
         }
     }
     

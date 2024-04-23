@@ -39,14 +39,14 @@ void offense_auton_safe() {
     pros::delay(250);   
     turnTo(270, 50);
     ActivateWings(true);
-    setIntake(-75);
+    setIntake(-127);
     chassis.moveToPose(-55, chassis.getPose().y, 270, 850, {.minSpeed = 120}, false);
     ActivateWings(false);
 
     //Last Middle Tri-Ball
     chassis.setPose(-40, chassis.getPose().y, -90);
-    setIntake(127);
-    chassis.moveToPose(-20, chassis.getPose().y, -90, 1200, {.forwards = false}, false);    
+    chassis.moveToPose(-20, chassis.getPose().y, -90, 1200, {.forwards = false}, false);   
+    setIntake(127); 
     turnTo(37.5);
     // pros::delay(250);   
     // chassis.moveToPose(-7, 23, 30, 1000, {.chasePower = 4}, false);

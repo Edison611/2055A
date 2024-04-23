@@ -92,7 +92,7 @@ void offense_auton_max_potential() {
     // chassis.moveToPose(-57, 45, 190, 2000, {.forwards=false});
     // chassis.moveToPose(-56, 46, 180, 1500, {.forwards=false});
     chassis.waitUntilDone();
-    turnTo(180, 127, 500);
+    turnTo(190, 127, 250);
     ram(1000, 1);
     // chassis.moveToPose(-63, chassis.getPose().y-40, 180, 1200, {.minSpeed = 110});
     chassis.waitUntilDone();

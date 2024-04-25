@@ -35,7 +35,7 @@ void offense_auton_safe() {
     chassis.moveToPose(-48, 54, 220, 1200, {.forwards = false, .minSpeed = 75}, false); //-54, 48
     turnTo(130);
     setIntake(127);
-    chassis.moveToPose(-2, 5, 143, 1400, {.chasePower = 4}, false); //0, 6, 140
+    chassis.moveToPose(0, 5, 143, 1400, {.chasePower = 4}, false); //0, 6, 140
     pros::delay(250);   
     turnTo(270, 60, 1000);
     ActivateWings(true);

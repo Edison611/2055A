@@ -25,7 +25,7 @@ void defense_awp() {
     pros::delay(250);
     wingFR.set_value(false);
     pros::delay(250);
-    chassis.moveToPose(-11.5, -61, 90, 5100, {.maxSpeed=90});
+    chassis.moveToPose(-9, -61, 90, 5100, {.maxSpeed=90});
     setIntake(-127);
     chassis.waitUntilDone();
     pros::delay(500);

@@ -14,14 +14,14 @@
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "/Users/ayushkothari/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
+      "compilerPath": "c:\\Users\\yangx\\AppData\\Roaming\\Code\\User\\globalStorage\\sigbots.pros\\install\\pros-toolchain-windows\\usr\\bin\\arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
       "compileCommands": "/Users/ayushkothari/Documents/GitHub/2055A/compile_commands.json",
       "browse": {
         "path": [
-          "/Users/ayushkothari/Documents/GitHub/2055A"
+          "c:\\Users\\yangx\\Downloads\\Programming\\Github Desktop\\2055A\\2055A"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

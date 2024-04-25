@@ -24,7 +24,7 @@ void offense_auton_max_potential() {
     // wingFR.set_value(false);
     
 
-    chassis.moveToPose(/*-6, 3, 145, 1500*/ /*-6, 4, 145, 1500*/ /*-10, 7, 145, 1500*/ /*-7, 6, 145, 1500*/ -6, 6, 145, 1500);
+    chassis.moveToPose(/*-6, 3, 145, 1500*/ /*-6, 4, 145, 1500*/ /*-10, 7, 145, 1500*/ /*-7, 6, 145, 1500*/ -6, 6, 145, 1500, {.minSpeed = 80}); // rush to middle triball
     chassis.waitUntil(3);
     wingFR.set_value(false);
     // setIntake(-127);
@@ -33,14 +33,14 @@ void offense_auton_max_potential() {
 
     // -7 6 145
     
-    chassis.moveToPose(-43, 48, 135, 1500, {.forwards = false});
+    chassis.moveToPose(-43, 48, 135, 1300, {.forwards = false, .minSpeed = 60}); // go back
     chassis.waitUntilDone();
 
-    turnTo(220, 127, 500);
+    turnTo(220, 127, 500); // face the net so triball can be outtaked towards the net
 
     setIntake(-127);
     
-    chassis.moveToPose(-28, 60, 220, 1000, {.forwards = false});
+    chassis.moveToPose(-28, 60, 220, 1100, {.forwards = false}); // head towards 3rd triball
     chassis.waitUntil(3);
     setIntake(127);
     // chassis.waitUntil(6);
@@ -61,39 +61,39 @@ void offense_auton_max_potential() {
     // turnTo(90);
     // turnToDir(90, false);
     // chassis.waitUntilDone();
-    turnTo(90, 127, 600);
+    turnTo(90, 127, 500);
     //setIntake(127);
-    chassis.moveToPose(/*3.5*/ 3, 68, 90, 1200);
+    chassis.moveToPose(/*3.5*/ 1, 66, 90, 1200); // get third triball
     chassis.waitUntilDone();
     pros::delay(100);
 
-    chassis.moveToPose(-27, 65, 90, 1200, {.forwards = false});
+    chassis.moveToPose(-27, 65, 90, 1200, {.forwards = false}); // go back
     chassis.waitUntilDone();
-    turnTo(225, 127, 500);
+    turnTo(225, 127, 500); // turn so parallel to matchload bar
 
     wingFR.set_value(true);
 
     // chassis.moveToPose(-46, 47, 225, 1000);
-    chassis.moveToPose(-42, 51, 225, 1000);
+    chassis.moveToPose(-43, 51, 225, 900); // moves forward parallel to matchload bar with wing open
     chassis.waitUntilDone();
 
     // turnTo(200, 127, 300);
-    turnTo(160, 127, 500);
+    turnTo(160, 127, 450); // turn to smack triball out of corner
     wingFR.set_value(false);
 
-    turnTo(190, 127, 500);
+    turnTo(190, 127, 250); // tunr to net
     setIntake(-127);
 
-    chassis.moveToPose(-52, -20, 180, 650, {.minSpeed = 120});
+    chassis.moveToPose(-52, -20, 180, 650, {.minSpeed = 120}); // RAM 1
     chassis.waitUntilDone();
     chassis.setPose(chassis.getPose().x, 30, chassis.getPose().theta);
-    turnTo(165);
-    chassis.moveToPose(chassis.getPose().x-3, chassis.getPose().y+18, 180, 1000, {.forwards=false});
+    turnTo(165, 127, 300);
+    chassis.moveToPose(chassis.getPose().x-3, chassis.getPose().y+18, 180, 600, {.forwards=false}); // go back
     // chassis.moveToPose(-57, 45, 190, 2000, {.forwards=false});
     // chassis.moveToPose(-56, 46, 180, 1500, {.forwards=false});
     chassis.waitUntilDone();
     turnTo(190, 127, 250);
-    ram(1000, 1);
+    ram(550, 1); // RAM 2
     // chassis.moveToPose(-63, chassis.getPose().y-40, 180, 1200, {.minSpeed = 110});
     chassis.waitUntilDone();
     chassis.setPose(-60, 30, chassis.getPose().theta);
@@ -104,17 +104,18 @@ void offense_auton_max_potential() {
 
     chassis.turnTo(-4, 24, 600);
     setIntake(127);
-    chassis.moveToPose(-9, 25, 125, 1400);
+    chassis.moveToPose(-7, 25, 125, 900, {.minSpeed = 90});
     chassis.waitUntilDone(); 
     turnTo(180, 127, 500);
-    chassis.moveToPose(-18, -10, 200, 1000);
+    chassis.moveToPose(-18, 0, 200, 800, {.minSpeed = 70});
     chassis.waitUntilDone();
     wingFR.set_value(true);
-    turnTo(280);
+    turnTo(272, 127, 400);
     setIntake(-127);
     ram(500, 1);
-    chassis.moveToPose(chassis.getPose().x-15, -5, 270, 1000, {.forwards=false});
+    chassis.moveToPose(chassis.getPose().x-15, -5, 270, 800, {.forwards=false});
     chassis.waitUntilDone();
+    wingFR.set_value(true);
     
 
     // pros::delay(1000000);  

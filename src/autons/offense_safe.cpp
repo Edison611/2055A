@@ -32,12 +32,12 @@ void offense_auton_safe() {
     //Middle Center Tri-Balls
     chassis.setPose(chassis.getPose().x, 32.5, chassis.getPose().theta); 
     pros::delay(150);
-    chassis.moveToPose(-48, 54, 220, 800, {.forwards = false, .minSpeed = 75}, false); //-54, 48
+    chassis.moveToPose(-48, 54, 220, 1200, {.forwards = false, .minSpeed = 75}, false); //-54, 48
     turnTo(130);
     setIntake(127);
-    chassis.moveToPose(-6, 5, 143, 1400, {.chasePower = 4}, false); //0, 6, 140
+    chassis.moveToPose(-2, 5, 143, 1400, {.chasePower = 4}, false); //0, 6, 140
     pros::delay(250);   
-    turnTo(270, 50);
+    turnTo(270, 60, 1000);
     ActivateWings(true);
     setIntake(-127);
     chassis.moveToPose(-55, chassis.getPose().y, 270, 850, {.minSpeed = 120}, false);
@@ -55,7 +55,7 @@ void offense_auton_safe() {
 
     //Last Middle Ram
     chassis.moveToPose(-20, 5, 40, 1000, {.forwards = false}, false);
-    turnTo(-90);
+    turnTo(-90);    
     setIntake(-127);
     pros::delay(150);
     chassis.moveToPose(-60, chassis.getPose().y, -90, 1000, {.minSpeed = 127}, false);

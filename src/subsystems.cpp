@@ -102,20 +102,20 @@ void shoot() {
 
 bool currentPTO = false;
 void setDrivePTO() {
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
-        currentPTO = !currentPTO;
-        drivePTO.set_value(currentPTO);
-        if (currentPTO == true) {
-            pros::delay(100);
-            setDrive(600, 600);
-            pros::delay(3000);
-            endgame.set_value(true);
-            pros::delay(2300);
-            setDrive(0, 0);
-            endgame.set_value(false);
+    while (1) {
+        if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
+            currentPTO = true;
+            drivePTO.set_value(currentPTO);
+            if (currentPTO == true) {
+                pros::delay(3000);
+                endgame.set_value(true);
+                pros::delay(2300);
+                endgame.set_value(false);
+            }
         }
+
+        pros::delay(10);
     }
-    
 }
 
 

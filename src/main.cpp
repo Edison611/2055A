@@ -185,7 +185,7 @@ void competition_initialize() {}
 
 void opcontrol() {
     pros::Task pos_track(screen);
-    
+    pros::Task PTOtask(setDrivePTO);
 
     driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
 	driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
@@ -214,6 +214,5 @@ void opcontrol() {
     intake_up.set_value(true);
     
     my_opcontrol();   
-
     
 }   

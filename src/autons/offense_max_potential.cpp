@@ -102,12 +102,13 @@ void offense_auton_max_potential() {
     chassis.moveToPose(-53, 40, 225, 1000, {.forwards=false});
     chassis.waitUntilDone();
 
+    // Last 2
     chassis.turnTo(-4, 24, 600);
     setIntake(127);
-    chassis.moveToPose(-7, 25, 125, 900, {.minSpeed = 90});
+    chassis.moveToPose(-5, 24, 125, 900, {.minSpeed = 80});
     chassis.waitUntilDone(); 
-    turnTo(180, 127, 500);
-    chassis.moveToPose(-18, 0, 200, 800, {.minSpeed = 70});
+    turnTo(180, 127, 600);
+    chassis.moveToPose(-18, 3, 200, 800, {.minSpeed = 70});
     chassis.waitUntilDone();
     wingFR.set_value(true);
     turnTo(272, 127, 400);
@@ -115,7 +116,7 @@ void offense_auton_max_potential() {
     ram(500, 1);
     chassis.moveToPose(chassis.getPose().x-15, -5, 270, 800, {.forwards=false});
     chassis.waitUntilDone();
-    wingFR.set_value(true);
+    wingFR.set_value(false);
     
 
     // pros::delay(1000000);  

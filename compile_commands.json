@@ -33,11 +33,51 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/autons/defense_max_potential.cpp.o",
-            "src\\autons\\defense_max_potential.cpp"
+            "bin/autons/defense_midrush.cpp.o",
+            "src\\autons\\defense_midrush.cpp"
         ],
         "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\autons\\defense_max_potential.cpp"
+        "file": "src\\autons\\defense_midrush.cpp"
+    },
+    {
+        "arguments": [
+            "clang++",
+            "-c",
+            "-target",
+            "armv7ar-none-none-eabi",
+            "-fno-ms-extensions",
+            "-fno-ms-compatibility",
+            "-fno-delayed-template-parsing",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/arm-none-eabi/thumb/v7-a+simd/softfp",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/backward",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include-fixed",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include",
+            "-iquote./include",
+            "-iquote./include/okapi/squiggles",
+            "-iquote./include/./",
+            "-mcpu=cortex-a9",
+            "-mfpu=neon-fp16",
+            "-mfloat-abi=softfp",
+            "-Os",
+            "-g",
+            "-D_POSIX_THREADS",
+            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
+            "-D_POSIX_TIMERS",
+            "-D_POSIX_MONOTONIC_CLOCK",
+            "-Wno-psabi",
+            "-ffunction-sections",
+            "-fdata-sections",
+            "-fdiagnostics-color",
+            "-funwind-tables",
+            "--std=gnu++17",
+            "-o",
+            "bin/drive.cpp.o",
+            "src\\drive.cpp"
+        ],
+        "directory": "C:\\Users\\haris\\Desktop\\2055A",
+        "file": "src\\drive.cpp"
     },
     {
         "arguments": [
@@ -113,51 +153,11 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/autons/offense_max_potential.cpp.o",
-            "src\\autons\\offense_max_potential.cpp"
+            "bin/autons/ez_template_test.cpp.o",
+            "src\\autons\\ez_template_test.cpp"
         ],
         "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\autons\\offense_max_potential.cpp"
-    },
-    {
-        "arguments": [
-            "clang++",
-            "-c",
-            "-target",
-            "armv7ar-none-none-eabi",
-            "-fno-ms-extensions",
-            "-fno-ms-compatibility",
-            "-fno-delayed-template-parsing",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/arm-none-eabi/thumb/v7-a+simd/softfp",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/backward",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include-fixed",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include",
-            "-iquote./include",
-            "-iquote./include/okapi/squiggles",
-            "-iquote./include/./",
-            "-mcpu=cortex-a9",
-            "-mfpu=neon-fp16",
-            "-mfloat-abi=softfp",
-            "-Os",
-            "-g",
-            "-D_POSIX_THREADS",
-            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
-            "-D_POSIX_TIMERS",
-            "-D_POSIX_MONOTONIC_CLOCK",
-            "-Wno-psabi",
-            "-ffunction-sections",
-            "-fdata-sections",
-            "-fdiagnostics-color",
-            "-funwind-tables",
-            "--std=gnu++17",
-            "-o",
-            "bin/test-functions.cpp.o",
-            "src\\test-functions.cpp"
-        ],
-        "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\test-functions.cpp"
+        "file": "src\\autons\\ez_template_test.cpp"
     },
     {
         "arguments": [
@@ -193,11 +193,11 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/autons/defense_awp.cpp.o",
-            "src\\autons\\defense_awp.cpp"
+            "bin/autons/auton_skills.cpp.o",
+            "src\\autons\\auton_skills.cpp"
         ],
         "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\autons\\defense_awp.cpp"
+        "file": "src\\autons\\auton_skills.cpp"
     },
     {
         "arguments": [
@@ -273,11 +273,11 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/selection.cpp.o",
-            "src\\selection.cpp"
+            "bin/helper.cpp.o",
+            "src\\helper.cpp"
         ],
         "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\selection.cpp"
+        "file": "src\\helper.cpp"
     },
     {
         "arguments": [
@@ -313,11 +313,51 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/main.cpp.o",
-            "src\\main.cpp"
+            "bin/pure-pursuit.cpp.o",
+            "src\\pure-pursuit.cpp"
         ],
         "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\main.cpp"
+        "file": "src\\pure-pursuit.cpp"
+    },
+    {
+        "arguments": [
+            "clang++",
+            "-c",
+            "-target",
+            "armv7ar-none-none-eabi",
+            "-fno-ms-extensions",
+            "-fno-ms-compatibility",
+            "-fno-delayed-template-parsing",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/arm-none-eabi/thumb/v7-a+simd/softfp",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/backward",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include-fixed",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include",
+            "-iquote./include",
+            "-iquote./include/okapi/squiggles",
+            "-iquote./include/./",
+            "-mcpu=cortex-a9",
+            "-mfpu=neon-fp16",
+            "-mfloat-abi=softfp",
+            "-Os",
+            "-g",
+            "-D_POSIX_THREADS",
+            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
+            "-D_POSIX_TIMERS",
+            "-D_POSIX_MONOTONIC_CLOCK",
+            "-Wno-psabi",
+            "-ffunction-sections",
+            "-fdata-sections",
+            "-fdiagnostics-color",
+            "-funwind-tables",
+            "--std=gnu++17",
+            "-o",
+            "bin/selection.cpp.o",
+            "src\\selection.cpp"
+        ],
+        "directory": "C:\\Users\\haris\\Desktop\\2055A",
+        "file": "src\\selection.cpp"
     },
     {
         "arguments": [
@@ -353,11 +393,51 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/autons/defense_midrush.cpp.o",
-            "src\\autons\\defense_midrush.cpp"
+            "bin/autons/settings.cpp.o",
+            "src\\autons\\settings.cpp"
         ],
         "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\autons\\defense_midrush.cpp"
+        "file": "src\\autons\\settings.cpp"
+    },
+    {
+        "arguments": [
+            "clang++",
+            "-c",
+            "-target",
+            "armv7ar-none-none-eabi",
+            "-fno-ms-extensions",
+            "-fno-ms-compatibility",
+            "-fno-delayed-template-parsing",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/arm-none-eabi/thumb/v7-a+simd/softfp",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/backward",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include-fixed",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include",
+            "-iquote./include",
+            "-iquote./include/okapi/squiggles",
+            "-iquote./include/./",
+            "-mcpu=cortex-a9",
+            "-mfpu=neon-fp16",
+            "-mfloat-abi=softfp",
+            "-Os",
+            "-g",
+            "-D_POSIX_THREADS",
+            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
+            "-D_POSIX_TIMERS",
+            "-D_POSIX_MONOTONIC_CLOCK",
+            "-Wno-psabi",
+            "-ffunction-sections",
+            "-fdata-sections",
+            "-fdiagnostics-color",
+            "-funwind-tables",
+            "--std=gnu++17",
+            "-o",
+            "bin/test-functions.cpp.o",
+            "src\\test-functions.cpp"
+        ],
+        "directory": "C:\\Users\\haris\\Desktop\\2055A",
+        "file": "src\\test-functions.cpp"
     },
     {
         "arguments": [
@@ -473,11 +553,51 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/autons/auton_skills.cpp.o",
-            "src\\autons\\auton_skills.cpp"
+            "bin/autons/defense_awp.cpp.o",
+            "src\\autons\\defense_awp.cpp"
         ],
         "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\autons\\auton_skills.cpp"
+        "file": "src\\autons\\defense_awp.cpp"
+    },
+    {
+        "arguments": [
+            "clang++",
+            "-c",
+            "-target",
+            "armv7ar-none-none-eabi",
+            "-fno-ms-extensions",
+            "-fno-ms-compatibility",
+            "-fno-delayed-template-parsing",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/arm-none-eabi/thumb/v7-a+simd/softfp",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/backward",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include-fixed",
+            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include",
+            "-iquote./include",
+            "-iquote./include/okapi/squiggles",
+            "-iquote./include/autons/",
+            "-mcpu=cortex-a9",
+            "-mfpu=neon-fp16",
+            "-mfloat-abi=softfp",
+            "-Os",
+            "-g",
+            "-D_POSIX_THREADS",
+            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
+            "-D_POSIX_TIMERS",
+            "-D_POSIX_MONOTONIC_CLOCK",
+            "-Wno-psabi",
+            "-ffunction-sections",
+            "-fdata-sections",
+            "-fdiagnostics-color",
+            "-funwind-tables",
+            "--std=gnu++17",
+            "-o",
+            "bin/autons/offense_max_potential.cpp.o",
+            "src\\autons\\offense_max_potential.cpp"
+        ],
+        "directory": "C:\\Users\\haris\\Desktop\\2055A",
+        "file": "src\\autons\\offense_max_potential.cpp"
     },
     {
         "arguments": [
@@ -513,11 +633,11 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/pure-pursuit.cpp.o",
-            "src\\pure-pursuit.cpp"
+            "bin/tracking.cpp.o",
+            "src\\tracking.cpp"
         ],
         "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\pure-pursuit.cpp"
+        "file": "src\\tracking.cpp"
     },
     {
         "arguments": [
@@ -576,46 +696,6 @@
             "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include",
             "-iquote./include",
             "-iquote./include/okapi/squiggles",
-            "-iquote./include/autons/",
-            "-mcpu=cortex-a9",
-            "-mfpu=neon-fp16",
-            "-mfloat-abi=softfp",
-            "-Os",
-            "-g",
-            "-D_POSIX_THREADS",
-            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
-            "-D_POSIX_TIMERS",
-            "-D_POSIX_MONOTONIC_CLOCK",
-            "-Wno-psabi",
-            "-ffunction-sections",
-            "-fdata-sections",
-            "-fdiagnostics-color",
-            "-funwind-tables",
-            "--std=gnu++17",
-            "-o",
-            "bin/autons/settings.cpp.o",
-            "src\\autons\\settings.cpp"
-        ],
-        "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\autons\\settings.cpp"
-    },
-    {
-        "arguments": [
-            "clang++",
-            "-c",
-            "-target",
-            "armv7ar-none-none-eabi",
-            "-fno-ms-extensions",
-            "-fno-ms-compatibility",
-            "-fno-delayed-template-parsing",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/arm-none-eabi/thumb/v7-a+simd/softfp",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/backward",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include-fixed",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include",
-            "-iquote./include",
-            "-iquote./include/okapi/squiggles",
             "-iquote./include/./",
             "-mcpu=cortex-a9",
             "-mfpu=neon-fp16",
@@ -633,51 +713,11 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/helper.cpp.o",
-            "src\\helper.cpp"
+            "bin/main.cpp.o",
+            "src\\main.cpp"
         ],
         "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\helper.cpp"
-    },
-    {
-        "arguments": [
-            "clang++",
-            "-c",
-            "-target",
-            "armv7ar-none-none-eabi",
-            "-fno-ms-extensions",
-            "-fno-ms-compatibility",
-            "-fno-delayed-template-parsing",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/arm-none-eabi/thumb/v7-a+simd/softfp",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/backward",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include-fixed",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include",
-            "-iquote./include",
-            "-iquote./include/okapi/squiggles",
-            "-iquote./include/./",
-            "-mcpu=cortex-a9",
-            "-mfpu=neon-fp16",
-            "-mfloat-abi=softfp",
-            "-Os",
-            "-g",
-            "-D_POSIX_THREADS",
-            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
-            "-D_POSIX_TIMERS",
-            "-D_POSIX_MONOTONIC_CLOCK",
-            "-Wno-psabi",
-            "-ffunction-sections",
-            "-fdata-sections",
-            "-fdiagnostics-color",
-            "-funwind-tables",
-            "--std=gnu++17",
-            "-o",
-            "bin/drive.cpp.o",
-            "src\\drive.cpp"
-        ],
-        "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\drive.cpp"
+        "file": "src\\main.cpp"
     },
     {
         "arguments": [
@@ -713,50 +753,10 @@
             "-funwind-tables",
             "--std=gnu++17",
             "-o",
-            "bin/autons/ez_template_test.cpp.o",
-            "src\\autons\\ez_template_test.cpp"
+            "bin/autons/defense_max_potential.cpp.o",
+            "src\\autons\\defense_max_potential.cpp"
         ],
         "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\autons\\ez_template_test.cpp"
-    },
-    {
-        "arguments": [
-            "clang++",
-            "-c",
-            "-target",
-            "armv7ar-none-none-eabi",
-            "-fno-ms-extensions",
-            "-fno-ms-compatibility",
-            "-fno-delayed-template-parsing",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/arm-none-eabi/thumb/v7-a+simd/softfp",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include/c++/10.2.1/backward",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/include-fixed",
-            "-isystemc:\\program files\\pros\\toolchain\\usr\\bin\\../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/include",
-            "-iquote./include",
-            "-iquote./include/okapi/squiggles",
-            "-iquote./include/./",
-            "-mcpu=cortex-a9",
-            "-mfpu=neon-fp16",
-            "-mfloat-abi=softfp",
-            "-Os",
-            "-g",
-            "-D_POSIX_THREADS",
-            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
-            "-D_POSIX_TIMERS",
-            "-D_POSIX_MONOTONIC_CLOCK",
-            "-Wno-psabi",
-            "-ffunction-sections",
-            "-fdata-sections",
-            "-fdiagnostics-color",
-            "-funwind-tables",
-            "--std=gnu++17",
-            "-o",
-            "bin/tracking.cpp.o",
-            "src\\tracking.cpp"
-        ],
-        "directory": "C:\\Users\\haris\\Desktop\\2055A",
-        "file": "src\\tracking.cpp"
+        "file": "src\\autons\\defense_max_potential.cpp"
     }
 ]

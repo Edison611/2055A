@@ -61,7 +61,7 @@ void my_opcontrol() {
 		op_wings();
 		// op_climb();
 		op_endgame();
-		setDrivePTO();
+		// setDrivePTO();
 	    int x = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
     	int y = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 		chassis.arcade(y, x, 1);

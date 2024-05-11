@@ -210,7 +210,7 @@ bin/opcontrol.cpp.o: src/opcontrol.cpp include/main.h include/api.h \
  include/EZ-Template/slew.hpp include/drive.hpp include/subsystems.hpp \
  include/opcontrol.hpp include/auton.hpp include/tracking.hpp \
  include/pure-pursuit.hpp include/helper.hpp include/test-functions.hpp \
- include/selection.h include/settings.hpp
+ include/selection.h include/settings.hpp include/pros/gps.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -524,3 +524,4 @@ include/helper.hpp:
 include/test-functions.hpp:
 include/selection.h:
 include/settings.hpp:
+include/pros/gps.hpp:

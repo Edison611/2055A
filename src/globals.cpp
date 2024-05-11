@@ -1,6 +1,7 @@
 #include "main.h"
 #include "pros/adi.hpp"
 #include "pros/gps.h"
+#include "pros/gps.hpp"
 #include "pros/imu.hpp"
 #include "pros/misc.h"
 #include "pros/misc.hpp"
@@ -58,6 +59,7 @@ char DRIVEPTO_PORT = 'H';
 // char CLAW_PORT = 'C';
 char WEDGE_PORT = 'A'; // NOT IN USE
 char PISTON_BOOST_PORT = 'B';
+char GPS_SENSOR_PORT = 14;
 
 // pros::Rotation back_rot(6, false);
 pros::Rotation kicker_rot(13, false);
@@ -104,6 +106,7 @@ pros::Optical color_sensor(COLOR_SENSOR_PORT);
 // pros::ADIAnalogIn line_sensor(LINE_SENSOR_PORT);
 pros::Distance distance_sensorL(DISTANCE_SENSOR_PORT_LEFT);
 pros::Distance distance_sensorR(DISTANCE_SENSOR_PORT_RIGHT);
+pros::GPS gps_sensor(GPS_SENSOR_PORT);
 
 // ------------------------------------------------------------------------------------------------------
 // Pneumatics

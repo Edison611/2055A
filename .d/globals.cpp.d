@@ -210,13 +210,13 @@ bin/globals.cpp.o: src/globals.cpp include/main.h include/api.h \
  include/EZ-Template/slew.hpp include/drive.hpp include/subsystems.hpp \
  include/opcontrol.hpp include/auton.hpp include/tracking.hpp \
  include/pure-pursuit.hpp include/helper.hpp include/test-functions.hpp \
- include/selection.h include/settings.hpp include/pros/misc.hpp \
- include/pros/optical.hpp include/pros/vision.hpp include/lemlib/api.hpp \
- include/lemlib/util.hpp include/lemlib/logger/logger.hpp \
- include/fmt/core.h include/fmt/format.h include/fmt/core.h \
- include/fmt/format-inl.h include/lemlib/logger/baseSink.hpp \
- include/fmt/args.h include/lemlib/logger/message.hpp \
- include/lemlib/logger/infoSink.hpp \
+ include/selection.h include/settings.hpp include/pros/gps.hpp \
+ include/pros/misc.hpp include/pros/optical.hpp include/pros/vision.hpp \
+ include/lemlib/api.hpp include/lemlib/util.hpp \
+ include/lemlib/logger/logger.hpp include/fmt/core.h include/fmt/format.h \
+ include/fmt/core.h include/fmt/format-inl.h \
+ include/lemlib/logger/baseSink.hpp include/fmt/args.h \
+ include/lemlib/logger/message.hpp include/lemlib/logger/infoSink.hpp \
  include/lemlib/logger/telemetrySink.hpp include/EZ-Template/api.hpp \
  include/EZ-Template/auton.hpp include/EZ-Template/auton_selector.hpp \
  include/EZ-Template/piston.hpp include/EZ-Template/sdcard.hpp
@@ -533,6 +533,7 @@ include/helper.hpp:
 include/test-functions.hpp:
 include/selection.h:
 include/settings.hpp:
+include/pros/gps.hpp:
 include/pros/misc.hpp:
 include/pros/optical.hpp:
 include/pros/vision.hpp:

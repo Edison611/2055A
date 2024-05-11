@@ -18,15 +18,15 @@
  */
 void screen() {
     // loop forever
-    while (true) {
-        lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
-        pros::lcd::set_text(2, "RM, RF: " + std::to_string(round(driveRM.get_torque()*100)/100) + " " + std::to_string(round(driveRF.get_torque()*100)/100));
-        pros::lcd::set_text(3, "LM, LF: " + std::to_string(round(driveLM.get_torque()*100)/100) + " " + std::to_string(round(driveLF.get_torque()*100)/100));
+    double *x;
+    double *y;
 
-        pros::lcd::set_text(4, "Encoder Units: " + std::to_string(driveLM.get_position()));
-        pros::lcd::set_text(5, "x: " + std::to_string(pose.x)); // print the x position
-        pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position
-        pros::lcd::set_text(7, "angle: " + std::to_string(pose.theta)); // print the heading
+    while (true) {
+        gps_sensor.get_offset(x, y);
+        pros::lcd::set_text(6, "x, y" + std::to_string(*x) + ", "  + std::to_string(*y));
+        // pros::lcd::set_text(5, "x: " ); // print the x position
+        // pros::lcd::set_text(6, "y: " ); // print the y position
+        pros::lcd::set_text(7, "angle: " + std::to_string (gps_sensor.get_heading())); // print the heading
         pros::delay(20);
     }
 }

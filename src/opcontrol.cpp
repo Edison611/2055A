@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/gps.hpp"
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
 #include <ostream>
@@ -27,8 +28,25 @@ void my_opcontrol() {
 	// wingF.set_value(false);
 	// wingB.set_value(false);
 	
+	// double *x;
+    // double *y;
+
+    while (true) {
+		double x = gps_sensor.get_status().x;
+		double y = gps_sensor.get_status().y;
+
+		x = x * 39.370079;
+		y = y * 39.370079;
+
+        pros::lcd::set_text(6, "x, y: " + std::to_string(x) + ", "  + std::to_string(y));
+        // pros::lcd::set_text(5, "x: " ); // print the x position
+        // pros::lcd::set_text(6, "y: " ); // print the y position
+        pros::lcd::set_text(7, "angle: " + std::to_string (gps_sensor.get_heading())); // print the heading
+        pros::delay(20);
+    }
 
 	while (true) {
+		
 		// lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
         // pros::lcd::set_text(5, "x: "  +  std::to_string(pose.x)); // print the x position
         // pros::lcd::set_text(6, "y: " + std::to_string(pose.y)); // print the y position

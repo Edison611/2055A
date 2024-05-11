@@ -17,11 +17,9 @@
 
 void initialize() {
 	pros::lcd::initialize();
-    // default_constants();
-    // ezChassis.initialize();
 
-    chassis.calibrate();
-    // ezChassis.drive_sensor_reset(); 
+    // chassis.calibrate();
+    // gps_sensor.initialize_full(30, 60, 270, 0, 0);
 
     driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
 	driveLM.set_brake_mode(MOTOR_BRAKE_COAST);
@@ -83,91 +81,7 @@ void competition_initialize() {}
  */
  void autonomous() {
 
-    // driveLB.set_brake_mode(MOTOR_BRAKE_HOLD);
-	// driveLM.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveLF.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveLH.set_brake_mode(MOTOR_BRAKE_HOLD);
-
-    // driveRB.set_brake_mode(MOTOR_BRAKE_HOLD);
-	// driveRM.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveRF.set_brake_mode(MOTOR_BRAKE_HOLD);
-    // driveRH.set_brake_mode(MOTOR_BRAKE_HOLD);
-
-    // Auton selector
-    // switch (selector::auton) {
-    //     case 1:
-    //         // Safe 5 Triball Auton
-    //         offense_auton_safe();
-    //         break;
-
-    //     case 2:
-    //         // 
-    //         offense_last_min();
-    //         // offense_auton_midrush_new();
-    //         break;
-
-    //     case 3:
-    //         // offense_auton_6balls_v2();
-    //         break;
-        
-    //     case -1:
-    //         // Safe
-    //         defense_awp();
-    //         break;
-        
-    //     case -2:
-    //         // Midrush
-    //         defense_last_min();
-    //         break;
-
-    //     case -3:
-    //         // Max Potential
-    //         defense_auton_max_potential();
-    //         break;
-
-    //     case 0:
-    //         auton_skills();
-    //         break;
-    // } 
-
-    
-    
-    // ezChassis.pid_drive_set(48, 127, false, true);
-    // ezChassis.pid_wait();
-
-    // ezChassis.pid_drive_set(0, 90, false);
-    // pros::delay(2000);
-
-    // ezChassis.pid_drive_set(-24, 127, false, true);
-    // ezChassis.pid_wait();
-    
-    // ezChassis.pid_drive_set(0, 90, false);
-
-    // // pros::delay(4000);
-    // // allowContinue();
-
-    // ezChassis.pid_drive_set(-12, 90, false);
-    // ezChassis.pid_wait();
-    // // allowContinue();
-
-    // ezChassis.pid_drive_set(12, 90, false);
-    // ezChassis.pid_wait();
-
-    // ezChassis.pid_turn_set(90, 90, false);
-    // ezChassis.pid_wait();
-
-
-    // ezChassis.pid_turn_set(-90, 90, false);
-    // ezChassis.pid_wait();
-
-    // auton_skills();
-    offense_auton_safe(); //SLOT 3
-    // defense_awp(); // SLOT 4
-
-    // offense_auton_max_potential(); // SLOT 5
-    // defense_auton_max_potential(); // SLOT 6
-    // defense_auton_midrush(); // SLOT 7
-}
+ }
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -184,7 +98,9 @@ void competition_initialize() {}
  */
 
 void opcontrol() {
-    pros::Task pos_track(screen);
+    // pros::Task pos_track(screen);
+
+    // gps_sensor.set_position(0, 0, 0);
     
 
     driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
@@ -201,19 +117,8 @@ void opcontrol() {
     // pros::Task matchload_task(skills_matchload);
 
 
-    // pros::Task MatchLoads(SetMatchLoad);
-    // pid_test();
-    // pros::Task kicker_task(kickerTask);
-    //pros::Task pistonBoost_task(pistonBoostTask);
 
-    // COMMENT THIS FOR DRIVER SKILLS
-    //wingF.set_value(false);
-	//wingB.set_value(false);
-    ActivateWings(false);
-    currentIntake = true;
-    intake_up.set_value(true);
     
     my_opcontrol();   
-
     
 }   

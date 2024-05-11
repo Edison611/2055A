@@ -2,6 +2,7 @@
 #include "EZ-Template/drive/drive.hpp"
 #include "pros/adi.hpp"
 #include "pros/distance.hpp"
+#include "pros/gps.hpp"
 #include "pros/imu.hpp"
 #include "pros/misc.hpp"
 #include "pros/motors.hpp"
@@ -45,6 +46,7 @@ extern pros::ADIDigitalOut wingFL;
 extern pros::ADIDigitalOut drivePTO;
 extern pros::ADIDigitalOut intake_up;
 extern pros::ADIDigitalOut endgame;
+extern pros::GPS gps_sensor;
 
 extern pros::Controller controller;
 
